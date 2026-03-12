@@ -1,0 +1,6 @@
+{
+  "name": "xeet-market-intel",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": ["server", "web"]
+}

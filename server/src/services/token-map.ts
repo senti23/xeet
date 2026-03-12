@@ -1,0 +1,196 @@
+import { readFileSync } from 'fs';
+import { config } from '../config.js';
+import { getDb, getStmts } from '../db/index.js';
+import { getAllNFTs, type OpenSeaNFT } from './opensea-client.js';
+import { childLogger } from '../lib/logger.js';
+
+const log = childLogger('token-map');
+
+export type Rarity = 'common' | 'rare' | 'legendary';
+
+export interface CreatorInfo {
+  handle: string;
+  displayName: string;
+  walletAddress: string;
+  rarities: Rarity[];
+  commonSupply: number;
+  rareSupply: number;
+  legendarySupply: number;
+}
+
+interface TokenMapping {
+  tokenId: string;
+  creatorHandle: string;
+  rarity: Rarity;
+  name: string | null;
+  imageUrl: string | null;
+}
+
+// In-memory maps
+const tokenToCreator = new Map<string, { handle: string; rarity: Rarity }>();
+const creatorToTokens = new Map<string, string[]>(); // key: "handle:rarity"
+const creators = new Map<string, CreatorInfo>();
+let initialized = false;
+let backgroundSyncRunning = false;
+
+export function getCreatorRarity(tokenId: string): { handle: string; rarity: Rarity } | null {
+  return tokenToCreator.get(tokenId) ?? null;
+}
+
+export function getTokenIds(handle: string, rarity: Rarity): string[] {
+  return creatorToTokens.get(`${handle}:${rarity}`) ?? [];
+}
+
+export function getAllCreators(): Map<string, CreatorInfo> {
+  return creators;
+}
+
+export function getCreator(handle: string): CreatorInfo | undefined {
+  return creators.get(handle.toLowerCase());
+}
+
+export function isValidCreator(handle: string): boolean {
+  return creators.has(handle.toLowerCase());
+}
+
+export function isInitialized(): boolean {
+  return initialized;
+}
+
+function addTokenMapping(m: TokenMapping) {
+  tokenToCreator.set(m.tokenId, { handle: m.creatorHandle, rarity: m.rarity });
+  const key = `${m.creatorHandle}:${m.rarity}`;
+  const existing = creatorToTokens.get(key) ?? [];
+  if (!existing.includes(m.tokenId)) {
+    existing.push(m.tokenId);
+    creatorToTokens.set(key, existing);
+  }
+}
+
+/** Step 1: Load creators from xeet-creators-full.json */
+function loadCreatorSeed(): void {
+  try {
+    const raw = readFileSync(config.creatorsJsonPath, 'utf-8');
+    const data: Array<{
+      xHandle: string;
+      displayName: string;
+      walletAddress: string;
+      cards?: { commonSupply: number; rareSupply: number; legendarySupply: number };
+    }> = JSON.parse(raw);
+
+    for (const c of data) {
+      const handle = c.xHandle.toLowerCase();
+      const rarities: Rarity[] = [];
+      const cs = c.cards?.commonSupply ?? 0;
+      const rs = c.cards?.rareSupply ?? 0;
+      const ls = c.cards?.legendarySupply ?? 0;
+      if (cs > 0) rarities.push('common');
+      if (rs > 0) rarities.push('rare');
+      if (ls > 0) rarities.push('legendary');
+
+      creators.set(handle, {
+        handle: c.xHandle,
+        displayName: c.displayName || c.xHandle,
+        walletAddress: c.walletAddress,
+        rarities,
+        commonSupply: cs,
+        rareSupply: rs,
+        legendarySupply: ls,
+      });
+    }
+    log.info({ count: creators.size }, 'Creator seed loaded from JSON');
+  } catch (err) {
+    log.error({ err }, 'Failed to load creator seed JSON');
+  }
+}
+
+/** Step 2: Load existing token map from SQLite */
+function loadFromDb(): number {
+  const stmts = getStmts();
+  const rows = stmts.getAllTokens.all() as Array<{
+    token_id: string;
+    creator_handle: string;
+    rarity: string;
+    name: string | null;
+    image_url: string | null;
+  }>;
+
+  for (const row of rows) {
+    addTokenMapping({
+      tokenId: row.token_id,
+      creatorHandle: row.creator_handle,
+      rarity: row.rarity as Rarity,
+      name: row.name,
+      imageUrl: row.image_url,
+    });
+  }
+
+  log.info({ count: rows.length }, 'Token map loaded from SQLite');
+  return rows.length;
+}
+
+/** Step 3: Background fetch from OpenSea NFTs */
+async function syncFromOpenSea(): Promise<void> {
+  if (backgroundSyncRunning) return;
+  backgroundSyncRunning = true;
+
+  try {
+    log.info('Starting background OpenSea NFT sync for token map');
+    const nfts = await getAllNFTs();
+    const stmts = getStmts();
+
+    const db = getDb();
+    const upsertMany = db.transaction((items: OpenSeaNFT[]) => {
+      for (const nft of items) {
+        const creatorTrait = nft.traits?.find(
+          (t) => t.trait_type.toLowerCase() === 'creator' || t.trait_type.toLowerCase() === 'creator handle',
+        );
+        const rarityTrait = nft.traits?.find((t) => t.trait_type.toLowerCase() === 'rarity');
+
+        if (!creatorTrait || !rarityTrait) continue;
+
+        const handle = String(creatorTrait.value).toLowerCase();
+        const rarity = String(rarityTrait.value).toLowerCase() as Rarity;
+        if (!['common', 'rare', 'legendary'].includes(rarity)) continue;
+
+        stmts.upsertToken.run(nft.identifier, handle, rarity, nft.name, nft.image_url);
+        addTokenMapping({
+          tokenId: nft.identifier,
+          creatorHandle: handle,
+          rarity,
+          name: nft.name,
+          imageUrl: nft.image_url,
+        });
+      }
+    });
+
+    upsertMany(nfts);
+    log.info({ totalNFTs: nfts.length, mappedTokens: tokenToCreator.size }, 'OpenSea NFT sync complete');
+  } catch (err) {
+    log.error({ err }, 'OpenSea NFT sync failed');
+  } finally {
+    backgroundSyncRunning = false;
+  }
+}
+
+/** Initialize: load seed + DB, then kick off background OpenSea sync */
+export async function initTokenMap(): Promise<void> {
+  // Step 1: Load creator seed (immediate)
+  loadCreatorSeed();
+
+  // Step 2: Load from SQLite (immediate)
+  const dbCount = loadFromDb();
+
+  initialized = true;
+
+  // Step 3: Background sync from OpenSea (non-blocking)
+  // Fire-and-forget — server starts serving immediately
+  syncFromOpenSea().catch((err) => {
+    log.error({ err }, 'Background OpenSea sync error');
+  });
+
+  log.info(
+    { creators: creators.size, cachedTokens: dbCount },
+    'Token map initialized (OpenSea sync running in background)',
+  );
+}
