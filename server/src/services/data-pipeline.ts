@@ -3,7 +3,7 @@ import { childLogger } from '../lib/logger.js';
 import { getDb, getStmts } from '../db/index.js';
 import * as xeetClient from './xeet-client.js';
 import * as osClient from './opensea-client.js';
-import { getCreatorRarity, getAllCreators, type Rarity } from './token-map.js';
+import { getCreatorRarity, getAllCreators, getTokenIds, type Rarity } from './token-map.js';
 import { fetchEthUsdRate, ethToUsd, getEthUsdRate } from './price-service.js';
 
 const log = childLogger('data-pipeline');
@@ -375,6 +375,9 @@ export async function startPipeline(): Promise<void> {
   // Run first cycle immediately
   await runCycle();
 
+  // Kick off Xeet sales history backfill in background (non-blocking)
+  backfillXeetSalesHistory().catch((err) => log.error({ err }, 'Backfill error'));
+
   // Schedule subsequent cycles
   intervalId = setInterval(() => {
     runCycle().catch((err) => log.error({ err }, 'Pipeline interval error'));
@@ -387,4 +390,95 @@ export function stopPipeline(): void {
     intervalId = null;
     log.info('Pipeline stopped');
   }
+}
+
+/**
+ * Backfill full Xeet sales history for all known token IDs.
+ * Fetches per-card sales from the discovered endpoint and persists to SQLite.
+ * Runs once at startup (after first pipeline cycle) as a background task.
+ * Skips tokens that already have sales in the DB to avoid redundant API calls.
+ */
+let backfillRunning = false;
+let backfillComplete = false;
+
+export function isBackfillComplete(): boolean {
+  return backfillComplete;
+}
+
+export async function backfillXeetSalesHistory(): Promise<{ fetched: number; newSales: number; skipped: number; errors: number }> {
+  if (backfillRunning) {
+    log.warn('Backfill already in progress, skipping');
+    return { fetched: 0, newSales: 0, skipped: 0, errors: 0 };
+  }
+  backfillRunning = true;
+
+  const stmts = getStmts();
+  const allCreators = getAllCreators();
+  const rarities: Rarity[] = ['common', 'rare', 'legendary'];
+
+  // Collect all unique tokenIds from token map
+  const tokenIds: Array<{ tokenId: string; handle: string; rarity: Rarity }> = [];
+  for (const [, creator] of allCreators) {
+    for (const rarity of rarities) {
+      const ids = getTokenIds(creator.handle, rarity);
+      for (const id of ids) {
+        tokenIds.push({ tokenId: id, handle: creator.handle, rarity });
+      }
+    }
+  }
+
+  log.info({ totalTokens: tokenIds.length }, 'Starting Xeet sales history backfill');
+
+  // Check which tokens already have sales — skip those to avoid redundant fetches
+  const tokensWithSales = new Set<string>();
+  const rows = getDb().prepare('SELECT DISTINCT token_id FROM sale_history WHERE marketplace = ?').all('xeet') as Array<{ token_id: string }>;
+  for (const r of rows) tokensWithSales.add(r.token_id);
+
+  let fetched = 0;
+  let newSales = 0;
+  let skipped = 0;
+  let errors = 0;
+
+  for (const { tokenId, handle, rarity } of tokenIds) {
+    // Skip tokens that already have Xeet sales persisted
+    if (tokensWithSales.has(tokenId)) {
+      skipped++;
+      continue;
+    }
+
+    try {
+      const sales = await xeetClient.getCardSalesHistory(tokenId);
+      fetched++;
+
+      for (const evt of sales) {
+        const price = evt.priceXeets ?? 0;
+        const timestamp = evt.timestamp ?? '';
+        if (!price || !timestamp) continue;
+
+        try {
+          stmts.upsertSale.run(
+            'xeet', tokenId, handle.toLowerCase(), rarity, price, 'XEETS', null,
+            evt.sellerHandle ?? null, evt.buyerHandle ?? null,
+            null, null, timestamp,
+          );
+          newSales++;
+        } catch {
+          // Duplicate — already stored
+        }
+      }
+
+      // Log progress every 50 tokens
+      if (fetched % 50 === 0) {
+        log.info({ fetched, newSales, skipped, errors, remaining: tokenIds.length - fetched - skipped - errors }, 'Backfill progress');
+      }
+    } catch (err) {
+      errors++;
+      log.warn({ tokenId, err }, 'Failed to fetch card sales history');
+    }
+  }
+
+  backfillComplete = true;
+  backfillRunning = false;
+  log.info({ fetched, newSales, skipped, errors }, 'Xeet sales history backfill complete');
+  return { fetched, newSales, skipped, errors };
 }
