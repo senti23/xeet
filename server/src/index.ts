@@ -3,7 +3,7 @@ import cors from '@fastify/cors';
 import { config } from './config.js';
 import { childLogger } from './lib/logger.js';
 import { getDb } from './db/index.js';
-import { initTokenMap } from './services/token-map.js';
+import { initTokenMap, getTokenMapStats } from './services/token-map.js';
 import { startPipeline, stopPipeline } from './services/data-pipeline.js';
 import { startStream, stopStream } from './services/opensea-stream.js';
 import { startBot, stopBot } from './bot/index.js';
@@ -33,6 +33,9 @@ async function main(): Promise<void> {
 
   // Health check
   app.get('/api/health', async () => ({ status: 'ok', uptime: process.uptime() }));
+
+  // Debug: token map status
+  app.get('/api/debug/token-map', async () => getTokenMapStats());
 
   // Start Fastify server
   await app.listen({ port: config.port, host: '0.0.0.0' });
