@@ -12,7 +12,7 @@ import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const DB_PATH = resolve(__dirname, '../xeet.db');
+const DB_PATH = resolve(__dirname, '../../xeet.db');
 
 const db = new Database(DB_PATH, { readonly: true });
 
