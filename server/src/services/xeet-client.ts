@@ -24,6 +24,17 @@ export interface XeetListing {
   deadline?: string;
   status: string;
   createdAt?: string;
+  // Nested objects from API
+  seller?: { id: string; handle: string; name: string };
+  creator?: { id: string; handle: string; displayName: string };
+}
+
+interface XeetApiResponse {
+  success: boolean;
+  data: {
+    items: XeetListing[];
+    pagination?: { total: number; limit: number; offset: number; hasMore: boolean };
+  };
 }
 
 export interface XeetListingsResponse {
@@ -67,24 +78,67 @@ async function xeetFetch<T>(path: string, label: string): Promise<T | null> {
 }
 
 export async function getActiveListings(limit = 250): Promise<XeetListing[]> {
-  const data = await xeetFetch<XeetListingsResponse | XeetListing[]>(
+  const data = await xeetFetch<XeetApiResponse | XeetListingsResponse | XeetListing[]>(
     `/api/marketplace/discovery/items?status=ACTIVE&sortBy=price_asc&limit=${limit}`,
     'xeet-listings',
   );
   if (!data) return [];
-  // Handle both possible shapes: { items: [...] } or raw array
   if (Array.isArray(data)) return data.filter((i) => i.tokenType === 'CARD');
-  if (data.items) return data.items.filter((i) => i.tokenType === 'CARD');
-  return [];
+
+  // API returns { success, data: { items: [...] } }
+  let items: XeetListing[] | undefined;
+  if ('data' in data && (data as XeetApiResponse).data?.items) {
+    items = (data as XeetApiResponse).data.items;
+  } else if ('items' in data) {
+    items = (data as XeetListingsResponse).items;
+  }
+
+  if (!items) return [];
+
+  // Flatten nested creator.handle into creatorHandle for pipeline compatibility
+  for (const item of items) {
+    if (!item.creatorHandle && item.creator?.handle) {
+      item.creatorHandle = item.creator.handle;
+    }
+    if (!item.sellerHandle && item.seller?.handle) {
+      item.sellerHandle = item.seller.handle;
+    }
+  }
+
+  log.info({ count: items.length }, 'Xeet listings parsed');
+  return items.filter((i) => i.tokenType === 'CARD');
 }
 
 export async function getActivity(limit = 96): Promise<XeetActivityEvent[]> {
-  const data = await xeetFetch<XeetActivityEvent[] | { events?: XeetActivityEvent[] }>(
+  const data = await xeetFetch<any>(
     `/api/marketplace/discovery/activity?limit=${limit}`,
     'xeet-activity',
   );
   if (!data) return [];
-  if (Array.isArray(data)) return data;
-  if ('events' in data && data.events) return data.events;
-  return [];
+  // Handle: raw array, { events: [...] }, or { success, data: { events/items: [...] } }
+  let events: XeetActivityEvent[] | undefined;
+  if (Array.isArray(data)) {
+    events = data;
+  } else if (data.data?.events) {
+    events = data.data.events;
+  } else if (data.data?.items) {
+    events = data.data.items;
+  } else if (data.events) {
+    events = data.events;
+  }
+
+  if (!events) {
+    log.warn({ responseKeys: Object.keys(data) }, 'Unexpected activity response shape');
+    return [];
+  }
+
+  // Flatten nested creator handle
+  for (const evt of events) {
+    if (!evt.creatorHandle && (evt as any).creator?.handle) {
+      evt.creatorHandle = (evt as any).creator.handle;
+    }
+  }
+
+  log.info({ count: events.length }, 'Xeet activity parsed');
+  return events;
 }
