@@ -57,6 +57,24 @@ export function isInitialized(): boolean {
   return initialized;
 }
 
+export function getTokenMapStats(): {
+  totalMappedTokens: number;
+  totalCreators: number;
+  sampleMappings: Array<{ tokenId: string; handle: string; rarity: string }>;
+} {
+  const sample: Array<{ tokenId: string; handle: string; rarity: string }> = [];
+  let count = 0;
+  for (const [tokenId, mapping] of tokenToCreator) {
+    if (count++ >= 10) break;
+    sample.push({ tokenId, handle: mapping.handle, rarity: mapping.rarity });
+  }
+  return {
+    totalMappedTokens: tokenToCreator.size,
+    totalCreators: creators.size,
+    sampleMappings: sample,
+  };
+}
+
 function addTokenMapping(m: TokenMapping) {
   tokenToCreator.set(m.tokenId, { handle: m.creatorHandle, rarity: m.rarity });
   const key = `${m.creatorHandle}:${m.rarity}`;
@@ -135,9 +153,28 @@ async function syncFromOpenSea(): Promise<void> {
   backgroundSyncRunning = true;
 
   try {
-    log.info('Starting background OpenSea NFT sync for token map');
+    log.info('Starting OpenSea NFT sync for token map');
     const nfts = await getAllNFTs();
     const stmts = getStmts();
+
+    // Debug: log sample NFT structure to diagnose trait issues
+    if (nfts.length > 0) {
+      const sample = nfts[0];
+      log.info({
+        sampleId: sample.identifier,
+        sampleName: sample.name,
+        hasTraits: !!sample.traits,
+        traitCount: sample.traits?.length ?? 0,
+        traitTypes: sample.traits?.map((t) => t.trait_type) ?? [],
+        sampleTraits: sample.traits?.slice(0, 5) ?? [],
+      }, 'NFT sync sample - first NFT structure');
+    } else {
+      log.warn('NFT sync returned 0 NFTs');
+    }
+
+    let withTraits = 0;
+    let withoutTraits = 0;
+    let mapped = 0;
 
     const db = getDb();
     const upsertMany = db.transaction((items: OpenSeaNFT[]) => {
@@ -147,7 +184,11 @@ async function syncFromOpenSea(): Promise<void> {
         );
         const rarityTrait = nft.traits?.find((t) => t.trait_type.toLowerCase() === 'rarity');
 
-        if (!creatorTrait || !rarityTrait) continue;
+        if (!creatorTrait || !rarityTrait) {
+          withoutTraits++;
+          continue;
+        }
+        withTraits++;
 
         const handle = String(creatorTrait.value).toLowerCase();
         const rarity = String(rarityTrait.value).toLowerCase() as Rarity;
@@ -161,11 +202,18 @@ async function syncFromOpenSea(): Promise<void> {
           name: nft.name,
           imageUrl: nft.image_url,
         });
+        mapped++;
       }
     });
 
     upsertMany(nfts);
-    log.info({ totalNFTs: nfts.length, mappedTokens: tokenToCreator.size }, 'OpenSea NFT sync complete');
+    log.info({
+      totalNFTs: nfts.length,
+      withTraits,
+      withoutTraits,
+      mapped,
+      mappedTokens: tokenToCreator.size,
+    }, 'OpenSea NFT sync complete');
   } catch (err) {
     log.error({ err }, 'OpenSea NFT sync failed');
   } finally {

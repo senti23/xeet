@@ -120,30 +120,60 @@ async function runCycle(): Promise<void> {
     // --- Aggregate OpenSea data ---
     // Group listings by creator+rarity via token map
     const osByKey = new Map<string, Array<{ order: osClient.OpenSeaOrder; ethPrice: number }>>();
+    let listingsNoToken = 0;
+    let listingsUnmapped = 0;
+    let listingsMapped = 0;
+    const unmappedSampleIds: string[] = [];
     for (const order of osListings) {
       const tokenId = osClient.extractTokenId(order);
-      if (!tokenId) continue;
+      if (!tokenId) { listingsNoToken++; continue; }
       const mapping = getCreatorRarity(tokenId);
-      if (!mapping) continue;
+      if (!mapping) {
+        listingsUnmapped++;
+        if (unmappedSampleIds.length < 5) unmappedSampleIds.push(tokenId);
+        continue;
+      }
+      listingsMapped++;
       const k = key(mapping.handle, mapping.rarity);
       const arr = osByKey.get(k) ?? [];
       arr.push({ order, ethPrice: osClient.extractEthPrice(order) });
       osByKey.set(k, arr);
     }
 
+    if (listingsUnmapped > 0) {
+      log.warn({
+        total: osListings.length,
+        mapped: listingsMapped,
+        unmapped: listingsUnmapped,
+        noTokenId: listingsNoToken,
+        sampleUnmappedIds: unmappedSampleIds,
+      }, 'OS listings token mapping stats (unmapped tokens have no entry in token_map)');
+    }
+
     // Group offers by creator+rarity via token map
     const offersByKey = new Map<string, number>();
+    let offersMapped = 0;
+    let offersUnmapped = 0;
     for (const offer of osOffers) {
       const tokenId = osClient.extractTokenId(offer);
       if (!tokenId) continue;
       const mapping = getCreatorRarity(tokenId);
-      if (!mapping) continue;
+      if (!mapping) { offersUnmapped++; continue; }
+      offersMapped++;
       const k = key(mapping.handle, mapping.rarity);
       const ethPrice = osClient.extractEthPrice(offer);
       const existing = offersByKey.get(k) ?? 0;
       if (ethPrice > existing) {
         offersByKey.set(k, ethPrice);
       }
+    }
+
+    if (offersUnmapped > 0) {
+      log.warn({
+        total: osOffers.length,
+        mapped: offersMapped,
+        unmapped: offersUnmapped,
+      }, 'OS offers token mapping stats');
     }
 
     // OpenSea last sales
