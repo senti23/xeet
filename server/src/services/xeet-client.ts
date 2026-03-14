@@ -77,11 +77,11 @@ async function xeetFetch<T>(path: string, label: string): Promise<T | null> {
   );
 }
 
-export async function getActiveListings(maxPages = 10): Promise<XeetListing[]> {
+export async function getActiveListings(): Promise<XeetListing[]> {
   const allItems: XeetListing[] = [];
   const pageSize = 250;
 
-  for (let page = 0; page < maxPages; page++) {
+  for (let page = 0; ; page++) {
     const offset = page * pageSize;
     const data = await xeetFetch<XeetApiResponse | XeetListingsResponse | XeetListing[]>(
       `/api/marketplace/discovery/items?status=ACTIVE&sortBy=price_asc&limit=${pageSize}&offset=${offset}`,
@@ -124,37 +124,45 @@ export async function getActiveListings(maxPages = 10): Promise<XeetListing[]> {
   return allItems.filter((i) => i.tokenType === 'CARD');
 }
 
-export async function getActivity(limit = 96): Promise<XeetActivityEvent[]> {
-  const data = await xeetFetch<any>(
-    `/api/marketplace/discovery/activity?limit=${limit}`,
-    'xeet-activity',
-  );
-  if (!data) return [];
+export async function getActivity(): Promise<XeetActivityEvent[]> {
+  const allEvents: XeetActivityEvent[] = [];
+  const pageSize = 250;
 
-  // API returns { success, data: [...] } where data is directly an array
-  let events: XeetActivityEvent[] | undefined;
-  if (Array.isArray(data)) {
-    events = data;
-  } else if (Array.isArray(data.data)) {
-    events = data.data;
-  } else if (data.data?.events) {
-    events = data.data.events;
-  } else if (data.events) {
-    events = data.events;
-  }
+  for (let page = 0; ; page++) {
+    const offset = page * pageSize;
+    const data = await xeetFetch<any>(
+      `/api/marketplace/discovery/activity?limit=${pageSize}&offset=${offset}`,
+      `xeet-activity-page-${page}`,
+    );
+    if (!data) break;
 
-  if (!events) {
-    log.warn({ responseKeys: Object.keys(data), dataType: typeof data.data }, 'Unexpected activity response shape');
-    return [];
-  }
-
-  // Flatten nested creator handle if present
-  for (const evt of events) {
-    if (!evt.creatorHandle && (evt as any).creator?.handle) {
-      evt.creatorHandle = (evt as any).creator.handle;
+    // API returns { success, data: [...] } where data is directly an array
+    let events: XeetActivityEvent[] | undefined;
+    if (Array.isArray(data)) {
+      events = data;
+    } else if (Array.isArray(data.data)) {
+      events = data.data;
+    } else if (data.data?.events) {
+      events = data.data.events;
+    } else if (data.events) {
+      events = data.events;
     }
+
+    if (!events || events.length === 0) break;
+
+    // Flatten nested creator handle if present
+    for (const evt of events) {
+      if (!evt.creatorHandle && (evt as any).creator?.handle) {
+        evt.creatorHandle = (evt as any).creator.handle;
+      }
+    }
+
+    allEvents.push(...events);
+
+    // If we got fewer than requested, no more pages
+    if (events.length < pageSize) break;
   }
 
-  log.info({ count: events.length }, 'Xeet activity parsed');
-  return events;
+  log.info({ count: allEvents.length }, 'Xeet activity fetched');
+  return allEvents;
 }
