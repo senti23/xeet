@@ -108,9 +108,18 @@ async function runCycle(): Promise<void> {
     const xeetLastSale = new Map<string, { price: number; date: string }>();
     for (const evt of xeetActivity) {
       if (evt.eventType !== 'SALE') continue;
-      const cr = evt.creatorHandle || evt.creatorId;
-      if (!cr || !evt.rarity) continue;
-      const k = key(cr, evt.rarity.toLowerCase());
+      // Try creatorHandle first, then fall back to token map lookup
+      let cr = evt.creatorHandle || evt.creatorId;
+      let rarity = evt.rarity?.toLowerCase();
+      if ((!cr || !rarity) && evt.tokenId) {
+        const mapping = getCreatorRarity(evt.tokenId);
+        if (mapping) {
+          cr = cr || mapping.handle;
+          rarity = rarity || mapping.rarity;
+        }
+      }
+      if (!cr || !rarity) continue;
+      const k = key(cr, rarity);
       const existing = xeetLastSale.get(k);
       if (!existing || evt.timestamp > existing.date) {
         xeetLastSale.set(k, { price: evt.priceXeets, date: evt.timestamp });

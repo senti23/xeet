@@ -115,24 +115,25 @@ export async function getActivity(limit = 96): Promise<XeetActivityEvent[]> {
     'xeet-activity',
   );
   if (!data) return [];
-  // Handle: raw array, { events: [...] }, or { success, data: { events/items: [...] } }
+
+  // API returns { success, data: [...] } where data is directly an array
   let events: XeetActivityEvent[] | undefined;
   if (Array.isArray(data)) {
     events = data;
+  } else if (Array.isArray(data.data)) {
+    events = data.data;
   } else if (data.data?.events) {
     events = data.data.events;
-  } else if (data.data?.items) {
-    events = data.data.items;
   } else if (data.events) {
     events = data.events;
   }
 
   if (!events) {
-    log.warn({ responseKeys: Object.keys(data) }, 'Unexpected activity response shape');
+    log.warn({ responseKeys: Object.keys(data), dataType: typeof data.data }, 'Unexpected activity response shape');
     return [];
   }
 
-  // Flatten nested creator handle
+  // Flatten nested creator handle if present
   for (const evt of events) {
     if (!evt.creatorHandle && (evt as any).creator?.handle) {
       evt.creatorHandle = (evt as any).creator.handle;
