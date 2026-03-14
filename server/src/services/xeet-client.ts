@@ -45,7 +45,7 @@ export interface XeetListingsResponse {
 }
 
 export interface XeetActivityEvent {
-  eventType: 'LISTING_CANCELLED' | 'SALE' | 'LISTING';
+  eventType: 'LISTING_CANCELLED' | 'SALE' | 'LISTING' | 'LISTING_FILLED' | 'LISTING_CREATED';
   tokenType: string;
   tokenId: string;
   assetName: string;

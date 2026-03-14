@@ -132,18 +132,19 @@ async function runCycle(): Promise<void> {
       log.warn('Xeet activity returned 0 events');
     }
 
+    let xeetSalesMapped = 0;
+    let xeetSalesNoMapping = 0;
     for (const evt of xeetActivity) {
-      // Handle multiple possible event type field names and casing
-      const eventType = (evt.eventType ?? (evt as any).event_type ?? (evt as any).type ?? '').toUpperCase();
-      if (eventType !== 'SALE') continue;
+      // SALE and LISTING_FILLED are both completed sales
+      const eventType = (evt.eventType ?? '').toUpperCase();
+      if (eventType !== 'SALE' && eventType !== 'LISTING_FILLED') continue;
 
-      // Try creatorHandle first, then fall back to token map lookup
+      // Activity events don't have creatorHandle — use tokenId → token map
       let cr = evt.creatorHandle || evt.creatorId || (evt as any).creator?.handle;
-      let rarity = (evt.rarity ?? (evt as any).cardRarity ?? '')?.toLowerCase();
+      let rarity = (evt.rarity ?? '')?.toLowerCase();
 
-      // Get price from multiple possible fields
-      const price = evt.priceXeets ?? (evt as any).price ?? (evt as any).priceInXeets ?? 0;
-      const timestamp = evt.timestamp ?? (evt as any).createdAt ?? (evt as any).date ?? '';
+      const price = evt.priceXeets ?? (evt as any).price ?? 0;
+      const timestamp = evt.timestamp ?? (evt as any).createdAt ?? '';
 
       if ((!cr || !rarity) && evt.tokenId) {
         const mapping = getCreatorRarity(evt.tokenId);
@@ -152,13 +153,15 @@ async function runCycle(): Promise<void> {
           rarity = rarity || mapping.rarity;
         }
       }
-      if (!cr || !rarity) continue;
+      if (!cr || !rarity) { xeetSalesNoMapping++; continue; }
+      xeetSalesMapped++;
       const k = key(cr, rarity);
       const existing = xeetLastSale.get(k);
       if (!existing || timestamp > existing.date) {
         xeetLastSale.set(k, { price, date: timestamp });
       }
     }
+    log.info({ xeetSalesMapped, xeetSalesNoMapping, xeetLastSaleEntries: xeetLastSale.size }, 'Xeet sales mapping');
 
     // --- Aggregate OpenSea data ---
     // Group listings by creator+rarity via token map
