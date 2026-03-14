@@ -183,14 +183,15 @@ export async function initTokenMap(): Promise<void> {
 
   initialized = true;
 
-  // Step 3: Background sync from OpenSea (non-blocking)
-  // Fire-and-forget — server starts serving immediately
-  syncFromOpenSea().catch((err) => {
-    log.error({ err }, 'Background OpenSea sync error');
-  });
+  // Step 3: Sync from OpenSea (awaited so token map is ready before pipeline starts)
+  try {
+    await syncFromOpenSea();
+  } catch (err) {
+    log.error({ err }, 'OpenSea sync error (will rely on SQLite cache)');
+  }
 
   log.info(
-    { creators: creators.size, cachedTokens: dbCount },
-    'Token map initialized (OpenSea sync running in background)',
+    { creators: creators.size, mappedTokens: tokenToCreator.size },
+    'Token map initialized',
   );
 }
