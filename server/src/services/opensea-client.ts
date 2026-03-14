@@ -7,6 +7,8 @@ const log = childLogger('opensea-client');
 const limiter = new AdaptiveRateLimiter('opensea', 1, 4, 2);
 
 const SLUG = config.opensea.collectionSlug;
+const CONTRACT = config.opensea.contract;
+const CHAIN = 'abstract'; // Contract is deployed on Abstract chain
 const BASE = config.opensea.baseUrl;
 const HEADERS = { 'X-API-KEY': config.opensea.apiKey, Accept: 'application/json' };
 
@@ -31,6 +33,15 @@ async function osFetch<T>(path: string, label: string): Promise<T | null> {
 
 // ---- Types ----
 
+export interface SeaportItem {
+  token: string;
+  identifierOrCriteria: string;
+  itemType: number; // 0=ETH, 1=ERC20, 2=ERC721, 3=ERC1155, 4=ERC721_CRITERIA, 5=ERC1155_CRITERIA
+  startAmount?: string;
+  endAmount?: string;
+  recipient?: string;
+}
+
 export interface OpenSeaOrder {
   order_hash: string;
   type: string;
@@ -39,7 +50,8 @@ export interface OpenSeaOrder {
   };
   protocol_data: {
     parameters: {
-      offer: Array<{ token: string; identifierOrCriteria: string; itemType: number }>;
+      offer: SeaportItem[];
+      consideration: SeaportItem[];
       offerer: string;
       endTime: string;
       startTime: string;
@@ -177,7 +189,7 @@ export async function getCollectionStats(): Promise<OpenSeaCollectionStats | nul
   );
 }
 
-export async function getAllNFTs(maxPages = 50): Promise<OpenSeaNFT[]> {
+async function fetchNFTsFromEndpoint(urlPrefix: string, label: string, maxPages = 50): Promise<OpenSeaNFT[]> {
   const allNFTs: OpenSeaNFT[] = [];
   let cursor: string | undefined;
 
@@ -186,8 +198,8 @@ export async function getAllNFTs(maxPages = 50): Promise<OpenSeaNFT[]> {
     if (cursor) params.set('next', cursor);
 
     const data = await osFetch<OpenSeaNFTsResponse>(
-      `/api/v2/collection/${SLUG}/nfts?${params}`,
-      `os-nfts-page-${page}`,
+      `${urlPrefix}?${params}`,
+      `${label}-page-${page}`,
     );
     if (!data || !data.nfts?.length) break;
 
@@ -196,15 +208,77 @@ export async function getAllNFTs(maxPages = 50): Promise<OpenSeaNFT[]> {
     cursor = data.next;
   }
 
-  log.info({ count: allNFTs.length }, 'Fetched all OpenSea NFTs');
+  return allNFTs;
+}
+
+export async function getAllNFTs(maxPages = 50): Promise<OpenSeaNFT[]> {
+  // Try collection endpoint first
+  let allNFTs = await fetchNFTsFromEndpoint(
+    `/api/v2/collection/${SLUG}/nfts`,
+    'os-nfts-collection',
+    maxPages,
+  );
+  log.info({ count: allNFTs.length }, 'Fetched NFTs from collection endpoint');
+
+  // Also try contract-based endpoint on Abstract chain to catch any missing NFTs
+  try {
+    const contractNFTs = await fetchNFTsFromEndpoint(
+      `/api/v2/chain/${CHAIN}/contract/${CONTRACT}/nfts`,
+      'os-nfts-contract',
+      maxPages,
+    );
+    log.info({ count: contractNFTs.length }, 'Fetched NFTs from contract endpoint');
+
+    // Merge: add any NFTs from contract endpoint not already in collection results
+    const existingIds = new Set(allNFTs.map((n) => n.identifier));
+    let added = 0;
+    for (const nft of contractNFTs) {
+      if (!existingIds.has(nft.identifier)) {
+        allNFTs.push(nft);
+        added++;
+      }
+    }
+    if (added > 0) {
+      log.info({ added, total: allNFTs.length }, 'Merged additional NFTs from contract endpoint');
+    }
+  } catch (err) {
+    log.warn({ err }, 'Contract NFT endpoint failed, using collection endpoint only');
+  }
+
+  log.info({ count: allNFTs.length }, 'Total OpenSea NFTs fetched');
   return allNFTs;
 }
 
 // ---- Helpers ----
 
+/**
+ * Extract token ID from an order.
+ * For LISTINGS: the NFT is in offer[0] (itemType 2=ERC721, 3=ERC1155)
+ * For OFFERS: the NFT is in consideration[] (itemType 2/3 for token-specific, 4/5 for collection/criteria)
+ */
 export function extractTokenId(order: OpenSeaOrder): string | null {
-  const offer = order.protocol_data?.parameters?.offer?.[0];
-  return offer?.identifierOrCriteria ?? null;
+  const params = order.protocol_data?.parameters;
+  if (!params) return null;
+
+  // Check offer items for NFTs (listings)
+  for (const item of params.offer ?? []) {
+    if (item.itemType === 2 || item.itemType === 3) {
+      // ERC721 or ERC1155 — this is a listing
+      return item.identifierOrCriteria ?? null;
+    }
+  }
+
+  // Check consideration items for NFTs (offers)
+  for (const item of params.consideration ?? []) {
+    if (item.itemType === 2 || item.itemType === 3) {
+      // Specific token offer
+      return item.identifierOrCriteria ?? null;
+    }
+    // itemType 4/5 = criteria-based (collection/trait offers) — identifierOrCriteria is merkle root or "0"
+    // These can't be mapped to specific tokens
+  }
+
+  return null;
 }
 
 export function extractEthPrice(order: OpenSeaOrder): number {
