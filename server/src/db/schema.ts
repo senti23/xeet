@@ -46,6 +46,27 @@ export function createTables(db: Database.Database): void {
       alerted_at TEXT NOT NULL DEFAULT (datetime('now'))
     );
     CREATE UNIQUE INDEX IF NOT EXISTS idx_alert_dedup ON alert_history(subscription_id, order_hash, price);
+
+    -- Persistent sale history from both marketplaces
+    CREATE TABLE IF NOT EXISTS sale_history (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      marketplace TEXT NOT NULL CHECK(marketplace IN ('opensea','xeet')),
+      token_id TEXT NOT NULL,
+      creator_handle TEXT NOT NULL,
+      rarity TEXT NOT NULL,
+      price REAL NOT NULL,
+      currency TEXT NOT NULL,
+      price_usd REAL,
+      seller TEXT,
+      buyer TEXT,
+      order_hash TEXT,
+      tx_hash TEXT,
+      sold_at TEXT NOT NULL,
+      fetched_at TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+    CREATE UNIQUE INDEX IF NOT EXISTS idx_sale_dedup ON sale_history(marketplace, token_id, sold_at, price);
+    CREATE INDEX IF NOT EXISTS idx_sale_creator ON sale_history(creator_handle, rarity, sold_at);
+    CREATE INDEX IF NOT EXISTS idx_sale_token ON sale_history(token_id, sold_at);
   `);
 }
 
@@ -76,6 +97,13 @@ export interface PreparedStatements {
   // Alert history
   insertAlertHistory: Database.Statement;
   checkAlertExists: Database.Statement;
+
+  // Sale history
+  upsertSale: Database.Statement;
+  getLastSaleByCreatorRarity: Database.Statement;
+  getSalesByToken: Database.Statement;
+  getSalesByCreatorRarity: Database.Statement;
+  getLatestSaleTimestamp: Database.Statement;
 }
 
 export function prepareStatements(db: Database.Database): PreparedStatements {
@@ -146,6 +174,25 @@ export function prepareStatements(db: Database.Database): PreparedStatements {
     `),
     checkAlertExists: db.prepare(
       'SELECT 1 FROM alert_history WHERE subscription_id = ? AND order_hash = ? AND price = ?',
+    ),
+
+    // Sale history
+    upsertSale: db.prepare(`
+      INSERT OR IGNORE INTO sale_history (marketplace, token_id, creator_handle, rarity, price, currency, price_usd, seller, buyer, order_hash, tx_hash, sold_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `),
+    getLastSaleByCreatorRarity: db.prepare(`
+      SELECT * FROM sale_history WHERE creator_handle = ? AND rarity = ? AND marketplace = ?
+      ORDER BY sold_at DESC LIMIT 1
+    `),
+    getSalesByToken: db.prepare(
+      'SELECT * FROM sale_history WHERE token_id = ? ORDER BY sold_at DESC',
+    ),
+    getSalesByCreatorRarity: db.prepare(
+      'SELECT * FROM sale_history WHERE creator_handle = ? AND rarity = ? ORDER BY sold_at DESC',
+    ),
+    getLatestSaleTimestamp: db.prepare(
+      'SELECT MAX(sold_at) as latest FROM sale_history WHERE marketplace = ?',
     ),
   };
 }

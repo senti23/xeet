@@ -1,5 +1,6 @@
 import { config } from '../config.js';
 import { childLogger } from '../lib/logger.js';
+import { getDb, getStmts } from '../db/index.js';
 import * as xeetClient from './xeet-client.js';
 import * as osClient from './opensea-client.js';
 import { getCreatorRarity, getAllCreators, type Rarity } from './token-map.js';
@@ -104,64 +105,44 @@ async function runCycle(): Promise<void> {
       xeetByKey.set(k, arr);
     }
 
-    // Xeet last sales by creator+rarity
-    const xeetLastSale = new Map<string, { price: number; date: string }>();
-
-    // Log activity diagnostics
-    if (xeetActivity.length > 0) {
-      const eventTypes = new Map<string, number>();
-      for (const evt of xeetActivity) {
-        const t = evt.eventType ?? (evt as any).event_type ?? (evt as any).type ?? 'UNKNOWN';
-        eventTypes.set(t, (eventTypes.get(t) ?? 0) + 1);
-      }
-      const sample = xeetActivity[0];
-      log.info({
-        totalEvents: xeetActivity.length,
-        eventTypes: Object.fromEntries(eventTypes),
-        sampleKeys: Object.keys(sample),
-        sampleEventType: sample.eventType,
-        samplePrice: sample.priceXeets,
-        samplePriceAlt: (sample as any).price ?? (sample as any).priceInXeets,
-        sampleCreatorHandle: sample.creatorHandle,
-        sampleCreatorId: sample.creatorId,
-        sampleTokenId: sample.tokenId,
-        sampleRarity: sample.rarity,
-        sampleTimestamp: sample.timestamp,
-      }, 'Xeet activity diagnostics');
-    } else {
-      log.warn('Xeet activity returned 0 events');
-    }
-
-    let xeetSalesMapped = 0;
-    let xeetSalesNoMapping = 0;
+    // --- Persist Xeet sales to SQLite (accumulates over time) ---
+    const stmts = getStmts();
+    let xeetSalesNew = 0;
+    let xeetSalesSkipped = 0;
     for (const evt of xeetActivity) {
-      // SALE and LISTING_FILLED are both completed sales
+      // Only count SALE — LISTING_FILLED is a duplicate of the same event
       const eventType = (evt.eventType ?? '').toUpperCase();
-      if (eventType !== 'SALE' && eventType !== 'LISTING_FILLED') continue;
+      if (eventType !== 'SALE') continue;
 
-      // Activity events don't have creatorHandle — use tokenId → token map
-      let cr = evt.creatorHandle || evt.creatorId || (evt as any).creator?.handle;
-      let rarity = (evt.rarity ?? '')?.toLowerCase();
+      const tokenId = evt.tokenId;
+      const price = evt.priceXeets ?? 0;
+      const timestamp = evt.timestamp ?? '';
+      if (!tokenId || !price || !timestamp) { xeetSalesSkipped++; continue; }
 
-      const price = evt.priceXeets ?? (evt as any).price ?? 0;
-      const timestamp = evt.timestamp ?? (evt as any).createdAt ?? '';
-
-      if ((!cr || !rarity) && evt.tokenId) {
-        const mapping = getCreatorRarity(evt.tokenId);
+      // Resolve creator+rarity from token map
+      let cr = evt.creatorHandle || evt.creatorId;
+      let rarity = (evt.rarity ?? '').toLowerCase();
+      if ((!cr || !rarity) && tokenId) {
+        const mapping = getCreatorRarity(tokenId);
         if (mapping) {
           cr = cr || mapping.handle;
           rarity = rarity || mapping.rarity;
         }
       }
-      if (!cr || !rarity) { xeetSalesNoMapping++; continue; }
-      xeetSalesMapped++;
-      const k = key(cr, rarity);
-      const existing = xeetLastSale.get(k);
-      if (!existing || timestamp > existing.date) {
-        xeetLastSale.set(k, { price, date: timestamp });
+      if (!cr || !rarity) { xeetSalesSkipped++; continue; }
+
+      try {
+        stmts.upsertSale.run(
+          'xeet', tokenId, cr.toLowerCase(), rarity, price, 'XEETS', null,
+          evt.sellerHandle ?? null, evt.buyerHandle ?? null,
+          null, null, timestamp,
+        );
+        xeetSalesNew++;
+      } catch {
+        // Duplicate — already stored
       }
     }
-    log.info({ xeetSalesMapped, xeetSalesNoMapping, xeetLastSaleEntries: xeetLastSale.size }, 'Xeet sales mapping');
+    log.info({ newSales: xeetSalesNew, skipped: xeetSalesSkipped }, 'Xeet sales persisted');
 
     // --- Aggregate OpenSea data ---
     // Group listings by creator+rarity via token map
@@ -235,22 +216,30 @@ async function runCycle(): Promise<void> {
       bestCollectionOffer,
     }, 'OS offers mapping stats');
 
-    // OpenSea last sales
-    const osLastSale = new Map<string, { price: number; date: string }>();
+    // --- Persist OpenSea sales to SQLite ---
+    let osSalesNew = 0;
     for (const evt of osSaleEvents) {
       const tokenId = evt.nft?.identifier;
-      if (!tokenId) continue;
+      if (!tokenId || !evt.event_timestamp) continue;
       const mapping = getCreatorRarity(tokenId);
       if (!mapping) continue;
-      const k = key(mapping.handle, mapping.rarity);
       const price = Number(evt.payment?.quantity ?? 0) / Math.pow(10, evt.payment?.decimals ?? 18);
-      const existing = osLastSale.get(k);
-      if (!existing || evt.event_timestamp > existing.date) {
-        osLastSale.set(k, { price, date: evt.event_timestamp });
+      try {
+        stmts.upsertSale.run(
+          'opensea', tokenId, mapping.handle.toLowerCase(), mapping.rarity, price,
+          evt.payment?.symbol ?? 'ETH', null,
+          evt.seller ?? null, evt.buyer ?? null,
+          evt.order_hash ?? null, evt.transaction ?? null, evt.event_timestamp,
+        );
+        osSalesNew++;
+      } catch {
+        // Duplicate
       }
     }
+    log.info({ newSales: osSalesNew, totalEvents: osSaleEvents.length }, 'OS sales persisted');
 
     // --- Build cache entries for all creators × rarities ---
+    // Read last sales from SQLite (persistent across restarts)
     const allCreators = getAllCreators();
     const newData = new Map<string, CreatorRarityData>();
 
@@ -285,9 +274,13 @@ async function runCycle(): Promise<void> {
         const tokenOffer = offersByKey.get(k) ?? 0;
         const bestOffer = Math.max(tokenOffer, bestCollectionOffer) || null;
 
-        // Last sales
-        const xeetSale = xeetLastSale.get(k);
-        const osSale = osLastSale.get(k);
+        // Last sales — read from SQLite (persistent)
+        const xeetSaleRow = stmts.getLastSaleByCreatorRarity.get(
+          creator.handle.toLowerCase(), rarity, 'xeet',
+        ) as { price: number; sold_at: string } | undefined;
+        const osSaleRow = stmts.getLastSaleByCreatorRarity.get(
+          creator.handle.toLowerCase(), rarity, 'opensea',
+        ) as { price: number; sold_at: string } | undefined;
 
         // USD estimate (ETH-based only)
         const usdEstimate = osFloor !== null ? ethToUsd(osFloor) : null;
@@ -301,10 +294,10 @@ async function runCycle(): Promise<void> {
           osFloor,
           osListingCount: osArr.length,
           bestOffer,
-          lastSaleXeet: xeetSale?.price ?? null,
-          lastSaleXeetDate: xeetSale?.date ?? null,
-          lastSaleOs: osSale?.price ?? null,
-          lastSaleOsDate: osSale?.date ?? null,
+          lastSaleXeet: xeetSaleRow?.price ?? null,
+          lastSaleXeetDate: xeetSaleRow?.sold_at ?? null,
+          lastSaleOs: osSaleRow?.price ?? null,
+          lastSaleOsDate: osSaleRow?.sold_at ?? null,
           usdEstimate,
           osFloorExpiry,
         });
@@ -361,10 +354,10 @@ async function runCycle(): Promise<void> {
         entries: newData.size,
         xeetListings: xeetListings.length,
         xeetActivity: xeetActivity.length,
-        xeetLastSales: xeetLastSale.size,
+        xeetSalesNew,
         osListings: osListings.length,
         osOffers: osOffers.length,
-        osLastSales: osLastSale.size,
+        osSalesNew,
         elapsedMs: elapsed,
       },
       'Pipeline cycle complete',
