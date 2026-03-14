@@ -200,8 +200,12 @@ async function main() {
   const osSalesByToken = {};
   for (const evt of osSaleEvents) {
     const tid = String(evt.nft?.identifier);
+    // OpenSea returns event_timestamp as Unix seconds; Date() expects ms
+    const tsMs = typeof evt.event_timestamp === 'number' && evt.event_timestamp < 1e12
+      ? evt.event_timestamp * 1000
+      : Number(evt.event_timestamp) * (Number(evt.event_timestamp) < 1e12 ? 1000 : 1);
     (osSalesByToken[tid] ??= []).push({
-      date: new Date(evt.event_timestamp).toISOString().slice(0, 19).replace('T', ' '),
+      date: new Date(tsMs).toISOString().slice(0, 19).replace('T', ' '),
       price: `${formatEth(evt.payment?.quantity ?? '0', evt.payment?.decimals ?? 18)} ${evt.payment?.symbol ?? 'ETH'}`,
       priceRaw: Number(BigInt(evt.payment?.quantity ?? '0')) / Math.pow(10, evt.payment?.decimals ?? 18),
       seller: evt.seller ? `${evt.seller.slice(0, 6)}...${evt.seller.slice(-4)}` : '?',
