@@ -77,36 +77,51 @@ async function xeetFetch<T>(path: string, label: string): Promise<T | null> {
   );
 }
 
-export async function getActiveListings(limit = 250): Promise<XeetListing[]> {
-  const data = await xeetFetch<XeetApiResponse | XeetListingsResponse | XeetListing[]>(
-    `/api/marketplace/discovery/items?status=ACTIVE&sortBy=price_asc&limit=${limit}`,
-    'xeet-listings',
-  );
-  if (!data) return [];
-  if (Array.isArray(data)) return data.filter((i) => i.tokenType === 'CARD');
+export async function getActiveListings(maxPages = 10): Promise<XeetListing[]> {
+  const allItems: XeetListing[] = [];
+  const pageSize = 250;
 
-  // API returns { success, data: { items: [...] } }
-  let items: XeetListing[] | undefined;
-  if ('data' in data && (data as XeetApiResponse).data?.items) {
-    items = (data as XeetApiResponse).data.items;
-  } else if ('items' in data) {
-    items = (data as XeetListingsResponse).items;
+  for (let page = 0; page < maxPages; page++) {
+    const offset = page * pageSize;
+    const data = await xeetFetch<XeetApiResponse | XeetListingsResponse | XeetListing[]>(
+      `/api/marketplace/discovery/items?status=ACTIVE&sortBy=price_asc&limit=${pageSize}&offset=${offset}`,
+      `xeet-listings-page-${page}`,
+    );
+    if (!data) break;
+    if (Array.isArray(data)) {
+      allItems.push(...data);
+      break; // Raw array means no pagination info
+    }
+
+    // API returns { success, data: { items: [...], pagination: { hasMore } } }
+    let items: XeetListing[] | undefined;
+    let hasMore = false;
+    if ('data' in data && (data as XeetApiResponse).data?.items) {
+      items = (data as XeetApiResponse).data.items;
+      hasMore = (data as XeetApiResponse).data.pagination?.hasMore ?? false;
+    } else if ('items' in data) {
+      items = (data as XeetListingsResponse).items;
+      hasMore = (data as XeetListingsResponse).hasMore ?? false;
+    }
+
+    if (!items || items.length === 0) break;
+
+    // Flatten nested creator.handle into creatorHandle for pipeline compatibility
+    for (const item of items) {
+      if (!item.creatorHandle && item.creator?.handle) {
+        item.creatorHandle = item.creator.handle;
+      }
+      if (!item.sellerHandle && item.seller?.handle) {
+        item.sellerHandle = item.seller.handle;
+      }
+    }
+
+    allItems.push(...items);
+    if (!hasMore) break;
   }
 
-  if (!items) return [];
-
-  // Flatten nested creator.handle into creatorHandle for pipeline compatibility
-  for (const item of items) {
-    if (!item.creatorHandle && item.creator?.handle) {
-      item.creatorHandle = item.creator.handle;
-    }
-    if (!item.sellerHandle && item.seller?.handle) {
-      item.sellerHandle = item.seller.handle;
-    }
-  }
-
-  log.info({ count: items.length }, 'Xeet listings parsed');
-  return items.filter((i) => i.tokenType === 'CARD');
+  log.info({ count: allItems.length }, 'Xeet listings fetched');
+  return allItems.filter((i) => i.tokenType === 'CARD');
 }
 
 export async function getActivity(limit = 96): Promise<XeetActivityEvent[]> {
