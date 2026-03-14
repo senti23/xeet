@@ -1,31 +1,18 @@
 /**
  * Quick script to fetch all Xeet marketplace sales for senti__23 cards.
- * Run: npx tsx scripts/get-senti-sales.ts
+ * Run: node scripts/get-senti-sales.mjs
  */
 
 const XEET_BASE = 'https://xeet.ai';
 
-interface SaleEvent {
-  id: string;
-  eventType: string;
-  tokenType: string;
-  tokenId: string;
-  assetName: string;
-  rarity: string;
-  priceXeets: number;
-  sellerHandle?: string;
-  buyerHandle?: string;
-  timestamp: string;
-}
-
-async function fetchCardSales(tokenId: string): Promise<SaleEvent[]> {
-  const all: SaleEvent[] = [];
+async function fetchCardSales(tokenId) {
+  const all = [];
   for (let offset = 0; ; offset += 100) {
     const url = `${XEET_BASE}/api/marketplace/discovery/activity?tokenType=CARD&tokenId=${tokenId}&limit=100&offset=${offset}&eventType=SALE`;
     const res = await fetch(url);
     if (!res.ok) { console.error(`Failed for tokenId ${tokenId}: ${res.status}`); break; }
-    const json = await res.json() as any;
-    const events: SaleEvent[] = json.data ?? json.events ?? (Array.isArray(json) ? json : []);
+    const json = await res.json();
+    const events = json.data ?? json.events ?? (Array.isArray(json) ? json : []);
     if (events.length === 0) break;
     all.push(...events);
     if (events.length < 100) break;
@@ -33,13 +20,12 @@ async function fetchCardSales(tokenId: string): Promise<SaleEvent[]> {
   return all;
 }
 
-async function findSentiTokenIds(): Promise<Array<{ tokenId: string; rarity: string; name: string }>> {
-  // Get all active listings to find senti__23 token IDs
+async function findSentiTokenIds() {
   const res = await fetch(`${XEET_BASE}/api/marketplace/discovery/items?status=ACTIVE&sortBy=price_asc&limit=250&offset=0`);
-  const json = await res.json() as any;
+  const json = await res.json();
   const items = json?.data?.items ?? json?.items ?? (Array.isArray(json) ? json : []);
 
-  const sentiTokens = new Map<string, { tokenId: string; rarity: string; name: string }>();
+  const sentiTokens = new Map();
   for (const item of items) {
     const handle = (item.creatorHandle || item.creator?.handle || '').toLowerCase();
     if (handle === 'senti__23') {
@@ -51,9 +37,8 @@ async function findSentiTokenIds(): Promise<Array<{ tokenId: string; rarity: str
     }
   }
 
-  // Also check activity for any cards not currently listed
   const actRes = await fetch(`${XEET_BASE}/api/marketplace/discovery/activity?limit=250&offset=0`);
-  const actJson = await actRes.json() as any;
+  const actJson = await actRes.json();
   const events = actJson?.data ?? (Array.isArray(actJson) ? actJson : []);
   for (const evt of events) {
     const handle = (evt.creatorHandle || evt.creator?.handle || '').toLowerCase();
@@ -96,7 +81,6 @@ async function main() {
       continue;
     }
 
-    // Sort by date descending
     sales.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
 
     console.log('  DATE                 | PRICE | SELLER           | BUYER');
@@ -109,7 +93,6 @@ async function main() {
       console.log(`  ${date} | ${price} | ${seller} | ${buyer}`);
     }
 
-    // Stats
     const prices = sales.map(s => s.priceXeets);
     const avg = prices.reduce((a, b) => a + b, 0) / prices.length;
     const min = Math.min(...prices);
