@@ -136,7 +136,37 @@ if (mode === 'both') {
     const tokens = String(row.tokens).padStart(7);
     console.log(`│ ${mp} │ ${sales} │ ${creators} │ ${tokens} │`);
   }
-  console.log('└─────────────┴────────┴──────────┴─────────┘\n');
+  console.log('└─────────────┴────────┴──────────┴─────────┘');
+}
+
+// ── Volume summary (for cross-checking with marketplace totals) ──
+{
+  const xeetVol = db.prepare(`
+    SELECT ROUND(SUM(price), 2) as total, COUNT(*) as sales
+    FROM sale_history WHERE marketplace = 'xeet'
+  `).get() as any;
+
+  const osVol = db.prepare(`
+    SELECT
+      ROUND(SUM(price), 6) as total,
+      ROUND(SUM(CASE WHEN currency = 'ETH' THEN price ELSE 0 END), 6) as eth_vol,
+      ROUND(SUM(CASE WHEN currency = 'WETH' THEN price ELSE 0 END), 6) as weth_vol,
+      COUNT(*) as sales,
+      COUNT(CASE WHEN currency = 'ETH' THEN 1 END) as eth_sales,
+      COUNT(CASE WHEN currency = 'WETH' THEN 1 END) as weth_sales
+    FROM sale_history WHERE marketplace = 'opensea'
+  `).get() as any;
+
+  console.log('\n' + '═'.repeat(72));
+  console.log('  VOLUME SUMMARY (use to cross-check with marketplace pages)');
+  console.log('═'.repeat(72));
+  console.log(`  Xeet Marketplace:`);
+  console.log(`    Total volume:   ${xeetVol.total ?? 0} XEETS  (${xeetVol.sales} sales)`);
+  console.log(`  OpenSea:`);
+  console.log(`    Total volume:   ${osVol.total ?? 0} ETH  (${osVol.sales} sales)`);
+  console.log(`      ETH only:     ${osVol.eth_vol ?? 0} ETH  (${osVol.eth_sales} sales)`);
+  console.log(`      WETH only:    ${osVol.weth_vol ?? 0} ETH  (${osVol.weth_sales} sales)`);
+  console.log('═'.repeat(72) + '\n');
 }
 
 db.close();
