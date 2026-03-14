@@ -1,13 +1,30 @@
 import { config as loadEnv } from 'dotenv';
-import { resolve, dirname } from 'path';
+import { resolve, dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+import { existsSync } from 'fs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-// Try multiple possible .env locations (handles tsx vs compiled paths)
-loadEnv({ path: resolve(__dirname, '../../.env') });
-loadEnv({ path: resolve(process.cwd(), '.env') });
-loadEnv({ path: resolve(process.cwd(), '../.env') });
+// Walk up from multiple starting points to find .env
+function findEnvFile(): string | undefined {
+  const starts = [__dirname, process.cwd()];
+  for (const start of starts) {
+    let dir = resolve(start);
+    for (let i = 0; i < 5; i++) {
+      const candidate = join(dir, '.env');
+      if (existsSync(candidate)) return candidate;
+      const parent = dirname(dir);
+      if (parent === dir) break;
+      dir = parent;
+    }
+  }
+  return undefined;
+}
+
+const envPath = findEnvFile();
+if (envPath) {
+  loadEnv({ path: envPath });
+}
 
 function required(key: string): string {
   const val = process.env[key];
@@ -46,5 +63,7 @@ export const config = {
     priceRefreshMs: 300_000,
   },
 
-  creatorsJsonPath: resolve(__dirname, '../../xeet-creators-full.json'),
+  creatorsJsonPath: envPath
+    ? resolve(dirname(envPath), 'xeet-creators-full.json')
+    : resolve(__dirname, '../../xeet-creators-full.json'),
 } as const;
