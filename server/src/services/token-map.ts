@@ -179,18 +179,19 @@ async function syncFromOpenSea(): Promise<void> {
     const db = getDb();
     const upsertMany = db.transaction((items: OpenSeaNFT[]) => {
       for (const nft of items) {
-        const creatorTrait = nft.traits?.find(
-          (t) => t.trait_type.toLowerCase() === 'creator' || t.trait_type.toLowerCase() === 'creator handle',
+        // Use "Handle" trait (X handle) for mapping, NOT "Creator" trait (display name)
+        const handleTrait = nft.traits?.find(
+          (t) => t.trait_type.toLowerCase() === 'handle',
         );
         const rarityTrait = nft.traits?.find((t) => t.trait_type.toLowerCase() === 'rarity');
 
-        if (!creatorTrait || !rarityTrait) {
+        if (!handleTrait || !rarityTrait) {
           withoutTraits++;
           continue;
         }
         withTraits++;
 
-        const handle = String(creatorTrait.value).toLowerCase();
+        const handle = String(handleTrait.value).toLowerCase();
         const rarity = String(rarityTrait.value).toLowerCase() as Rarity;
         if (!['common', 'rare', 'legendary'].includes(rarity)) continue;
 
@@ -227,6 +228,17 @@ export async function initTokenMap(): Promise<void> {
   loadCreatorSeed();
 
   // Step 2: Load from SQLite (immediate)
+  // First, check if cached data has wrong handles (display names instead of X handles)
+  // by verifying a sample entry matches a known creator
+  const db = getDb();
+  const sampleRow = db.prepare('SELECT creator_handle FROM token_map LIMIT 1').get() as { creator_handle: string } | undefined;
+  if (sampleRow && !creators.has(sampleRow.creator_handle)) {
+    log.warn({ sampleHandle: sampleRow.creator_handle }, 'SQLite token_map has stale handles (display names), clearing cache');
+    db.exec('DELETE FROM token_map');
+    tokenToCreator.clear();
+    creatorToTokens.clear();
+  }
+
   const dbCount = loadFromDb();
 
   initialized = true;
