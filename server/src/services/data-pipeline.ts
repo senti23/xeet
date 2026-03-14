@@ -375,8 +375,9 @@ export async function startPipeline(): Promise<void> {
   // Run first cycle immediately
   await runCycle();
 
-  // Kick off Xeet sales history backfill in background (non-blocking)
-  backfillXeetSalesHistory().catch((err) => log.error({ err }, 'Backfill error'));
+  // Kick off sales history backfills in background (non-blocking)
+  backfillXeetSalesHistory().catch((err) => log.error({ err }, 'Xeet backfill error'));
+  backfillOpenSeaSalesHistory().catch((err) => log.error({ err }, 'OpenSea backfill error'));
 
   // Schedule subsequent cycles
   intervalId = setInterval(() => {
@@ -480,5 +481,99 @@ export async function backfillXeetSalesHistory(): Promise<{ fetched: number; new
   backfillComplete = true;
   backfillRunning = false;
   log.info({ fetched, newSales, skipped, errors }, 'Xeet sales history backfill complete');
+  return { fetched, newSales, skipped, errors };
+}
+
+/**
+ * Backfill OpenSea sales history for all known token IDs.
+ * Fetches per-token sale events and persists to SQLite.
+ * Skips tokens that already have OpenSea sales in the DB.
+ */
+let osBackfillRunning = false;
+let osBackfillComplete = false;
+
+export function isOsBackfillComplete(): boolean {
+  return osBackfillComplete;
+}
+
+export async function backfillOpenSeaSalesHistory(): Promise<{ fetched: number; newSales: number; skipped: number; errors: number }> {
+  if (osBackfillRunning) {
+    log.warn('OpenSea backfill already in progress, skipping');
+    return { fetched: 0, newSales: 0, skipped: 0, errors: 0 };
+  }
+  osBackfillRunning = true;
+
+  const stmts = getStmts();
+  const allCreators = getAllCreators();
+  const rarities: Rarity[] = ['common', 'rare', 'legendary'];
+
+  // Collect all unique tokenIds from token map
+  const tokenIds: Array<{ tokenId: string; handle: string; rarity: Rarity }> = [];
+  for (const [, creator] of allCreators) {
+    for (const rarity of rarities) {
+      const ids = getTokenIds(creator.handle, rarity);
+      for (const id of ids) {
+        tokenIds.push({ tokenId: id, handle: creator.handle, rarity });
+      }
+    }
+  }
+
+  log.info({ totalTokens: tokenIds.length }, 'Starting OpenSea sales history backfill');
+
+  // Skip tokens that already have OpenSea sales
+  const tokensWithSales = new Set<string>();
+  const rows = getDb().prepare('SELECT DISTINCT token_id FROM sale_history WHERE marketplace = ?').all('opensea') as Array<{ token_id: string }>;
+  for (const r of rows) tokensWithSales.add(r.token_id);
+
+  let fetched = 0;
+  let newSales = 0;
+  let skipped = 0;
+  let errors = 0;
+
+  for (const { tokenId, handle, rarity } of tokenIds) {
+    if (tokensWithSales.has(tokenId)) {
+      skipped++;
+      continue;
+    }
+
+    try {
+      const sales = await osClient.getTokenSaleEvents(tokenId);
+      fetched++;
+
+      for (const evt of sales) {
+        if (!evt.event_timestamp) continue;
+        const price = Number(evt.payment?.quantity ?? 0) / Math.pow(10, evt.payment?.decimals ?? 18);
+        // Convert Unix seconds to ISO string if needed
+        let soldAt = evt.event_timestamp;
+        const tsNum = Number(soldAt);
+        if (!isNaN(tsNum) && tsNum < 1e12) {
+          soldAt = new Date(tsNum * 1000).toISOString();
+        }
+
+        try {
+          stmts.upsertSale.run(
+            'opensea', tokenId, handle.toLowerCase(), rarity, price,
+            evt.payment?.symbol ?? 'ETH', null,
+            evt.seller ?? null, evt.buyer ?? null,
+            evt.order_hash ?? null, evt.transaction ?? null, soldAt,
+          );
+          newSales++;
+        } catch {
+          // Duplicate
+        }
+      }
+
+      if (fetched % 50 === 0) {
+        log.info({ fetched, newSales, skipped, errors, remaining: tokenIds.length - fetched - skipped - errors }, 'OpenSea backfill progress');
+      }
+    } catch (err) {
+      errors++;
+      log.warn({ tokenId, err }, 'Failed to fetch OpenSea token sales');
+    }
+  }
+
+  osBackfillComplete = true;
+  osBackfillRunning = false;
+  log.info({ fetched, newSales, skipped, errors }, 'OpenSea sales history backfill complete');
   return { fetched, newSales, skipped, errors };
 }

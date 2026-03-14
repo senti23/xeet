@@ -262,6 +262,32 @@ export async function getAllNFTs(): Promise<OpenSeaNFT[]> {
   return allNFTs;
 }
 
+/**
+ * Fetch sale events for a specific NFT token by its token ID.
+ * Uses the per-NFT events endpoint to get complete history.
+ */
+export async function getTokenSaleEvents(tokenId: string): Promise<OpenSeaSaleEvent[]> {
+  const allEvents: OpenSeaSaleEvent[] = [];
+  let cursor: string | undefined;
+
+  for (let page = 0; ; page++) {
+    const params = new URLSearchParams({ event_type: 'sale', limit: '50' });
+    if (cursor) params.set('next', cursor);
+
+    const data = await osFetch<OpenSeaEventsResponse>(
+      `/api/v2/events/chain/${CHAIN}/contract/${CONTRACT}/nfts/${tokenId}?${params}`,
+      `os-token-sales-${tokenId}-page-${page}`,
+    );
+    if (!data || !data.asset_events?.length) break;
+
+    allEvents.push(...data.asset_events);
+    if (!data.next) break;
+    cursor = data.next;
+  }
+
+  return allEvents;
+}
+
 // ---- Helpers ----
 
 /**

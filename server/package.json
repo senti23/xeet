@@ -7,6 +7,9 @@
     "dev": "tsx watch src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
+    "collect": "tsx src/collector.ts",
+    "collect:once": "tsx src/collector.ts --once",
+    "collect:backfill": "tsx src/collector.ts --backfill",
     "probe": "tsx ../tests/api-probe.test.ts"
   },
   "dependencies": {

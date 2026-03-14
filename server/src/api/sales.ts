@@ -1,6 +1,7 @@
 import type { FastifyInstance } from 'fastify';
-import { getStmts } from '../db/index.js';
-import { isBackfillComplete } from '../services/data-pipeline.js';
+import { getDb, getStmts } from '../db/index.js';
+import { isBackfillComplete, isOsBackfillComplete } from '../services/data-pipeline.js';
+import { getAllCreators } from '../services/token-map.js';
 
 interface SalesQuery {
   creator?: string;
@@ -71,6 +72,113 @@ export async function salesRoutes(app: FastifyInstance): Promise<void> {
       meta: {
         total: sales.length,
         backfillComplete: isBackfillComplete(),
+      },
+    });
+  });
+
+  // Comprehensive sales summary — ALL creators × rarities (including zero-sale)
+  app.get<{ Querystring: { marketplace?: string } }>('/api/sales/summary', async (req, reply) => {
+    const { marketplace } = req.query;
+    const db = getDb();
+    const allCreators = getAllCreators();
+
+    // Build aggregate stats per creator × rarity from sale_history
+    let query = `
+      SELECT creator_handle, rarity, marketplace,
+        COUNT(*) as sale_count,
+        SUM(price) as total_volume,
+        AVG(price) as avg_price,
+        MIN(price) as min_price,
+        MAX(price) as max_price,
+        MIN(sold_at) as first_sale,
+        MAX(sold_at) as last_sale
+      FROM sale_history
+    `;
+    const params: string[] = [];
+    if (marketplace && ['opensea', 'xeet'].includes(marketplace.toLowerCase())) {
+      query += ' WHERE marketplace = ?';
+      params.push(marketplace.toLowerCase());
+    }
+    query += ' GROUP BY creator_handle, rarity, marketplace ORDER BY creator_handle, rarity';
+
+    const rows = db.prepare(query).all(...params) as Array<{
+      creator_handle: string; rarity: string; marketplace: string;
+      sale_count: number; total_volume: number; avg_price: number;
+      min_price: number; max_price: number; first_sale: string; last_sale: string;
+    }>;
+
+    // Index by creator:rarity:marketplace
+    const statsMap = new Map<string, typeof rows[0]>();
+    for (const row of rows) {
+      statsMap.set(`${row.creator_handle}:${row.rarity}:${row.marketplace}`, row);
+    }
+
+    // Build full grid: every creator × rarity
+    const rarities = ['common', 'rare', 'legendary'] as const;
+    const summary: Array<{
+      creator: string;
+      displayName: string;
+      rarity: string;
+      xeet: { sales: number; volume: number; avgPrice: number; minPrice: number; maxPrice: number; firstSale: string | null; lastSale: string | null } | null;
+      opensea: { sales: number; volume: number; avgPrice: number; minPrice: number; maxPrice: number; currency: string; firstSale: string | null; lastSale: string | null } | null;
+      totalSales: number;
+    }> = [];
+
+    for (const [, creator] of allCreators) {
+      for (const rarity of rarities) {
+        const handle = creator.handle.toLowerCase();
+        const xeetStats = statsMap.get(`${handle}:${rarity}:xeet`);
+        const osStats = statsMap.get(`${handle}:${rarity}:opensea`);
+
+        summary.push({
+          creator: creator.handle,
+          displayName: creator.displayName,
+          rarity,
+          xeet: xeetStats ? {
+            sales: xeetStats.sale_count,
+            volume: xeetStats.total_volume,
+            avgPrice: Math.round(xeetStats.avg_price * 10) / 10,
+            minPrice: xeetStats.min_price,
+            maxPrice: xeetStats.max_price,
+            firstSale: xeetStats.first_sale,
+            lastSale: xeetStats.last_sale,
+          } : null,
+          opensea: osStats ? {
+            sales: osStats.sale_count,
+            volume: Math.round(osStats.total_volume * 1e6) / 1e6,
+            avgPrice: Math.round(osStats.avg_price * 1e6) / 1e6,
+            minPrice: Math.round(osStats.min_price * 1e6) / 1e6,
+            maxPrice: Math.round(osStats.max_price * 1e6) / 1e6,
+            currency: 'ETH',
+            firstSale: osStats.first_sale,
+            lastSale: osStats.last_sale,
+          } : null,
+          totalSales: (xeetStats?.sale_count ?? 0) + (osStats?.sale_count ?? 0),
+        });
+      }
+    }
+
+    // Global stats
+    const totalSalesAll = (db.prepare('SELECT COUNT(*) as c FROM sale_history').get() as any).c;
+    const totalXeet = (db.prepare("SELECT COUNT(*) as c FROM sale_history WHERE marketplace = 'xeet'").get() as any).c;
+    const totalOs = (db.prepare("SELECT COUNT(*) as c FROM sale_history WHERE marketplace = 'opensea'").get() as any).c;
+    const creatorsWithSales = (db.prepare('SELECT COUNT(DISTINCT creator_handle) as c FROM sale_history').get() as any).c;
+    const earliest = (db.prepare('SELECT MIN(sold_at) as d FROM sale_history').get() as any).d;
+    const latest = (db.prepare('SELECT MAX(sold_at) as d FROM sale_history').get() as any).d;
+
+    return reply.send({
+      data: summary,
+      meta: {
+        totalCreators: allCreators.size,
+        totalCreatorRarities: summary.length,
+        creatorsWithSales,
+        creatorsWithNoSales: allCreators.size - creatorsWithSales,
+        totalSales: totalSalesAll,
+        xeetSales: totalXeet,
+        openseaSales: totalOs,
+        dateRange: { earliest, latest },
+        backfillComplete: isBackfillComplete(),
+        osBackfillComplete: isOsBackfillComplete(),
       },
     });
   });
