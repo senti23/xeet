@@ -128,7 +128,7 @@ export interface OpenSeaCollectionStats {
 
 // ---- API Methods ----
 
-export async function getAllListings(maxPages = 20): Promise<OpenSeaOrder[]> {
+export async function getAllListings(maxPages = 100): Promise<OpenSeaOrder[]> {
   const allListings: OpenSeaOrder[] = [];
   let cursor: string | undefined;
 
@@ -151,7 +151,7 @@ export async function getAllListings(maxPages = 20): Promise<OpenSeaOrder[]> {
   return allListings;
 }
 
-export async function getAllOffers(maxPages = 20): Promise<OpenSeaOrder[]> {
+export async function getAllOffers(maxPages = 100): Promise<OpenSeaOrder[]> {
   const allOffers: OpenSeaOrder[] = [];
   let cursor: string | undefined;
 
@@ -174,12 +174,27 @@ export async function getAllOffers(maxPages = 20): Promise<OpenSeaOrder[]> {
   return allOffers;
 }
 
-export async function getSaleEvents(limit = 50): Promise<OpenSeaSaleEvent[]> {
-  const data = await osFetch<OpenSeaEventsResponse>(
-    `/api/v2/events/collection/${SLUG}?event_type=sale&limit=${limit}`,
-    'os-sale-events',
-  );
-  return data?.asset_events ?? [];
+export async function getSaleEvents(maxPages = 10): Promise<OpenSeaSaleEvent[]> {
+  const allEvents: OpenSeaSaleEvent[] = [];
+  let cursor: string | undefined;
+
+  for (let page = 0; page < maxPages; page++) {
+    const params = new URLSearchParams({ event_type: 'sale', limit: '50' });
+    if (cursor) params.set('next', cursor);
+
+    const data = await osFetch<OpenSeaEventsResponse>(
+      `/api/v2/events/collection/${SLUG}?${params}`,
+      `os-sale-events-page-${page}`,
+    );
+    if (!data || !data.asset_events?.length) break;
+
+    allEvents.push(...data.asset_events);
+    if (!data.next) break;
+    cursor = data.next;
+  }
+
+  log.info({ count: allEvents.length }, 'Fetched OpenSea sale events');
+  return allEvents;
 }
 
 export async function getCollectionStats(): Promise<OpenSeaCollectionStats | null> {
