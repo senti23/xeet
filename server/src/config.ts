@@ -4,7 +4,10 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+// Try multiple possible .env locations (handles tsx vs compiled paths)
 loadEnv({ path: resolve(__dirname, '../../.env') });
+loadEnv({ path: resolve(process.cwd(), '.env') });
+loadEnv({ path: resolve(process.cwd(), '../.env') });
 
 function required(key: string): string {
   const val = process.env[key];
