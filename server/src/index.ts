@@ -34,8 +34,8 @@ async function main(): Promise<void> {
   // Health check
   app.get('/api/health', async () => ({ status: 'ok', uptime: process.uptime() }));
 
-  // Debug: token map status
-  app.get('/api/debug/token-map', async () => getTokenMapStats());
+  // Debug: token map status — use ?handle=senti to search
+  app.get<{ Querystring: { handle?: string } }>('/api/debug/token-map', async (req) => getTokenMapStats(req.query.handle));
 
   // Start Fastify server
   await app.listen({ port: config.port, host: '0.0.0.0' });

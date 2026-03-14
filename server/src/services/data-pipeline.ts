@@ -309,8 +309,11 @@ async function runCycle(): Promise<void> {
       {
         entries: newData.size,
         xeetListings: xeetListings.length,
+        xeetActivity: xeetActivity.length,
+        xeetLastSales: xeetLastSale.size,
         osListings: osListings.length,
         osOffers: osOffers.length,
+        osLastSales: osLastSale.size,
         elapsedMs: elapsed,
       },
       'Pipeline cycle complete',

@@ -57,16 +57,23 @@ export function isInitialized(): boolean {
   return initialized;
 }
 
-export function getTokenMapStats(): {
+export function getTokenMapStats(searchHandle?: string): {
   totalMappedTokens: number;
   totalCreators: number;
   sampleMappings: Array<{ tokenId: string; handle: string; rarity: string }>;
 } {
   const sample: Array<{ tokenId: string; handle: string; rarity: string }> = [];
+  const search = searchHandle?.toLowerCase();
   let count = 0;
   for (const [tokenId, mapping] of tokenToCreator) {
-    if (count++ >= 10) break;
-    sample.push({ tokenId, handle: mapping.handle, rarity: mapping.rarity });
+    if (search) {
+      if (mapping.handle.includes(search)) {
+        sample.push({ tokenId, handle: mapping.handle, rarity: mapping.rarity });
+      }
+    } else {
+      if (count++ >= 10) break;
+      sample.push({ tokenId, handle: mapping.handle, rarity: mapping.rarity });
+    }
   }
   return {
     totalMappedTokens: tokenToCreator.size,
