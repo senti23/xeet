@@ -166,3 +166,48 @@ export async function getActivity(): Promise<XeetActivityEvent[]> {
   log.info({ count: allEvents.length }, 'Xeet activity fetched');
   return allEvents;
 }
+
+/**
+ * Fetch full sales history for a specific card by tokenId.
+ * Uses the per-card activity endpoint discovered via network intercept:
+ *   /api/marketplace/discovery/activity?tokenType=CARD&tokenId={id}&limit=100&eventType=SALE
+ * Paginates via offset until all sales are retrieved.
+ */
+export async function getCardSalesHistory(tokenId: string): Promise<XeetActivityEvent[]> {
+  const allEvents: XeetActivityEvent[] = [];
+  const pageSize = 100;
+
+  for (let page = 0; ; page++) {
+    const offset = page * pageSize;
+    const data = await xeetFetch<any>(
+      `/api/marketplace/discovery/activity?tokenType=CARD&tokenId=${tokenId}&limit=${pageSize}&offset=${offset}&eventType=SALE`,
+      `xeet-card-history-${tokenId}-page-${page}`,
+    );
+    if (!data) break;
+
+    let events: XeetActivityEvent[] | undefined;
+    if (Array.isArray(data)) {
+      events = data;
+    } else if (Array.isArray(data.data)) {
+      events = data.data;
+    } else if (data.data?.events) {
+      events = data.data.events;
+    } else if (data.events) {
+      events = data.events;
+    }
+
+    if (!events || events.length === 0) break;
+
+    for (const evt of events) {
+      if (!evt.creatorHandle && (evt as any).creator?.handle) {
+        evt.creatorHandle = (evt as any).creator.handle;
+      }
+    }
+
+    allEvents.push(...events);
+    if (events.length < pageSize) break;
+  }
+
+  log.info({ tokenId, count: allEvents.length }, 'Card sales history fetched');
+  return allEvents;
+}
