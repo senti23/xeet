@@ -294,6 +294,22 @@ export function extractTokenId(order: OpenSeaOrder): string | null {
   return null;
 }
 
+/**
+ * Check if an offer is collection-wide (criteria-based, applies to all tokens).
+ * These have itemType 4/5 in consideration and no specific token ID.
+ */
+export function isCollectionOffer(order: OpenSeaOrder): boolean {
+  const params = order.protocol_data?.parameters;
+  if (!params) return false;
+
+  for (const item of params.consideration ?? []) {
+    if (item.itemType === 4 || item.itemType === 5) {
+      return true;
+    }
+  }
+  return false;
+}
+
 export function extractEthPrice(order: OpenSeaOrder): number {
   const price = order.price?.current;
   if (!price) return 0;

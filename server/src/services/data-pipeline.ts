@@ -106,11 +106,45 @@ async function runCycle(): Promise<void> {
 
     // Xeet last sales by creator+rarity
     const xeetLastSale = new Map<string, { price: number; date: string }>();
+
+    // Log activity diagnostics
+    if (xeetActivity.length > 0) {
+      const eventTypes = new Map<string, number>();
+      for (const evt of xeetActivity) {
+        const t = evt.eventType ?? (evt as any).event_type ?? (evt as any).type ?? 'UNKNOWN';
+        eventTypes.set(t, (eventTypes.get(t) ?? 0) + 1);
+      }
+      const sample = xeetActivity[0];
+      log.info({
+        totalEvents: xeetActivity.length,
+        eventTypes: Object.fromEntries(eventTypes),
+        sampleKeys: Object.keys(sample),
+        sampleEventType: sample.eventType,
+        samplePrice: sample.priceXeets,
+        samplePriceAlt: (sample as any).price ?? (sample as any).priceInXeets,
+        sampleCreatorHandle: sample.creatorHandle,
+        sampleCreatorId: sample.creatorId,
+        sampleTokenId: sample.tokenId,
+        sampleRarity: sample.rarity,
+        sampleTimestamp: sample.timestamp,
+      }, 'Xeet activity diagnostics');
+    } else {
+      log.warn('Xeet activity returned 0 events');
+    }
+
     for (const evt of xeetActivity) {
-      if (evt.eventType !== 'SALE') continue;
+      // Handle multiple possible event type field names and casing
+      const eventType = (evt.eventType ?? (evt as any).event_type ?? (evt as any).type ?? '').toUpperCase();
+      if (eventType !== 'SALE') continue;
+
       // Try creatorHandle first, then fall back to token map lookup
-      let cr = evt.creatorHandle || evt.creatorId;
-      let rarity = evt.rarity?.toLowerCase();
+      let cr = evt.creatorHandle || evt.creatorId || (evt as any).creator?.handle;
+      let rarity = (evt.rarity ?? (evt as any).cardRarity ?? '')?.toLowerCase();
+
+      // Get price from multiple possible fields
+      const price = evt.priceXeets ?? (evt as any).price ?? (evt as any).priceInXeets ?? 0;
+      const timestamp = evt.timestamp ?? (evt as any).createdAt ?? (evt as any).date ?? '';
+
       if ((!cr || !rarity) && evt.tokenId) {
         const mapping = getCreatorRarity(evt.tokenId);
         if (mapping) {
@@ -121,8 +155,8 @@ async function runCycle(): Promise<void> {
       if (!cr || !rarity) continue;
       const k = key(cr, rarity);
       const existing = xeetLastSale.get(k);
-      if (!existing || evt.timestamp > existing.date) {
-        xeetLastSale.set(k, { price: evt.priceXeets, date: evt.timestamp });
+      if (!existing || timestamp > existing.date) {
+        xeetLastSale.set(k, { price, date: timestamp });
       }
     }
 
@@ -160,30 +194,43 @@ async function runCycle(): Promise<void> {
     }
 
     // Group offers by creator+rarity via token map
+    // Also track collection-wide offers (criteria-based) that apply to ALL tokens
     const offersByKey = new Map<string, number>();
     let offersMapped = 0;
     let offersUnmapped = 0;
+    let offersCollection = 0;
+    let bestCollectionOffer = 0;
     for (const offer of osOffers) {
+      const ethPrice = osClient.extractEthPrice(offer);
+
+      // Check if this is a collection-wide offer (itemType 4/5)
+      if (osClient.isCollectionOffer(offer)) {
+        offersCollection++;
+        if (ethPrice > bestCollectionOffer) {
+          bestCollectionOffer = ethPrice;
+        }
+        continue;
+      }
+
       const tokenId = osClient.extractTokenId(offer);
       if (!tokenId) continue;
       const mapping = getCreatorRarity(tokenId);
       if (!mapping) { offersUnmapped++; continue; }
       offersMapped++;
       const k = key(mapping.handle, mapping.rarity);
-      const ethPrice = osClient.extractEthPrice(offer);
       const existing = offersByKey.get(k) ?? 0;
       if (ethPrice > existing) {
         offersByKey.set(k, ethPrice);
       }
     }
 
-    if (offersUnmapped > 0) {
-      log.warn({
-        total: osOffers.length,
-        mapped: offersMapped,
-        unmapped: offersUnmapped,
-      }, 'OS offers token mapping stats');
-    }
+    log.info({
+      total: osOffers.length,
+      mapped: offersMapped,
+      unmapped: offersUnmapped,
+      collectionOffers: offersCollection,
+      bestCollectionOffer,
+    }, 'OS offers mapping stats');
 
     // OpenSea last sales
     const osLastSale = new Map<string, { price: number; date: string }>();
@@ -231,8 +278,9 @@ async function runCycle(): Promise<void> {
           }
         }
 
-        // Best offer
-        const bestOffer = offersByKey.get(k) ?? null;
+        // Best offer: max of token-specific offer and collection-wide offer
+        const tokenOffer = offersByKey.get(k) ?? 0;
+        const bestOffer = Math.max(tokenOffer, bestCollectionOffer) || null;
 
         // Last sales
         const xeetSale = xeetLastSale.get(k);
