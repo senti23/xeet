@@ -76,6 +76,82 @@ export async function salesRoutes(app: FastifyInstance): Promise<void> {
     });
   });
 
+  // Top cards by Xeet volume (leaderboard)
+  app.get<{ Querystring: { limit?: string; sort?: string } }>('/api/sales/top', async (req, reply) => {
+    const { limit = '20', sort = 'xeet_volume' } = req.query;
+    const limitNum = Math.min(100, Math.max(1, parseInt(limit, 10) || 20));
+
+    const validSorts = ['xeet_volume', 'os_volume', 'total_sales', 'xeet_sales', 'os_sales'];
+    const sortCol = validSorts.includes(sort) ? sort : 'xeet_volume';
+
+    const db = getDb();
+    const rows = db.prepare(`
+      SELECT
+        creator_handle,
+        rarity,
+        COUNT(*) as total_sales,
+        COUNT(CASE WHEN marketplace = 'xeet' THEN 1 END) as xeet_sales,
+        COUNT(CASE WHEN marketplace = 'opensea' THEN 1 END) as os_sales,
+        ROUND(SUM(CASE WHEN marketplace = 'xeet' THEN price ELSE 0 END), 1) as xeet_volume,
+        ROUND(SUM(CASE WHEN marketplace = 'opensea' THEN price ELSE 0 END), 6) as os_volume,
+        ROUND(AVG(CASE WHEN marketplace = 'xeet' THEN price END), 1) as avg_xeet_price,
+        ROUND(AVG(CASE WHEN marketplace = 'opensea' THEN price END), 6) as avg_os_price,
+        MIN(sold_at) as first_sale,
+        MAX(sold_at) as last_sale
+      FROM sale_history
+      GROUP BY creator_handle, rarity
+      ORDER BY ${sortCol} DESC
+      LIMIT ?
+    `).all(limitNum) as any[];
+
+    // Enrich with display names from creator seed
+    const allCreators = getAllCreators();
+    const enriched = rows.map((r: any) => ({
+      ...r,
+      displayName: allCreators.get(r.creator_handle.toLowerCase())?.displayName ?? r.creator_handle,
+    }));
+
+    return reply.send({
+      data: enriched,
+      meta: { sort: sortCol, limit: limitNum },
+    });
+  });
+
+  // Top creators by combined Xeet volume (all rarities merged)
+  app.get<{ Querystring: { limit?: string } }>('/api/sales/top-creators', async (req, reply) => {
+    const { limit = '20' } = req.query;
+    const limitNum = Math.min(100, Math.max(1, parseInt(limit, 10) || 20));
+
+    const db = getDb();
+    const rows = db.prepare(`
+      SELECT
+        creator_handle,
+        COUNT(CASE WHEN marketplace = 'xeet' THEN 1 END) as xeet_sales,
+        ROUND(SUM(CASE WHEN marketplace = 'xeet' THEN price ELSE 0 END), 1) as xeet_volume,
+        COUNT(CASE WHEN marketplace = 'opensea' THEN 1 END) as os_sales,
+        ROUND(SUM(CASE WHEN marketplace = 'opensea' THEN price ELSE 0 END), 6) as os_volume,
+        COUNT(*) as total_sales,
+        GROUP_CONCAT(DISTINCT rarity) as rarities,
+        MIN(sold_at) as first_sale,
+        MAX(sold_at) as last_sale
+      FROM sale_history
+      GROUP BY creator_handle
+      ORDER BY xeet_volume DESC
+      LIMIT ?
+    `).all(limitNum) as any[];
+
+    const allCreators = getAllCreators();
+    const enriched = rows.map((r: any) => ({
+      ...r,
+      displayName: allCreators.get(r.creator_handle.toLowerCase())?.displayName ?? r.creator_handle,
+    }));
+
+    return reply.send({
+      data: enriched,
+      meta: { limit: limitNum },
+    });
+  });
+
   // Comprehensive sales summary — ALL creators × rarities (including zero-sale)
   app.get<{ Querystring: { marketplace?: string } }>('/api/sales/summary', async (req, reply) => {
     const { marketplace } = req.query;

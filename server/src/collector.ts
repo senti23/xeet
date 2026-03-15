@@ -19,7 +19,7 @@
 
 import { config } from './config.js';
 import { childLogger } from './lib/logger.js';
-import { getDb, getStmts } from './db/index.js';
+import { getDb, getStmts, closeDb } from './db/index.js';
 import { initTokenMap, getAllCreators, getTokenIds, getCreatorRarity, type Rarity } from './services/token-map.js';
 import * as xeetClient from './services/xeet-client.js';
 import { normalizeTimestamp } from './services/xeet-client.js';
@@ -298,6 +298,7 @@ async function main(): Promise<void> {
     await backfill();
     printSummary();
     log.info('Backfill complete, exiting. Run `npm run verify` for detailed analysis.');
+    closeDb();
     process.exit(0);
   }
 
@@ -307,6 +308,7 @@ async function main(): Promise<void> {
 
   if (runOnce) {
     log.info('Single run complete, exiting');
+    closeDb();
     process.exit(0);
   }
 
@@ -324,6 +326,7 @@ async function main(): Promise<void> {
   // Graceful shutdown
   const shutdown = () => {
     log.info('Collector shutting down');
+    closeDb();
     process.exit(0);
   };
   process.on('SIGINT', shutdown);
@@ -332,5 +335,6 @@ async function main(): Promise<void> {
 
 main().catch((err) => {
   log.error({ err }, 'Collector fatal error');
+  closeDb();
   process.exit(1);
 });
