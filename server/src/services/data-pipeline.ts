@@ -373,17 +373,19 @@ let intervalId: ReturnType<typeof setInterval> | null = null;
 export async function startPipeline(): Promise<void> {
   log.info({ intervalMs: config.pipeline.intervalMs }, 'Starting data pipeline');
 
-  // Run first cycle immediately
-  await runCycle();
+  // Run first cycle in background, then kick off backfills after it completes
+  runCycle()
+    .then(() => {
+      // Kick off sales history backfills after first cycle
+      backfillXeetSalesHistory().catch((err) => log.error({ err }, 'Xeet backfill error'));
+      backfillOpenSeaSalesHistory().catch((err) => log.error({ err }, 'OpenSea backfill error'));
 
-  // Kick off sales history backfills in background (non-blocking)
-  backfillXeetSalesHistory().catch((err) => log.error({ err }, 'Xeet backfill error'));
-  backfillOpenSeaSalesHistory().catch((err) => log.error({ err }, 'OpenSea backfill error'));
-
-  // Kick off holder backfill if Abscan API key is configured
-  if (config.abscan.apiKey) {
-    backfillHolders().catch((err) => log.error({ err }, 'Holder backfill error'));
-  }
+      // Kick off holder backfill if Abscan API key is configured
+      if (config.abscan.apiKey) {
+        backfillHolders().catch((err) => log.error({ err }, 'Holder backfill error'));
+      }
+    })
+    .catch((err) => log.error({ err }, 'First pipeline cycle error'));
 
   // Schedule subsequent cycles (including periodic holder refresh)
   let lastHolderRefresh = Date.now();
