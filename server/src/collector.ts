@@ -152,75 +152,62 @@ async function backfill(): Promise<void> {
 
   log.info({ totalTokens: tokenIds.length }, 'Starting full historical backfill');
 
-  // Check existing sales to skip
-  const xeetDone = new Set<string>();
-  const osDone = new Set<string>();
-  const xeetRows = getDb().prepare('SELECT DISTINCT token_id FROM sale_history WHERE marketplace = ?').all('xeet') as Array<{ token_id: string }>;
-  const osRows = getDb().prepare('SELECT DISTINCT token_id FROM sale_history WHERE marketplace = ?').all('opensea') as Array<{ token_id: string }>;
-  for (const r of xeetRows) xeetDone.add(r.token_id);
-  for (const r of osRows) osDone.add(r.token_id);
+  // NOTE: We fetch ALL tokens — INSERT OR IGNORE handles dedup.
+  // Previous skip logic caused missed historical sales.
 
   let xeetFetched = 0, xeetNew = 0, xeetSkipped = 0, xeetErrors = 0;
   let osFetched = 0, osNew = 0, osSkipped = 0, osErrors = 0;
 
   for (const { tokenId, handle, rarity } of tokenIds) {
     // Xeet backfill
-    if (xeetDone.has(tokenId)) {
-      xeetSkipped++;
-    } else {
-      try {
-        const sales = await xeetClient.getCardSalesHistory(tokenId);
-        xeetFetched++;
-        for (const evt of sales) {
-          const price = evt.priceXeets ?? 0;
-          const timestamp = evt.timestamp ?? '';
-          if (!price || !timestamp) continue;
-          try {
-            stmts.upsertSale.run(
-              'xeet', tokenId, handle.toLowerCase(), rarity, price, 'XEETS', null,
-              evt.sellerHandle ?? null, evt.buyerHandle ?? null,
-              null, null, timestamp,
-            );
-            xeetNew++;
-          } catch { /* duplicate */ }
-        }
-      } catch {
-        xeetErrors++;
+    try {
+      const sales = await xeetClient.getCardSalesHistory(tokenId);
+      xeetFetched++;
+      for (const evt of sales) {
+        const price = evt.priceXeets ?? 0;
+        const timestamp = evt.timestamp ?? '';
+        if (!price || !timestamp) continue;
+        try {
+          stmts.upsertSale.run(
+            'xeet', tokenId, handle.toLowerCase(), rarity, price, 'XEETS', null,
+            evt.sellerHandle ?? null, evt.buyerHandle ?? null,
+            null, null, timestamp,
+          );
+          xeetNew++;
+        } catch { /* duplicate */ }
       }
+    } catch {
+      xeetErrors++;
     }
 
     // OpenSea backfill
-    if (osDone.has(tokenId)) {
-      osSkipped++;
-    } else {
-      try {
-        const sales = await osClient.getTokenSaleEvents(tokenId);
-        osFetched++;
-        for (const evt of sales) {
-          if (!evt.event_timestamp) continue;
-          const price = Number(evt.payment?.quantity ?? 0) / Math.pow(10, evt.payment?.decimals ?? 18);
-          let soldAt = evt.event_timestamp;
-          const tsNum = Number(soldAt);
-          if (!isNaN(tsNum) && tsNum < 1e12) {
-            soldAt = new Date(tsNum * 1000).toISOString();
-          }
-          try {
-            stmts.upsertSale.run(
-              'opensea', tokenId, handle.toLowerCase(), rarity, price,
-              evt.payment?.symbol ?? 'ETH', null,
-              evt.seller ?? null, evt.buyer ?? null,
-              evt.order_hash ?? null, evt.transaction ?? null, soldAt,
-            );
-            osNew++;
-          } catch { /* duplicate */ }
+    try {
+      const sales = await osClient.getTokenSaleEvents(tokenId);
+      osFetched++;
+      for (const evt of sales) {
+        if (!evt.event_timestamp) continue;
+        const price = Number(evt.payment?.quantity ?? 0) / Math.pow(10, evt.payment?.decimals ?? 18);
+        let soldAt = evt.event_timestamp;
+        const tsNum = Number(soldAt);
+        if (!isNaN(tsNum) && tsNum < 1e12) {
+          soldAt = new Date(tsNum * 1000).toISOString();
         }
-      } catch {
-        osErrors++;
+        try {
+          stmts.upsertSale.run(
+            'opensea', tokenId, handle.toLowerCase(), rarity, price,
+            evt.payment?.symbol ?? 'ETH', null,
+            evt.seller ?? null, evt.buyer ?? null,
+            evt.order_hash ?? null, evt.transaction ?? null, soldAt,
+          );
+          osNew++;
+        } catch { /* duplicate */ }
       }
+    } catch {
+      osErrors++;
     }
 
     // Progress log every 50 tokens
-    const total = xeetFetched + xeetSkipped + xeetErrors;
+    const total = xeetFetched + xeetErrors;
     if (total % 50 === 0 && total > 0) {
       log.info({
         progress: `${total}/${tokenIds.length}`,

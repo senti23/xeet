@@ -468,10 +468,9 @@ export async function backfillXeetSalesHistory(): Promise<{ fetched: number; new
 
   log.info({ totalTokens: tokenIds.length }, 'Starting Xeet sales history backfill');
 
-  // Check which tokens already have sales — skip those to avoid redundant fetches
-  const tokensWithSales = new Set<string>();
-  const rows = getDb().prepare('SELECT DISTINCT token_id FROM sale_history WHERE marketplace = ?').all('xeet') as Array<{ token_id: string }>;
-  for (const r of rows) tokensWithSales.add(r.token_id);
+  // NOTE: We fetch ALL tokens every time — the skip-if-already-has-sales
+  // approach missed historical sales for tokens that had only 1 sale from
+  // the activity feed. INSERT OR IGNORE handles dedup safely.
 
   let fetched = 0;
   let newSales = 0;
@@ -479,12 +478,6 @@ export async function backfillXeetSalesHistory(): Promise<{ fetched: number; new
   let errors = 0;
 
   for (const { tokenId, handle, rarity } of tokenIds) {
-    // Skip tokens that already have Xeet sales persisted
-    if (tokensWithSales.has(tokenId)) {
-      skipped++;
-      continue;
-    }
-
     try {
       const sales = await xeetClient.getCardSalesHistory(tokenId);
       fetched++;
@@ -584,10 +577,8 @@ export async function backfillOpenSeaSalesHistory(): Promise<{ fetched: number; 
 
   log.info({ totalTokens: tokenIds.length }, 'Starting OpenSea sales history backfill');
 
-  // Skip tokens that already have OpenSea sales
-  const tokensWithSales = new Set<string>();
-  const rows = getDb().prepare('SELECT DISTINCT token_id FROM sale_history WHERE marketplace = ?').all('opensea') as Array<{ token_id: string }>;
-  for (const r of rows) tokensWithSales.add(r.token_id);
+  // NOTE: We fetch ALL tokens every time — INSERT OR IGNORE handles dedup.
+  // Skipping tokens that already had sales caused missed historical data.
 
   let fetched = 0;
   let newSales = 0;
@@ -595,11 +586,6 @@ export async function backfillOpenSeaSalesHistory(): Promise<{ fetched: number; 
   let errors = 0;
 
   for (const { tokenId, handle, rarity } of tokenIds) {
-    if (tokensWithSales.has(tokenId)) {
-      skipped++;
-      continue;
-    }
-
     try {
       const sales = await osClient.getTokenSaleEvents(tokenId);
       fetched++;
