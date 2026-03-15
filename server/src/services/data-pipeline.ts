@@ -2,6 +2,7 @@ import { config } from '../config.js';
 import { childLogger } from '../lib/logger.js';
 import { getDb, getStmts } from '../db/index.js';
 import * as xeetClient from './xeet-client.js';
+import { normalizeTimestamp } from './xeet-client.js';
 import * as osClient from './opensea-client.js';
 import { getCreatorRarity, getAllCreators, getTokenIds, type Rarity } from './token-map.js';
 import { fetchEthUsdRate, ethToUsd, getEthUsdRate } from './price-service.js';
@@ -117,7 +118,7 @@ async function runCycle(): Promise<void> {
 
       const tokenId = evt.tokenId;
       const price = evt.priceXeets ?? 0;
-      const timestamp = evt.timestamp ?? '';
+      const timestamp = normalizeTimestamp(evt.timestamp ?? '');
       if (!tokenId || !price || !timestamp) { xeetSalesSkipped++; continue; }
 
       // Resolve creator+rarity from token map
@@ -469,15 +470,9 @@ export async function backfillXeetSalesHistory(): Promise<{ fetched: number; new
     return { fetched: 0, newSales: 0, skipped: 0, errors: 0 };
   }
 
-  // Skip backfill entirely if we already have substantial sales data
-  const db = getDb();
-  const xeetSaleCount = (db.prepare("SELECT COUNT(*) as cnt FROM sale_history WHERE marketplace = 'xeet'").get() as any)?.cnt ?? 0;
-  if (xeetSaleCount > 100) {
-    log.info({ existingSales: xeetSaleCount }, 'Xeet sales backfill skipped — already have data in DB');
-    backfillComplete = true;
-    xeetBackfillStatus.complete = true;
-    return { fetched: 0, newSales: 0, skipped: xeetSaleCount, errors: 0 };
-  }
+  // NOTE: We always run backfill — INSERT OR IGNORE handles dedup.
+  // Previous skip logic (if >100 sales exist) caused missed historical sales
+  // for cards whose data wasn't captured on the first run.
 
   backfillRunning = true;
   xeetBackfillStatus.running = true;
@@ -585,15 +580,8 @@ export async function backfillOpenSeaSalesHistory(): Promise<{ fetched: number; 
     return { fetched: 0, newSales: 0, skipped: 0, errors: 0 };
   }
 
-  // Skip backfill entirely if we already have substantial sales data
-  const db = getDb();
-  const osSaleCount = (db.prepare("SELECT COUNT(*) as cnt FROM sale_history WHERE marketplace = 'opensea'").get() as any)?.cnt ?? 0;
-  if (osSaleCount > 100) {
-    log.info({ existingSales: osSaleCount }, 'OpenSea sales backfill skipped — already have data in DB');
-    osBackfillComplete = true;
-    osBackfillStatus.complete = true;
-    return { fetched: 0, newSales: 0, skipped: osSaleCount, errors: 0 };
-  }
+  // NOTE: We always run backfill — INSERT OR IGNORE handles dedup.
+  // Previous skip logic caused missed historical sales.
 
   osBackfillRunning = true;
   osBackfillStatus.running = true;

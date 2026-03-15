@@ -22,6 +22,7 @@ import { childLogger } from './lib/logger.js';
 import { getDb, getStmts } from './db/index.js';
 import { initTokenMap, getAllCreators, getTokenIds, getCreatorRarity, type Rarity } from './services/token-map.js';
 import * as xeetClient from './services/xeet-client.js';
+import { normalizeTimestamp } from './services/xeet-client.js';
 import * as osClient from './services/opensea-client.js';
 
 const log = childLogger('collector');
@@ -72,7 +73,7 @@ async function collectCycle(): Promise<CycleStats> {
 
     const tokenId = evt.tokenId;
     const price = evt.priceXeets ?? 0;
-    const timestamp = evt.timestamp ?? '';
+    const timestamp = normalizeTimestamp(evt.timestamp ?? '');
     if (!tokenId || !price || !timestamp) continue;
 
     let cr = evt.creatorHandle || evt.creatorId;

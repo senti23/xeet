@@ -58,6 +58,20 @@ export interface XeetActivityEvent {
   creatorHandle?: string;
 }
 
+/**
+ * Normalize a timestamp to a consistent ISO format (no milliseconds) to prevent
+ * duplicate records caused by format differences between API endpoints.
+ * e.g. "2024-01-15T10:30:00.000Z" → "2024-01-15T10:30:00Z"
+ */
+export function normalizeTimestamp(ts: string): string {
+  if (!ts) return ts;
+  const d = new Date(ts);
+  if (isNaN(d.getTime())) return ts;
+  // Truncate to second precision for consistent dedup
+  d.setMilliseconds(0);
+  return d.toISOString().replace('.000Z', 'Z');
+}
+
 async function xeetFetch<T>(path: string, label: string): Promise<T | null> {
   await limiter.acquire();
   return withRetry(
@@ -131,7 +145,7 @@ export async function getActivity(): Promise<XeetActivityEvent[]> {
   for (let page = 0; ; page++) {
     const offset = page * pageSize;
     const data = await xeetFetch<any>(
-      `/api/marketplace/discovery/activity?limit=${pageSize}&offset=${offset}`,
+      `/api/marketplace/discovery/activity?eventType=SALE&limit=${pageSize}&offset=${offset}`,
       `xeet-activity-page-${page}`,
     );
     if (!data) break;
@@ -150,10 +164,13 @@ export async function getActivity(): Promise<XeetActivityEvent[]> {
 
     if (!events || events.length === 0) break;
 
-    // Flatten nested creator handle if present
+    // Flatten nested creator handle if present + normalize timestamps
     for (const evt of events) {
       if (!evt.creatorHandle && (evt as any).creator?.handle) {
         evt.creatorHandle = (evt as any).creator.handle;
+      }
+      if (evt.timestamp) {
+        evt.timestamp = normalizeTimestamp(evt.timestamp);
       }
     }
 
@@ -201,6 +218,9 @@ export async function getCardSalesHistory(tokenId: string): Promise<XeetActivity
     for (const evt of events) {
       if (!evt.creatorHandle && (evt as any).creator?.handle) {
         evt.creatorHandle = (evt as any).creator.handle;
+      }
+      if (evt.timestamp) {
+        evt.timestamp = normalizeTimestamp(evt.timestamp);
       }
     }
 
