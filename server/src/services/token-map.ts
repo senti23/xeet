@@ -26,6 +26,18 @@ interface TokenMapping {
   imageUrl: string | null;
 }
 
+// Handle aliases: old X handle → current X handle (for renamed creators)
+const HANDLE_ALIASES: Record<string, string> = {
+  web3_adri: 'adriadri',
+  coperto_web3: 'coperto_xbt',
+};
+
+/** Resolve a handle through aliases, returns the canonical (current) handle. */
+export function resolveHandle(handle: string): string {
+  const lower = handle.toLowerCase();
+  return HANDLE_ALIASES[lower] ?? lower;
+}
+
 // In-memory maps
 const tokenToCreator = new Map<string, { handle: string; rarity: Rarity }>();
 const creatorToTokens = new Map<string, string[]>(); // key: "handle:rarity"
@@ -229,6 +241,25 @@ async function syncFromOpenSea(): Promise<void> {
   }
 }
 
+/** Migrate stale creator handles in token_map and sale_history tables. */
+function migrateStaleHandles(): void {
+  const db = getDb();
+  const entries = Object.entries(HANDLE_ALIASES);
+  if (entries.length === 0) return;
+
+  let migrated = 0;
+  for (const [oldHandle, newHandle] of entries) {
+    const r1 = db.prepare('UPDATE token_map SET creator_handle = ? WHERE creator_handle = ?').run(newHandle, oldHandle);
+    const r2 = db.prepare('UPDATE sale_history SET creator_handle = ? WHERE creator_handle = ?').run(newHandle, oldHandle);
+    const count = (r1.changes ?? 0) + (r2.changes ?? 0);
+    if (count > 0) {
+      log.info({ oldHandle, newHandle, rows: count }, 'Migrated stale handle');
+      migrated += count;
+    }
+  }
+  if (migrated > 0) log.info({ migrated }, 'Stale handle migration complete');
+}
+
 /** Initialize: load seed + DB, then kick off background OpenSea sync */
 export async function initTokenMap(): Promise<void> {
   // Step 1: Load creator seed (immediate)
@@ -247,6 +278,9 @@ export async function initTokenMap(): Promise<void> {
   }
 
   const dbCount = loadFromDb();
+
+  // Migrate stale handles in persistent tables
+  migrateStaleHandles();
 
   initialized = true;
 

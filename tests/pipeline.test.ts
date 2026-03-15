@@ -32,7 +32,7 @@ async function main() {
       .prepare("SELECT name FROM sqlite_master WHERE type='table'")
       .all() as Array<{ name: string }>;
     const names = tables.map((t) => t.name);
-    const required = ['token_map', 'bot_users', 'invite_codes', 'subscriptions', 'alert_history'];
+    const required = ['token_map', 'bot_users', 'invite_codes', 'subscriptions', 'alert_history', 'sale_history'];
     for (const name of required) {
       if (!names.includes(name)) throw new Error(`Missing table: ${name}`);
     }

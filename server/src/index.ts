@@ -4,7 +4,7 @@ import { config } from './config.js';
 import { childLogger } from './lib/logger.js';
 import { getDb } from './db/index.js';
 import { initTokenMap, getTokenMapStats } from './services/token-map.js';
-import { startPipeline, stopPipeline } from './services/data-pipeline.js';
+import { startPipeline, stopPipeline, getBackfillStatus } from './services/data-pipeline.js';
 import { startStream, stopStream } from './services/opensea-stream.js';
 import { startBot, stopBot } from './bot/index.js';
 import { registerRoutes } from './api/routes.js';
@@ -35,7 +35,10 @@ async function main(): Promise<void> {
   app.get('/api/health', async () => ({ status: 'ok', uptime: process.uptime() }));
 
   // Debug: token map status — use ?handle=senti to search
-  app.get<{ Querystring: { handle?: string } }>('/api/debug/token-map', async (req) => getTokenMapStats(req.query.handle));
+  app.get<{ Querystring: { handle?: string } }>('/api/debug/token-map', async (req) => ({
+    ...getTokenMapStats(req.query.handle),
+    backfill: getBackfillStatus(),
+  }));
 
   // Start Fastify server
   await app.listen({ port: config.port, host: '0.0.0.0' });

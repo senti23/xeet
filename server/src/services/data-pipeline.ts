@@ -394,6 +394,43 @@ export function stopPipeline(): void {
 }
 
 /**
+ * Backfill status tracking — per-creator results for both marketplaces.
+ */
+interface BackfillCreatorResult {
+  handle: string;
+  rarity: Rarity;
+  tokensFetched: number;
+  salesFound: number;
+  errors: number;
+}
+
+interface BackfillStatus {
+  running: boolean;
+  complete: boolean;
+  creatorsProcessed: number;
+  creatorsWithSales: number;
+  creatorsWithZeroSales: number;
+  totalErrors: number;
+  totalSalesFound: number;
+  results: BackfillCreatorResult[];
+}
+
+const xeetBackfillStatus: BackfillStatus = {
+  running: false, complete: false,
+  creatorsProcessed: 0, creatorsWithSales: 0, creatorsWithZeroSales: 0,
+  totalErrors: 0, totalSalesFound: 0, results: [],
+};
+const osBackfillStatus: BackfillStatus = {
+  running: false, complete: false,
+  creatorsProcessed: 0, creatorsWithSales: 0, creatorsWithZeroSales: 0,
+  totalErrors: 0, totalSalesFound: 0, results: [],
+};
+
+export function getBackfillStatus(): { xeet: BackfillStatus; opensea: BackfillStatus } {
+  return { xeet: xeetBackfillStatus, opensea: osBackfillStatus };
+}
+
+/**
  * Backfill full Xeet sales history for all known token IDs.
  * Fetches per-card sales from the discovered endpoint and persists to SQLite.
  * Runs once at startup (after first pipeline cycle) as a background task.
@@ -412,6 +449,7 @@ export async function backfillXeetSalesHistory(): Promise<{ fetched: number; new
     return { fetched: 0, newSales: 0, skipped: 0, errors: 0 };
   }
   backfillRunning = true;
+  xeetBackfillStatus.running = true;
 
   const stmts = getStmts();
   const allCreators = getAllCreators();
@@ -478,9 +516,34 @@ export async function backfillXeetSalesHistory(): Promise<{ fetched: number; new
     }
   }
 
+  // Build per-creator summary
+  const creatorMap = new Map<string, BackfillCreatorResult>();
+  for (const { handle, rarity } of tokenIds) {
+    const key = `${handle.toLowerCase()}:${rarity}`;
+    if (!creatorMap.has(key)) {
+      creatorMap.set(key, { handle: handle.toLowerCase(), rarity, tokensFetched: 0, salesFound: 0, errors: 0 });
+    }
+  }
+  xeetBackfillStatus.results = Array.from(creatorMap.values());
+  xeetBackfillStatus.creatorsProcessed = creatorMap.size;
+  xeetBackfillStatus.totalSalesFound = newSales;
+  xeetBackfillStatus.totalErrors = errors;
+  // Count creators with/without sales from DB (more accurate than just this run)
+  const creatorsInDb = new Set(
+    (getDb().prepare("SELECT DISTINCT creator_handle || ':' || rarity as k FROM sale_history WHERE marketplace = 'xeet'").all() as any[]).map(r => r.k),
+  );
+  xeetBackfillStatus.creatorsWithSales = Array.from(creatorMap.keys()).filter(k => creatorsInDb.has(k)).length;
+  xeetBackfillStatus.creatorsWithZeroSales = creatorMap.size - xeetBackfillStatus.creatorsWithSales;
+
   backfillComplete = true;
   backfillRunning = false;
-  log.info({ fetched, newSales, skipped, errors }, 'Xeet sales history backfill complete');
+  xeetBackfillStatus.running = false;
+  xeetBackfillStatus.complete = true;
+  log.info({
+    fetched, newSales, skipped, errors,
+    creatorsWithSales: xeetBackfillStatus.creatorsWithSales,
+    creatorsWithZeroSales: xeetBackfillStatus.creatorsWithZeroSales,
+  }, 'Xeet sales history backfill complete');
   return { fetched, newSales, skipped, errors };
 }
 
@@ -502,6 +565,7 @@ export async function backfillOpenSeaSalesHistory(): Promise<{ fetched: number; 
     return { fetched: 0, newSales: 0, skipped: 0, errors: 0 };
   }
   osBackfillRunning = true;
+  osBackfillStatus.running = true;
 
   const stmts = getStmts();
   const allCreators = getAllCreators();
@@ -572,8 +636,32 @@ export async function backfillOpenSeaSalesHistory(): Promise<{ fetched: number; 
     }
   }
 
+  // Build per-creator summary
+  const creatorMap = new Map<string, BackfillCreatorResult>();
+  for (const { handle, rarity } of tokenIds) {
+    const key = `${handle.toLowerCase()}:${rarity}`;
+    if (!creatorMap.has(key)) {
+      creatorMap.set(key, { handle: handle.toLowerCase(), rarity, tokensFetched: 0, salesFound: 0, errors: 0 });
+    }
+  }
+  osBackfillStatus.results = Array.from(creatorMap.values());
+  osBackfillStatus.creatorsProcessed = creatorMap.size;
+  osBackfillStatus.totalSalesFound = newSales;
+  osBackfillStatus.totalErrors = errors;
+  const creatorsInDb = new Set(
+    (getDb().prepare("SELECT DISTINCT creator_handle || ':' || rarity as k FROM sale_history WHERE marketplace = 'opensea'").all() as any[]).map(r => r.k),
+  );
+  osBackfillStatus.creatorsWithSales = Array.from(creatorMap.keys()).filter(k => creatorsInDb.has(k)).length;
+  osBackfillStatus.creatorsWithZeroSales = creatorMap.size - osBackfillStatus.creatorsWithSales;
+
   osBackfillComplete = true;
   osBackfillRunning = false;
-  log.info({ fetched, newSales, skipped, errors }, 'OpenSea sales history backfill complete');
+  osBackfillStatus.running = false;
+  osBackfillStatus.complete = true;
+  log.info({
+    fetched, newSales, skipped, errors,
+    creatorsWithSales: osBackfillStatus.creatorsWithSales,
+    creatorsWithZeroSales: osBackfillStatus.creatorsWithZeroSales,
+  }, 'OpenSea sales history backfill complete');
   return { fetched, newSales, skipped, errors };
 }

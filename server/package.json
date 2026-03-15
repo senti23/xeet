@@ -10,7 +10,10 @@
     "collect": "tsx src/collector.ts",
     "collect:once": "tsx src/collector.ts --once",
     "collect:backfill": "tsx src/collector.ts --backfill",
-    "probe": "tsx ../tests/api-probe.test.ts"
+    "probe": "tsx ../tests/api-probe.test.ts",
+    "verify": "tsx scripts/verify-dataset.ts",
+    "verify:backfill": "tsx scripts/verify-backfill.ts",
+    "spot-check": "tsx scripts/spot-check.ts"
   },
   "dependencies": {
     "@fastify/cors": "^11.0.0",
