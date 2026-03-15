@@ -464,6 +464,17 @@ export async function backfillXeetSalesHistory(): Promise<{ fetched: number; new
     log.warn('Backfill already in progress, skipping');
     return { fetched: 0, newSales: 0, skipped: 0, errors: 0 };
   }
+
+  // Skip backfill entirely if we already have substantial sales data
+  const db = getDb();
+  const xeetSaleCount = (db.prepare("SELECT COUNT(*) as cnt FROM sale_history WHERE marketplace = 'xeet'").get() as any)?.cnt ?? 0;
+  if (xeetSaleCount > 100) {
+    log.info({ existingSales: xeetSaleCount }, 'Xeet sales backfill skipped — already have data in DB');
+    backfillComplete = true;
+    xeetBackfillStatus.complete = true;
+    return { fetched: 0, newSales: 0, skipped: xeetSaleCount, errors: 0 };
+  }
+
   backfillRunning = true;
   xeetBackfillStatus.running = true;
 
@@ -482,11 +493,7 @@ export async function backfillXeetSalesHistory(): Promise<{ fetched: number; new
     }
   }
 
-  log.info({ totalTokens: tokenIds.length }, 'Starting Xeet sales history backfill');
-
-  // NOTE: We fetch ALL tokens every time — the skip-if-already-has-sales
-  // approach missed historical sales for tokens that had only 1 sale from
-  // the activity feed. INSERT OR IGNORE handles dedup safely.
+  log.info({ totalTokens: tokenIds.length }, 'Starting Xeet sales history backfill (first time)');
 
   let fetched = 0;
   let newSales = 0;
@@ -573,6 +580,17 @@ export async function backfillOpenSeaSalesHistory(): Promise<{ fetched: number; 
     log.warn('OpenSea backfill already in progress, skipping');
     return { fetched: 0, newSales: 0, skipped: 0, errors: 0 };
   }
+
+  // Skip backfill entirely if we already have substantial sales data
+  const db = getDb();
+  const osSaleCount = (db.prepare("SELECT COUNT(*) as cnt FROM sale_history WHERE marketplace = 'opensea'").get() as any)?.cnt ?? 0;
+  if (osSaleCount > 100) {
+    log.info({ existingSales: osSaleCount }, 'OpenSea sales backfill skipped — already have data in DB');
+    osBackfillComplete = true;
+    osBackfillStatus.complete = true;
+    return { fetched: 0, newSales: 0, skipped: osSaleCount, errors: 0 };
+  }
+
   osBackfillRunning = true;
   osBackfillStatus.running = true;
 
@@ -591,10 +609,7 @@ export async function backfillOpenSeaSalesHistory(): Promise<{ fetched: number; 
     }
   }
 
-  log.info({ totalTokens: tokenIds.length }, 'Starting OpenSea sales history backfill');
-
-  // NOTE: We fetch ALL tokens every time — INSERT OR IGNORE handles dedup.
-  // Skipping tokens that already had sales caused missed historical data.
+  log.info({ totalTokens: tokenIds.length }, 'Starting OpenSea sales history backfill (first time)');
 
   let fetched = 0;
   let newSales = 0;
