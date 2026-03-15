@@ -376,14 +376,14 @@ export async function startPipeline(): Promise<void> {
   // Run first cycle in background, then kick off backfills after it completes
   runCycle()
     .then(() => {
-      // Kick off sales history backfills after first cycle
-      backfillXeetSalesHistory().catch((err) => log.error({ err }, 'Xeet backfill error'));
-      backfillOpenSeaSalesHistory().catch((err) => log.error({ err }, 'OpenSea backfill error'));
-
-      // Kick off holder backfill if Abscan API key is configured
+      // Kick off holder backfill FIRST (fast — single Abscan call)
       if (config.abscan.apiKey) {
         backfillHolders().catch((err) => log.error({ err }, 'Holder backfill error'));
       }
+
+      // Kick off sales history backfills (slow — per-token fetches, run in parallel)
+      backfillXeetSalesHistory().catch((err) => log.error({ err }, 'Xeet backfill error'));
+      backfillOpenSeaSalesHistory().catch((err) => log.error({ err }, 'OpenSea backfill error'));
     })
     .catch((err) => log.error({ err }, 'First pipeline cycle error'));
 
