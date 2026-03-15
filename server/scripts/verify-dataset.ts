@@ -8,11 +8,13 @@
  */
 
 import Database from 'better-sqlite3';
+import { readFileSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DB_PATH = resolve(__dirname, '../../xeet.db');
+const CREATORS_JSON = resolve(__dirname, '../../xeet-creators-full.json');
 
 const db = new Database(DB_PATH, { readonly: true });
 
@@ -166,6 +168,101 @@ if (mode === 'both') {
   console.log(`    Total volume:   ${osVol.total ?? 0} ETH  (${osVol.sales} sales)`);
   console.log(`      ETH only:     ${osVol.eth_vol ?? 0} ETH  (${osVol.eth_sales} sales)`);
   console.log(`      WETH only:    ${osVol.weth_vol ?? 0} ETH  (${osVol.weth_sales} sales)`);
+  console.log('═'.repeat(72));
+}
+
+// ── Token map coverage diagnostic ──
+{
+  // Load creator seed to compare
+  let seedCreators: Array<{ xHandle: string; cards?: { commonSupply: number; rareSupply: number; legendarySupply: number } }> = [];
+  try {
+    seedCreators = JSON.parse(readFileSync(CREATORS_JSON, 'utf-8'));
+  } catch { /* file not found */ }
+
+  const tokenMapCount = (db.prepare('SELECT COUNT(*) as c FROM token_map').get() as any).c;
+  const tokenMapCreators = (db.prepare('SELECT COUNT(DISTINCT creator_handle) as c FROM token_map').get() as any).c;
+
+  // Creators with cards in seed
+  const seedWithCards = seedCreators.filter(c => {
+    const cs = c.cards?.commonSupply ?? 0;
+    const rs = c.cards?.rareSupply ?? 0;
+    const ls = c.cards?.legendarySupply ?? 0;
+    return cs + rs + ls > 0;
+  });
+
+  // Expected total card types (creator+rarity combos)
+  let expectedCardTypes = 0;
+  for (const c of seedCreators) {
+    if ((c.cards?.commonSupply ?? 0) > 0) expectedCardTypes++;
+    if ((c.cards?.rareSupply ?? 0) > 0) expectedCardTypes++;
+    if ((c.cards?.legendarySupply ?? 0) > 0) expectedCardTypes++;
+  }
+
+  // Creators in token_map vs seed
+  const mappedHandles = new Set(
+    (db.prepare('SELECT DISTINCT creator_handle FROM token_map').all() as any[]).map(r => r.creator_handle),
+  );
+  const saleHandles = new Set(
+    (db.prepare('SELECT DISTINCT creator_handle FROM sale_history').all() as any[]).map(r => r.creator_handle),
+  );
+  const seedHandleSet = new Set(seedCreators.map(c => c.xHandle.toLowerCase()));
+
+  // Creators in sales but NOT in token_map (came via Xeet API's creatorHandle field)
+  const salesOnlyCreators = [...saleHandles].filter(h => !mappedHandles.has(h));
+
+  // Creators in seed with cards but missing from both token_map and sales
+  const fullyMissing = seedWithCards.filter(c => {
+    const h = c.xHandle.toLowerCase();
+    return !mappedHandles.has(h) && !saleHandles.has(h);
+  });
+
+  // Token map coverage by rarity
+  const mapByRarity = db.prepare(`
+    SELECT rarity, COUNT(*) as tokens, COUNT(DISTINCT creator_handle) as creators
+    FROM token_map GROUP BY rarity
+  `).all() as any[];
+
+  console.log('\n' + '═'.repeat(72));
+  console.log('  TOKEN MAP & CREATOR COVERAGE DIAGNOSTIC');
+  console.log('═'.repeat(72));
+  console.log(`  Seed JSON:`);
+  console.log(`    Total creators:          ${seedCreators.length}`);
+  console.log(`    With cards (supply > 0): ${seedWithCards.length}`);
+  console.log(`    Expected card types:     ${expectedCardTypes} (creator+rarity combos)`);
+  console.log(`  Token Map (SQLite):`);
+  console.log(`    Mapped tokens:           ${tokenMapCount}`);
+  console.log(`    Mapped creators:         ${tokenMapCreators}`);
+  for (const r of mapByRarity) {
+    console.log(`      ${r.rarity.padEnd(12)} ${r.tokens} tokens from ${r.creators} creators`);
+  }
+  console.log(`  Sale History:`);
+  console.log(`    Creators with sales:     ${saleHandles.size}`);
+  console.log(`    In sales but NOT in token_map: ${salesOnlyCreators.length}`);
+  if (salesOnlyCreators.length > 0 && salesOnlyCreators.length <= 20) {
+    for (const h of salesOnlyCreators) {
+      console.log(`      - ${h}`);
+    }
+  }
+  console.log(`  Coverage Gaps:`);
+  console.log(`    Seed creators with cards but NO data: ${fullyMissing.length}`);
+  if (fullyMissing.length > 0) {
+    console.log(`    (first 10 missing):`);
+    for (const c of fullyMissing.slice(0, 10)) {
+      const total = (c.cards?.commonSupply ?? 0) + (c.cards?.rareSupply ?? 0) + (c.cards?.legendarySupply ?? 0);
+      console.log(`      - ${c.xHandle} (${total} total supply)`);
+    }
+  }
+
+  // Check if sale_history has creator_handle values not in seed (potential mapping issues)
+  const unknownCreators = [...saleHandles].filter(h => !seedHandleSet.has(h));
+  if (unknownCreators.length > 0) {
+    console.log(`  WARNING: ${unknownCreators.length} creators in sales NOT in seed JSON:`);
+    for (const h of unknownCreators.slice(0, 10)) {
+      const count = (db.prepare('SELECT COUNT(*) as c FROM sale_history WHERE creator_handle = ?').get(h) as any).c;
+      console.log(`      - ${h} (${count} sales)`);
+    }
+  }
+
   console.log('═'.repeat(72) + '\n');
 }
 
