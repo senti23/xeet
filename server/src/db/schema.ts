@@ -67,6 +67,26 @@ export function createTables(db: Database.Database): void {
     CREATE UNIQUE INDEX IF NOT EXISTS idx_sale_dedup ON sale_history(marketplace, token_id, sold_at, price);
     CREATE INDEX IF NOT EXISTS idx_sale_creator ON sale_history(creator_handle, rarity, sold_at);
     CREATE INDEX IF NOT EXISTS idx_sale_token ON sale_history(token_id, sold_at);
+
+    -- Current NFT holders (reconstructed from on-chain transfer events)
+    CREATE TABLE IF NOT EXISTS card_holders (
+      wallet_address TEXT NOT NULL,
+      token_id TEXT NOT NULL,
+      quantity INTEGER NOT NULL DEFAULT 1,
+      creator_handle TEXT NOT NULL,
+      rarity TEXT NOT NULL CHECK(rarity IN ('common','rare','legendary')),
+      last_updated TEXT NOT NULL DEFAULT (datetime('now')),
+      PRIMARY KEY (wallet_address, token_id)
+    );
+    CREATE INDEX IF NOT EXISTS idx_holders_wallet ON card_holders(wallet_address);
+    CREATE INDEX IF NOT EXISTS idx_holders_token ON card_holders(token_id);
+    CREATE INDEX IF NOT EXISTS idx_holders_creator ON card_holders(creator_handle, rarity);
+
+    -- Holder sync metadata (tracks last synced block, backfill progress)
+    CREATE TABLE IF NOT EXISTS holder_sync_meta (
+      key TEXT PRIMARY KEY,
+      value TEXT NOT NULL
+    );
   `);
 }
 
@@ -104,6 +124,19 @@ export interface PreparedStatements {
   getSalesByToken: Database.Statement;
   getSalesByCreatorRarity: Database.Statement;
   getLatestSaleTimestamp: Database.Statement;
+
+  // Card holders
+  upsertHolder: Database.Statement;
+  deleteHoldersByToken: Database.Statement;
+  deleteAllHolders: Database.Statement;
+  getHoldersByWallet: Database.Statement;
+  getHoldersByToken: Database.Statement;
+  getTopWallets: Database.Statement;
+  getHolderCount: Database.Statement;
+
+  // Holder sync meta
+  upsertSyncMeta: Database.Statement;
+  getSyncMeta: Database.Statement;
 }
 
 export function prepareStatements(db: Database.Database): PreparedStatements {
@@ -194,5 +227,42 @@ export function prepareStatements(db: Database.Database): PreparedStatements {
     getLatestSaleTimestamp: db.prepare(
       'SELECT MAX(sold_at) as latest FROM sale_history WHERE marketplace = ?',
     ),
+
+    // Card holders
+    upsertHolder: db.prepare(`
+      INSERT INTO card_holders (wallet_address, token_id, quantity, creator_handle, rarity, last_updated)
+      VALUES (?, ?, ?, ?, ?, datetime('now'))
+      ON CONFLICT(wallet_address, token_id) DO UPDATE SET
+        quantity = excluded.quantity,
+        last_updated = datetime('now')
+    `),
+    deleteHoldersByToken: db.prepare('DELETE FROM card_holders WHERE token_id = ?'),
+    deleteAllHolders: db.prepare('DELETE FROM card_holders'),
+    getHoldersByWallet: db.prepare(
+      'SELECT * FROM card_holders WHERE wallet_address = ? ORDER BY creator_handle, rarity',
+    ),
+    getHoldersByToken: db.prepare(
+      'SELECT * FROM card_holders WHERE token_id = ? ORDER BY quantity DESC',
+    ),
+    getTopWallets: db.prepare(`
+      SELECT wallet_address,
+        COUNT(DISTINCT token_id) as unique_cards,
+        SUM(quantity) as total_cards,
+        COUNT(DISTINCT creator_handle) as unique_creators
+      FROM card_holders
+      GROUP BY wallet_address
+      ORDER BY unique_creators DESC, total_cards DESC
+      LIMIT ?
+    `),
+    getHolderCount: db.prepare(
+      'SELECT COUNT(DISTINCT wallet_address) as count FROM card_holders',
+    ),
+
+    // Holder sync meta
+    upsertSyncMeta: db.prepare(`
+      INSERT INTO holder_sync_meta (key, value) VALUES (?, ?)
+      ON CONFLICT(key) DO UPDATE SET value = excluded.value
+    `),
+    getSyncMeta: db.prepare('SELECT value FROM holder_sync_meta WHERE key = ?'),
   };
 }

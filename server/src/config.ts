@@ -58,9 +58,19 @@ export const config = {
     mvcBaseUrl: 'https://xeet.mvc-web.xyz',
   },
 
+  abscan: {
+    apiKey: optional('ABSCAN_API_KEY', ''),
+    baseUrl: 'https://api.abscan.org/api',
+  },
+
+  alchemy: {
+    apiKey: optional('ALCHEMY_API_KEY', ''),
+  },
+
   pipeline: {
     intervalMs: 60_000,
     priceRefreshMs: 300_000,
+    holderRefreshMs: 600_000,
   },
 
   creatorsJsonPath: envPath

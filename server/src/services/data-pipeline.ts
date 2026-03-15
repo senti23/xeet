@@ -5,6 +5,7 @@ import * as xeetClient from './xeet-client.js';
 import * as osClient from './opensea-client.js';
 import { getCreatorRarity, getAllCreators, getTokenIds, type Rarity } from './token-map.js';
 import { fetchEthUsdRate, ethToUsd, getEthUsdRate } from './price-service.js';
+import { backfillHolders, refreshHolders } from './holder-service.js';
 
 const log = childLogger('data-pipeline');
 
@@ -379,9 +380,22 @@ export async function startPipeline(): Promise<void> {
   backfillXeetSalesHistory().catch((err) => log.error({ err }, 'Xeet backfill error'));
   backfillOpenSeaSalesHistory().catch((err) => log.error({ err }, 'OpenSea backfill error'));
 
-  // Schedule subsequent cycles
+  // Kick off holder backfill if Abscan API key is configured
+  if (config.abscan.apiKey) {
+    backfillHolders().catch((err) => log.error({ err }, 'Holder backfill error'));
+  }
+
+  // Schedule subsequent cycles (including periodic holder refresh)
+  let lastHolderRefresh = Date.now();
   intervalId = setInterval(() => {
     runCycle().catch((err) => log.error({ err }, 'Pipeline interval error'));
+
+    // Holder refresh on a slower cadence
+    const now = Date.now();
+    if (config.abscan.apiKey && now - lastHolderRefresh > config.pipeline.holderRefreshMs) {
+      lastHolderRefresh = now;
+      refreshHolders().catch((err) => log.error({ err }, 'Holder refresh error'));
+    }
   }, config.pipeline.intervalMs);
 }
 

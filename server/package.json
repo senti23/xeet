@@ -13,7 +13,8 @@
     "probe": "tsx ../tests/api-probe.test.ts",
     "verify": "tsx scripts/verify-dataset.ts",
     "verify:backfill": "tsx scripts/verify-backfill.ts",
-    "spot-check": "tsx scripts/spot-check.ts"
+    "spot-check": "tsx scripts/spot-check.ts",
+    "test:holders": "tsx scripts/test-holder-apis.ts"
   },
   "dependencies": {
     "@fastify/cors": "^11.0.0",
