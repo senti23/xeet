@@ -378,7 +378,9 @@ export async function startPipeline(): Promise<void> {
     .then(() => {
       // Kick off holder backfill FIRST (fast — single Abscan call)
       if (config.abscan.apiKey) {
-        backfillHolders().catch((err) => log.error({ err }, 'Holder backfill error'));
+        backfillHolders()
+          .then((r) => log.info({ transfers: r.transfers, uniqueHolders: r.uniqueHolders, uniqueTokens: r.uniqueTokens, highestBlock: r.highestBlock }, 'Holder backfill complete'))
+          .catch((err) => log.error({ err }, 'Holder backfill error'));
       }
 
       // Kick off sales history backfills (slow — per-token fetches, run in parallel)
@@ -396,7 +398,9 @@ export async function startPipeline(): Promise<void> {
     const now = Date.now();
     if (config.abscan.apiKey && now - lastHolderRefresh > config.pipeline.holderRefreshMs) {
       lastHolderRefresh = now;
-      refreshHolders().catch((err) => log.error({ err }, 'Holder refresh error'));
+      refreshHolders()
+        .then((r) => log.info({ transfers: r.transfers, uniqueHolders: r.uniqueHolders, uniqueTokens: r.uniqueTokens, highestBlock: r.highestBlock }, 'Holder refresh complete'))
+        .catch((err) => log.error({ err }, 'Holder refresh error'));
     }
   }, config.pipeline.intervalMs);
 }
