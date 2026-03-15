@@ -73,27 +73,35 @@ async function abscanFetch<T>(params: Record<string, string>, label: string): Pr
  */
 export async function getERC1155Transfers(startBlock = 0): Promise<ERC1155Transfer[]> {
   const allTransfers: ERC1155Transfer[] = [];
-  const PAGE_SIZE = 1000;
+  const PAGE_SIZE = 10000; // max allowed by API (page * offset <= 10000)
+  let currentStartBlock = startBlock;
 
-  for (let page = 1; ; page++) {
+  for (let batch = 1; ; batch++) {
     const transfers = await abscanFetch<ERC1155Transfer[]>(
       {
         module: 'account',
         action: 'token1155tx',
         contractaddress: CONTRACT,
-        startblock: String(startBlock),
+        startblock: String(currentStartBlock),
         endblock: '99999999',
-        page: String(page),
+        page: '1',
         offset: String(PAGE_SIZE),
         sort: 'asc',
       },
-      `abscan-1155tx-page-${page}`,
+      `abscan-1155tx-batch-${batch}`,
     );
 
     if (!transfers || transfers.length === 0) break;
     allTransfers.push(...transfers);
-    log.info({ page, fetched: transfers.length, total: allTransfers.length }, 'ERC-1155 transfers fetched');
-    if (transfers.length < PAGE_SIZE) break; // last page
+
+    // Advance startBlock to last seen block for next batch
+    const lastBlock = parseInt(transfers[transfers.length - 1].blockNumber, 10);
+    log.info({ batch, fetched: transfers.length, total: allTransfers.length, lastBlock }, 'ERC-1155 transfers fetched');
+
+    if (transfers.length < PAGE_SIZE) break; // got everything
+
+    // Move past last block to avoid duplicates at boundary
+    currentStartBlock = lastBlock + 1;
   }
 
   return allTransfers;
