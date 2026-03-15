@@ -121,16 +121,12 @@ async function runCycle(): Promise<void> {
       const timestamp = normalizeTimestamp(evt.timestamp ?? '');
       if (!tokenId || !price || !timestamp) { xeetSalesSkipped++; continue; }
 
-      // Resolve creator+rarity from token map
-      let cr = evt.creatorHandle || evt.creatorId;
-      let rarity = (evt.rarity ?? '').toLowerCase();
-      if ((!cr || !rarity) && tokenId) {
-        const mapping = getCreatorRarity(tokenId);
-        if (mapping) {
-          cr = cr || mapping.handle;
-          rarity = rarity || mapping.rarity;
-        }
-      }
+      // Resolve creator+rarity — prefer token_map (canonical) over API fields
+      // to avoid handle inconsistencies (e.g. API returns "Scotty_NFT" but
+      // token_map has "scotty", fragmenting sales across different handles)
+      const mapping = tokenId ? getCreatorRarity(tokenId) : null;
+      let cr = mapping?.handle || evt.creatorHandle || evt.creatorId;
+      let rarity = mapping?.rarity || (evt.rarity ?? '').toLowerCase();
       if (!cr || !rarity) { xeetSalesSkipped++; continue; }
 
       try {

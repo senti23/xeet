@@ -76,12 +76,10 @@ async function collectCycle(): Promise<CycleStats> {
     const timestamp = normalizeTimestamp(evt.timestamp ?? '');
     if (!tokenId || !price || !timestamp) continue;
 
-    let cr = evt.creatorHandle || evt.creatorId;
-    let rarity = (evt.rarity ?? '').toLowerCase();
-    if ((!cr || !rarity) && tokenId) {
-      const mapping = getCreatorRarity(tokenId);
-      if (mapping) { cr = cr || mapping.handle; rarity = rarity || mapping.rarity; }
-    }
+    // Prefer token_map (canonical) over API fields to avoid handle inconsistencies
+    const mapping = tokenId ? getCreatorRarity(tokenId) : null;
+    let cr = mapping?.handle || evt.creatorHandle || evt.creatorId;
+    let rarity = mapping?.rarity || (evt.rarity ?? '').toLowerCase();
     if (!cr || !rarity) continue;
 
     try {
