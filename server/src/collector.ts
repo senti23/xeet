@@ -89,7 +89,9 @@ async function collectCycle(): Promise<CycleStats> {
         null, null, timestamp,
       );
       xeetSalesNew++;
-    } catch { /* duplicate */ }
+    } catch (err) {
+      log.debug({ err, tokenId, cr, rarity }, 'Xeet sale insert failed');
+    }
   }
 
   // Persist OpenSea sales
@@ -115,7 +117,9 @@ async function collectCycle(): Promise<CycleStats> {
         evt.order_hash ?? null, evt.transaction ?? null, soldAt,
       );
       osSalesNew++;
-    } catch { /* duplicate */ }
+    } catch (err) {
+      log.debug({ err, tokenId: tokenId }, 'OpenSea sale insert failed');
+    }
   }
 
   const elapsed = Date.now() - start;
@@ -156,6 +160,7 @@ async function backfill(): Promise<void> {
 
   let xeetFetched = 0, xeetNew = 0, xeetSkipped = 0, xeetErrors = 0;
   let osFetched = 0, osNew = 0, osSkipped = 0, osErrors = 0;
+  let xeetInsertErrors = 0, osInsertErrors = 0;
 
   for (const { tokenId, handle, rarity } of tokenIds) {
     // Xeet backfill
@@ -167,16 +172,23 @@ async function backfill(): Promise<void> {
         const timestamp = evt.timestamp ?? '';
         if (!price || !timestamp) continue;
         try {
-          stmts.upsertSale.run(
+          const result = stmts.upsertSale.run(
             'xeet', tokenId, handle.toLowerCase(), rarity, price, 'XEETS', null,
             evt.sellerHandle ?? null, evt.buyerHandle ?? null,
             null, null, timestamp,
           );
-          xeetNew++;
-        } catch { /* duplicate */ }
+          if (result.changes > 0) xeetNew++;
+          else xeetSkipped++;
+        } catch (err) {
+          xeetInsertErrors++;
+          if (xeetInsertErrors <= 5) {
+            log.error({ err, tokenId, handle, rarity, price, timestamp }, 'Xeet sale insert error');
+          }
+        }
       }
-    } catch {
+    } catch (err) {
       xeetErrors++;
+      if (xeetErrors <= 3) log.error({ err, tokenId }, 'Xeet backfill fetch error');
     }
 
     // OpenSea backfill
@@ -192,17 +204,24 @@ async function backfill(): Promise<void> {
           soldAt = new Date(tsNum * 1000).toISOString();
         }
         try {
-          stmts.upsertSale.run(
+          const result = stmts.upsertSale.run(
             'opensea', tokenId, handle.toLowerCase(), rarity, price,
             evt.payment?.symbol ?? 'ETH', null,
             evt.seller ?? null, evt.buyer ?? null,
             evt.order_hash ?? null, evt.transaction ?? null, soldAt,
           );
-          osNew++;
-        } catch { /* duplicate */ }
+          if (result.changes > 0) osNew++;
+          else osSkipped++;
+        } catch (err) {
+          osInsertErrors++;
+          if (osInsertErrors <= 5) {
+            log.error({ err, tokenId, handle, rarity, price, soldAt }, 'OpenSea sale insert error');
+          }
+        }
       }
-    } catch {
+    } catch (err) {
       osErrors++;
+      if (osErrors <= 3) log.error({ err, tokenId }, 'OpenSea backfill fetch error');
     }
 
     // Progress log every 50 tokens
@@ -210,16 +229,22 @@ async function backfill(): Promise<void> {
     if (total % 50 === 0 && total > 0) {
       log.info({
         progress: `${total}/${tokenIds.length}`,
-        xeet: { fetched: xeetFetched, new: xeetNew, skipped: xeetSkipped, errors: xeetErrors },
-        opensea: { fetched: osFetched, new: osNew, skipped: osSkipped, errors: osErrors },
+        xeet: { fetched: xeetFetched, new: xeetNew, skipped: xeetSkipped, errors: xeetErrors, insertErrors: xeetInsertErrors },
+        opensea: { fetched: osFetched, new: osNew, skipped: osSkipped, errors: osErrors, insertErrors: osInsertErrors },
       }, 'Backfill progress');
     }
   }
 
   log.info({
-    xeet: { fetched: xeetFetched, new: xeetNew, skipped: xeetSkipped, errors: xeetErrors },
-    opensea: { fetched: osFetched, new: osNew, skipped: osSkipped, errors: osErrors },
+    xeet: { fetched: xeetFetched, new: xeetNew, skipped: xeetSkipped, errors: xeetErrors, insertErrors: xeetInsertErrors },
+    opensea: { fetched: osFetched, new: osNew, skipped: osSkipped, errors: osErrors, insertErrors: osInsertErrors },
   }, 'Full historical backfill complete');
+
+  // Verify writes hit the database
+  const db = getDb();
+  const dbSales = (db.prepare('SELECT COUNT(*) as c FROM sale_history').get() as any).c;
+  const dbTokens = (db.prepare('SELECT COUNT(*) as c FROM token_map').get() as any).c;
+  log.info({ dbSales, dbTokens }, 'Post-backfill DB verification');
 }
 
 /**
@@ -257,11 +282,23 @@ async function main(): Promise<void> {
   log.info('Database ready');
 
   await initTokenMap();
-  log.info('Token map initialized');
+  const allCreatorsMap = getAllCreators();
+  const sampleIds = allCreatorsMap.size > 0
+    ? getTokenIds([...allCreatorsMap.values()][0].handle, [...allCreatorsMap.values()][0].rarities[0] ?? 'common')
+    : [];
+  log.info({
+    creators: allCreatorsMap.size,
+    sampleCreator: allCreatorsMap.size > 0 ? [...allCreatorsMap.values()][0].handle : 'none',
+    sampleTokenIds: sampleIds.length,
+    sampleFirstId: sampleIds[0] ?? 'none',
+  }, 'Token map initialized — diagnostic');
 
   // Full backfill if requested
   if (doBackfill) {
     await backfill();
+    printSummary();
+    log.info('Backfill complete, exiting. Run `npm run verify` for detailed analysis.');
+    process.exit(0);
   }
 
   // Run first cycle
