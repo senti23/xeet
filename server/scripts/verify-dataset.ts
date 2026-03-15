@@ -208,6 +208,21 @@ if (mode === 'both') {
   console.log('═'.repeat(72));
 }
 
+// ── Unique wallets holding ≥1 card ──
+{
+  const holderCount = (db.prepare('SELECT COUNT(DISTINCT wallet_address) as c FROM card_holders WHERE quantity > 0').get() as any).c;
+  const totalCards = (db.prepare('SELECT SUM(quantity) as c FROM card_holders WHERE quantity > 0').get() as any).c ?? 0;
+  const uniqueTokensHeld = (db.prepare('SELECT COUNT(DISTINCT token_id) as c FROM card_holders WHERE quantity > 0').get() as any).c;
+
+  console.log('\n' + '═'.repeat(72));
+  console.log('  HOLDER STATS');
+  console.log('═'.repeat(72));
+  console.log(`  Unique wallets holding ≥1 card:  ${holderCount}`);
+  console.log(`  Total cards held:                ${totalCards}`);
+  console.log(`  Unique token IDs held:           ${uniqueTokensHeld}`);
+  console.log('═'.repeat(72));
+}
+
 // ── Token map coverage diagnostic ──
 {
   // Load creator seed to compare
