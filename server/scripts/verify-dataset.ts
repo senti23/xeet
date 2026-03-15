@@ -116,6 +116,43 @@ if (mode === 'both' || mode === 'sales') {
   console.log('└────┴────────────────────┴───────────┴────────┴──────────┴──────────┘');
 }
 
+// ── Top 20 creators by combined Xeet volume (all rarities) ──
+if (mode === 'both' || mode === 'volume') {
+  const byCreatorVolume = db.prepare(`
+    SELECT
+      creator_handle,
+      COUNT(CASE WHEN marketplace = 'xeet' THEN 1 END) as xeet_sales,
+      ROUND(SUM(CASE WHEN marketplace = 'xeet' THEN price ELSE 0 END), 1) as xeet_volume,
+      COUNT(CASE WHEN marketplace = 'opensea' THEN 1 END) as os_sales,
+      ROUND(SUM(CASE WHEN marketplace = 'opensea' THEN price ELSE 0 END), 6) as os_volume_eth,
+      COUNT(*) as total_sales,
+      GROUP_CONCAT(DISTINCT rarity) as rarities
+    FROM sale_history
+    GROUP BY creator_handle
+    ORDER BY xeet_volume DESC
+    LIMIT 20
+  `).all() as any[];
+
+  console.log('\n┌──────────────────────────────────────────────────────────────────────────────┐');
+  console.log('│  TOP 20 CREATORS BY XEET VOLUME (ALL RARITIES COMBINED)                     │');
+  console.log('├────┬────────────────────┬──────────┬────────┬──────────┬────────┬────────────┤');
+  console.log('│  # │ Creator            │ Xeet Vol │ X.Sales│ ETH Vol  │OS.Sales│ Rarities   │');
+  console.log('├────┼────────────────────┼──────────┼────────┼──────────┼────────┼────────────┤');
+
+  byCreatorVolume.forEach((row: any, i: number) => {
+    const num = String(i + 1).padStart(2);
+    const creator = row.creator_handle.slice(0, 18).padEnd(18);
+    const xVol = String(row.xeet_volume).padStart(8);
+    const xSales = String(row.xeet_sales).padStart(6);
+    const eVol = String(row.os_volume_eth).padStart(8);
+    const oSales = String(row.os_sales).padStart(6);
+    const rarities = (row.rarities || '').slice(0, 10).padEnd(10);
+    console.log(`│ ${num} │ ${creator} │ ${xVol} │ ${xSales} │ ${eVol} │ ${oSales} │ ${rarities} │`);
+  });
+
+  console.log('└────┴────────────────────┴──────────┴────────┴──────────┴────────┴────────────┘');
+}
+
 // ── Marketplace breakdown ──
 if (mode === 'both') {
   const breakdown = db.prepare(`
