@@ -40,6 +40,7 @@ async function abscanFetch<T>(params: Record<string, string>, label: string): Pr
   return withRetry(
     async () => {
       const searchParams = new URLSearchParams({
+        chainid: config.abscan.chainId,
         ...params,
         apikey: config.abscan.apiKey,
       });

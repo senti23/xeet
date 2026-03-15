@@ -60,7 +60,8 @@ export const config = {
 
   abscan: {
     apiKey: optional('ABSCAN_API_KEY', ''),
-    baseUrl: 'https://api.abscan.org/api',
+    baseUrl: 'https://api.etherscan.io/v2/api',
+    chainId: '2741', // Abstract mainnet
   },
 
   alchemy: {
