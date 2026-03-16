@@ -4,13 +4,26 @@ set -euo pipefail
 PORT=3001
 BRANCH="claude/web3-data-pipeline-ISzWb"
 
-echo "=== 1. Merging $BRANCH into master ==="
-git checkout master
+# Detect default branch name (main or master)
+DEFAULT_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@' || echo "")
+if [ -z "$DEFAULT_BRANCH" ]; then
+  # Fallback: check which exists locally
+  if git show-ref --verify --quiet refs/heads/main; then
+    DEFAULT_BRANCH="main"
+  elif git show-ref --verify --quiet refs/heads/master; then
+    DEFAULT_BRANCH="master"
+  else
+    DEFAULT_BRANCH="main"
+  fi
+fi
+
+echo "=== 1. Merging $BRANCH into $DEFAULT_BRANCH ==="
+git checkout "$DEFAULT_BRANCH"
 git merge "$BRANCH" --no-edit
 echo ""
 
-echo "=== 2. Pulling latest from origin/main ==="
-git pull origin main --no-edit || echo "(no remote changes to pull)"
+echo "=== 2. Pulling latest from origin/$DEFAULT_BRANCH ==="
+git pull origin "$DEFAULT_BRANCH" --no-edit || echo "(no remote changes to pull)"
 echo ""
 
 echo "=== 3. Starting server ==="
