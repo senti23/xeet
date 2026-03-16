@@ -227,12 +227,20 @@ async function runCycle(): Promise<void> {
       const mapping = getCreatorRarity(tokenId);
       if (!mapping) continue;
       const price = Number(evt.payment?.quantity ?? 0) / Math.pow(10, evt.payment?.decimals ?? 18);
+
+      // Normalize timestamp: convert Unix seconds to ISO if needed (must match backfill format)
+      let soldAt = evt.event_timestamp;
+      const tsNum = Number(soldAt);
+      if (!isNaN(tsNum) && tsNum < 1e12) {
+        soldAt = new Date(tsNum * 1000).toISOString();
+      }
+
       try {
         stmts.upsertSale.run(
           'opensea', tokenId, mapping.handle.toLowerCase(), mapping.rarity, price,
           evt.payment?.symbol ?? 'ETH', null,
           evt.seller ?? null, evt.buyer ?? null,
-          evt.order_hash ?? null, evt.transaction ?? null, evt.event_timestamp,
+          evt.order_hash ?? null, evt.transaction ?? null, soldAt,
         );
         osSalesNew++;
       } catch {
@@ -512,6 +520,10 @@ export async function backfillXeetSalesHistory(): Promise<{ fetched: number; new
       fetched++;
 
       for (const evt of sales) {
+        // Only count SALE — LISTING_FILLED is a duplicate of the same transaction
+        const eventType = (evt.eventType ?? '').toUpperCase();
+        if (eventType && eventType !== 'SALE') continue;
+
         const price = evt.priceXeets ?? 0;
         const timestamp = evt.timestamp ?? '';
         if (!price || !timestamp) continue;

@@ -34,6 +34,32 @@ export function getDb(): Database.Database {
       log.info({ count: config.telegram.inviteCodes.length }, 'Invite codes seeded');
     }
 
+    // One-time cleanup: remove duplicate OpenSea sales caused by
+    // Unix vs ISO timestamp mismatch (e.g. "1772471387.0" vs "2026-03-01T...")
+    const dupeCleanup = db.prepare(`
+      DELETE FROM sale_history WHERE id IN (
+        SELECT id FROM sale_history
+        WHERE marketplace = 'opensea' AND sold_at GLOB '[0-9]*'
+      )
+    `);
+    const dupeResult = dupeCleanup.run();
+    if (dupeResult.changes > 0) {
+      log.info({ removed: dupeResult.changes }, 'Cleaned up OpenSea sales with raw Unix timestamps (duplicates)');
+      // Reset OS backfill so it re-fetches the cleaned rows with correct timestamps
+      db.prepare("DELETE FROM pipeline_meta WHERE key = 'os_backfill_complete'").run();
+    }
+
+    // One-time fix: reset Xeet backfill to re-run with LISTING_FILLED filter
+    // (previous backfill may have double-counted sales from LISTING_FILLED events)
+    const xeetFixApplied = db.prepare("SELECT value FROM pipeline_meta WHERE key = 'xeet_listing_filled_fix'").get() as { value: string } | undefined;
+    if (!xeetFixApplied) {
+      db.prepare("DELETE FROM pipeline_meta WHERE key = 'xeet_backfill_complete'").run();
+      // Clear all Xeet sales and let the backfill re-populate cleanly
+      const cleared = db.prepare("DELETE FROM sale_history WHERE marketplace = 'xeet'").run();
+      db.prepare("INSERT OR REPLACE INTO pipeline_meta (key, value, updated_at) VALUES ('xeet_listing_filled_fix', 'true', datetime('now'))").run();
+      log.info({ cleared: cleared.changes }, 'Cleared Xeet sales for clean re-backfill (LISTING_FILLED fix)');
+    }
+
     log.info({ path: DB_PATH }, 'Database initialized');
   }
   return db;
