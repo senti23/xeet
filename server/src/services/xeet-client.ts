@@ -94,8 +94,9 @@ async function xeetFetch<T>(path: string, label: string): Promise<T | null> {
 export async function getActiveListings(): Promise<XeetListing[]> {
   const allItems: XeetListing[] = [];
   const pageSize = 250;
+  const MAX_PAGES = 50;
 
-  for (let page = 0; ; page++) {
+  for (let page = 0; page < MAX_PAGES; page++) {
     const offset = page * pageSize;
     const data = await xeetFetch<XeetApiResponse | XeetListingsResponse | XeetListing[]>(
       `/api/marketplace/discovery/items?status=ACTIVE&sortBy=price_asc&limit=${pageSize}&offset=${offset}`,
@@ -141,8 +142,9 @@ export async function getActiveListings(): Promise<XeetListing[]> {
 export async function getActivity(): Promise<XeetActivityEvent[]> {
   const allEvents: XeetActivityEvent[] = [];
   const pageSize = 250;
+  const MAX_PAGES = 50;
 
-  for (let page = 0; ; page++) {
+  for (let page = 0; page < MAX_PAGES; page++) {
     const offset = page * pageSize;
     const data = await xeetFetch<any>(
       `/api/marketplace/discovery/activity?eventType=SALE&limit=${pageSize}&offset=${offset}`,
@@ -193,8 +195,9 @@ export async function getActivity(): Promise<XeetActivityEvent[]> {
 export async function getCardSalesHistory(tokenId: string): Promise<XeetActivityEvent[]> {
   const allEvents: XeetActivityEvent[] = [];
   const pageSize = 100;
+  const MAX_PAGES = 50;
 
-  for (let page = 0; ; page++) {
+  for (let page = 0; page < MAX_PAGES; page++) {
     const offset = page * pageSize;
     const data = await xeetFetch<any>(
       `/api/marketplace/discovery/activity?tokenType=CARD&tokenId=${tokenId}&limit=${pageSize}&offset=${offset}&eventType=SALE`,

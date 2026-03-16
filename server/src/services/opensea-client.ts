@@ -131,8 +131,9 @@ export interface OpenSeaCollectionStats {
 export async function getAllListings(): Promise<OpenSeaOrder[]> {
   const allListings: OpenSeaOrder[] = [];
   let cursor: string | undefined;
+  const MAX_PAGES = 50;
 
-  for (let page = 0; ; page++) {
+  for (let page = 0; page < MAX_PAGES; page++) {
     const params = new URLSearchParams({ limit: '100' });
     if (cursor) params.set('next', cursor);
 
@@ -154,8 +155,9 @@ export async function getAllListings(): Promise<OpenSeaOrder[]> {
 export async function getAllOffers(): Promise<OpenSeaOrder[]> {
   const allOffers: OpenSeaOrder[] = [];
   let cursor: string | undefined;
+  const MAX_PAGES = 50;
 
-  for (let page = 0; ; page++) {
+  for (let page = 0; page < MAX_PAGES; page++) {
     const params = new URLSearchParams({ limit: '100' });
     if (cursor) params.set('next', cursor);
 
@@ -174,13 +176,15 @@ export async function getAllOffers(): Promise<OpenSeaOrder[]> {
   return allOffers;
 }
 
-export async function getSaleEvents(): Promise<OpenSeaSaleEvent[]> {
+export async function getSaleEvents(opts?: { after?: string }): Promise<OpenSeaSaleEvent[]> {
   const allEvents: OpenSeaSaleEvent[] = [];
   let cursor: string | undefined;
+  const MAX_PAGES = 50;
 
-  for (let page = 0; ; page++) {
+  for (let page = 0; page < MAX_PAGES; page++) {
     const params = new URLSearchParams({ event_type: 'sale', limit: '200' });
     if (cursor) params.set('next', cursor);
+    if (opts?.after) params.set('after', opts.after);
 
     const data = await osFetch<OpenSeaEventsResponse>(
       `/api/v2/events/collection/${SLUG}?${params}`,
@@ -193,7 +197,7 @@ export async function getSaleEvents(): Promise<OpenSeaSaleEvent[]> {
     cursor = data.next;
   }
 
-  log.info({ count: allEvents.length }, 'Fetched OpenSea sale events');
+  log.info({ count: allEvents.length, after: opts?.after ?? 'none' }, 'Fetched OpenSea sale events');
   return allEvents;
 }
 
@@ -207,8 +211,9 @@ export async function getCollectionStats(): Promise<OpenSeaCollectionStats | nul
 async function fetchNFTsFromEndpoint(urlPrefix: string, label: string): Promise<OpenSeaNFT[]> {
   const allNFTs: OpenSeaNFT[] = [];
   let cursor: string | undefined;
+  const MAX_PAGES = 50;
 
-  for (let page = 0; ; page++) {
+  for (let page = 0; page < MAX_PAGES; page++) {
     const params = new URLSearchParams({ limit: '200' });
     if (cursor) params.set('next', cursor);
 
@@ -269,8 +274,9 @@ export async function getAllNFTs(): Promise<OpenSeaNFT[]> {
 export async function getTokenSaleEvents(tokenId: string): Promise<OpenSeaSaleEvent[]> {
   const allEvents: OpenSeaSaleEvent[] = [];
   let cursor: string | undefined;
+  const MAX_PAGES = 50;
 
-  for (let page = 0; ; page++) {
+  for (let page = 0; page < MAX_PAGES; page++) {
     const params = new URLSearchParams({ event_type: 'sale', limit: '50' });
     if (cursor) params.set('next', cursor);
 

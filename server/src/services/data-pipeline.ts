@@ -85,10 +85,15 @@ async function runCycle(): Promise<void> {
         log.error({ err: e }, 'OpenSea offers fetch failed');
         return [] as osClient.OpenSeaOrder[];
       }),
-      osClient.getSaleEvents().catch((e) => {
-        log.error({ err: e }, 'OpenSea sale events fetch failed');
-        return [] as osClient.OpenSeaSaleEvent[];
-      }),
+      (async () => {
+        // Fetch only events newer than our latest persisted sale
+        const latestRow = getStmts().getLatestSaleTimestamp.get('opensea') as { latest: string | null } | undefined;
+        const after = latestRow?.latest ?? undefined;
+        return osClient.getSaleEvents({ after }).catch((e) => {
+          log.error({ err: e }, 'OpenSea sale events fetch failed');
+          return [] as osClient.OpenSeaSaleEvent[];
+        });
+      })(),
     ]);
 
     // Refresh ETH/USD rate
@@ -380,9 +385,10 @@ export async function startPipeline(): Promise<void> {
           .catch((err) => log.error({ err }, 'Holder backfill error'));
       }
 
-      // Kick off sales history backfills (slow — per-token fetches, run in parallel)
-      backfillXeetSalesHistory().catch((err) => log.error({ err }, 'Xeet backfill error'));
-      backfillOpenSeaSalesHistory().catch((err) => log.error({ err }, 'OpenSea backfill error'));
+      // Kick off sales history backfills sequentially to avoid rate-limit pressure
+      backfillXeetSalesHistory()
+        .then(() => backfillOpenSeaSalesHistory())
+        .catch((err) => log.error({ err }, 'Sales backfill error'));
     })
     .catch((err) => log.error({ err }, 'First pipeline cycle error'));
 
@@ -466,9 +472,14 @@ export async function backfillXeetSalesHistory(): Promise<{ fetched: number; new
     return { fetched: 0, newSales: 0, skipped: 0, errors: 0 };
   }
 
-  // NOTE: We always run backfill — INSERT OR IGNORE handles dedup.
-  // Previous skip logic (if >100 sales exist) caused missed historical sales
-  // for cards whose data wasn't captured on the first run.
+  // Check if backfill already completed (persisted in SQLite)
+  const meta = getStmts().getPipelineMeta.get('xeet_backfill_complete') as { value: string } | undefined;
+  if (meta?.value === 'true') {
+    log.info('Xeet backfill already completed (persisted), skipping');
+    backfillComplete = true;
+    xeetBackfillStatus.complete = true;
+    return { fetched: 0, newSales: 0, skipped: 0, errors: 0 };
+  }
 
   backfillRunning = true;
   xeetBackfillStatus.running = true;
@@ -550,6 +561,10 @@ export async function backfillXeetSalesHistory(): Promise<{ fetched: number; new
   backfillRunning = false;
   xeetBackfillStatus.running = false;
   xeetBackfillStatus.complete = true;
+
+  // Persist completion to SQLite so we skip on next restart
+  getStmts().upsertPipelineMeta.run('xeet_backfill_complete', 'true');
+
   log.info({
     fetched, newSales, skipped, errors,
     creatorsWithSales: xeetBackfillStatus.creatorsWithSales,
@@ -576,8 +591,14 @@ export async function backfillOpenSeaSalesHistory(): Promise<{ fetched: number; 
     return { fetched: 0, newSales: 0, skipped: 0, errors: 0 };
   }
 
-  // NOTE: We always run backfill — INSERT OR IGNORE handles dedup.
-  // Previous skip logic caused missed historical sales.
+  // Check if backfill already completed (persisted in SQLite)
+  const meta = getStmts().getPipelineMeta.get('os_backfill_complete') as { value: string } | undefined;
+  if (meta?.value === 'true') {
+    log.info('OpenSea backfill already completed (persisted), skipping');
+    osBackfillComplete = true;
+    osBackfillStatus.complete = true;
+    return { fetched: 0, newSales: 0, skipped: 0, errors: 0 };
+  }
 
   osBackfillRunning = true;
   osBackfillStatus.running = true;
@@ -663,6 +684,10 @@ export async function backfillOpenSeaSalesHistory(): Promise<{ fetched: number; 
   osBackfillRunning = false;
   osBackfillStatus.running = false;
   osBackfillStatus.complete = true;
+
+  // Persist completion to SQLite so we skip on next restart
+  getStmts().upsertPipelineMeta.run('os_backfill_complete', 'true');
+
   log.info({
     fetched, newSales, skipped, errors,
     creatorsWithSales: osBackfillStatus.creatorsWithSales,

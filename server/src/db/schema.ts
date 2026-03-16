@@ -87,6 +87,13 @@ export function createTables(db: Database.Database): void {
       key TEXT PRIMARY KEY,
       value TEXT NOT NULL
     );
+
+    -- Pipeline metadata (tracks backfill completion, cursors, etc.)
+    CREATE TABLE IF NOT EXISTS pipeline_meta (
+      key TEXT PRIMARY KEY,
+      value TEXT NOT NULL,
+      updated_at TEXT NOT NULL DEFAULT (datetime('now'))
+    );
   `);
 }
 
@@ -137,6 +144,10 @@ export interface PreparedStatements {
   // Holder sync meta
   upsertSyncMeta: Database.Statement;
   getSyncMeta: Database.Statement;
+
+  // Pipeline meta
+  upsertPipelineMeta: Database.Statement;
+  getPipelineMeta: Database.Statement;
 }
 
 export function prepareStatements(db: Database.Database): PreparedStatements {
@@ -264,5 +275,12 @@ export function prepareStatements(db: Database.Database): PreparedStatements {
       ON CONFLICT(key) DO UPDATE SET value = excluded.value
     `),
     getSyncMeta: db.prepare('SELECT value FROM holder_sync_meta WHERE key = ?'),
+
+    // Pipeline meta
+    upsertPipelineMeta: db.prepare(`
+      INSERT INTO pipeline_meta (key, value, updated_at) VALUES (?, ?, datetime('now'))
+      ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = datetime('now')
+    `),
+    getPipelineMeta: db.prepare('SELECT value FROM pipeline_meta WHERE key = ?'),
   };
 }
