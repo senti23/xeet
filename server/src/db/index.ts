@@ -51,13 +51,13 @@ export function getDb(): Database.Database {
 
     // One-time fix v2: reset Xeet backfill to re-run with LISTING_FILLED filter
     // (previous backfill may have double-counted sales from LISTING_FILLED events)
-    const xeetFixApplied = db.prepare("SELECT value FROM pipeline_meta WHERE key = 'xeet_listing_filled_fix_v2'").get() as { value: string } | undefined;
+    const xeetFixApplied = db.prepare("SELECT value FROM pipeline_meta WHERE key = 'xeet_listing_filled_fix_v3'").get() as { value: string } | undefined;
     if (!xeetFixApplied) {
-      // Clear all Xeet sales and both backfill flags so it re-runs from scratch
+      // Clear all Xeet sales and backfill flag so it re-runs with strict SALE-only filter
       const cleared = db.prepare("DELETE FROM sale_history WHERE marketplace = 'xeet'").run();
       db.prepare("DELETE FROM pipeline_meta WHERE key = 'xeet_backfill_complete'").run();
-      db.prepare("INSERT OR REPLACE INTO pipeline_meta (key, value, updated_at) VALUES ('xeet_listing_filled_fix_v2', 'true', datetime('now'))").run();
-      log.info({ cleared: cleared.changes }, 'Cleared Xeet sales for clean re-backfill (LISTING_FILLED fix v2)');
+      db.prepare("INSERT OR REPLACE INTO pipeline_meta (key, value, updated_at) VALUES ('xeet_listing_filled_fix_v3', 'true', datetime('now'))").run();
+      log.info({ cleared: cleared.changes }, 'Cleared Xeet sales for clean re-backfill (strict SALE filter v3)');
     }
 
     log.info({ path: DB_PATH }, 'Database initialized');

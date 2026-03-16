@@ -520,9 +520,9 @@ export async function backfillXeetSalesHistory(): Promise<{ fetched: number; new
       fetched++;
 
       for (const evt of sales) {
-        // Only count SALE — LISTING_FILLED is a duplicate of the same transaction
+        // Only count SALE — LISTING_FILLED/LISTING etc are not actual sales
         const eventType = (evt.eventType ?? '').toUpperCase();
-        if (eventType && eventType !== 'SALE') continue;
+        if (eventType !== 'SALE') continue;
 
         const price = evt.priceXeets ?? 0;
         const timestamp = evt.timestamp ?? '';
