@@ -24,6 +24,7 @@ import { initTokenMap, getAllCreators, getTokenIds, getCreatorRarity, type Rarit
 import * as xeetClient from './services/xeet-client.js';
 import { normalizeTimestamp } from './services/xeet-client.js';
 import * as osClient from './services/opensea-client.js';
+import { syncXeetSales } from './services/onchain-sales.js';
 
 const log = childLogger('collector');
 
@@ -66,33 +67,13 @@ async function collectCycle(): Promise<CycleStats> {
     }),
   ]);
 
-  // Persist Xeet sales
-  for (const evt of xeetActivity) {
-    const eventType = (evt.eventType ?? '').toUpperCase();
-    if (eventType !== 'SALE') continue;
-
-    const tokenId = evt.tokenId;
-    const price = evt.priceXeets ?? 0;
-    const timestamp = normalizeTimestamp(evt.timestamp ?? '');
-    if (!tokenId || !price || !timestamp) continue;
-
-    // Prefer token_map (canonical) over API fields to avoid handle inconsistencies
-    const mapping = tokenId ? getCreatorRarity(tokenId) : null;
-    let cr = mapping?.handle || evt.creatorHandle || evt.creatorId;
-    let rarity = mapping?.rarity || (evt.rarity ?? '').toLowerCase();
-    if (!cr || !rarity) continue;
-
-    try {
-      stmts.upsertSale.run(
-        'xeet', tokenId, cr.toLowerCase(), rarity, price, 'XEETS', null,
-        evt.sellerHandle ?? null, evt.buyerHandle ?? null,
-        null, null, timestamp,
-      );
-      xeetSalesNew++;
-    } catch (err) {
-      log.debug({ err, tokenId, cr, rarity }, 'Xeet sale insert failed');
-    }
-  }
+  // Xeet sales are now captured via on-chain OrderExecuted logs (syncXeetSales)
+  // which provide tx_hash for proper dedup. Skip API-sourced inserts.
+  const xeetSyncResult = await syncXeetSales().catch((e) => {
+    log.error({ err: e }, 'Xeet on-chain sync failed');
+    return { xeetNew: 0, osNew: 0, inserted: 0 };
+  });
+  xeetSalesNew = xeetSyncResult.inserted;
 
   // Persist OpenSea sales
   for (const evt of osSaleEvents) {

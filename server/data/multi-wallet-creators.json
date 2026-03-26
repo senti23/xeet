@@ -1,0 +1,2382 @@
+{
+  "Carlitoswa_y": {
+    "primaryWallet": "0x6a3867484b29744c6d01b9040a0515711828deb0",
+    "additionalWallets": [
+      {
+        "address": "0xbafeb3df9bd9528b75f209e38ba1e621f34d92a7",
+        "source": "mvc-creator-holdings",
+        "cards": 27,
+        "uniqueCreators": 24,
+        "holdings": [
+          {
+            "creator": "xerocooleth",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "krpisoweb3",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "0xmelkoreth",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "fourvork",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "carlitoswa_y",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "depressivehacks",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "chesus",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "raidenkrn",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "yvohvn",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "depressivehacks",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "carl_m101",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "tictacmagic_",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "sinsonx",
+            "rarity": "legendary",
+            "quantity": 1
+          },
+          {
+            "creator": "bellerophontis2",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "zubic_eth",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "thegreatola",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "frenchiee",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "onchainmo",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "shivst3r",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "holly_web3",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "deebs_defi",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "0xasrequired",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "hannahhughes",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "bawsaxbt",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "ndidi_gram",
+            "rarity": "common",
+            "quantity": 1
+          }
+        ]
+      }
+    ],
+    "combinedCards": 114,
+    "combinedUniqueCreators": 107
+  },
+  "KierianV": {
+    "primaryWallet": "0xc6bf3e888abd1dd9dfccfde73524b8fb7e5e3d66",
+    "additionalWallets": [
+      {
+        "address": "0x5ccc2be7c8976b0ba340b504bd4908776e727094",
+        "source": "mvc-creator-holdings",
+        "cards": 91,
+        "uniqueCreators": 81,
+        "holdings": [
+          {
+            "creator": "quan_eth",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "timhaldorsson",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "greenytrades",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "defi_scribbler",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "molusol",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "cryptoejammin",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "0xamne",
+            "rarity": "legendary",
+            "quantity": 1
+          },
+          {
+            "creator": "tulipxbt",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "azflin",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "shotguncaio",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "guigsluke",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "hellobenwhite",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "0xsanixxx",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "zubic_eth",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "djdriverless",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "phintotten",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "raidenkrn",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "cryptowithkhan",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "coperto_xbt",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "chefgoose",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "elenionchain",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "thegreatola",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "zaimiri",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "buzzmalx",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "ouchrisnfts",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "smolgeeek",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "tictacmagic_",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "malayahmad",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "matdefies",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "ffvv1211",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "anytwocardzz",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "byshagrath_",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "crazino87",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "proofofely",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "what3verman",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "elminselimov5",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "pons_eth",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "smolpeach33",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "jackkk",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "flb_xyz",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "thecryptoprofes",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "thelearningpill",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "jowennft",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "potterplays1",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "deebs_defi",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "gemsscope",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "malayahmad",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "viiibe",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "maskjiro",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "imithrandir_",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "sanjaybuilds_",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "xeer",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "mookienft",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "andrewaskshow",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "shl_eth",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "ffvv1211",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "crypsaf",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "thekuchh",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "adriadri",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "mookienft",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "riddlernft",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "zera_chielo",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "jennn_sol",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "grafinkavi",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "nf_janner",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "edoweb3",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "morsyxbt",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "betmanjoe",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "oxtochi",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "ilodiwow",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "r2d2zen",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "rakermoon",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "naeven_",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "raidenkrn",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "hydraze420",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "jackkk",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "m00des",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "vohvohh",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "morsyxbt",
+            "rarity": "rare",
+            "quantity": 2
+          },
+          {
+            "creator": "justmeg",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "medusaonchain",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "r2d2zen",
+            "rarity": "legendary",
+            "quantity": 1
+          },
+          {
+            "creator": "loshmi",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "kierianv",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "medusaonchain",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "treeonchain",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "amit0xic",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "hydraze420",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "gyokeres_eth",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "0xxnathan",
+            "rarity": "legendary",
+            "quantity": 1
+          }
+        ]
+      }
+    ],
+    "combinedCards": 100,
+    "combinedUniqueCreators": 87
+  },
+  "Meta_ZET": {
+    "primaryWallet": "0xadb040f4f27ea941bccac56b763f577da2ed0311",
+    "additionalWallets": [
+      {
+        "address": "0x5886ec8a0d89c03a83d4aef7d7a8e78e7bd09048",
+        "source": "mvc-creator-holdings",
+        "cards": 46,
+        "uniqueCreators": 42,
+        "holdings": [
+          {
+            "creator": "0x_degenola",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "rakermoon",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "meta_zet",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "loshmi",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "crypto_zh0u",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "ndidi_gram",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "tdkimber",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "0xleegenz",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "carl_m101",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "lizmoneyweb",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "xeetdotai",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "jai0xcrypto",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "nftboi_",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "greenytrades",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "grafinkavi",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "gaspodewd",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "oodegen",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "ghostdotxyz",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "t_a_k_e_n_1",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "0xchainbob",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "greenknight_sol",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "solhustler",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "jefferycrypt",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "the_inksomnia",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "darkanft",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "j0xhen",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "0xrif0",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "threadoor",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "juliadziesinska",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "daco1008",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "henwyeth",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "ericclfung",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "iiamthatguyy",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "maskjiro",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "jonasoeth",
+            "rarity": "common",
+            "quantity": 3
+          },
+          {
+            "creator": "zhugelyang",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "kaitoxbt",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "y4ngo",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "hellobenwhite",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "gemsscope",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "thegaboeth",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "allenbaez126",
+            "rarity": "legendary",
+            "quantity": 1
+          }
+        ]
+      }
+    ],
+    "combinedCards": 129,
+    "combinedUniqueCreators": 98
+  },
+  "beijingdou": {
+    "primaryWallet": "0xaf469c4a0914938e6149cf621c54fb4b1ec0c202",
+    "additionalWallets": [
+      {
+        "address": "0x75091635eec47abbc268da3485ba335281068a4d",
+        "source": "mvc-creator-holdings",
+        "cards": 84,
+        "uniqueCreators": 75,
+        "holdings": [
+          {
+            "creator": "proofoftravis",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "molusol",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "shtihmas11",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "pixassohq",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "sinsonx",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "sinsonx",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "shannholmberg",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "vohvohh",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "adriadri",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "cryptousopp",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "djdriverless",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "dbiljonaire",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "meetaminx",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "what3verman",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "doc_noonoo",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "0xtama_",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "wydagoat",
+            "rarity": "legendary",
+            "quantity": 1
+          },
+          {
+            "creator": "littlebladed",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "love2ideate",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "itstymo",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "bearish_af",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "nftboi_",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "wilson_",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "dwdrummer_eth",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "jowennft",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "anidiot",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "merheb",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "0xrif0",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "ripchillpill",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "degenbro__",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "shwepps_",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "oglemur",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "shadow_nft15",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "theantacademy",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "jai0xcrypto",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "flyest",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "penguinweb3",
+            "rarity": "legendary",
+            "quantity": 1
+          },
+          {
+            "creator": "nadir_nfts",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "xerocooleth",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "rempo1",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "the_jujukey",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "defidarling",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "squiddynft",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "rakermoon",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "penguinweb3",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "uxgsol",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "smolgeeek",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "br4ted",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "0xchainbob",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "grafinkavi",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "shivst3r",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "yulikay",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "zera_chielo",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "ndidi_gram",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "thejasich",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "oglemur",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "byshagrath_",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "tulipxbt",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "zhugelyang",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "timhaldorsson",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "videhaldorsson",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "naeven_",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "casperonchain",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "xammiecrypt",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "greenknight_sol",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "mariannehere",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "toriribolla",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "zubic_eth",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "hellobenwhite",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "jampzey",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "parcifap",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "sk0rpeth",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "elminselimov5",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "hydraze420",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "thecryptoprofes",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "man_versus_coin",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "cryptowithkhan",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "beijingdou",
+            "rarity": "common",
+            "quantity": 3
+          }
+        ]
+      }
+    ],
+    "combinedCards": 96,
+    "combinedUniqueCreators": 83
+  },
+  "DjaniWhaleSkul": {
+    "primaryWallet": "0x1c95a44c2088d0398732c0b359d38d365200a437",
+    "additionalWallets": [
+      {
+        "address": "0xa94b438950aa6700ce782b75554477bf5c7a1ad4",
+        "source": "mvc-creator-holdings",
+        "cards": 241,
+        "uniqueCreators": 151,
+        "holdings": [
+          {
+            "creator": "r3birth",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "pukerrainbrow",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "anidiot",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "ripchillpill",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "alphawolfprmr",
+            "rarity": "common",
+            "quantity": 3
+          },
+          {
+            "creator": "n3xttt",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "mountalba",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "m00des",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "solfrater_sol",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "0xsanixxx",
+            "rarity": "common",
+            "quantity": 5
+          },
+          {
+            "creator": "0xtjustin",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "oxydo11",
+            "rarity": "common",
+            "quantity": 3
+          },
+          {
+            "creator": "jakeronthia_",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "chesus",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "donpudgy",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "danny7xeth",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "djaniwhaleskul",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "hankisinvesting",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "tolibear_",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "karuptkp",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "chrisjourdan",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "carlitoswa_y",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "crypto_zh0u",
+            "rarity": "common",
+            "quantity": 4
+          },
+          {
+            "creator": "0xamne",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "_craig_",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "sirjoey",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "bitrusxbt",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "escanordz100",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "shwepps_",
+            "rarity": "common",
+            "quantity": 3
+          },
+          {
+            "creator": "theantacademy",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "djaniwhaleskul",
+            "rarity": "common",
+            "quantity": 3
+          },
+          {
+            "creator": "camolnft",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "atnsxbt",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "thecryptoprofes",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "idedj",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "mrgreenity",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "coperto_xbt",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "magicmikeeditss",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "guigsluke",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "flb_xyz",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "jade_defi",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "hannahhughes",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "the_jujukey",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "scooter_420",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "wilson_",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "3lixbt",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "0xbellinili",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "bigzuko_",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "ericclfung",
+            "rarity": "common",
+            "quantity": 7
+          },
+          {
+            "creator": "ouchrisnfts",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "0xfs7",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "just_jibon",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "minhxdynasty",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "scottybmitch",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "themansion_eth",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "lostsnow_rin",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "azflin",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "0xasrequired",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "shannholmberg",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "666sixpaths",
+            "rarity": "common",
+            "quantity": 4
+          },
+          {
+            "creator": "yonann",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "heycape_",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "leiane1",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "hyperstrike",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "jennn_sol",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "gyokeres_eth",
+            "rarity": "common",
+            "quantity": 4
+          },
+          {
+            "creator": "katexbt",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "pawnie_",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "carl_m101",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "cartist00",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "poyoeb",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "0xkekov",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "ashleydcan",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "daspookyman",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "crypsaf",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "smolpeach33",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "crypto_bn",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "ndidi_gram",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "lucberkefeld",
+            "rarity": "rare",
+            "quantity": 2
+          },
+          {
+            "creator": "grafinkavi",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "gaspodewd",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "xammiecrypt",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "pgreyy",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "wydagoat",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "molusol",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "deviled_meggs_",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "potterplays1",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "0xchvd",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "sirceen",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "r2d2zen",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "0xtama_",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "laratherudeduck",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "bull_boiy",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "oglemur",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "moneyfet1sh",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "mayamaster",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "withesibe",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "nftboi_",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "jyp_nft",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "nxtlvl",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "riowgmi",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "thekuchh",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "quan_eth",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "levithefirst",
+            "rarity": "common",
+            "quantity": 4
+          },
+          {
+            "creator": "dreweth",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "kalkixweb3",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "doc_noonoo",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "ryannnsmit",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "ghostdotxyz",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "_yourbros",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "0x_degenola",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "davidonchainx",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "apurvajain24",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "n1ssue",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "bluewolfnfts",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "allenbaez126",
+            "rarity": "common",
+            "quantity": 3
+          },
+          {
+            "creator": "j0xhen",
+            "rarity": "common",
+            "quantity": 3
+          },
+          {
+            "creator": "dazzlercoin",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "adriadri",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "drewfromweb3",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "yatmuseum",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "sonika_kk",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "tuteth_",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "shivfreespirit",
+            "rarity": "rare",
+            "quantity": 2
+          },
+          {
+            "creator": "chrisjourdan",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "web3eliza",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "bearish_af",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "abstract_hzn",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "moneyfet1sh",
+            "rarity": "legendary",
+            "quantity": 1
+          },
+          {
+            "creator": "idmintthat",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "kaitoxbt",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "stake_mm",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "teacher96_katie",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "hyperstrike",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "icobeast",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "twenty3ry",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "lucberkefeld",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "bearish_af",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "fogonpc",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "whemohere",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "t_a_k_e_n_1",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "greenknight_sol",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "senzer",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "djdriverless",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "sanjaybuilds_",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "0xleegenz",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "grafinkavi",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "crazino87",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "alphabatcher",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "youfadedwealth",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "queenmoon1337",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "brave_raf",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "0xumutcan",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "chefgoose",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "shtihmas11",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "annienftt",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "ibrathedabra",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "maskjiro",
+            "rarity": "common",
+            "quantity": 1
+          }
+        ]
+      }
+    ],
+    "combinedCards": 355,
+    "combinedUniqueCreators": 207
+  },
+  "FogoNPC": {
+    "primaryWallet": "0x2bafc1e12704563e329cbfe8332695d72065ba19",
+    "additionalWallets": [
+      {
+        "address": "0xd26cedea416d39866ee8ca18b21c188dba75568f",
+        "source": "mvc-creator-holdings",
+        "cards": 68,
+        "uniqueCreators": 27,
+        "holdings": [
+          {
+            "creator": "oxtochi",
+            "rarity": "rare",
+            "quantity": 2
+          },
+          {
+            "creator": "deebs_defi",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "proofofely",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "proofofely",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "cryptowithkhan",
+            "rarity": "common",
+            "quantity": 4
+          },
+          {
+            "creator": "minhxdynasty",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "shotguncaio",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "xxcj78xx",
+            "rarity": "rare",
+            "quantity": 2
+          },
+          {
+            "creator": "chesus",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "cryptowithkhan",
+            "rarity": "rare",
+            "quantity": 2
+          },
+          {
+            "creator": "lizmoneyweb",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "greenytrades",
+            "rarity": "common",
+            "quantity": 3
+          },
+          {
+            "creator": "emilios_eth",
+            "rarity": "common",
+            "quantity": 5
+          },
+          {
+            "creator": "xeer",
+            "rarity": "rare",
+            "quantity": 2
+          },
+          {
+            "creator": "mariannehere",
+            "rarity": "common",
+            "quantity": 3
+          },
+          {
+            "creator": "emilios_eth",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "fogonpc",
+            "rarity": "rare",
+            "quantity": 2
+          },
+          {
+            "creator": "craigscoinpurse",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "fogonpc",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "br4ted",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "ashleydcan",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "timhaldorsson",
+            "rarity": "common",
+            "quantity": 4
+          },
+          {
+            "creator": "r3birth",
+            "rarity": "common",
+            "quantity": 3
+          },
+          {
+            "creator": "xxcj78xx",
+            "rarity": "common",
+            "quantity": 3
+          },
+          {
+            "creator": "beijingdou",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "bearish_af",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "minhxdynasty",
+            "rarity": "common",
+            "quantity": 4
+          },
+          {
+            "creator": "hydraze420",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "pukerrainbrow",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "chesus",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "oxtochi",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "cryptovondoom",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "jampzey",
+            "rarity": "rare",
+            "quantity": 2
+          },
+          {
+            "creator": "cryptovondoom",
+            "rarity": "legendary",
+            "quantity": 1
+          },
+          {
+            "creator": "crypsaf",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "hydraze420",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "tma_420",
+            "rarity": "rare",
+            "quantity": 1
+          }
+        ]
+      }
+    ],
+    "combinedCards": 73,
+    "combinedUniqueCreators": 32
+  },
+  "BetmanJoe": {
+    "primaryWallet": "0x352f8a0bd1f17e13980706ea4f11d1e6c9282c42",
+    "additionalWallets": [
+      {
+        "address": "0x0b365ca8316fa8cede73cb263a0f94d64f92f47a",
+        "source": "mvc-creator-holdings",
+        "cards": 28,
+        "uniqueCreators": 25,
+        "holdings": [
+          {
+            "creator": "swankyjohnx",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "0xxnathan",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "napoleecrypt",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "zacxbt",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "oodegen",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "nftriles",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "gyokeres_eth",
+            "rarity": "common",
+            "quantity": 2
+          },
+          {
+            "creator": "oxxyy13",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "lechriss17",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "xeer",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "jampzey",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "betmanjoe",
+            "rarity": "legendary",
+            "quantity": 1
+          },
+          {
+            "creator": "senti__23",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "cartist00",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "alphawolfprmr",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "tuteth_",
+            "rarity": "rare",
+            "quantity": 2
+          },
+          {
+            "creator": "kierianv",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "edoweb3",
+            "rarity": "rare",
+            "quantity": 2
+          },
+          {
+            "creator": "huseyin1tekin",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "aurelius_1988",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "parcifap",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "djaniwhaleskul",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "hydraze420",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "zaddyfi",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "shivst3r",
+            "rarity": "rare",
+            "quantity": 1
+          }
+        ]
+      }
+    ],
+    "combinedCards": 37,
+    "combinedUniqueCreators": 31
+  }
+}

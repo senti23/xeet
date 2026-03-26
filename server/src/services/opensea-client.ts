@@ -176,10 +176,10 @@ export async function getAllOffers(): Promise<OpenSeaOrder[]> {
   return allOffers;
 }
 
-export async function getSaleEvents(opts?: { after?: string }): Promise<OpenSeaSaleEvent[]> {
+export async function getSaleEvents(opts?: { after?: string; maxPages?: number }): Promise<OpenSeaSaleEvent[]> {
   const allEvents: OpenSeaSaleEvent[] = [];
   let cursor: string | undefined;
-  const MAX_PAGES = 50;
+  const MAX_PAGES = opts?.maxPages ?? 50;
 
   for (let page = 0; page < MAX_PAGES; page++) {
     const params = new URLSearchParams({ event_type: 'sale', limit: '200' });
@@ -344,10 +344,22 @@ export function isCollectionOffer(order: OpenSeaOrder): boolean {
 
 export function extractEthPrice(order: OpenSeaOrder): number {
   const price = order.price?.current;
-  if (!price) return 0;
-  const value = BigInt(price.value);
-  const decimals = price.decimals || 18;
-  return Number(value) / Math.pow(10, decimals);
+  if (price?.value) {
+    const value = BigInt(price.value);
+    const decimals = price.decimals || 18;
+    return Number(value) / Math.pow(10, decimals);
+  }
+
+  // Fallback for offers: price.current is often empty {}.
+  // The actual WETH amount is in offer[0].startAmount (itemType 1 = ERC20/WETH).
+  const offerItems = order.protocol_data?.parameters?.offer ?? [];
+  for (const item of offerItems) {
+    if (item.itemType === 1 && item.startAmount) {
+      return Number(BigInt(item.startAmount)) / 1e18;
+    }
+  }
+
+  return 0;
 }
 
 export function extractOrderExpiry(order: OpenSeaOrder): Date | null {

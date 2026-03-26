@@ -14,7 +14,9 @@
     "verify": "tsx scripts/verify-dataset.ts",
     "verify:backfill": "tsx scripts/verify-backfill.ts",
     "spot-check": "tsx scripts/spot-check.ts",
-    "test:holders": "tsx scripts/test-holder-apis.ts"
+    "test:holders": "tsx scripts/test-holder-apis.ts",
+    "compute:deck": "tsx scripts/compute-deck-scores.ts",
+    "download:avatars": "tsx scripts/download-avatars.ts"
   },
   "dependencies": {
     "@fastify/cors": "^11.0.0",

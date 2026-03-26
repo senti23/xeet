@@ -2,7 +2,16 @@ node_modules/
 dist/
 .next/
 .env
+.env.local
 *.db
 *.db-shm
 *.db-wal
 *.sqlite
+.vercel
+.DS_Store
+.claude/
+*.bak
+server/scripts/*.js
+server/scripts/*.d.ts
+server/scripts/*.js.map
+server/scripts/*.d.ts.map

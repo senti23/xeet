@@ -1,0 +1,2616 @@
+{
+  "summary": {
+    "totalCreators": 371,
+    "totalCreatorMints": 7123,
+    "totalStillHolding": 6526,
+    "overallRetention": 0.9162,
+    "distribution": {
+      "100% retention": 135,
+      "90-99%": 135,
+      "75-89%": 84,
+      "50-74%": 11,
+      "25-49%": 3,
+      "1-24%": 1,
+      "0% (all sold)": 2
+    }
+  },
+  "creators": {
+    "jgonzalezferrer": {
+      "handle": "jgonzalezferrer",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "joxiecoxie": {
+      "handle": "joxiecoxie",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "ainvestor_11": {
+      "handle": "ainvestor_11",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "beijingdou": {
+      "handle": "beijingdou",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "timhaldorsson": {
+      "handle": "timhaldorsson",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "gyokeres_eth": {
+      "handle": "gyokeres_eth",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "mtrox207": {
+      "handle": "mtrox207",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "jampzey": {
+      "handle": "jampzey",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "anytwocardzz": {
+      "handle": "anytwocardzz",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "rempo1": {
+      "handle": "rempo1",
+      "total_minters": 24,
+      "still_holding": 19,
+      "sold": 5,
+      "retention": 0.7916666666666666
+    },
+    "zubic_eth": {
+      "handle": "zubic_eth",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "idedj": {
+      "handle": "idedj",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "0xumutcan": {
+      "handle": "0xumutcan",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "johnjassper": {
+      "handle": "johnjassper",
+      "total_minters": 24,
+      "still_holding": 20,
+      "sold": 4,
+      "retention": 0.8333333333333334
+    },
+    "austiinxbt": {
+      "handle": "austiinxbt",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "crazino87": {
+      "handle": "crazino87",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "quan_eth": {
+      "handle": "quan_eth",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "0xleegenz": {
+      "handle": "0xleegenz",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "betmanjoe": {
+      "handle": "betmanjoe",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "zaddyfi": {
+      "handle": "zaddyfi",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "rakermoon": {
+      "handle": "rakermoon",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "riddlernft": {
+      "handle": "riddlernft",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "djaniwhaleskul": {
+      "handle": "djaniwhaleskul",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "hankisinvesting": {
+      "handle": "hankisinvesting",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "camolnft": {
+      "handle": "camolnft",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "what3verman": {
+      "handle": "what3verman",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "monitalan": {
+      "handle": "monitalan",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "guigsluke": {
+      "handle": "guigsluke",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "bunya_eth": {
+      "handle": "bunya_eth",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "gmb_aob": {
+      "handle": "gmb_aob",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "coperto_xbt": {
+      "handle": "coperto_xbt",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "fogonpc": {
+      "handle": "fogonpc",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "chesus": {
+      "handle": "chesus",
+      "total_minters": 24,
+      "still_holding": 20,
+      "sold": 4,
+      "retention": 0.8333333333333334
+    },
+    "pixassohq": {
+      "handle": "pixassohq",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "thejasich": {
+      "handle": "thejasich",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "senti__23": {
+      "handle": "senti__23",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "teacher96_katie": {
+      "handle": "teacher96_katie",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "jennn_sol": {
+      "handle": "jennn_sol",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "hyperstrike": {
+      "handle": "hyperstrike",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "realduckmaster": {
+      "handle": "realduckmaster",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "ilodiwow": {
+      "handle": "ilodiwow",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "craigscoinpurse": {
+      "handle": "craigscoinpurse",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "oodegen": {
+      "handle": "oodegen",
+      "total_minters": 24,
+      "still_holding": 20,
+      "sold": 4,
+      "retention": 0.8333333333333334
+    },
+    "r3birth": {
+      "handle": "r3birth",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "proofofely": {
+      "handle": "proofofely",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "xxcj78xx": {
+      "handle": "xxcj78xx",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "aurelius_1988": {
+      "handle": "aurelius_1988",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "jackkk": {
+      "handle": "jackkk",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "tmoneyy": {
+      "handle": "tmoneyy",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "magicmikeeditss": {
+      "handle": "magicmikeeditss",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "swankyjohnx": {
+      "handle": "swankyjohnx",
+      "total_minters": 24,
+      "still_holding": 20,
+      "sold": 4,
+      "retention": 0.8333333333333334
+    },
+    "wilson_": {
+      "handle": "wilson_",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "greenytrades": {
+      "handle": "greenytrades",
+      "total_minters": 24,
+      "still_holding": 19,
+      "sold": 5,
+      "retention": 0.7916666666666666
+    },
+    "meta_zet": {
+      "handle": "meta_zet",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "whemohere": {
+      "handle": "whemohere",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "drewfromweb3": {
+      "handle": "drewfromweb3",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "kaitoxbt": {
+      "handle": "kaitoxbt",
+      "total_minters": 24,
+      "still_holding": 20,
+      "sold": 4,
+      "retention": 0.8333333333333334
+    },
+    "atnsxbt": {
+      "handle": "atnsxbt",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "coinempress": {
+      "handle": "coinempress",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "withesibe": {
+      "handle": "withesibe",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "oxydo11": {
+      "handle": "oxydo11",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "0xtjustin": {
+      "handle": "0xtjustin",
+      "total_minters": 24,
+      "still_holding": 18,
+      "sold": 6,
+      "retention": 0.75
+    },
+    "sonika_kk": {
+      "handle": "sonika_kk",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "dashke": {
+      "handle": "dashke",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "byshagrath_": {
+      "handle": "byshagrath_",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "wydagoat": {
+      "handle": "wydagoat",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "naeven_": {
+      "handle": "naeven_",
+      "total_minters": 24,
+      "still_holding": 20,
+      "sold": 4,
+      "retention": 0.8333333333333334
+    },
+    "xeer": {
+      "handle": "xeer",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "waleswoosh": {
+      "handle": "waleswoosh",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "lizmoneyweb": {
+      "handle": "lizmoneyweb",
+      "total_minters": 24,
+      "still_holding": 20,
+      "sold": 4,
+      "retention": 0.8333333333333334
+    },
+    "shivfreespirit": {
+      "handle": "shivfreespirit",
+      "total_minters": 24,
+      "still_holding": 19,
+      "sold": 5,
+      "retention": 0.7916666666666666
+    },
+    "defi_scribbler": {
+      "handle": "defi_scribbler",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "heycape_": {
+      "handle": "heycape_",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "oglemur": {
+      "handle": "oglemur",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "medusaonchain": {
+      "handle": "medusaonchain",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "malayahmad": {
+      "handle": "malayahmad",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "tma_420": {
+      "handle": "tma_420",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "defi_explora": {
+      "handle": "defi_explora",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "bitrusxbt": {
+      "handle": "bitrusxbt",
+      "total_minters": 24,
+      "still_holding": 20,
+      "sold": 4,
+      "retention": 0.8333333333333334
+    },
+    "dazzlercoin": {
+      "handle": "dazzlercoin",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "br4ted": {
+      "handle": "br4ted",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "lechriss17": {
+      "handle": "lechriss17",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "ripchillpill": {
+      "handle": "ripchillpill",
+      "total_minters": 24,
+      "still_holding": 20,
+      "sold": 4,
+      "retention": 0.8333333333333334
+    },
+    "febers4": {
+      "handle": "febers4",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "kierianv": {
+      "handle": "kierianv",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "anda765": {
+      "handle": "anda765",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "0xrif0": {
+      "handle": "0xrif0",
+      "total_minters": 24,
+      "still_holding": 10,
+      "sold": 14,
+      "retention": 0.4166666666666667
+    },
+    "0xkekov": {
+      "handle": "0xkekov",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "dreweth": {
+      "handle": "dreweth",
+      "total_minters": 24,
+      "still_holding": 20,
+      "sold": 4,
+      "retention": 0.8333333333333334
+    },
+    "amit0xic": {
+      "handle": "amit0xic",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "r2d2zen": {
+      "handle": "r2d2zen",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "elenionchain": {
+      "handle": "elenionchain",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "crypto3rain": {
+      "handle": "crypto3rain",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "pawnie_": {
+      "handle": "pawnie_",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "mariannehere": {
+      "handle": "mariannehere",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "carlitoswa_y": {
+      "handle": "carlitoswa_y",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "vikktorrrre": {
+      "handle": "vikktorrrre",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "thecryptoprofes": {
+      "handle": "thecryptoprofes",
+      "total_minters": 24,
+      "still_holding": 19,
+      "sold": 5,
+      "retention": 0.7916666666666666
+    },
+    "madmaxx_eth": {
+      "handle": "madmaxx_eth",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "cartist00": {
+      "handle": "cartist00",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "defidarling": {
+      "handle": "defidarling",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "jade_defi": {
+      "handle": "jade_defi",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "matchayuma": {
+      "handle": "matchayuma",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "0xmani": {
+      "handle": "0xmani",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "gomtu_xyz": {
+      "handle": "gomtu_xyz",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "0xbellinili": {
+      "handle": "0xbellinili",
+      "total_minters": 24,
+      "still_holding": 19,
+      "sold": 5,
+      "retention": 0.7916666666666666
+    },
+    "kudabajingan": {
+      "handle": "kudabajingan",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "diegoarmandoad": {
+      "handle": "diegoarmandoad",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "man_versus_coin": {
+      "handle": "man_versus_coin",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "bellerophontis2": {
+      "handle": "bellerophontis2",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "theantacademy": {
+      "handle": "theantacademy",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "crypsaf": {
+      "handle": "crypsaf",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "enftsar": {
+      "handle": "enftsar",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "oxtochi": {
+      "handle": "oxtochi",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "solfrater_sol": {
+      "handle": "solfrater_sol",
+      "total_minters": 24,
+      "still_holding": 19,
+      "sold": 5,
+      "retention": 0.7916666666666666
+    },
+    "mrgreenity": {
+      "handle": "mrgreenity",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "banditxbt": {
+      "handle": "banditxbt",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "zhugelyang": {
+      "handle": "zhugelyang",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "lostsnow_rin": {
+      "handle": "lostsnow_rin",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "sirjoey": {
+      "handle": "sirjoey",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "triples_eth": {
+      "handle": "triples_eth",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "levithefirst": {
+      "handle": "levithefirst",
+      "total_minters": 24,
+      "still_holding": 18,
+      "sold": 6,
+      "retention": 0.75
+    },
+    "createwithtony": {
+      "handle": "createwithtony",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "the_jujukey": {
+      "handle": "the_jujukey",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "weston_union": {
+      "handle": "weston_union",
+      "total_minters": 24,
+      "still_holding": 20,
+      "sold": 4,
+      "retention": 0.8333333333333334
+    },
+    "0xchainbob": {
+      "handle": "0xchainbob",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "crypto_zh0u": {
+      "handle": "crypto_zh0u",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "aizcalibur": {
+      "handle": "aizcalibur",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "mookienft": {
+      "handle": "mookienft",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "buzzmalx": {
+      "handle": "buzzmalx",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "yulikay": {
+      "handle": "yulikay",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "hydraze420": {
+      "handle": "hydraze420",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "huseyin1tekin": {
+      "handle": "huseyin1tekin",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "dwdrummer_eth": {
+      "handle": "dwdrummer_eth",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "zkernaut": {
+      "handle": "zkernaut",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "idmintthat": {
+      "handle": "idmintthat",
+      "total_minters": 24,
+      "still_holding": 20,
+      "sold": 4,
+      "retention": 0.8333333333333334
+    },
+    "juliadziesinska": {
+      "handle": "juliadziesinska",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "ffvv1211": {
+      "handle": "ffvv1211",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "andrewaskshow": {
+      "handle": "andrewaskshow",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "jai0xcrypto": {
+      "handle": "jai0xcrypto",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "3lixbt": {
+      "handle": "3lixbt",
+      "total_minters": 24,
+      "still_holding": 19,
+      "sold": 5,
+      "retention": 0.7916666666666666
+    },
+    "loshmi": {
+      "handle": "loshmi",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "merheb": {
+      "handle": "merheb",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "love2ideate": {
+      "handle": "love2ideate",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "davidonchainx": {
+      "handle": "davidonchainx",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "kalkixweb3": {
+      "handle": "kalkixweb3",
+      "total_minters": 24,
+      "still_holding": 19,
+      "sold": 5,
+      "retention": 0.7916666666666666
+    },
+    "shivst3r": {
+      "handle": "shivst3r",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "beausecurity": {
+      "handle": "beausecurity",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "adamagb": {
+      "handle": "adamagb",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "0xtama_": {
+      "handle": "0xtama_",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "shl_eth": {
+      "handle": "shl_eth",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "danny7xeth": {
+      "handle": "danny7xeth",
+      "total_minters": 24,
+      "still_holding": 20,
+      "sold": 4,
+      "retention": 0.8333333333333334
+    },
+    "scooter_420": {
+      "handle": "scooter_420",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "xammiecrypt": {
+      "handle": "xammiecrypt",
+      "total_minters": 24,
+      "still_holding": 20,
+      "sold": 4,
+      "retention": 0.8333333333333334
+    },
+    "web3eliza": {
+      "handle": "web3eliza",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "mountalba": {
+      "handle": "mountalba",
+      "total_minters": 24,
+      "still_holding": 20,
+      "sold": 4,
+      "retention": 0.8333333333333334
+    },
+    "annienftt": {
+      "handle": "annienftt",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "dbiljonaire": {
+      "handle": "dbiljonaire",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "cryptodaaddy": {
+      "handle": "cryptodaaddy",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "platymama_": {
+      "handle": "platymama_",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "shotguncaio": {
+      "handle": "shotguncaio",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "anidiot": {
+      "handle": "anidiot",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "sanza": {
+      "handle": "sanza",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "katexbt": {
+      "handle": "katexbt",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "evans1vn": {
+      "handle": "evans1vn",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "_matisei": {
+      "handle": "_matisei",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "karuptkp": {
+      "handle": "karuptkp",
+      "total_minters": 24,
+      "still_holding": 20,
+      "sold": 4,
+      "retention": 0.8333333333333334
+    },
+    "donpudgy": {
+      "handle": "donpudgy",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "bull_boiy": {
+      "handle": "bull_boiy",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "y4ngo": {
+      "handle": "y4ngo",
+      "total_minters": 24,
+      "still_holding": 16,
+      "sold": 8,
+      "retention": 0.6666666666666666
+    },
+    "_yourbros": {
+      "handle": "_yourbros",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "shredder_tegg": {
+      "handle": "shredder_tegg",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "poppunkonchain": {
+      "handle": "poppunkonchain",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "auntiepaca": {
+      "handle": "auntiepaca",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "harrietpjones": {
+      "handle": "harrietpjones",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "degenbro__": {
+      "handle": "degenbro__",
+      "total_minters": 24,
+      "still_holding": 15,
+      "sold": 9,
+      "retention": 0.625
+    },
+    "flb_xyz": {
+      "handle": "flb_xyz",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "smolpeach33": {
+      "handle": "smolpeach33",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "cryptowithkhan": {
+      "handle": "cryptowithkhan",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "salamander12_": {
+      "handle": "salamander12_",
+      "total_minters": 24,
+      "still_holding": 21,
+      "sold": 3,
+      "retention": 0.875
+    },
+    "yatmuseum": {
+      "handle": "yatmuseum",
+      "total_minters": 24,
+      "still_holding": 0,
+      "sold": 24,
+      "retention": 0.0
+    },
+    "dustinvibes": {
+      "handle": "dustinvibes",
+      "total_minters": 24,
+      "still_holding": 23,
+      "sold": 1,
+      "retention": 0.9583333333333334
+    },
+    "cryptoarter": {
+      "handle": "cryptoarter",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "realpiffspeak": {
+      "handle": "realpiffspeak",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "gujjuiixi": {
+      "handle": "gujjuiixi",
+      "total_minters": 24,
+      "still_holding": 24,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "ndidi_gram": {
+      "handle": "ndidi_gram",
+      "total_minters": 24,
+      "still_holding": 18,
+      "sold": 6,
+      "retention": 0.75
+    },
+    "telcier": {
+      "handle": "telcier",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "uxgsol": {
+      "handle": "uxgsol",
+      "total_minters": 24,
+      "still_holding": 19,
+      "sold": 5,
+      "retention": 0.7916666666666666
+    },
+    "manyaaww": {
+      "handle": "manyaaww",
+      "total_minters": 24,
+      "still_holding": 22,
+      "sold": 2,
+      "retention": 0.9166666666666666
+    },
+    "iiamthatguyy": {
+      "handle": "iiamthatguyy",
+      "total_minters": 24,
+      "still_holding": 19,
+      "sold": 5,
+      "retention": 0.7916666666666666
+    },
+    "proofoftravis": {
+      "handle": "proofoftravis",
+      "total_minters": 23,
+      "still_holding": 23,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "smolgeeek": {
+      "handle": "smolgeeek",
+      "total_minters": 23,
+      "still_holding": 21,
+      "sold": 2,
+      "retention": 0.9130434782608695
+    },
+    "0xchvd": {
+      "handle": "0xchvd",
+      "total_minters": 23,
+      "still_holding": 15,
+      "sold": 8,
+      "retention": 0.6521739130434783
+    },
+    "pukerrainbrow": {
+      "handle": "pukerrainbrow",
+      "total_minters": 23,
+      "still_holding": 20,
+      "sold": 3,
+      "retention": 0.8695652173913043
+    },
+    "riowgmi": {
+      "handle": "riowgmi",
+      "total_minters": 23,
+      "still_holding": 20,
+      "sold": 3,
+      "retention": 0.8695652173913043
+    },
+    "treeonchain": {
+      "handle": "treeonchain",
+      "total_minters": 23,
+      "still_holding": 22,
+      "sold": 1,
+      "retention": 0.9565217391304348
+    },
+    "zaimiri": {
+      "handle": "zaimiri",
+      "total_minters": 23,
+      "still_holding": 23,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "adriadri": {
+      "handle": "adriadri",
+      "total_minters": 23,
+      "still_holding": 23,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "krpisoweb3": {
+      "handle": "krpisoweb3",
+      "total_minters": 23,
+      "still_holding": 21,
+      "sold": 2,
+      "retention": 0.9130434782608695
+    },
+    "mayamaster": {
+      "handle": "mayamaster",
+      "total_minters": 23,
+      "still_holding": 22,
+      "sold": 1,
+      "retention": 0.9565217391304348
+    },
+    "shadow_nft15": {
+      "handle": "shadow_nft15",
+      "total_minters": 23,
+      "still_holding": 23,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "bawsaxbt": {
+      "handle": "bawsaxbt",
+      "total_minters": 23,
+      "still_holding": 22,
+      "sold": 1,
+      "retention": 0.9565217391304348
+    },
+    "chrisjourdan": {
+      "handle": "chrisjourdan",
+      "total_minters": 23,
+      "still_holding": 21,
+      "sold": 2,
+      "retention": 0.9130434782608695
+    },
+    "holly_web3": {
+      "handle": "holly_web3",
+      "total_minters": 23,
+      "still_holding": 21,
+      "sold": 2,
+      "retention": 0.9130434782608695
+    },
+    "daco1008": {
+      "handle": "daco1008",
+      "total_minters": 23,
+      "still_holding": 21,
+      "sold": 2,
+      "retention": 0.9130434782608695
+    },
+    "viiibe": {
+      "handle": "viiibe",
+      "total_minters": 23,
+      "still_holding": 21,
+      "sold": 2,
+      "retention": 0.9130434782608695
+    },
+    "ghostdotxyz": {
+      "handle": "ghostdotxyz",
+      "total_minters": 23,
+      "still_holding": 22,
+      "sold": 1,
+      "retention": 0.9565217391304348
+    },
+    "ericclfung": {
+      "handle": "ericclfung",
+      "total_minters": 23,
+      "still_holding": 3,
+      "sold": 20,
+      "retention": 0.13043478260869565
+    },
+    "bigzuko_": {
+      "handle": "bigzuko_",
+      "total_minters": 23,
+      "still_holding": 16,
+      "sold": 7,
+      "retention": 0.6956521739130435
+    },
+    "ethmaxi": {
+      "handle": "ethmaxi",
+      "total_minters": 23,
+      "still_holding": 23,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "lokithebird": {
+      "handle": "lokithebird",
+      "total_minters": 23,
+      "still_holding": 23,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "666sixpaths": {
+      "handle": "666sixpaths",
+      "total_minters": 23,
+      "still_holding": 18,
+      "sold": 5,
+      "retention": 0.782608695652174
+    },
+    "laratherudeduck": {
+      "handle": "laratherudeduck",
+      "total_minters": 22,
+      "still_holding": 21,
+      "sold": 1,
+      "retention": 0.9545454545454546
+    },
+    "flyest": {
+      "handle": "flyest",
+      "total_minters": 22,
+      "still_holding": 21,
+      "sold": 1,
+      "retention": 0.9545454545454546
+    },
+    "nf_janner": {
+      "handle": "nf_janner",
+      "total_minters": 22,
+      "still_holding": 22,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "yonann": {
+      "handle": "yonann",
+      "total_minters": 22,
+      "still_holding": 22,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "kaitodan": {
+      "handle": "kaitodan",
+      "total_minters": 22,
+      "still_holding": 19,
+      "sold": 3,
+      "retention": 0.8636363636363636
+    },
+    "mhknft": {
+      "handle": "mhknft",
+      "total_minters": 22,
+      "still_holding": 22,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "elminselimov5": {
+      "handle": "elminselimov5",
+      "total_minters": 22,
+      "still_holding": 20,
+      "sold": 2,
+      "retention": 0.9090909090909091
+    },
+    "hollanderadam": {
+      "handle": "hollanderadam",
+      "total_minters": 22,
+      "still_holding": 20,
+      "sold": 2,
+      "retention": 0.9090909090909091
+    },
+    "ibrathedabra": {
+      "handle": "ibrathedabra",
+      "total_minters": 22,
+      "still_holding": 22,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "leiane1": {
+      "handle": "leiane1",
+      "total_minters": 22,
+      "still_holding": 22,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "itskkoma": {
+      "handle": "itskkoma",
+      "total_minters": 21,
+      "still_holding": 21,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "tolibear_": {
+      "handle": "tolibear_",
+      "total_minters": 21,
+      "still_holding": 20,
+      "sold": 1,
+      "retention": 0.9523809523809523
+    },
+    "walsxbt": {
+      "handle": "walsxbt",
+      "total_minters": 21,
+      "still_holding": 21,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "edoweb3": {
+      "handle": "edoweb3",
+      "total_minters": 21,
+      "still_holding": 20,
+      "sold": 1,
+      "retention": 0.9523809523809523
+    },
+    "jackhaldorsson": {
+      "handle": "jackhaldorsson",
+      "total_minters": 21,
+      "still_holding": 20,
+      "sold": 1,
+      "retention": 0.9523809523809523
+    },
+    "imithrandir_": {
+      "handle": "imithrandir_",
+      "total_minters": 21,
+      "still_holding": 17,
+      "sold": 4,
+      "retention": 0.8095238095238095
+    },
+    "jefferycrypt": {
+      "handle": "jefferycrypt",
+      "total_minters": 21,
+      "still_holding": 20,
+      "sold": 1,
+      "retention": 0.9523809523809523
+    },
+    "rajpatel": {
+      "handle": "rajpatel",
+      "total_minters": 21,
+      "still_holding": 21,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "ashleydcan": {
+      "handle": "ashleydcan",
+      "total_minters": 21,
+      "still_holding": 20,
+      "sold": 1,
+      "retention": 0.9523809523809523
+    },
+    "icobeast": {
+      "handle": "icobeast",
+      "total_minters": 21,
+      "still_holding": 21,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "toriribolla": {
+      "handle": "toriribolla",
+      "total_minters": 21,
+      "still_holding": 20,
+      "sold": 1,
+      "retention": 0.9523809523809523
+    },
+    "tuteth_": {
+      "handle": "tuteth_",
+      "total_minters": 21,
+      "still_holding": 20,
+      "sold": 1,
+      "retention": 0.9523809523809523
+    },
+    "josephweb3": {
+      "handle": "josephweb3",
+      "total_minters": 21,
+      "still_holding": 21,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "deviled_meggs_": {
+      "handle": "deviled_meggs_",
+      "total_minters": 20,
+      "still_holding": 19,
+      "sold": 1,
+      "retention": 0.95
+    },
+    "tdkimber": {
+      "handle": "tdkimber",
+      "total_minters": 20,
+      "still_holding": 19,
+      "sold": 1,
+      "retention": 0.95
+    },
+    "sirceen": {
+      "handle": "sirceen",
+      "total_minters": 20,
+      "still_holding": 16,
+      "sold": 4,
+      "retention": 0.8
+    },
+    "0xxnathan": {
+      "handle": "0xxnathan",
+      "total_minters": 20,
+      "still_holding": 19,
+      "sold": 1,
+      "retention": 0.95
+    },
+    "nxtlvl": {
+      "handle": "nxtlvl",
+      "total_minters": 20,
+      "still_holding": 20,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "casperonchain": {
+      "handle": "casperonchain",
+      "total_minters": 20,
+      "still_holding": 20,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "napoleecrypt": {
+      "handle": "napoleecrypt",
+      "total_minters": 20,
+      "still_holding": 19,
+      "sold": 1,
+      "retention": 0.95
+    },
+    "alphawolfprmr": {
+      "handle": "alphawolfprmr",
+      "total_minters": 20,
+      "still_holding": 19,
+      "sold": 1,
+      "retention": 0.95
+    },
+    "crypto_bn": {
+      "handle": "crypto_bn",
+      "total_minters": 20,
+      "still_holding": 17,
+      "sold": 3,
+      "retention": 0.85
+    },
+    "parcifap": {
+      "handle": "parcifap",
+      "total_minters": 20,
+      "still_holding": 20,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "morsyxbt": {
+      "handle": "morsyxbt",
+      "total_minters": 20,
+      "still_holding": 20,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "connetwitheasy": {
+      "handle": "connetwitheasy",
+      "total_minters": 20,
+      "still_holding": 19,
+      "sold": 1,
+      "retention": 0.95
+    },
+    "jakeronthia_": {
+      "handle": "jakeronthia_",
+      "total_minters": 20,
+      "still_holding": 18,
+      "sold": 2,
+      "retention": 0.9
+    },
+    "infinityglock99": {
+      "handle": "infinityglock99",
+      "total_minters": 20,
+      "still_holding": 20,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "n3xttt": {
+      "handle": "n3xttt",
+      "total_minters": 20,
+      "still_holding": 19,
+      "sold": 1,
+      "retention": 0.95
+    },
+    "cryptoejammin": {
+      "handle": "cryptoejammin",
+      "total_minters": 20,
+      "still_holding": 19,
+      "sold": 1,
+      "retention": 0.95
+    },
+    "juaneth77": {
+      "handle": "juaneth77",
+      "total_minters": 20,
+      "still_holding": 20,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "tulipxbt": {
+      "handle": "tulipxbt",
+      "total_minters": 20,
+      "still_holding": 19,
+      "sold": 1,
+      "retention": 0.95
+    },
+    "0xkovv": {
+      "handle": "0xkovv",
+      "total_minters": 20,
+      "still_holding": 16,
+      "sold": 4,
+      "retention": 0.8
+    },
+    "cryptovondoom": {
+      "handle": "cryptovondoom",
+      "total_minters": 19,
+      "still_holding": 18,
+      "sold": 1,
+      "retention": 0.9473684210526315
+    },
+    "thegaboeth": {
+      "handle": "thegaboeth",
+      "total_minters": 19,
+      "still_holding": 18,
+      "sold": 1,
+      "retention": 0.9473684210526315
+    },
+    "tictacmagic_": {
+      "handle": "tictacmagic_",
+      "total_minters": 19,
+      "still_holding": 17,
+      "sold": 2,
+      "retention": 0.8947368421052632
+    },
+    "hannahhughes": {
+      "handle": "hannahhughes",
+      "total_minters": 19,
+      "still_holding": 19,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "masterchiefnfts": {
+      "handle": "masterchiefnfts",
+      "total_minters": 19,
+      "still_holding": 18,
+      "sold": 1,
+      "retention": 0.9473684210526315
+    },
+    "swandogs": {
+      "handle": "swandogs",
+      "total_minters": 18,
+      "still_holding": 18,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "nftboi_": {
+      "handle": "nftboi_",
+      "total_minters": 18,
+      "still_holding": 18,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "twenty3ry": {
+      "handle": "twenty3ry",
+      "total_minters": 18,
+      "still_holding": 17,
+      "sold": 1,
+      "retention": 0.9444444444444444
+    },
+    "aibra": {
+      "handle": "aibra",
+      "total_minters": 17,
+      "still_holding": 16,
+      "sold": 1,
+      "retention": 0.9411764705882353
+    },
+    "yvohvn": {
+      "handle": "yvohvn",
+      "total_minters": 17,
+      "still_holding": 14,
+      "sold": 3,
+      "retention": 0.8235294117647058
+    },
+    "_craig_": {
+      "handle": "_craig_",
+      "total_minters": 17,
+      "still_holding": 16,
+      "sold": 1,
+      "retention": 0.9411764705882353
+    },
+    "airdrops_one": {
+      "handle": "airdrops_one",
+      "total_minters": 17,
+      "still_holding": 12,
+      "sold": 5,
+      "retention": 0.7058823529411765
+    },
+    "penguinweb3": {
+      "handle": "penguinweb3",
+      "total_minters": 16,
+      "still_holding": 15,
+      "sold": 1,
+      "retention": 0.9375
+    },
+    "queenmoon1337": {
+      "handle": "queenmoon1337",
+      "total_minters": 16,
+      "still_holding": 16,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "cryptogorilla": {
+      "handle": "cryptogorilla",
+      "total_minters": 16,
+      "still_holding": 14,
+      "sold": 2,
+      "retention": 0.875
+    },
+    "solhustler": {
+      "handle": "solhustler",
+      "total_minters": 16,
+      "still_holding": 14,
+      "sold": 2,
+      "retention": 0.875
+    },
+    "dachshundwizard": {
+      "handle": "dachshundwizard",
+      "total_minters": 16,
+      "still_holding": 16,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "scottybmitch": {
+      "handle": "scottybmitch",
+      "total_minters": 15,
+      "still_holding": 15,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "fourvork": {
+      "handle": "fourvork",
+      "total_minters": 15,
+      "still_holding": 14,
+      "sold": 1,
+      "retention": 0.9333333333333333
+    },
+    "just_jibon": {
+      "handle": "just_jibon",
+      "total_minters": 15,
+      "still_holding": 15,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "bluewolfnfts": {
+      "handle": "bluewolfnfts",
+      "total_minters": 15,
+      "still_holding": 13,
+      "sold": 2,
+      "retention": 0.8666666666666667
+    },
+    "justmeg": {
+      "handle": "justmeg",
+      "total_minters": 15,
+      "still_holding": 15,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "doggfathercrew": {
+      "handle": "doggfathercrew",
+      "total_minters": 14,
+      "still_holding": 12,
+      "sold": 2,
+      "retention": 0.8571428571428571
+    },
+    "escanordz100": {
+      "handle": "escanordz100",
+      "total_minters": 14,
+      "still_holding": 12,
+      "sold": 2,
+      "retention": 0.8571428571428571
+    },
+    "nadir_nfts": {
+      "handle": "nadir_nfts",
+      "total_minters": 14,
+      "still_holding": 12,
+      "sold": 2,
+      "retention": 0.8571428571428571
+    },
+    "cabenx": {
+      "handle": "cabenx",
+      "total_minters": 14,
+      "still_holding": 13,
+      "sold": 1,
+      "retention": 0.9285714285714286
+    },
+    "ouchrisnfts": {
+      "handle": "ouchrisnfts",
+      "total_minters": 14,
+      "still_holding": 14,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "vohvohh": {
+      "handle": "vohvohh",
+      "total_minters": 14,
+      "still_holding": 13,
+      "sold": 1,
+      "retention": 0.9285714285714286
+    },
+    "daspookyman": {
+      "handle": "daspookyman",
+      "total_minters": 13,
+      "still_holding": 12,
+      "sold": 1,
+      "retention": 0.9230769230769231
+    },
+    "deebs_defi": {
+      "handle": "deebs_defi",
+      "total_minters": 13,
+      "still_holding": 13,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "videhaldorsson": {
+      "handle": "videhaldorsson",
+      "total_minters": 13,
+      "still_holding": 13,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "m00des": {
+      "handle": "m00des",
+      "total_minters": 13,
+      "still_holding": 11,
+      "sold": 2,
+      "retention": 0.8461538461538461
+    },
+    "d3triott": {
+      "handle": "d3triott",
+      "total_minters": 13,
+      "still_holding": 11,
+      "sold": 2,
+      "retention": 0.8461538461538461
+    },
+    "bluetigerx_": {
+      "handle": "bluetigerx_",
+      "total_minters": 13,
+      "still_holding": 13,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "matdefies": {
+      "handle": "matdefies",
+      "total_minters": 13,
+      "still_holding": 13,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "grafinkavi": {
+      "handle": "grafinkavi",
+      "total_minters": 13,
+      "still_holding": 12,
+      "sold": 1,
+      "retention": 0.9230769230769231
+    },
+    "fud_berry": {
+      "handle": "fud_berry",
+      "total_minters": 13,
+      "still_holding": 0,
+      "sold": 13,
+      "retention": 0.0
+    },
+    "doc_noonoo": {
+      "handle": "doc_noonoo",
+      "total_minters": 12,
+      "still_holding": 12,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "xfactorpol": {
+      "handle": "xfactorpol",
+      "total_minters": 12,
+      "still_holding": 12,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "cryptousopp": {
+      "handle": "cryptousopp",
+      "total_minters": 12,
+      "still_holding": 12,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "nftriles": {
+      "handle": "nftriles",
+      "total_minters": 12,
+      "still_holding": 12,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "zera_chielo": {
+      "handle": "zera_chielo",
+      "total_minters": 12,
+      "still_holding": 12,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "brave_raf": {
+      "handle": "brave_raf",
+      "total_minters": 12,
+      "still_holding": 8,
+      "sold": 4,
+      "retention": 0.6666666666666666
+    },
+    "alphabatcher": {
+      "handle": "alphabatcher",
+      "total_minters": 12,
+      "still_holding": 12,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "azflin": {
+      "handle": "azflin",
+      "total_minters": 12,
+      "still_holding": 12,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "bigwil": {
+      "handle": "bigwil",
+      "total_minters": 12,
+      "still_holding": 11,
+      "sold": 1,
+      "retention": 0.9166666666666666
+    },
+    "molusol": {
+      "handle": "molusol",
+      "total_minters": 11,
+      "still_holding": 11,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "0xamne": {
+      "handle": "0xamne",
+      "total_minters": 11,
+      "still_holding": 8,
+      "sold": 3,
+      "retention": 0.7272727272727273
+    },
+    "0xbeiu": {
+      "handle": "0xbeiu",
+      "total_minters": 11,
+      "still_holding": 6,
+      "sold": 5,
+      "retention": 0.5454545454545454
+    },
+    "jessyfries": {
+      "handle": "jessyfries",
+      "total_minters": 11,
+      "still_holding": 11,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "apurvajain24": {
+      "handle": "apurvajain24",
+      "total_minters": 11,
+      "still_holding": 9,
+      "sold": 2,
+      "retention": 0.8181818181818182
+    },
+    "hellobenwhite": {
+      "handle": "hellobenwhite",
+      "total_minters": 11,
+      "still_holding": 9,
+      "sold": 2,
+      "retention": 0.8181818181818182
+    },
+    "sinsonx": {
+      "handle": "sinsonx",
+      "total_minters": 11,
+      "still_holding": 10,
+      "sold": 1,
+      "retention": 0.9090909090909091
+    },
+    "sk0rpeth": {
+      "handle": "sk0rpeth",
+      "total_minters": 11,
+      "still_holding": 11,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "adrewxvii": {
+      "handle": "adrewxvii",
+      "total_minters": 11,
+      "still_holding": 11,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "threadoor": {
+      "handle": "threadoor",
+      "total_minters": 11,
+      "still_holding": 11,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "jowennft": {
+      "handle": "jowennft",
+      "total_minters": 11,
+      "still_holding": 11,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "squiddynft": {
+      "handle": "squiddynft",
+      "total_minters": 11,
+      "still_holding": 10,
+      "sold": 1,
+      "retention": 0.9090909090909091
+    },
+    "lucberkefeld": {
+      "handle": "lucberkefeld",
+      "total_minters": 11,
+      "still_holding": 10,
+      "sold": 1,
+      "retention": 0.9090909090909091
+    },
+    "mide_ox": {
+      "handle": "mide_ox",
+      "total_minters": 11,
+      "still_holding": 7,
+      "sold": 4,
+      "retention": 0.6363636363636364
+    },
+    "djdriverless": {
+      "handle": "djdriverless",
+      "total_minters": 11,
+      "still_holding": 5,
+      "sold": 6,
+      "retention": 0.45454545454545453
+    },
+    "jyp_nft": {
+      "handle": "jyp_nft",
+      "total_minters": 10,
+      "still_holding": 10,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "thebbz": {
+      "handle": "thebbz",
+      "total_minters": 10,
+      "still_holding": 10,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "t_a_k_e_n_1": {
+      "handle": "t_a_k_e_n_1",
+      "total_minters": 10,
+      "still_holding": 9,
+      "sold": 1,
+      "retention": 0.9
+    },
+    "poyoeb": {
+      "handle": "poyoeb",
+      "total_minters": 10,
+      "still_holding": 10,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "abstract_hzn": {
+      "handle": "abstract_hzn",
+      "total_minters": 10,
+      "still_holding": 7,
+      "sold": 3,
+      "retention": 0.7
+    },
+    "swannynft": {
+      "handle": "swannynft",
+      "total_minters": 9,
+      "still_holding": 9,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "kaiz_294": {
+      "handle": "kaiz_294",
+      "total_minters": 9,
+      "still_holding": 9,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "youfadedwealth": {
+      "handle": "youfadedwealth",
+      "total_minters": 9,
+      "still_holding": 9,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "raidenkrn": {
+      "handle": "raidenkrn",
+      "total_minters": 9,
+      "still_holding": 9,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "itstymo": {
+      "handle": "itstymo",
+      "total_minters": 8,
+      "still_holding": 8,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "shwepps_": {
+      "handle": "shwepps_",
+      "total_minters": 8,
+      "still_holding": 5,
+      "sold": 3,
+      "retention": 0.625
+    },
+    "ryannnsmit": {
+      "handle": "ryannnsmit",
+      "total_minters": 8,
+      "still_holding": 7,
+      "sold": 1,
+      "retention": 0.875
+    },
+    "bored_vic": {
+      "handle": "bored_vic",
+      "total_minters": 8,
+      "still_holding": 7,
+      "sold": 1,
+      "retention": 0.875
+    },
+    "senzer": {
+      "handle": "senzer",
+      "total_minters": 8,
+      "still_holding": 8,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "thekuchh": {
+      "handle": "thekuchh",
+      "total_minters": 8,
+      "still_holding": 6,
+      "sold": 2,
+      "retention": 0.75
+    },
+    "thegreatola": {
+      "handle": "thegreatola",
+      "total_minters": 8,
+      "still_holding": 8,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "gemsscope": {
+      "handle": "gemsscope",
+      "total_minters": 8,
+      "still_holding": 7,
+      "sold": 1,
+      "retention": 0.875
+    },
+    "allenbaez126": {
+      "handle": "allenbaez126",
+      "total_minters": 8,
+      "still_holding": 8,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "carl_m101": {
+      "handle": "carl_m101",
+      "total_minters": 8,
+      "still_holding": 8,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "0xfs7": {
+      "handle": "0xfs7",
+      "total_minters": 8,
+      "still_holding": 8,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "phintotten": {
+      "handle": "phintotten",
+      "total_minters": 8,
+      "still_holding": 8,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "depressivehacks": {
+      "handle": "depressivehacks",
+      "total_minters": 7,
+      "still_holding": 7,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "0x_degenola": {
+      "handle": "0x_degenola",
+      "total_minters": 7,
+      "still_holding": 7,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "0xsanixxx": {
+      "handle": "0xsanixxx",
+      "total_minters": 7,
+      "still_holding": 6,
+      "sold": 1,
+      "retention": 0.8571428571428571
+    },
+    "geoonchain": {
+      "handle": "geoonchain",
+      "total_minters": 7,
+      "still_holding": 6,
+      "sold": 1,
+      "retention": 0.8571428571428571
+    },
+    "the_inksomnia": {
+      "handle": "the_inksomnia",
+      "total_minters": 7,
+      "still_holding": 6,
+      "sold": 1,
+      "retention": 0.8571428571428571
+    },
+    "minhxdynasty": {
+      "handle": "minhxdynasty",
+      "total_minters": 7,
+      "still_holding": 7,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "xerocooleth": {
+      "handle": "xerocooleth",
+      "total_minters": 6,
+      "still_holding": 6,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "zacxbt": {
+      "handle": "zacxbt",
+      "total_minters": 6,
+      "still_holding": 6,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "jeg6322": {
+      "handle": "jeg6322",
+      "total_minters": 6,
+      "still_holding": 6,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "chefgoose": {
+      "handle": "chefgoose",
+      "total_minters": 6,
+      "still_holding": 5,
+      "sold": 1,
+      "retention": 0.8333333333333334
+    },
+    "jonasoeth": {
+      "handle": "jonasoeth",
+      "total_minters": 5,
+      "still_holding": 4,
+      "sold": 1,
+      "retention": 0.8
+    },
+    "oxxyy13": {
+      "handle": "oxxyy13",
+      "total_minters": 5,
+      "still_holding": 5,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "maskjiro": {
+      "handle": "maskjiro",
+      "total_minters": 5,
+      "still_holding": 5,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "gaspodewd": {
+      "handle": "gaspodewd",
+      "total_minters": 5,
+      "still_holding": 4,
+      "sold": 1,
+      "retention": 0.8
+    },
+    "shannholmberg": {
+      "handle": "shannholmberg",
+      "total_minters": 5,
+      "still_holding": 5,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "truunik": {
+      "handle": "truunik",
+      "total_minters": 5,
+      "still_holding": 5,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "0xasrequired": {
+      "handle": "0xasrequired",
+      "total_minters": 5,
+      "still_holding": 5,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "frostyz": {
+      "handle": "frostyz",
+      "total_minters": 5,
+      "still_holding": 5,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "onchainmo": {
+      "handle": "onchainmo",
+      "total_minters": 4,
+      "still_holding": 4,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "shtihmas11": {
+      "handle": "shtihmas11",
+      "total_minters": 4,
+      "still_holding": 1,
+      "sold": 3,
+      "retention": 0.25
+    },
+    "sanjaybuilds_": {
+      "handle": "sanjaybuilds_",
+      "total_minters": 4,
+      "still_holding": 4,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "potterplays1": {
+      "handle": "potterplays1",
+      "total_minters": 3,
+      "still_holding": 3,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "themansion_eth": {
+      "handle": "themansion_eth",
+      "total_minters": 3,
+      "still_holding": 3,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "imho_nft": {
+      "handle": "imho_nft",
+      "total_minters": 3,
+      "still_holding": 3,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "stake_mm": {
+      "handle": "stake_mm",
+      "total_minters": 3,
+      "still_holding": 3,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "shgfees": {
+      "handle": "shgfees",
+      "total_minters": 3,
+      "still_holding": 3,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "yellowpantherx": {
+      "handle": "yellowpantherx",
+      "total_minters": 3,
+      "still_holding": 3,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "frenchiee": {
+      "handle": "frenchiee",
+      "total_minters": 3,
+      "still_holding": 3,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "fimmonaci": {
+      "handle": "fimmonaci",
+      "total_minters": 3,
+      "still_holding": 3,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "nick_researcher": {
+      "handle": "nick_researcher",
+      "total_minters": 3,
+      "still_holding": 3,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "nashahmed3": {
+      "handle": "nashahmed3",
+      "total_minters": 3,
+      "still_holding": 3,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "darkanft": {
+      "handle": "darkanft",
+      "total_minters": 3,
+      "still_holding": 3,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "dailax": {
+      "handle": "dailax",
+      "total_minters": 2,
+      "still_holding": 2,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "houseofyogi": {
+      "handle": "houseofyogi",
+      "total_minters": 2,
+      "still_holding": 2,
+      "sold": 0,
+      "retention": 1.0
+    },
+    "greenknight_sol": {
+      "handle": "greenknight_sol",
+      "total_minters": 1,
+      "still_holding": 1,
+      "sold": 0,
+      "retention": 1.0
+    }
+  }
+}

@@ -74,7 +74,13 @@ export const config = {
     holderRefreshMs: 600_000,
   },
 
-  creatorsJsonPath: envPath
-    ? resolve(dirname(envPath), 'xeet-creators-full.json')
-    : resolve(__dirname, '../../xeet-creators-full.json'),
+  // DATA_DIR: where JSON data files live. In dev: repo root. In prod: set via env.
+  dataDir: process.env.DATA_DIR
+    || (envPath ? dirname(envPath) : resolve(__dirname, '../..')),
+
+  creatorsJsonPath: process.env.DATA_DIR
+    ? resolve(process.env.DATA_DIR, 'xeet-creators-full.json')
+    : envPath
+      ? resolve(dirname(envPath), 'xeet-creators-full.json')
+      : resolve(__dirname, '../../xeet-creators-full.json'),
 } as const;

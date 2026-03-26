@@ -5,6 +5,7 @@ import { childLogger } from './lib/logger.js';
 import { getDb } from './db/index.js';
 import { initTokenMap, getTokenMapStats } from './services/token-map.js';
 import { startPipeline, stopPipeline, getBackfillStatus } from './services/data-pipeline.js';
+import { refreshDeckData } from './services/deck-refresh.js';
 import { startStream, stopStream } from './services/opensea-stream.js';
 import { startBot, stopBot } from './bot/index.js';
 import { registerRoutes } from './api/routes.js';
@@ -23,9 +24,15 @@ async function main(): Promise<void> {
   const app = Fastify({ logger: false });
 
   // CORS for Next.js frontend
+  const allowedOrigins = [
+    'http://localhost:3000',
+    'http://localhost:6900',
+    process.env.FRONTEND_URL,
+  ].filter(Boolean) as string[];
+
   await app.register(cors, {
-    origin: config.isDev ? true : ['http://localhost:3000'],
-    methods: ['GET'],
+    origin: config.isDev ? true : allowedOrigins,
+    methods: ['GET', 'POST'],
   });
 
   // Register API routes
@@ -46,6 +53,20 @@ async function main(): Promise<void> {
 
   // Start data pipeline (first cycle runs immediately)
   await startPipeline();
+
+  // Unified deck refresh: holders → scores → floor prices
+  // First run 10s after startup, then every 10 minutes
+  const DECK_REFRESH_INTERVAL_MS = 10 * 60 * 1000;
+  setTimeout(() => {
+    refreshDeckData()
+      .then((r) => log.info({ duration: r.duration, scores: r.scoresComputed, holderRows: r.holderRows }, 'Initial deck refresh complete'))
+      .catch((err) => log.error({ err }, 'Initial deck refresh failed'));
+  }, 10_000);
+  setInterval(() => {
+    refreshDeckData()
+      .then((r) => log.info({ duration: r.duration, scores: r.scoresComputed }, 'Scheduled deck refresh complete'))
+      .catch((err) => log.error({ err }, 'Scheduled deck refresh failed'));
+  }, DECK_REFRESH_INTERVAL_MS);
 
   // Start OpenSea WebSocket stream
   await startStream();

@@ -86,7 +86,7 @@ function startFallbackPolling(): void {
 
   fallbackInterval = setInterval(async () => {
     try {
-      const listings = await osClient.getAllListings(2); // Just recent pages
+      const listings = await osClient.getAllListings(); // Just recent pages
       const currentHashes = new Set<string>();
 
       for (const order of listings) {

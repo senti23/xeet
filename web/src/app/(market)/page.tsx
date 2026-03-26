@@ -1,5 +1,5 @@
-import { ListingsTable } from '../components/ListingsTable';
-import type { ListingsResponse } from '../lib/api';
+import { ListingsTable } from '@/components/ListingsTable';
+import type { ListingsResponse } from '@/lib/api';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 

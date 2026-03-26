@@ -64,7 +64,7 @@ export function createTables(db: Database.Database): void {
       sold_at TEXT NOT NULL,
       fetched_at TEXT NOT NULL DEFAULT (datetime('now'))
     );
-    CREATE UNIQUE INDEX IF NOT EXISTS idx_sale_dedup ON sale_history(marketplace, token_id, sold_at, price);
+    CREATE UNIQUE INDEX IF NOT EXISTS idx_sale_dedup ON sale_history(marketplace, token_id, tx_hash, price);
     CREATE INDEX IF NOT EXISTS idx_sale_creator ON sale_history(creator_handle, rarity, sold_at);
     CREATE INDEX IF NOT EXISTS idx_sale_token ON sale_history(token_id, sold_at);
 
@@ -140,6 +140,7 @@ export interface PreparedStatements {
   getHoldersByToken: Database.Statement;
   getTopWallets: Database.Statement;
   getHolderCount: Database.Statement;
+  getAllHolders: Database.Statement;
 
   // Holder sync meta
   upsertSyncMeta: Database.Statement;
@@ -267,6 +268,9 @@ export function prepareStatements(db: Database.Database): PreparedStatements {
     `),
     getHolderCount: db.prepare(
       'SELECT COUNT(DISTINCT wallet_address) as count FROM card_holders',
+    ),
+    getAllHolders: db.prepare(
+      'SELECT wallet_address, token_id, quantity, creator_handle, rarity FROM card_holders WHERE quantity > 0',
     ),
 
     // Holder sync meta

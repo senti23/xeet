@@ -53,7 +53,7 @@ async function abscanFetch<T>(params: Record<string, string>, label: string): Pr
       }
       limiter.onSuccess();
       const data = (await res.json()) as AbscanResponse<T>;
-      if (data.status === '0' && data.message === 'No transactions found') {
+      if (data.status === '0' && (data.message === 'No transactions found' || data.message === 'No records found')) {
         return null;
       }
       if (data.status === '0') {
@@ -105,6 +105,113 @@ export async function getERC1155Transfers(startBlock = 0): Promise<ERC1155Transf
   }
 
   return allTransfers;
+}
+
+// --- getLogs types ---
+
+interface AbscanLogEntry {
+  address: string;
+  topics: string[];
+  data: string;
+  blockNumber: string;    // hex
+  timeStamp: string;      // hex unix seconds
+  transactionHash: string;
+}
+
+export interface OrderExecutedSale {
+  txHash: string;
+  blockNumber: number;
+  timestamp: number;        // unix seconds
+  orderHash: string;
+  seller: string;
+  buyer: string;
+  tokenContract: string;
+  tokenId: string;          // decimal string
+  amount: number;
+  xeetPrice: number;        // 0 decimals — raw integer = human-readable XEETS
+}
+
+// --- OrderExecuted log decoding ---
+
+const XEET_MARKETPLACE = '0x4424844a9A96C143345C2470905403a4009AF237';
+const ORDER_EXECUTED_TOPIC = '0xd6f2612b092c97c0117ab78cd89422b98369be62b6ad90145a298ab80346ba62';
+const NFT_CONTRACT = CONTRACT.toLowerCase();
+
+function decodeOrderExecuted(entry: AbscanLogEntry): OrderExecutedSale | null {
+  try {
+    const hex = entry.data.startsWith('0x') ? entry.data.slice(2) : entry.data;
+    if (hex.length < 256) return null; // need 4 × 64-char words
+
+    const tokenContract = '0x' + hex.slice(24, 64);
+    const tokenId = BigInt('0x' + hex.slice(64, 128)).toString(10);
+    const amount = Number(BigInt('0x' + hex.slice(128, 192)));
+    const xeetPrice = Number(BigInt('0x' + hex.slice(192, 256)));
+
+    const orderHash = entry.topics[1];
+    const seller = '0x' + entry.topics[2].slice(26);
+    const buyer = '0x' + entry.topics[3].slice(26);
+
+    return {
+      txHash: entry.transactionHash,
+      blockNumber: parseInt(entry.blockNumber, 16),
+      timestamp: parseInt(entry.timeStamp, 16),
+      orderHash,
+      seller,
+      buyer,
+      tokenContract,
+      tokenId,
+      amount,
+      xeetPrice,
+    };
+  } catch (err) {
+    log.warn({ err, txHash: entry.transactionHash }, 'Failed to decode OrderExecuted log');
+    return null;
+  }
+}
+
+/**
+ * Fetch all Xeet marketplace OrderExecuted events.
+ * Filters to NFT contract only (excludes pack sales).
+ * Paginates by advancing fromBlock until exhausted.
+ */
+export async function getXeetOrderExecutedLogs(startBlock = 0): Promise<OrderExecutedSale[]> {
+  const allSales: OrderExecutedSale[] = [];
+  const PAGE_LIMIT = 1000;
+  let currentFromBlock = startBlock;
+
+  for (let batch = 1; ; batch++) {
+    const logs = await abscanFetch<AbscanLogEntry[]>(
+      {
+        module: 'logs',
+        action: 'getLogs',
+        address: XEET_MARKETPLACE,
+        fromBlock: String(currentFromBlock),
+        toBlock: 'latest',
+        topic0: ORDER_EXECUTED_TOPIC,
+        page: '1',
+        offset: String(PAGE_LIMIT),
+      },
+      `xeet-order-executed-batch-${batch}`,
+    );
+
+    if (!logs || logs.length === 0) break;
+
+    for (const entry of logs) {
+      const sale = decodeOrderExecuted(entry);
+      if (sale && sale.tokenContract.toLowerCase() === NFT_CONTRACT) {
+        allSales.push(sale);
+      }
+    }
+
+    log.info({ batch, logsInBatch: logs.length, totalCardSales: allSales.length }, 'OrderExecuted logs fetched');
+
+    if (logs.length < PAGE_LIMIT) break;
+
+    const lastBlock = parseInt(logs[logs.length - 1].blockNumber, 16);
+    currentFromBlock = lastBlock + 1;
+  }
+
+  return allSales;
 }
 
 /**

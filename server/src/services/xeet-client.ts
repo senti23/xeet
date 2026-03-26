@@ -234,3 +234,115 @@ export async function getCardSalesHistory(tokenId: string): Promise<XeetActivity
   log.info({ tokenId, count: allEvents.length }, 'Card sales history fetched');
   return allEvents;
 }
+
+// --- On-chain enrichment helpers ---
+
+/**
+ * Fetch the recent ~250 Xeet sales for live-cycle enrichment.
+ * Single API call, no pagination (offset is silently ignored by the API).
+ */
+export async function getRecentSalesForEnrichment(): Promise<XeetActivityEvent[]> {
+  const data = await xeetFetch<any>(
+    '/api/marketplace/discovery/activity?eventType=SALE&limit=250',
+    'xeet-enrichment-recent',
+  );
+  if (!data) return [];
+
+  let events: XeetActivityEvent[] | undefined;
+  if (Array.isArray(data)) {
+    events = data;
+  } else if (Array.isArray(data.data)) {
+    events = data.data;
+  } else if (data.data?.events) {
+    events = data.data.events;
+  } else if (data.events) {
+    events = data.events;
+  }
+
+  if (!events) return [];
+
+  // Filter to SALE only and normalize timestamps
+  const sales: XeetActivityEvent[] = [];
+  for (const evt of events) {
+    if ((evt.eventType ?? '').toUpperCase() !== 'SALE') continue;
+    if (!evt.creatorHandle && (evt as any).creator?.handle) {
+      evt.creatorHandle = (evt as any).creator.handle;
+    }
+    if (evt.timestamp) {
+      evt.timestamp = normalizeTimestamp(evt.timestamp);
+    }
+    sales.push(evt);
+  }
+
+  log.info({ count: sales.length }, 'Xeet recent sales fetched for enrichment');
+  return sales;
+}
+
+/**
+ * Fetch ALL Xeet sales across all tokens for backfill enrichment.
+ * Iterates every tokenId via per-card endpoint. Used once during initial backfill.
+ */
+export async function getAllXeetSalesForEnrichment(
+  tokenIds: Array<{ tokenId: string }>,
+): Promise<XeetActivityEvent[]> {
+  const allSales: XeetActivityEvent[] = [];
+  let fetched = 0;
+  let errors = 0;
+
+  for (const { tokenId } of tokenIds) {
+    try {
+      const events = await getCardSalesHistory(tokenId);
+      const sales = events.filter((e) => (e.eventType ?? '').toUpperCase() === 'SALE');
+      allSales.push(...sales);
+      fetched++;
+
+      if (fetched % 50 === 0) {
+        log.info(
+          { fetched, total: tokenIds.length, salesFound: allSales.length, errors },
+          'Xeet backfill enrichment progress',
+        );
+      }
+    } catch (err) {
+      errors++;
+      log.warn({ tokenId, err }, 'Failed to fetch card sales for enrichment');
+    }
+  }
+
+  log.info(
+    { tokensFetched: fetched, totalSales: allSales.length, errors },
+    'Xeet backfill enrichment complete',
+  );
+  return allSales;
+}
+
+/**
+ * Build a minute-bucket lookup index for matching on-chain transfers to Xeet sales.
+ * Key format: `${tokenId}:${minuteBucket}` — each event gets 3 keys (bucket-1, bucket, bucket+1)
+ * to cover the ±30s matching window.
+ *
+ * Abscan timeStamp is unix seconds, so minuteBucket = Math.floor(seconds / 60).
+ * Xeet API timestamp is ISO string, so convert: Math.floor(new Date(ts).getTime() / 60000).
+ */
+export function buildEnrichmentIndex(
+  events: XeetActivityEvent[],
+): Map<string, XeetActivityEvent> {
+  const index = new Map<string, XeetActivityEvent>();
+
+  for (const evt of events) {
+    if (!evt.tokenId || !evt.timestamp) continue;
+    const tsMs = new Date(evt.timestamp).getTime();
+    if (isNaN(tsMs)) continue;
+    const bucket = Math.floor(tsMs / 60000); // ms → minute bucket
+
+    // Insert under 3 adjacent buckets for ±30s coverage
+    for (const offset of [-1, 0, 1]) {
+      const key = `${evt.tokenId}:${bucket + offset}`;
+      if (!index.has(key)) {
+        index.set(key, evt);
+      }
+    }
+  }
+
+  log.info({ events: events.length, indexKeys: index.size }, 'Xeet enrichment index built');
+  return index;
+}
