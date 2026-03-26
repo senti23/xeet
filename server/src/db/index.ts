@@ -1,6 +1,7 @@
 import Database from 'better-sqlite3';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { mkdirSync, existsSync } from 'fs';
 import { config } from '../config.js';
 import { createTables, prepareStatements, type PreparedStatements } from './schema.js';
 import { childLogger } from '../lib/logger.js';
@@ -15,6 +16,12 @@ let stmts: PreparedStatements;
 
 export function getDb(): Database.Database {
   if (!db) {
+    // Ensure parent directory exists (needed on Railway /tmp etc.)
+    const dbDir = dirname(DB_PATH);
+    if (!existsSync(dbDir)) {
+      mkdirSync(dbDir, { recursive: true });
+    }
+    log.info({ path: DB_PATH }, 'Opening database');
     db = new Database(DB_PATH);
     db.pragma('journal_mode = WAL');
     db.pragma('foreign_keys = ON');
