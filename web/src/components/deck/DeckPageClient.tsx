@@ -14,6 +14,7 @@ import { FlexDeckModal } from './FlexDeckModal';
 import { CollapsiblePanel } from './CollapsiblePanel';
 import { DeckMissingPanel } from './DeckMissingPanel';
 import { DeckHoldingsPanel } from './DeckHoldingsPanel';
+import { DeckCredits } from './DeckCredits';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
@@ -36,6 +37,7 @@ export function DeckPageClient() {
   // ─── UI state ─────────────────────────────────────────────────────────────
   const [showFlex, setShowFlex] = useState(false);
   const [showAnalytics, setShowAnalytics] = useState(false);
+  const [showMobileLeaderboard, setShowMobileLeaderboard] = useState(false);
   const [openPanel, setOpenPanel] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState<string | null>(null);
 
@@ -194,6 +196,12 @@ export function DeckPageClient() {
 
   return (
     <div className="space-y-4">
+      {/* ─── Credits (top right, desktop only) ─────────────────────────────── */}
+      <div className="flex items-start justify-between">
+        <div /> {/* spacer */}
+        <DeckCredits />
+      </div>
+
       {/* ─── Top bar: search + status ──────────────────────────────────────── */}
       <div className="flex items-center gap-3">
         <div className="relative flex-1">
@@ -324,9 +332,9 @@ export function DeckPageClient() {
           </div>
         </div>
 
-        {/* RIGHT SIDEBAR — Leaderboard */}
+        {/* RIGHT SIDEBAR — Leaderboard (hidden on mobile) */}
         <aside
-          className="w-[380px] shrink-0 overflow-y-auto rounded-2xl border border-white/[0.06] bg-[rgba(20,20,20,0.9)]"
+          className="hidden lg:block w-[380px] shrink-0 overflow-y-auto rounded-2xl border border-white/[0.06] bg-[rgba(20,20,20,0.9)]"
           style={{
             position: 'sticky',
             top: 80,
@@ -343,6 +351,46 @@ export function DeckPageClient() {
           </div>
         </aside>
       </div>
+
+      {/* Mobile leaderboard overlay */}
+      {showMobileLeaderboard && (
+        <div className="fixed inset-0 z-50 lg:hidden">
+          <div
+            className="absolute inset-0 bg-black/60"
+            onClick={() => setShowMobileLeaderboard(false)}
+          />
+          <div className="absolute bottom-0 left-0 right-0 max-h-[70vh] overflow-y-auto rounded-t-2xl border-t border-white/[0.08] bg-[#0a0a0a]">
+            <div className="sticky top-0 flex items-center justify-between border-b border-white/[0.06] bg-[#0a0a0a] px-4 py-3">
+              <span className="text-sm font-semibold text-white">Leaderboard</span>
+              <button
+                onClick={() => setShowMobileLeaderboard(false)}
+                className="text-gray-500 hover:text-white text-lg"
+              >
+                ✕
+              </button>
+            </div>
+            <div className="p-3">
+              <DeckLeaderboard
+                leaderboard={scores.leaderboard}
+                highlightWallet={activeWallet}
+                profiles={profiles}
+                onSelectWallet={(wallet) => {
+                  selectWallet(wallet);
+                  setShowMobileLeaderboard(false);
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Mobile leaderboard toggle button */}
+      <button
+        onClick={() => setShowMobileLeaderboard(true)}
+        className="fixed bottom-4 right-4 z-40 flex items-center gap-2 rounded-full bg-[rgba(20,20,20,0.95)] px-4 py-2.5 text-xs font-semibold text-white shadow-lg border border-white/[0.1] lg:hidden"
+      >
+        🏆 Leaderboard
+      </button>
 
       {/* Footer stats */}
       <div className="text-center text-xs text-gray-600">
