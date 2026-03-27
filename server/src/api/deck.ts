@@ -9,6 +9,7 @@ import type { FastifyInstance } from 'fastify';
 import {
   getRefreshStatus, triggerManualRefresh, getLastRefreshTime,
   getCachedDeckScores, getCachedDeckDetail, getCachedFloorPrices,
+  getCachedCreatorHoldings,
 } from '../services/deck-refresh.js';
 import { getCache } from '../services/data-pipeline.js';
 import { computeMissingForAPI, type CreatorHoldingsMap, type WalletDetail } from '../services/deck-missing.js';
@@ -32,8 +33,13 @@ let cachedDetail: Record<string, WalletDetail> | null = null;
 let detailLoadedAt = 0;
 
 function loadCreatorHoldings(): CreatorHoldingsMap {
+  // Prefer live data from deck-refresh (rebuilt from DB every 10 min)
+  const live = getCachedCreatorHoldings() as CreatorHoldingsMap | null;
+  if (live) return live;
+
+  // Fallback to static file (first load before refresh runs)
   if (cachedCreatorHoldings) return cachedCreatorHoldings;
-  log.info({ path: CREATOR_HOLDINGS_PATH }, 'Loading creator-holdings.json');
+  log.info({ path: CREATOR_HOLDINGS_PATH }, 'Loading creator-holdings.json (static fallback)');
   cachedCreatorHoldings = JSON.parse(readFileSync(CREATOR_HOLDINGS_PATH, 'utf-8'));
   return cachedCreatorHoldings!;
 }

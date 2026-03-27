@@ -50,9 +50,12 @@ let cachedDeckScores: object | null = null;
 let cachedDeckDetail: object | null = null;
 let cachedFloorPrices: object | null = null;
 
+let cachedCreatorHoldings: Record<string, CreatorHolding> | null = null;
+
 export function getCachedDeckScores() { return cachedDeckScores; }
 export function getCachedDeckDetail() { return cachedDeckDetail; }
 export function getCachedFloorPrices() { return cachedFloorPrices; }
+export function getCachedCreatorHoldings() { return cachedCreatorHoldings; }
 
 const RATE_LIMIT_MS = 5 * 60 * 1000; // 5 minutes
 
@@ -187,18 +190,48 @@ export async function refreshDeckData(): Promise<RefreshResult> {
     const walletCount = Object.keys(holderSnapshot).length;
     log.info({ walletCount }, 'Step 2: Grouped holders into wallets');
 
-    // Step 3: Load static data files (creators, XCC holdings, multi-wallet)
+    // Step 3: Load static data + rebuild creatorHoldings from LIVE holderSnapshot
     const loadStart = Date.now();
     const creatorsData: Creator[] = JSON.parse(
       readFileSync(resolve(DATA_DIR, 'xeet-creators-full.json'), 'utf-8'),
     );
-    const creatorHoldings: Record<string, CreatorHolding> = JSON.parse(
-      readFileSync(resolve(DATA_DIR, 'creator-holdings.json'), 'utf-8'),
-    );
     const multiWalletData: Record<string, MultiWalletEntry> = JSON.parse(
       readFileSync(resolve(DATA_DIR, 'multi-wallet-creators.json'), 'utf-8'),
     );
-    log.info({ elapsedMs: Date.now() - loadStart }, 'Step 3: Static data loaded');
+
+    // Build creatorHoldings from LIVE DB data (not static file).
+    // This ensures secondary reach updates when XCCs buy new cards.
+    const xccWalletToHandle = new Map<string, string>();
+    for (const c of creatorsData) {
+      xccWalletToHandle.set(c.walletAddress.toLowerCase(), c.xHandle.toLowerCase());
+    }
+    // Also map additional wallets from multi-wallet creators
+    for (const [handle, mw] of Object.entries(multiWalletData)) {
+      for (const aw of mw.additionalWallets) {
+        xccWalletToHandle.set(aw.address.toLowerCase(), handle.toLowerCase());
+      }
+    }
+
+    const creatorHoldings: Record<string, CreatorHolding> = {};
+    for (const [wallet, holdings] of Object.entries(holderSnapshot)) {
+      const handle = xccWalletToHandle.get(wallet.toLowerCase());
+      if (!handle) continue; // Not an XCC wallet
+
+      if (!creatorHoldings[handle]) {
+        creatorHoldings[handle] = { wallet, holds: [] };
+      }
+      for (const h of holdings) {
+        // Avoid duplicates if multi-wallet already merged
+        const existing = creatorHoldings[handle];
+        if (!existing.holds.some(e => e.creator === h.creator && e.rarity === h.rarity)) {
+          existing.holds.push({ creator: h.creator, rarity: h.rarity, quantity: h.quantity });
+        }
+      }
+    }
+
+    const xccCount = Object.keys(creatorHoldings).length;
+    cachedCreatorHoldings = creatorHoldings;
+    log.info({ xccCount, elapsedMs: Date.now() - loadStart }, 'Step 3: Data loaded + creatorHoldings rebuilt from live DB');
 
     // Step 4: Compute deck scores
     const scoreStart = Date.now();
