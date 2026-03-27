@@ -239,51 +239,43 @@ export function enrichWithPrices(
     let bestXeetFloor: number | null = null;
     let bestOsFloor: number | null = null;
     let bestUsd: number | null = null;
-    let bestMinPrice = Infinity;
+    let cheapestXeetPrice = Infinity;
+    let cheapestOsPrice = Infinity;
+    let xeetRarity = '';
+    let osRarity = '';
 
-    // Check each rarity for this XCC to find the cheapest listing
+    // Find cheapest xeetFloor and cheapest osFloor independently across rarities
     for (const rarity of rarities) {
       const key = `${bridge.xccHandle.toLowerCase()}:${rarity}`;
       const entry = cacheData.get(key);
       if (!entry) continue;
 
-      // Determine the minimum price across both marketplaces for this rarity
-      const prices: number[] = [];
-      if (entry.xeetFloor != null && entry.xeetFloor > 0) prices.push(entry.xeetFloor);
-      // OS floor is in ETH — not directly comparable to xeetFloor (in XEETS)
-      // Keep them separate, just track which rarity has any listing at all
-
-      // Compare across rarities to find cheapest available listing.
-      // XEETS and ETH aren't directly comparable, so: prefer xeetFloor if available,
-      // otherwise compare OS floors (ETH) against each other.
-      const xeetPrice = entry.xeetFloor;
-      const osPrice = entry.osFloor;
-
-      if (xeetPrice != null && xeetPrice > 0 && xeetPrice < bestMinPrice) {
-        bestMinPrice = xeetPrice;
-        cheapestRarity = rarity;
-        bestXeetFloor = entry.xeetFloor;
-        bestOsFloor = entry.osFloor;
-        bestUsd = entry.usdEstimate;
-      } else if (xeetPrice == null && osPrice != null && osPrice > 0) {
-        // No xeetFloor for this rarity — use OS floor, but compare against current best
-        const osAsComparable = osPrice * 100000; // rough scaling for comparison
-        if (osAsComparable < bestMinPrice) {
-          bestMinPrice = osAsComparable;
-          cheapestRarity = rarity;
-          bestXeetFloor = entry.xeetFloor;
-          bestOsFloor = entry.osFloor;
-          bestUsd = entry.usdEstimate;
-        }
+      if (entry.xeetFloor != null && entry.xeetFloor > 0 && entry.xeetFloor < cheapestXeetPrice) {
+        cheapestXeetPrice = entry.xeetFloor;
+        xeetRarity = rarity;
+      }
+      if (entry.osFloor != null && entry.osFloor > 0 && entry.osFloor < cheapestOsPrice) {
+        cheapestOsPrice = entry.osFloor;
+        osRarity = rarity;
       }
     }
 
-    // Value score: coverage per cost (higher = better deal)
-    // Use xeetFloor as the cost basis when available
+    // Set best prices — null if no listing exists on that marketplace
+    bestXeetFloor = cheapestXeetPrice < Infinity ? cheapestXeetPrice : null;
+    bestOsFloor = cheapestOsPrice < Infinity ? cheapestOsPrice : null;
+
+    // cheapestRarity = whichever has a listing (prefer OS rarity since it has USD estimate)
+    if (osRarity) {
+      cheapestRarity = osRarity;
+      const osEntry = cacheData.get(`${bridge.xccHandle.toLowerCase()}:${osRarity}`);
+      bestUsd = osEntry?.usdEstimate ?? null;
+    } else if (xeetRarity) {
+      cheapestRarity = xeetRarity;
+    }
+
+    // Value score: coverage per OS ETH cost (since ETH is the more universal unit)
     let valueScore = 0;
-    if (bestXeetFloor != null && bestXeetFloor > 0) {
-      valueScore = (bridge.coverageCount * 100) / bestXeetFloor;
-    } else if (bestOsFloor != null && bestOsFloor > 0) {
+    if (bestOsFloor != null && bestOsFloor > 0) {
       valueScore = (bridge.coverageCount * 100) / bestOsFloor;
     }
 
