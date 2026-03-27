@@ -253,21 +253,28 @@ export function enrichWithPrices(
       // OS floor is in ETH — not directly comparable to xeetFloor (in XEETS)
       // Keep them separate, just track which rarity has any listing at all
 
-      // For "cheapest", prefer xeetFloor as it's the primary marketplace
+      // Compare across rarities to find cheapest available listing.
+      // XEETS and ETH aren't directly comparable, so: prefer xeetFloor if available,
+      // otherwise compare OS floors (ETH) against each other.
       const xeetPrice = entry.xeetFloor;
+      const osPrice = entry.osFloor;
+
       if (xeetPrice != null && xeetPrice > 0 && xeetPrice < bestMinPrice) {
         bestMinPrice = xeetPrice;
         cheapestRarity = rarity;
         bestXeetFloor = entry.xeetFloor;
         bestOsFloor = entry.osFloor;
         bestUsd = entry.usdEstimate;
-      } else if (bestXeetFloor == null && entry.osFloor != null && entry.osFloor > 0) {
-        // Fallback: if no xeet listing found yet, use OS floor
-        cheapestRarity = rarity;
-        bestXeetFloor = entry.xeetFloor;
-        bestOsFloor = entry.osFloor;
-        bestUsd = entry.usdEstimate;
-        bestMinPrice = entry.osFloor * 100000; // rough conversion to keep ordering
+      } else if (xeetPrice == null && osPrice != null && osPrice > 0) {
+        // No xeetFloor for this rarity — use OS floor, but compare against current best
+        const osAsComparable = osPrice * 100000; // rough scaling for comparison
+        if (osAsComparable < bestMinPrice) {
+          bestMinPrice = osAsComparable;
+          cheapestRarity = rarity;
+          bestXeetFloor = entry.xeetFloor;
+          bestOsFloor = entry.osFloor;
+          bestUsd = entry.usdEstimate;
+        }
       }
     }
 
