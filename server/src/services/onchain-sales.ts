@@ -3,6 +3,7 @@ import { childLogger } from '../lib/logger.js';
 import { getXeetOrderExecutedLogs, type OrderExecutedSale } from './abscan-client.js';
 import {
   getSaleEvents,
+  getTokenSaleEvents,
   type OpenSeaSaleEvent,
 } from './opensea-client.js';
 import {
@@ -173,48 +174,56 @@ export async function backfillFromChain(): Promise<BackfillResult | null> {
       stmts.upsertPipelineMeta.run('last_xeet_synced_block', String(highestBlock));
     }
 
-    // 3. Fetch all OpenSea sale events (uncapped for backfill — need full history)
+    // 3. Fetch OpenSea sale events per token (complete history via per-NFT endpoint)
     let osInserted = 0;
     let osUnmapped = 0;
     let osEventCount = 0;
+    let osTokensProcessed = 0;
+    let osTokenErrors = 0;
 
     if (osDone) {
       log.info('OS backfill already complete, skipping OS portion');
     } else {
-      log.info('Fetching OpenSea sale events for backfill (uncapped pages)...');
-      const osEvents = await getSaleEvents({ maxPages: 500 }).catch((e) => {
-        log.error({ err: e }, 'OpenSea sale events fetch failed');
-        return [] as OpenSeaSaleEvent[];
-      });
-      osEventCount = osEvents.length;
-      log.info({ count: osEvents.length }, 'OpenSea sale events fetched');
+      // Get all token IDs from token_map
+      const allTokenIds = (stmts.getAllTokens.all() as Array<{ token_id: string }>).map(r => r.token_id);
+      log.info({ tokenCount: allTokenIds.length }, 'Starting per-token OS sale backfill');
 
-      if (osEvents.length < 9000) {
-        log.warn(
-          { count: osEvents.length, expected: '~9,553' },
-          'OpenSea event count lower than expected — mvc-web cross-reference will surface any gap',
-        );
-      }
+      for (const tokenId of allTokenIds) {
+        try {
+          const events = await getTokenSaleEvents(tokenId);
+          osEventCount += events.length;
 
-      // 4. Insert OS sales
-      const insertOsBatch = db.transaction((events: OpenSeaSaleEvent[]) => {
-        for (const evt of events) {
-          if (insertOsSale(evt)) {
-            osInserted++;
-          } else {
-            const tokenId = evt.nft?.identifier;
-            if (tokenId && !getCreatorRarity(tokenId)) osUnmapped++;
+          for (const evt of events) {
+            if (insertOsSale(evt)) {
+              osInserted++;
+            } else {
+              const tid = evt.nft?.identifier;
+              if (tid && !getCreatorRarity(tid)) osUnmapped++;
+            }
           }
+        } catch (e) {
+          osTokenErrors++;
+          log.warn({ tokenId, err: e }, 'Failed to fetch OS sales for token');
         }
-      });
 
-      for (let i = 0; i < osEvents.length; i += 500) {
-        insertOsBatch(osEvents.slice(i, i + 500));
-        if (i > 0 && i % 2000 === 0) {
-          log.info({ processed: i, inserted: osInserted, unmapped: osUnmapped }, 'OS backfill progress');
+        osTokensProcessed++;
+        if (osTokensProcessed % 50 === 0) {
+          log.info({
+            tokens: `${osTokensProcessed}/${allTokenIds.length}`,
+            events: osEventCount,
+            inserted: osInserted,
+            errors: osTokenErrors,
+          }, 'OS per-token backfill progress');
         }
       }
-      log.info({ total: osEvents.length, inserted: osInserted, unmapped: osUnmapped }, 'OS sales backfill complete');
+
+      log.info({
+        tokensProcessed: osTokensProcessed,
+        totalEvents: osEventCount,
+        inserted: osInserted,
+        unmapped: osUnmapped,
+        errors: osTokenErrors,
+      }, 'OS per-token sales backfill complete');
 
       // Persist OS completion
       stmts.upsertPipelineMeta.run('os_backfill_complete', 'true');

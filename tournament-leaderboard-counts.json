@@ -1,0 +1,279 @@
+{
+  "grimmy": {
+    "totalParticipants": null,
+    "participantsWithScore": null,
+    "metaTotal": null,
+    "skipped": false,
+    "leaderboardUnavailable": true,
+    "note": "V1 leaderboard data archived/unavailable"
+  },
+  "cipher": {
+    "totalParticipants": 460,
+    "participantsWithScore": 460,
+    "metaTotal": 460,
+    "pagesScanned": 3,
+    "totalRequests": 3,
+    "skipped": false
+  },
+  "gamblr": {
+    "totalParticipants": 502,
+    "participantsWithScore": 502,
+    "metaTotal": 502,
+    "pagesScanned": 3,
+    "totalRequests": 3,
+    "skipped": false
+  },
+  "cryptoys": {
+    "totalParticipants": 465,
+    "participantsWithScore": 465,
+    "metaTotal": 465,
+    "pagesScanned": 3,
+    "totalRequests": 3,
+    "skipped": false
+  },
+  "vault777": {
+    "totalParticipants": null,
+    "participantsWithScore": null,
+    "metaTotal": null,
+    "skipped": false,
+    "leaderboardUnavailable": true,
+    "note": "V1 leaderboard data archived/unavailable"
+  },
+  "project-zero": {
+    "totalParticipants": 739,
+    "participantsWithScore": 739,
+    "metaTotal": 739,
+    "pagesScanned": 4,
+    "totalRequests": 4,
+    "skipped": false
+  },
+  "onsight": {
+    "totalParticipants": 504,
+    "participantsWithScore": 504,
+    "metaTotal": 504,
+    "pagesScanned": 3,
+    "totalRequests": 3,
+    "skipped": false
+  },
+  "datahaven": {
+    "totalParticipants": 5786,
+    "participantsWithScore": 5786,
+    "metaTotal": 5786,
+    "pagesScanned": 29,
+    "totalRequests": 29,
+    "skipped": false
+  },
+  "litvm": {
+    "totalParticipants": 263,
+    "participantsWithScore": 263,
+    "metaTotal": 263,
+    "pagesScanned": 2,
+    "totalRequests": 2,
+    "skipped": false
+  },
+  "crypto-creator": {
+    "totalParticipants": null,
+    "participantsWithScore": null,
+    "metaTotal": null,
+    "skipped": true,
+    "skipReason": "General platform tournament, no brand rewards, too large to paginate"
+  },
+  "xeet-infofi": {
+    "totalParticipants": null,
+    "participantsWithScore": null,
+    "metaTotal": null,
+    "skipped": true,
+    "skipReason": "General platform tournament, no brand rewards, too large to paginate"
+  },
+  "abstract": {
+    "totalParticipants": null,
+    "participantsWithScore": null,
+    "metaTotal": null,
+    "skipped": true,
+    "skipReason": "General platform tournament, no brand rewards, too large to paginate"
+  },
+  "cockio": {
+    "totalParticipants": 295,
+    "participantsWithScore": 295,
+    "metaTotal": 295,
+    "pagesScanned": 2,
+    "totalRequests": 2,
+    "skipped": false
+  },
+  "blinko": {
+    "totalParticipants": 445,
+    "participantsWithScore": 445,
+    "metaTotal": 445,
+    "pagesScanned": 3,
+    "totalRequests": 3,
+    "skipped": false
+  },
+  "chimpers": {
+    "totalParticipants": 1517,
+    "participantsWithScore": 1517,
+    "metaTotal": 1517,
+    "pagesScanned": 8,
+    "totalRequests": 8,
+    "skipped": false
+  },
+  "wow": {
+    "totalParticipants": 1255,
+    "participantsWithScore": 1255,
+    "metaTotal": 1255,
+    "pagesScanned": 7,
+    "totalRequests": 7,
+    "skipped": false
+  },
+  "megaweapon": {
+    "totalParticipants": 556,
+    "participantsWithScore": 556,
+    "metaTotal": 556,
+    "pagesScanned": 3,
+    "totalRequests": 3,
+    "skipped": false
+  },
+  "gvc": {
+    "totalParticipants": 1074,
+    "participantsWithScore": 1074,
+    "metaTotal": 1074,
+    "pagesScanned": 6,
+    "totalRequests": 6,
+    "skipped": false
+  },
+  "mezo": {
+    "totalParticipants": 2493,
+    "participantsWithScore": 2493,
+    "metaTotal": 2493,
+    "pagesScanned": 13,
+    "totalRequests": 13,
+    "skipped": false
+  },
+  "desci-news": {
+    "totalParticipants": 20083,
+    "participantsWithScore": 20083,
+    "metaTotal": 20083,
+    "pagesScanned": 101,
+    "totalRequests": 101,
+    "skipped": false
+  },
+  "valannia": {
+    "totalParticipants": 1840,
+    "participantsWithScore": 1840,
+    "metaTotal": 1840,
+    "pagesScanned": 10,
+    "totalRequests": 10,
+    "skipped": false
+  },
+  "santa-browser": {
+    "totalParticipants": 387,
+    "participantsWithScore": 387,
+    "metaTotal": 387,
+    "pagesScanned": 2,
+    "totalRequests": 2,
+    "skipped": false
+  },
+  "thrust": {
+    "totalParticipants": 1803,
+    "participantsWithScore": 1803,
+    "metaTotal": 1803,
+    "pagesScanned": 10,
+    "totalRequests": 10,
+    "skipped": false
+  },
+  "kona": {
+    "totalParticipants": 1518,
+    "participantsWithScore": 1518,
+    "metaTotal": 1518,
+    "pagesScanned": 8,
+    "totalRequests": 8,
+    "skipped": false
+  },
+  "lute": {
+    "totalParticipants": 2623,
+    "participantsWithScore": 2623,
+    "metaTotal": 2623,
+    "pagesScanned": 14,
+    "totalRequests": 14,
+    "skipped": false
+  },
+  "vdex": {
+    "totalParticipants": 1979,
+    "participantsWithScore": 1979,
+    "metaTotal": 1979,
+    "pagesScanned": 10,
+    "totalRequests": 10,
+    "skipped": false
+  },
+  "fight": {
+    "totalParticipants": 3534,
+    "participantsWithScore": 3534,
+    "metaTotal": 3534,
+    "pagesScanned": 18,
+    "totalRequests": 18,
+    "skipped": false
+  },
+  "artery": {
+    "totalParticipants": 2200,
+    "participantsWithScore": 2200,
+    "metaTotal": 2200,
+    "pagesScanned": 14,
+    "totalRequests": 14,
+    "skipped": false
+  },
+  "xyber": {
+    "totalParticipants": 2771,
+    "participantsWithScore": 2771,
+    "metaTotal": 2771,
+    "pagesScanned": 14,
+    "totalRequests": 14,
+    "skipped": false
+  },
+  "adi": {
+    "totalParticipants": 1467,
+    "participantsWithScore": 1467,
+    "metaTotal": 1467,
+    "pagesScanned": 8,
+    "totalRequests": 8,
+    "skipped": false
+  },
+  "claynosaurz": {
+    "totalParticipants": 3135,
+    "participantsWithScore": 3135,
+    "metaTotal": 3135,
+    "pagesScanned": 16,
+    "totalRequests": 16,
+    "skipped": false
+  },
+  "xeetsgiving": {
+    "totalParticipants": 31052,
+    "participantsWithScore": 31052,
+    "metaTotal": 31052,
+    "pagesScanned": 156,
+    "totalRequests": 156,
+    "skipped": false
+  },
+  "myriad": {
+    "totalParticipants": 7401,
+    "participantsWithScore": 4314,
+    "metaTotal": 7401,
+    "pagesScanned": 38,
+    "totalRequests": 38,
+    "skipped": false
+  },
+  "solstice": {
+    "totalParticipants": 7867,
+    "participantsWithScore": 7867,
+    "metaTotal": 7867,
+    "pagesScanned": 40,
+    "totalRequests": 40,
+    "skipped": false
+  },
+  "iopn": {
+    "totalParticipants": 12357,
+    "participantsWithScore": 12357,
+    "metaTotal": 12357,
+    "pagesScanned": 62,
+    "totalRequests": 62,
+    "skipped": false
+  }
+}

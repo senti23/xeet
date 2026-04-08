@@ -47,3 +47,62 @@ export interface CreatorProfile {
 }
 
 export type CreatorProfiles = Record<string, CreatorProfile>;
+
+// ─── Valuation types ─────────────────────────────────────────────────────────
+
+export interface ValuationCard {
+  creator: string;
+  displayName: string;
+  rarity: string;
+  quantity: number;
+  purchasePriceEth: number | null;
+  purchasePriceXeets: number | null;
+  highestSaleEth: number | null;
+  medianSaleEth: number | null;
+  avgSaleEth: number | null;
+  saleCount: number;
+  currentFloorEth: number | null;
+  source: 'sale' | 'floor' | 'no_data';
+}
+
+export interface ValuationResponse {
+  wallet: string;
+  valuation: {
+    highest: { totalEth: number; totalUsd: number | null; label: string };
+    median: { totalEth: number; totalUsd: number | null; label: string };
+    average: { totalEth: number; totalUsd: number | null; label: string };
+  };
+  costBasis: {
+    totalEth: number;
+    totalUsd: number | null;
+    cardsWithCost: number;
+    label: string;
+  };
+  ethUsdRate: number;
+  totalCards: number;
+  cardsWithValue: number;
+  cardsNoData: number;
+  cards: ValuationCard[];
+}
+
+// ─── Upgrade types ───────────────────────────────────────────────────────────
+
+export interface UpgradeOpportunity {
+  creator: string;
+  displayName: string;
+  currentRarity: string;
+  upgradeRarity: string;
+  currentFloorEth: number;
+  upgradeFloorEth: number;
+  currentFloorUsd: number | null;
+  upgradeFloorUsd: number | null;
+  ratio: number;
+  tier: 'strong_upgrade' | 'decent_upgrade' | 'consider';
+}
+
+export interface UpgradesResponse {
+  wallet: string;
+  ethUsdRate: number;
+  totalOpportunities: number;
+  opportunities: UpgradeOpportunity[];
+}

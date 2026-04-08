@@ -6,6 +6,7 @@ import type {
   CreatorProfiles,
   WalletScoreSummary,
   WalletScoreDetail,
+  ValuationResponse,
 } from '@/types/deck';
 import { DeckScoreCard } from './DeckScoreCard';
 import { DeckLeaderboard } from './DeckLeaderboard';
@@ -14,6 +15,7 @@ import { FlexDeckModal } from './FlexDeckModal';
 import { CollapsiblePanel } from './CollapsiblePanel';
 import { DeckMissingPanel } from './DeckMissingPanel';
 import { DeckHoldingsPanel } from './DeckHoldingsPanel';
+import { DeckUpgradesPanel } from './DeckUpgradesPanel';
 import { DeckCredits } from './DeckCredits';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
@@ -33,6 +35,7 @@ export function DeckPageClient() {
   const [walletData, setWalletData] = useState<WalletScoreSummary | null>(null);
   const [walletDetail, setWalletDetail] = useState<WalletScoreDetail | null>(null);
   const [searchError, setSearchError] = useState<string | null>(null);
+  const [valuation, setValuation] = useState<ValuationResponse | null>(null);
 
   // ─── UI state ─────────────────────────────────────────────────────────────
   const [showFlex, setShowFlex] = useState(false);
@@ -114,6 +117,7 @@ export function DeckPageClient() {
         setWalletData(null);
         setWalletDetail(null);
         setSearchError(null);
+        setValuation(null);
         return;
       }
 
@@ -141,6 +145,13 @@ export function DeckPageClient() {
       } catch {
         // Detail is optional
       }
+
+      // Fetch valuation (non-blocking)
+      setValuation(null);
+      fetch(`${API_BASE}/api/deck/valuation?wallet=${wallet}`)
+        .then((r) => (r.ok ? r.json() : null))
+        .then(setValuation)
+        .catch(() => setValuation(null));
     },
     [scores, loadDetail],
   );
@@ -236,7 +247,7 @@ export function DeckPageClient() {
       )}
 
       {/* ─── Main layout: content + right sidebar leaderboard ────────────── */}
-      <div className="flex gap-6">
+      <div className="flex gap-6 items-start">
         {/* MAIN CONTENT */}
         <div className="flex-1 min-w-0">
           {/* Score card + action buttons */}
@@ -246,6 +257,7 @@ export function DeckPageClient() {
                 wallet={walletData}
                 address={activeWallet}
                 totalCreators={scores.totalCreators}
+                valuation={valuation}
               />
               <button
                 onClick={() => setShowFlex(true)}
@@ -304,9 +316,24 @@ export function DeckPageClient() {
                     profiles={profiles}
                     bridgeIndex={walletDetail.secondary}
                     creatorCardCounts={creatorCardCounts}
+                    valuationCards={valuation?.cards}
+                    ethUsdRate={valuation?.ethUsdRate}
                   />
                 ) : (
                   <div className="py-4 text-center text-xs text-gray-600">Loading holdings...</div>
+                )}
+              </CollapsiblePanel>
+
+              <CollapsiblePanel
+                title="Upgrade Opportunities"
+                badgeColor="#378ADD"
+                isOpen={openPanel === 'upgrades'}
+                onToggle={() => togglePanel('upgrades')}
+              >
+                {activeWallet ? (
+                  <DeckUpgradesPanel wallet={activeWallet} />
+                ) : (
+                  <div className="py-4 text-center text-xs text-gray-600">Search a wallet first</div>
                 )}
               </CollapsiblePanel>
 

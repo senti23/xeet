@@ -1,14 +1,15 @@
 'use client';
 
-import type { WalletScoreSummary } from '@/types/deck';
+import type { WalletScoreSummary, ValuationResponse } from '@/types/deck';
 
 interface DeckScoreCardProps {
   wallet: WalletScoreSummary;
   address: string;
   totalCreators: number;
+  valuation?: ValuationResponse | null;
 }
 
-export function DeckScoreCard({ wallet, address, totalCreators }: DeckScoreCardProps) {
+export function DeckScoreCard({ wallet, address, totalCreators, valuation }: DeckScoreCardProps) {
   const scoreColor =
     wallet.score >= 80
       ? 'text-deck-red'
@@ -82,6 +83,55 @@ export function DeckScoreCard({ wallet, address, totalCreators }: DeckScoreCardP
           </span>
         )}
       </div>
+
+      {/* Deck Valuation */}
+      {valuation && (
+        <div className="mt-5 border-t border-deck-border pt-4">
+          <p className="text-[10px] text-gray-500 uppercase tracking-wider mb-2">Deck Value (OS Sales)</p>
+          <div className="flex gap-5 flex-wrap">
+            <div>
+              <p className="font-[family-name:var(--font-space-mono)] text-lg font-bold" style={{ color: '#378ADD' }}>
+                {valuation.valuation.highest.totalEth.toFixed(4)} ETH
+              </p>
+              {valuation.valuation.highest.totalUsd != null && (
+                <p className="text-xs text-gray-500">
+                  ~${valuation.valuation.highest.totalUsd.toLocaleString()}
+                </p>
+              )}
+              <p className="text-[9px] text-gray-600 mt-0.5">Highest sale</p>
+            </div>
+            <div>
+              <p className="font-[family-name:var(--font-space-mono)] text-lg font-bold text-gray-400">
+                {valuation.valuation.median.totalEth.toFixed(4)} ETH
+              </p>
+              {valuation.valuation.median.totalUsd != null && (
+                <p className="text-xs text-gray-500">
+                  ~${valuation.valuation.median.totalUsd.toLocaleString()}
+                </p>
+              )}
+              <p className="text-[9px] text-gray-600 mt-0.5">Median sale</p>
+            </div>
+            {valuation.costBasis.cardsWithCost > 0 && (
+              <div>
+                <p className="font-[family-name:var(--font-space-mono)] text-lg font-bold" style={{ color: '#D85A30' }}>
+                  {valuation.costBasis.totalEth.toFixed(4)} ETH
+                </p>
+                {valuation.costBasis.totalUsd != null && (
+                  <p className="text-xs text-gray-500">
+                    ~${valuation.costBasis.totalUsd.toLocaleString()}
+                  </p>
+                )}
+                <p className="text-[9px] text-gray-600 mt-0.5">
+                  Cost basis ({valuation.costBasis.cardsWithCost} cards)
+                </p>
+              </div>
+            )}
+          </div>
+          <p className="text-[9px] text-gray-600 mt-1">
+            {valuation.cardsWithValue}/{valuation.totalCards} cards valued
+          </p>
+        </div>
+      )}
     </div>
   );
 }

@@ -128,6 +128,9 @@ export interface PreparedStatements {
   // Sale history
   upsertSale: Database.Statement;
   getLastSaleByCreatorRarity: Database.Statement;
+  getMaxSaleByCreatorRarity: Database.Statement;
+  getAvgSaleByCreatorRarity: Database.Statement;
+  getPurchasesByWallet: Database.Statement;
   getSalesByToken: Database.Statement;
   getSalesByCreatorRarity: Database.Statement;
   getLatestSaleTimestamp: Database.Statement;
@@ -229,6 +232,22 @@ export function prepareStatements(db: Database.Database): PreparedStatements {
     getLastSaleByCreatorRarity: db.prepare(`
       SELECT * FROM sale_history WHERE creator_handle = ? AND rarity = ? AND marketplace = ?
       ORDER BY sold_at DESC LIMIT 1
+    `),
+    getMaxSaleByCreatorRarity: db.prepare(`
+      SELECT MAX(price) as max_price
+      FROM sale_history
+      WHERE creator_handle = ? AND rarity = ? AND marketplace = 'opensea' AND currency IN ('ETH', 'WETH')
+    `),
+    getAvgSaleByCreatorRarity: db.prepare(`
+      SELECT AVG(price) as avg_price, COUNT(*) as sale_count
+      FROM sale_history
+      WHERE creator_handle = ? AND rarity = ? AND marketplace = 'opensea' AND currency IN ('ETH', 'WETH')
+    `),
+    getPurchasesByWallet: db.prepare(`
+      SELECT creator_handle, rarity, price, currency, marketplace, sold_at
+      FROM sale_history
+      WHERE lower(buyer) = lower(?)
+      ORDER BY sold_at DESC
     `),
     getSalesByToken: db.prepare(
       'SELECT * FROM sale_history WHERE token_id = ? ORDER BY sold_at DESC',

@@ -70,6 +70,7 @@ export function computeMissing(
   walletDetail: WalletDetail,
   creatorHoldings: CreatorHoldingsMap,
   allCreators: Array<{ handle: string; displayName: string }>,
+  cacheData?: Map<string, { xeetFloor: number | null; osFloor: number | null }>,
 ): MissingResult {
   const start = Date.now();
 
@@ -167,10 +168,33 @@ export function computeMissing(
     coverageCopy.set(k, new Set(v));
   }
 
+  // Build case-insensitive index for cache lookups (cache keys use original casing)
+  const cacheLcIndex = new Map<string, string>();
+  if (cacheData) {
+    for (const key of cacheData.keys()) {
+      cacheLcIndex.set(key.toLowerCase(), key);
+    }
+  }
+
+  // Helper: get cheapest floor price for an XCC across rarities (for greedy tiebreaker)
+  const getCheapestFloor = (handle: string): number => {
+    if (!cacheData) return Infinity;
+    let cheapest = Infinity;
+    for (const rarity of ['common', 'rare', 'legendary']) {
+      const originalKey = cacheLcIndex.get(`${handle.toLowerCase()}:${rarity}`);
+      const entry = originalKey ? cacheData.get(originalKey) : undefined;
+      if (entry?.osFloor != null && entry.osFloor > 0 && entry.osFloor < cheapest) {
+        cheapest = entry.osFloor;
+      }
+    }
+    return cheapest;
+  };
+
   while (remaining.size > 0) {
-    // Find XCC that covers the most remaining missing
+    // Find XCC that covers the most remaining missing; on tie, prefer cheaper
     let bestHandle = '';
     let bestCount = 0;
+    let bestFloor = Infinity;
     let bestCovers = new Set<string>();
 
     for (const [xccHandle, covers] of coverageCopy) {
@@ -184,9 +208,19 @@ export function computeMissing(
         }
       }
       if (count > bestCount) {
+        // More coverage = always wins
         bestCount = count;
         bestHandle = xccHandle;
         bestCovers = intersection;
+        bestFloor = getCheapestFloor(xccHandle);
+      } else if (count === bestCount && count > 0) {
+        // Same coverage = prefer cheaper floor price
+        const floor = getCheapestFloor(xccHandle);
+        if (floor < bestFloor) {
+          bestHandle = xccHandle;
+          bestCovers = intersection;
+          bestFloor = floor;
+        }
       }
     }
 
@@ -234,6 +268,19 @@ export function enrichWithPrices(
 ): BridgeSuggestionWithPrice[] {
   const rarities = ['common', 'rare', 'legendary'] as const;
 
+  // Build case-insensitive lookup: cache keys use original case (e.g. "ProofOfEly:common")
+  // but bridge handles are lowercase. Index once, reuse for all bridges.
+  const lcIndex = new Map<string, string>(); // lowercase key → original key
+  for (const key of cacheData.keys()) {
+    lcIndex.set(key.toLowerCase(), key);
+  }
+
+  const lookupCache = (handle: string, rarity: string) => {
+    const lcKey = `${handle.toLowerCase()}:${rarity}`;
+    const originalKey = lcIndex.get(lcKey);
+    return originalKey ? cacheData.get(originalKey) : undefined;
+  };
+
   return bridges.map((bridge) => {
     let cheapestRarity = 'common';
     let bestXeetFloor: number | null = null;
@@ -246,8 +293,7 @@ export function enrichWithPrices(
 
     // Find cheapest xeetFloor and cheapest osFloor independently across rarities
     for (const rarity of rarities) {
-      const key = `${bridge.xccHandle.toLowerCase()}:${rarity}`;
-      const entry = cacheData.get(key);
+      const entry = lookupCache(bridge.xccHandle, rarity);
       if (!entry) continue;
 
       if (entry.xeetFloor != null && entry.xeetFloor > 0 && entry.xeetFloor < cheapestXeetPrice) {
@@ -359,7 +405,7 @@ export function computeMissingForAPI(
   pricesAsOf: string | null,
   wallet: string,
 ): MissingAPIResponse {
-  const result = computeMissing(walletDetail, creatorHoldings, allCreators);
+  const result = computeMissing(walletDetail, creatorHoldings, allCreators, cacheData);
 
   // Display name lookup
   const displayNames = new Map<string, string>();
@@ -368,9 +414,18 @@ export function computeMissingForAPI(
   }
   const getName = (h: string) => displayNames.get(h.toLowerCase()) || h;
 
-  // Top 3 greedy set cover = bestPicks
+  // Top 3 greedy set cover = bestPicks, re-sorted by value (coverage per cost)
   const top3 = result.greedySetCover.slice(0, 3);
   const enrichedTop3 = enrichWithPrices(top3, cacheData);
+
+  // Re-sort by value score: best value first, no-price cards last
+  enrichedTop3.sort((a, b) => {
+    const aHas = (a.xeetFloor != null && a.xeetFloor > 0) || (a.osFloor != null && a.osFloor > 0);
+    const bHas = (b.xeetFloor != null && b.xeetFloor > 0) || (b.osFloor != null && b.osFloor > 0);
+    if (aHas !== bHas) return aHas ? -1 : 1;
+    if (a.valueScore !== b.valueScore) return b.valueScore - a.valueScore;
+    return (a.osFloor ?? Infinity) - (b.osFloor ?? Infinity);
+  });
 
   // Collect all creators covered by top 3
   const coveredByBestPicks = new Set<string>();
