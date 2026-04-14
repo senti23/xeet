@@ -1,0 +1,2875 @@
+{
+  "collectedAt": "2026-04-10T14:30:00Z",
+  "source": "xeet.ai website + API via MCP browsing",
+  "methodology": "realParticipants = users with Math.round(totalPoints) >= 1 on the tournament leaderboard. Verified that leaderboard 'Xeets' column shows tournament-specific score (totalPoints), NOT current XEET balance (xeetEarned). Cross-checked Cris (@xinsanityo): profile shows 4,448 XEETS balance, Kona leaderboard shows 315. Distribution stats (totalXeetsDistributed, avg, median, top10) computed by summing Math.round(totalPoints) for all participants with >=1.",
+  "tournaments": [
+    {
+      "slug": "cockio",
+      "title": "Cock.io",
+      "totalEntries": 288,
+      "realParticipants": 229,
+      "rewards": "$10K USDT + Xeets",
+      "rewardDetails": "Top 10 share $10K: 1st $3,500, 2nd $2,000, 3rd $1,250, 4th-10th $1,000-$100",
+      "eligibleWinners": "Top 10",
+      "niche": "Gaming",
+      "dates": "Nov 3 - Nov 14, 2025",
+      "notes": "Flash tournament, gambling game",
+      "distribution": {
+        "totalXeetsDistributed": 6403,
+        "avgXeetsPerParticipant": 28.0,
+        "medianXeets": 3,
+        "top10ConcentrationPct": 77.9,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "Ely",
+            "xeets": 2207
+          },
+          {
+            "rank": 2,
+            "name": "Samzy",
+            "xeets": 664
+          },
+          {
+            "rank": 3,
+            "name": "Crypto with Khan ( SFZ )",
+            "xeets": 518
+          },
+          {
+            "rank": 4,
+            "name": "Marianne",
+            "xeets": 494
+          },
+          {
+            "rank": 5,
+            "name": "B£$T",
+            "xeets": 405
+          },
+          {
+            "rank": 6,
+            "name": "Valmir",
+            "xeets": 222
+          },
+          {
+            "rank": 7,
+            "name": "MANQ",
+            "xeets": 163
+          },
+          {
+            "rank": 8,
+            "name": "The Ghost.HL",
+            "xeets": 154
+          },
+          {
+            "rank": 9,
+            "name": "Amin",
+            "xeets": 85
+          },
+          {
+            "rank": 10,
+            "name": "Rizzler",
+            "xeets": 79
+          }
+        ]
+      }
+    },
+    {
+      "slug": "litvm",
+      "title": "LITVM",
+      "totalEntries": 479,
+      "realParticipants": 426,
+      "rewards": "0.2% $LITVM + Xeets",
+      "rewardDetails": "Top 100 get 0.2% of $LITVM",
+      "eligibleWinners": "Top 100",
+      "niche": "Infrastructure",
+      "dates": "Dec 2, 2025 - Jan 15, 2026",
+      "notes": "Litecoin VM, smart contract capabilities",
+      "distribution": {
+        "totalXeetsDistributed": 28724,
+        "avgXeetsPerParticipant": 67.4,
+        "medianXeets": 24,
+        "top10ConcentrationPct": 21.1,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "Lizzie",
+            "xeets": 1177
+          },
+          {
+            "rank": 2,
+            "name": "The Crypto Professor",
+            "xeets": 680
+          },
+          {
+            "rank": 3,
+            "name": "Pons Asinorum",
+            "xeets": 671
+          },
+          {
+            "rank": 4,
+            "name": "Tim Haldorsson",
+            "xeets": 628
+          },
+          {
+            "rank": 5,
+            "name": "Ravisharma",
+            "xeets": 562
+          },
+          {
+            "rank": 6,
+            "name": "aman",
+            "xeets": 484
+          },
+          {
+            "rank": 7,
+            "name": "IBRAHIM",
+            "xeets": 477
+          },
+          {
+            "rank": 8,
+            "name": "Netokrypto",
+            "xeets": 467
+          },
+          {
+            "rank": 9,
+            "name": "Bullion",
+            "xeets": 463
+          },
+          {
+            "rank": 10,
+            "name": "sats.ltc",
+            "xeets": 456
+          }
+        ]
+      }
+    },
+    {
+      "slug": "santa-browser",
+      "title": "Santa Browser",
+      "totalEntries": 310,
+      "realParticipants": 302,
+      "rewards": "$30K Santa + Xeets",
+      "rewardDetails": "Top 75 people, 10% @ TGE, 90% 4 month linear vest",
+      "eligibleWinners": "Top 75",
+      "niche": "Infrastructure",
+      "dates": "Dec 11, 2025 - Jan 15, 2026",
+      "notes": "Web3 rewards browser",
+      "distribution": {
+        "totalXeetsDistributed": 20153,
+        "avgXeetsPerParticipant": 66.7,
+        "medianXeets": 20,
+        "top10ConcentrationPct": 39.6,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "Lizzie",
+            "xeets": 2409
+          },
+          {
+            "rank": 2,
+            "name": "Netokrypto",
+            "xeets": 998
+          },
+          {
+            "rank": 3,
+            "name": "TBALLER",
+            "xeets": 810
+          },
+          {
+            "rank": 4,
+            "name": "JuStin (Creator arc)",
+            "xeets": 638
+          },
+          {
+            "rank": 5,
+            "name": "Tea",
+            "xeets": 635
+          },
+          {
+            "rank": 6,
+            "name": "Ivan Rollex",
+            "xeets": 604
+          },
+          {
+            "rank": 7,
+            "name": "Lazy Chart Guy",
+            "xeets": 525
+          },
+          {
+            "rank": 8,
+            "name": "EsteeGaga",
+            "xeets": 490
+          },
+          {
+            "rank": 9,
+            "name": "Beeru singh",
+            "xeets": 489
+          },
+          {
+            "rank": 10,
+            "name": "wale.moca",
+            "xeets": 389
+          }
+        ]
+      }
+    },
+    {
+      "slug": "blinko",
+      "title": "Blinko",
+      "totalEntries": 591,
+      "realParticipants": 451,
+      "rewards": "2% of $BURR",
+      "multipliers": {
+        "type": "In-game achievement + NFT holding",
+        "tiers": [
+          {
+            "requirement": "Reach 2000 honey in-game",
+            "boost": "+1.0x"
+          },
+          {
+            "requirement": "Hold 1 Bearish NFT",
+            "boost": "+0.5x"
+          },
+          {
+            "requirement": "Hold additional Bearish NFTs",
+            "boost": "+0.1x per NFT"
+          },
+          {
+            "requirement": "Hold 6+ Bearish NFTs",
+            "boost": "+1.0x (cap)"
+          }
+        ],
+        "notes": "Multipliers stack. Max possible: base 1x + 1x (honey) + 1x (6+ NFTs) = 3x"
+      },
+      "rewardDetails": "Top 50 share from 2% of $BURR",
+      "eligibleWinners": "Top 50",
+      "niche": "Gaming",
+      "dates": "Dec 3, 2025 - Jan 9, 2026",
+      "notes": "Plinko gambling game",
+      "distribution": {
+        "totalXeetsDistributed": 68809,
+        "avgXeetsPerParticipant": 152.6,
+        "medianXeets": 12,
+        "top10ConcentrationPct": 44.7,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "Harriet",
+            "xeets": 7791
+          },
+          {
+            "rank": 2,
+            "name": "MagicMike",
+            "xeets": 3351
+          },
+          {
+            "rank": 3,
+            "name": "Djani",
+            "xeets": 3329
+          },
+          {
+            "rank": 4,
+            "name": "Edge",
+            "xeets": 3100
+          },
+          {
+            "rank": 5,
+            "name": "Ely",
+            "xeets": 2579
+          },
+          {
+            "rank": 6,
+            "name": "Fogo",
+            "xeets": 2449
+          },
+          {
+            "rank": 7,
+            "name": "VinnyKickz",
+            "xeets": 2262
+          },
+          {
+            "rank": 8,
+            "name": "General Weigs",
+            "xeets": 2125
+          },
+          {
+            "rank": 9,
+            "name": "Man Versus Coin",
+            "xeets": 1897
+          },
+          {
+            "rank": 10,
+            "name": "Aurelius",
+            "xeets": 1895
+          }
+        ]
+      }
+    },
+    {
+      "slug": "cipher",
+      "title": "Cipher",
+      "totalEntries": 430,
+      "realParticipants": 235,
+      "rewards": "1% $CIPHER + Xeets",
+      "rewardDetails": "Top 100 - 50% unlocked at TGE with remaining 50% vest over 3 months",
+      "eligibleWinners": "Top 100",
+      "niche": "DeFi",
+      "dates": "Dec 9, 2025 - Jan 15, 2026",
+      "notes": "Crypto trading terminal",
+      "distribution": {
+        "totalXeetsDistributed": 14595,
+        "avgXeetsPerParticipant": 62.1,
+        "medianXeets": 22,
+        "top10ConcentrationPct": 38.5,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "ryandcrypto",
+            "xeets": 1258
+          },
+          {
+            "rank": 2,
+            "name": "Nobie",
+            "xeets": 673
+          },
+          {
+            "rank": 3,
+            "name": "Lazy Chart Guy",
+            "xeets": 660
+          },
+          {
+            "rank": 4,
+            "name": "(emoji user)",
+            "xeets": 560
+          },
+          {
+            "rank": 5,
+            "name": "Ravisharma",
+            "xeets": 500
+          },
+          {
+            "rank": 6,
+            "name": "aman",
+            "xeets": 453
+          },
+          {
+            "rank": 7,
+            "name": "surfista Zetarium",
+            "xeets": 429
+          },
+          {
+            "rank": 8,
+            "name": "iLLuGa",
+            "xeets": 428
+          },
+          {
+            "rank": 9,
+            "name": "TBALLER",
+            "xeets": 357
+          },
+          {
+            "rank": 10,
+            "name": "Steel",
+            "xeets": 298
+          }
+        ]
+      }
+    },
+    {
+      "slug": "cryptoys",
+      "title": "Cryptoys",
+      "totalEntries": 232,
+      "realParticipants": 107,
+      "rewards": "Xeets (cancelled)",
+      "rewardDetails": "Cancelled",
+      "eligibleWinners": "N/A - cancelled",
+      "niche": "NFT/Art",
+      "dates": "Jan 14 - Jan 15, 2026",
+      "notes": "Digital collectibles, 3D toys. Tournament cancelled. Only 1 day.",
+      "distribution": {
+        "totalXeetsDistributed": 957,
+        "avgXeetsPerParticipant": 8.9,
+        "top10ConcentrationPct": 21.9,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "Marianne",
+            "xeets": 21
+          },
+          {
+            "rank": 1,
+            "name": "Djani",
+            "xeets": 21
+          },
+          {
+            "rank": 1,
+            "name": "CHESUS",
+            "xeets": 21
+          },
+          {
+            "rank": 1,
+            "name": "Femi",
+            "xeets": 21
+          },
+          {
+            "rank": 1,
+            "name": "Josh Ong",
+            "xeets": 21
+          },
+          {
+            "rank": 1,
+            "name": "R3birth",
+            "xeets": 21
+          },
+          {
+            "rank": 7,
+            "name": "Tim Haldorsson",
+            "xeets": 21
+          },
+          {
+            "rank": 8,
+            "name": "JASSP3R",
+            "xeets": 21
+          },
+          {
+            "rank": 9,
+            "name": "Diamond.tgn",
+            "xeets": 21
+          },
+          {
+            "rank": 9,
+            "name": "ayern",
+            "xeets": 21
+          }
+        ]
+      }
+    },
+    {
+      "slug": "gamblr",
+      "title": "Gamblr",
+      "totalEntries": 461,
+      "realParticipants": 368,
+      "rewards": "0.2% $GAMBLR + Xeets",
+      "rewardDetails": "0.2% of supply per month to top 100 and 20K to top 50 monthly loaded to gamblr accounts. Fully unlocked.",
+      "eligibleWinners": "Top 100 (tokens) + Top 50 (cash)",
+      "niche": "Gaming",
+      "dates": "Nov 6 - Dec 7, 2025",
+      "notes": "Crypto iGaming and sportsbook",
+      "distribution": {
+        "totalXeetsDistributed": 11118,
+        "avgXeetsPerParticipant": 30.2,
+        "medianXeets": 9,
+        "top10ConcentrationPct": 16.6,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "VonDoom",
+            "xeets": 287
+          },
+          {
+            "rank": 2,
+            "name": "Wilsons",
+            "xeets": 249
+          },
+          {
+            "rank": 3,
+            "name": "Adapt",
+            "xeets": 227
+          },
+          {
+            "rank": 4,
+            "name": "Crypto Sergeant",
+            "xeets": 193
+          },
+          {
+            "rank": 5,
+            "name": "HOOD MEMORIES",
+            "xeets": 161
+          },
+          {
+            "rank": 6,
+            "name": "Henryphord",
+            "xeets": 149
+          },
+          {
+            "rank": 7,
+            "name": "xShinobi",
+            "xeets": 148
+          },
+          {
+            "rank": 8,
+            "name": "LORDVIBEZZ",
+            "xeets": 145
+          },
+          {
+            "rank": 9,
+            "name": "ER$$",
+            "xeets": 145
+          },
+          {
+            "rank": 10,
+            "name": "6PACKSAGE",
+            "xeets": 143
+          }
+        ]
+      }
+    },
+    {
+      "slug": "project-zero",
+      "title": "Project Zero",
+      "totalEntries": 669,
+      "realParticipants": 535,
+      "rewards": "0.5% $PZero + Xeets",
+      "multipliers": {
+        "type": "In-app interaction",
+        "tiers": [
+          {
+            "requirement": "In-app activity (low barrier)",
+            "boost": 1.5
+          },
+          {
+            "requirement": "In-app activity (higher engagement)",
+            "boost": 3.0
+          }
+        ],
+        "notes": "Exact criteria unknown. In-app interactions, financially easy to achieve."
+      },
+      "rewardDetails": "Top 100. 2 month cliff and 4 month linear vesting.",
+      "eligibleWinners": "Top 100",
+      "niche": "DeFi",
+      "dates": "Nov 19, 2025 - Jan 15, 2026",
+      "notes": "AI gateway to Web3, on-chain insights",
+      "distribution": {
+        "totalXeetsDistributed": 30438,
+        "avgXeetsPerParticipant": 56.9,
+        "medianXeets": 12,
+        "top10ConcentrationPct": 28.4,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "Lizzie",
+            "xeets": 2576
+          },
+          {
+            "rank": 2,
+            "name": "ChainChau",
+            "xeets": 1070
+          },
+          {
+            "rank": 3,
+            "name": "Lablin",
+            "xeets": 898
+          },
+          {
+            "rank": 4,
+            "name": "sna SZN",
+            "xeets": 810
+          },
+          {
+            "rank": 5,
+            "name": "PROMPTFI",
+            "xeets": 635
+          },
+          {
+            "rank": 6,
+            "name": "Lazy Chart Guy",
+            "xeets": 620
+          },
+          {
+            "rank": 7,
+            "name": "JANU",
+            "xeets": 569
+          },
+          {
+            "rank": 8,
+            "name": "BL£",
+            "xeets": 518
+          },
+          {
+            "rank": 9,
+            "name": "Maureen Archibong",
+            "xeets": 492
+          },
+          {
+            "rank": 10,
+            "name": "surfista Zetarium",
+            "xeets": 447
+          }
+        ]
+      }
+    },
+    {
+      "slug": "onsight",
+      "title": "Onsight",
+      "totalEntries": 470,
+      "realParticipants": 387,
+      "rewards": "0.25% Points + Xeets",
+      "rewardDetails": "Top 100 creators will receive 0.25% of Onsight points for Round 1",
+      "eligibleWinners": "Top 100",
+      "niche": "DeFi",
+      "dates": "Nov 25 - Dec 26, 2025",
+      "notes": "Prediction markets on Telegram",
+      "distribution": {
+        "totalXeetsDistributed": 19176,
+        "avgXeetsPerParticipant": 49.6,
+        "medianXeets": 9,
+        "top10ConcentrationPct": 30.0,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "camol",
+            "xeets": 1657
+          },
+          {
+            "rank": 2,
+            "name": "tdk",
+            "xeets": 802
+          },
+          {
+            "rank": 3,
+            "name": "Josh Ong",
+            "xeets": 631
+          },
+          {
+            "rank": 4,
+            "name": "Lazy Chart Guy",
+            "xeets": 535
+          },
+          {
+            "rank": 5,
+            "name": "Teebebe",
+            "xeets": 460
+          },
+          {
+            "rank": 6,
+            "name": "PARRY SLON",
+            "xeets": 387
+          },
+          {
+            "rank": 7,
+            "name": "Snowfrankdgr8",
+            "xeets": 348
+          },
+          {
+            "rank": 8,
+            "name": "Mastermind",
+            "xeets": 322
+          },
+          {
+            "rank": 9,
+            "name": "Swanky",
+            "xeets": 314
+          },
+          {
+            "rank": 10,
+            "name": "Desmond",
+            "xeets": 291
+          }
+        ]
+      }
+    },
+    {
+      "slug": "megaweapon",
+      "title": "MEGAWEAPON",
+      "totalEntries": 489,
+      "realParticipants": 411,
+      "rewards": "50K $WEAPON + Xeets",
+      "multipliers": {
+        "type": "In-game/in-app interaction",
+        "tiers": [
+          {
+            "requirement": "In-game activity (low barrier)",
+            "boost": 1.5
+          },
+          {
+            "requirement": "In-game activity (higher engagement)",
+            "boost": 3.0
+          }
+        ],
+        "notes": "Exact criteria unknown. In-app interactions, financially easy to achieve."
+      },
+      "rewardDetails": "Top 10: Beavers NFT + 50K $WEAPON + 25 AMMO + 100k $BEAVER. Ranks 11-50: 25 AMMO + 100k $BEAVER. Ranks 51-100: 10 AMMO + 100k $BEAVER.",
+      "eligibleWinners": "Top 100",
+      "niche": "Gaming",
+      "dates": "Oct 31 - Nov 30, 2025",
+      "notes": "Live-action multiplayer by CEDEN Network on Abstract",
+      "distribution": {
+        "totalXeetsDistributed": 17533,
+        "avgXeetsPerParticipant": 42.7,
+        "medianXeets": 8,
+        "top10ConcentrationPct": 55.0,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "Ely",
+            "xeets": 2280
+          },
+          {
+            "rank": 2,
+            "name": "Marianne",
+            "xeets": 1837
+          },
+          {
+            "rank": 3,
+            "name": "Josh Ong",
+            "xeets": 1508
+          },
+          {
+            "rank": 4,
+            "name": "Alex",
+            "xeets": 1142
+          },
+          {
+            "rank": 5,
+            "name": "Crypto with Khan ( SFZ )",
+            "xeets": 604
+          },
+          {
+            "rank": 6,
+            "name": "Mark",
+            "xeets": 581
+          },
+          {
+            "rank": 7,
+            "name": "R3birth",
+            "xeets": 523
+          },
+          {
+            "rank": 8,
+            "name": "signature",
+            "xeets": 433
+          },
+          {
+            "rank": 9,
+            "name": "CJ78",
+            "xeets": 394
+          },
+          {
+            "rank": 10,
+            "name": "MadMaxx",
+            "xeets": 346
+          }
+        ]
+      }
+    },
+    {
+      "slug": "gvc",
+      "title": "Good Vibes Club",
+      "totalEntries": 504,
+      "realParticipants": 446,
+      "rewards": "$20K $VIBESTR + GVC NFTs",
+      "multipliers": {
+        "type": "NFT + Token holding (stackable, 2.5x cap)",
+        "nftTiers": [
+          {
+            "requirement": "GVC NFT",
+            "boost": 1.5
+          },
+          {
+            "requirement": "1/1 or Cosmic NFT",
+            "boost": 2.5
+          }
+        ],
+        "tokenTiers": [
+          {
+            "requirement": "69K $VIBESTR held",
+            "boost": 1.25
+          },
+          {
+            "requirement": "250K $VIBESTR held",
+            "boost": 1.5
+          },
+          {
+            "requirement": "500K $VIBESTR held",
+            "boost": 1.75
+          },
+          {
+            "requirement": "1M $VIBESTR held",
+            "boost": 2.0
+          }
+        ],
+        "notes": "Multipliers unlock per category and stack up to a 2.5x cap. Example: 1 GVC + 69K $VIBESTR = 1.75x"
+      },
+      "rewardDetails": "Top 25 win from $20K in token. Top 50 entered into raffle to win 3 Good Vibes Club NFTs.",
+      "eligibleWinners": "Top 25 (tokens) + Top 50 (NFT raffle)",
+      "niche": "NFT/Art",
+      "dates": "Dec 1 - Dec 20, 2025",
+      "notes": "Art and lifestyle brand by Toast.tv",
+      "distribution": {
+        "totalXeetsDistributed": 32571,
+        "avgXeetsPerParticipant": 73.0,
+        "medianXeets": 8,
+        "top10ConcentrationPct": 28.0,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "MatthieuMDB",
+            "xeets": 1203
+          },
+          {
+            "rank": 2,
+            "name": "VonDoom",
+            "xeets": 1025
+          },
+          {
+            "rank": 3,
+            "name": "BLOXX",
+            "xeets": 990
+          },
+          {
+            "rank": 4,
+            "name": "Finlvnd",
+            "xeets": 988
+          },
+          {
+            "rank": 5,
+            "name": "T.M.A",
+            "xeets": 867
+          },
+          {
+            "rank": 6,
+            "name": "Crits",
+            "xeets": 863
+          },
+          {
+            "rank": 7,
+            "name": "Man Versus Coin",
+            "xeets": 836
+          },
+          {
+            "rank": 8,
+            "name": "dort",
+            "xeets": 831
+          },
+          {
+            "rank": 9,
+            "name": "NAPP.eth",
+            "xeets": 815
+          },
+          {
+            "rank": 10,
+            "name": "Samy",
+            "xeets": 697
+          }
+        ]
+      }
+    },
+    {
+      "slug": "chimpers",
+      "title": "Chimpers",
+      "totalEntries": 643,
+      "realParticipants": 406,
+      "rewards": "$20K USDC + Xeets",
+      "multipliers": {
+        "type": "Token holding",
+        "tiers": [
+          {
+            "requirement": "50K+ $CHMPSTR held",
+            "boost": 1.5
+          },
+          {
+            "requirement": "500K+ $CHMPSTR held",
+            "boost": 2.0
+          }
+        ]
+      },
+      "rewardDetails": "$12,500 in $CHMPSTR: 1st $5K, 2nd $2K, 3rd $1K, 4th-10th $500 ea, 11th-20th $100 ea. Plus 3 Chimpers NFTs raffled among Top 50.",
+      "eligibleWinners": "Top 20 (cash) + Top 50 (NFT raffle)",
+      "niche": "NFT/Art",
+      "dates": "Nov 10 - Nov 25, 2025",
+      "notes": "Flash tournament, pixel art community",
+      "distribution": {
+        "totalXeetsDistributed": 17193,
+        "avgXeetsPerParticipant": 42.3,
+        "medianXeets": 6,
+        "top10ConcentrationPct": 48.1,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "VonDoom",
+            "xeets": 1665
+          },
+          {
+            "rank": 2,
+            "name": "Josh Ong",
+            "xeets": 1316
+          },
+          {
+            "rank": 3,
+            "name": "Crits",
+            "xeets": 1181
+          },
+          {
+            "rank": 4,
+            "name": "JayPee",
+            "xeets": 802
+          },
+          {
+            "rank": 5,
+            "name": "Tat Thang",
+            "xeets": 750
+          },
+          {
+            "rank": 6,
+            "name": "Sky",
+            "xeets": 598
+          },
+          {
+            "rank": 7,
+            "name": "Tyler DurdEth",
+            "xeets": 550
+          },
+          {
+            "rank": 8,
+            "name": "CHESUS",
+            "xeets": 547
+          },
+          {
+            "rank": 9,
+            "name": "Loki",
+            "xeets": 448
+          },
+          {
+            "rank": 10,
+            "name": "Craig",
+            "xeets": 414
+          }
+        ]
+      }
+    },
+    {
+      "slug": "wow",
+      "title": "World of Women",
+      "totalEntries": 862,
+      "realParticipants": 563,
+      "rewards": "1% $WOWSTR + Xeets",
+      "multipliers": {
+        "type": "Token/NFT holding",
+        "tiers": [
+          {
+            "requirement": "100K+ $WOWSTR held",
+            "boost": 1.5
+          },
+          {
+            "requirement": "WoW Galaxy NFT (secondary collection)",
+            "boost": 2.0
+          },
+          {
+            "requirement": "OG WoW NFT (primary collection)",
+            "boost": 2.75
+          },
+          {
+            "requirement": "5+ NFTs from any WoW collection",
+            "boost": 3.0
+          }
+        ]
+      },
+      "rewardDetails": "Top 50 creators. 5 WoW Galaxy NFTs randomly to creators",
+      "eligibleWinners": "Top 50 + random NFTs",
+      "niche": "NFT/Art",
+      "dates": "Oct 28 - Nov 30, 2025",
+      "notes": "Blue-chip NFT legacy brand",
+      "distribution": {
+        "totalXeetsDistributed": 14197,
+        "avgXeetsPerParticipant": 25.2,
+        "medianXeets": 6,
+        "top10ConcentrationPct": 42.1,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "CHESUS",
+            "xeets": 1983
+          },
+          {
+            "rank": 2,
+            "name": "Josh Ong",
+            "xeets": 1044
+          },
+          {
+            "rank": 3,
+            "name": "MonicaTalan",
+            "xeets": 723
+          },
+          {
+            "rank": 4,
+            "name": "EricF",
+            "xeets": 408
+          },
+          {
+            "rank": 5,
+            "name": "JL",
+            "xeets": 360
+          },
+          {
+            "rank": 6,
+            "name": "emma",
+            "xeets": 353
+          },
+          {
+            "rank": 7,
+            "name": "Lazy Chart Guy",
+            "xeets": 312
+          },
+          {
+            "rank": 8,
+            "name": "ER$$",
+            "xeets": 304
+          },
+          {
+            "rank": 9,
+            "name": "Shelley",
+            "xeets": 256
+          },
+          {
+            "rank": 10,
+            "name": "Ritalin",
+            "xeets": 239
+          }
+        ]
+      }
+    },
+    {
+      "slug": "kona",
+      "title": "Kona",
+      "totalEntries": 1908,
+      "realParticipants": 1602,
+      "rewards": "1.5M Kona Points + Xeets",
+      "rewardDetails": "Top 100",
+      "eligibleWinners": "Top 100",
+      "niche": "DeFi",
+      "dates": "Oct 6 - Nov 7, 2025",
+      "notes": "DeFi ecosystem by KittyPunch on Abstract. Largest early tournament.",
+      "distribution": {
+        "totalXeetsDistributed": 27966,
+        "avgXeetsPerParticipant": 17.5,
+        "medianXeets": 15,
+        "top10ConcentrationPct": 6.8,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "Ely",
+            "xeets": 360
+          },
+          {
+            "rank": 2,
+            "name": "Cris",
+            "xeets": 315
+          },
+          {
+            "rank": 3,
+            "name": "Josh Ong",
+            "xeets": 200
+          },
+          {
+            "rank": 4,
+            "name": "Clove",
+            "xeets": 158
+          },
+          {
+            "rank": 5,
+            "name": "remon",
+            "xeets": 157
+          },
+          {
+            "rank": 6,
+            "name": "ChainGang",
+            "xeets": 156
+          },
+          {
+            "rank": 7,
+            "name": "ETH2",
+            "xeets": 154
+          },
+          {
+            "rank": 8,
+            "name": "Raj",
+            "xeets": 148
+          },
+          {
+            "rank": 9,
+            "name": "0x.Kai",
+            "xeets": 130
+          },
+          {
+            "rank": 10,
+            "name": "Tea",
+            "xeets": 127
+          }
+        ]
+      }
+    },
+    {
+      "slug": "thrust",
+      "title": "Thrust",
+      "totalEntries": 1479,
+      "realParticipants": 689,
+      "rewards": "1% $N3ON + Xeets",
+      "rewardDetails": "Top 150 creators. 1% of $N3ON token supply, 60-day linear vesting.",
+      "eligibleWinners": "Top 150",
+      "niche": "DeFi",
+      "dates": "Nov 7 - Dec 8, 2025",
+      "notes": "Financial layer of culture, creator economy",
+      "distribution": {
+        "totalXeetsDistributed": 7268,
+        "avgXeetsPerParticipant": 10.5,
+        "medianXeets": 4,
+        "top10ConcentrationPct": 21.5,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "Ely",
+            "xeets": 319
+          },
+          {
+            "rank": 2,
+            "name": "Cris",
+            "xeets": 296
+          },
+          {
+            "rank": 3,
+            "name": "Josh Ong",
+            "xeets": 224
+          },
+          {
+            "rank": 4,
+            "name": "Xeer",
+            "xeets": 139
+          },
+          {
+            "rank": 5,
+            "name": "Crypto with Khan ( SFZ )",
+            "xeets": 124
+          },
+          {
+            "rank": 6,
+            "name": "Lizzie",
+            "xeets": 113
+          },
+          {
+            "rank": 7,
+            "name": "ALTF4",
+            "xeets": 101
+          },
+          {
+            "rank": 8,
+            "name": "JayPee",
+            "xeets": 87
+          },
+          {
+            "rank": 9,
+            "name": "Hydraze",
+            "xeets": 83
+          },
+          {
+            "rank": 10,
+            "name": "Books",
+            "xeets": 80
+          }
+        ]
+      }
+    },
+    {
+      "slug": "adi",
+      "title": "ADI Chain",
+      "rewards": "$100K USDC total ($50K per month x2 drops) + Xeets",
+      "rewardDetails": "100K USDC total. 2 monthly tournaments rewarding top 100 creators. No vesting. 50K per month.",
+      "eligibleWinners": "Top 100",
+      "niche": "Infrastructure",
+      "notes": "ZK Layer-2 for governments/enterprises. Multi-drop tournament. Drop 2 was cancelled after only 1 week.",
+      "combined": {
+        "totalEntries": 2500,
+        "realParticipants": 1618,
+        "totalXeetsDistributed": 47394,
+        "dates": "Dec 7, 2025 - Jan 15, 2026"
+      },
+      "phase1": {
+        "tournamentId": "3396f69f-70c1-4703-9b01-47b147e095ef",
+        "title": "ADI Chain — Drop 1",
+        "totalEntries": 1496,
+        "realParticipants": 1194,
+        "dates": "Dec 7, 2025 - Jan 7, 2026",
+        "rewards": "$50K USDC + Xeets",
+        "distribution": {
+          "totalXeetsDistributed": 34671,
+          "avgXeetsPerParticipant": 29.0,
+          "medianXeets": 10,
+          "top10ConcentrationPct": 10.7,
+          "top10": [
+            {
+              "rank": 1,
+              "name": "Nathan",
+              "xeets": 603
+            },
+            {
+              "rank": 2,
+              "name": "Tim Haldorsson",
+              "xeets": 447
+            },
+            {
+              "rank": 3,
+              "name": "Dino ZK",
+              "xeets": 444
+            },
+            {
+              "rank": 4,
+              "name": "wale.moca",
+              "xeets": 423
+            },
+            {
+              "rank": 5,
+              "name": "Lizzie",
+              "xeets": 421
+            },
+            {
+              "rank": 6,
+              "name": "StarPlatinum",
+              "xeets": 295
+            },
+            {
+              "rank": 7,
+              "name": "Joep",
+              "xeets": 275
+            },
+            {
+              "rank": 8,
+              "name": "Crits",
+              "xeets": 231
+            },
+            {
+              "rank": 9,
+              "name": "Nami",
+              "xeets": 228
+            },
+            {
+              "rank": 10,
+              "name": "Lovanic",
+              "xeets": 228
+            }
+          ]
+        }
+      },
+      "phase2": {
+        "tournamentId": "1c1288ec-0220-42a4-afa5-c5053c00ec8e",
+        "title": "ADI Chain — Drop 2",
+        "totalEntries": 1004,
+        "realParticipants": 424,
+        "dates": "Jan 8, 2026 - Jan 15, 2026",
+        "rewards": "Xeets (cancelled)",
+        "distribution": {
+          "totalXeetsDistributed": 12723,
+          "avgXeetsPerParticipant": 30.0,
+          "top10ConcentrationPct": 19.4,
+          "top10": [
+            {
+              "rank": 1,
+              "name": "StarPlatinum",
+              "xeets": 416
+            },
+            {
+              "rank": 2,
+              "name": "Pons Asinorum",
+              "xeets": 386
+            },
+            {
+              "rank": 3,
+              "name": "Usopp",
+              "xeets": 268
+            },
+            {
+              "rank": 4,
+              "name": "Kaff",
+              "xeets": 209
+            },
+            {
+              "rank": 5,
+              "name": "Chris",
+              "xeets": 208
+            },
+            {
+              "rank": 6,
+              "name": "Michael van de Poppe",
+              "xeets": 202
+            },
+            {
+              "rank": 7,
+              "name": "Defi Rocketeer",
+              "xeets": 202
+            },
+            {
+              "rank": 8,
+              "name": "Gomtu",
+              "xeets": 201
+            },
+            {
+              "rank": 9,
+              "name": "Dino ZK",
+              "xeets": 198
+            },
+            {
+              "rank": 10,
+              "name": "Jtrade",
+              "xeets": 184
+            }
+          ]
+        }
+      }
+    },
+    {
+      "slug": "datahaven",
+      "title": "DataHaven",
+      "totalEntries": 3758,
+      "realParticipants": 1297,
+      "rewards": "Xeets (cancelled)",
+      "rewardDetails": "Cancelled",
+      "eligibleWinners": "N/A - cancelled",
+      "niche": "Infrastructure",
+      "dates": "Jan 7 - Jan 15, 2026",
+      "notes": "Verifiable data storage for AI/enterprise. Cancelled, only 1 week.",
+      "distribution": {
+        "totalXeetsDistributed": 17323,
+        "avgXeetsPerParticipant": 13.4,
+        "medianXeets": 12,
+        "top10ConcentrationPct": 7.6,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "Baki",
+            "xeets": 237
+          },
+          {
+            "rank": 2,
+            "name": "Pons Asinorum",
+            "xeets": 220
+          },
+          {
+            "rank": 3,
+            "name": "Muzyka",
+            "xeets": 118
+          },
+          {
+            "rank": 4,
+            "name": "Ben",
+            "xeets": 118
+          },
+          {
+            "rank": 5,
+            "name": "Nicks",
+            "xeets": 116
+          },
+          {
+            "rank": 6,
+            "name": "hottiebabegem",
+            "xeets": 110
+          },
+          {
+            "rank": 7,
+            "name": "E-RIFAT",
+            "xeets": 108
+          },
+          {
+            "rank": 8,
+            "name": "Shizuka",
+            "xeets": 104
+          },
+          {
+            "rank": 9,
+            "name": "Kat Boo",
+            "xeets": 97
+          },
+          {
+            "rank": 10,
+            "name": "TOMATO MAN",
+            "xeets": 96
+          }
+        ]
+      }
+    },
+    {
+      "slug": "artery",
+      "title": "Artery",
+      "totalEntries": 1783,
+      "realParticipants": 1217,
+      "rewards": "1% $ARTERY + Xeets",
+      "rewardDetails": "Flash tournament. Top 100 creators win. Top 50 win Artery Genesis NFT. Tokens fully unlocked.",
+      "eligibleWinners": "Top 100 (tokens) + Top 50 (NFT)",
+      "niche": "Infrastructure",
+      "dates": "Oct 25 - Nov 18, 2025",
+      "notes": "L1 blockchain on Avalanche",
+      "distribution": {
+        "totalXeetsDistributed": 10905,
+        "avgXeetsPerParticipant": 9.0,
+        "medianXeets": 4,
+        "top10ConcentrationPct": 13.9,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "Crypto with Khan ( SFZ )",
+            "xeets": 245
+          },
+          {
+            "rank": 2,
+            "name": "JayPee",
+            "xeets": 217
+          },
+          {
+            "rank": 3,
+            "name": "Alvin",
+            "xeets": 197
+          },
+          {
+            "rank": 4,
+            "name": "Stunner.nft",
+            "xeets": 153
+          },
+          {
+            "rank": 5,
+            "name": "6PACKSAGE",
+            "xeets": 130
+          },
+          {
+            "rank": 6,
+            "name": "Josh Ong",
+            "xeets": 127
+          },
+          {
+            "rank": 7,
+            "name": "OLAYEMI EBENEZER TOSIN",
+            "xeets": 117
+          },
+          {
+            "rank": 8,
+            "name": "Ola",
+            "xeets": 111
+          },
+          {
+            "rank": 9,
+            "name": "AJJEEE",
+            "xeets": 107
+          },
+          {
+            "rank": 10,
+            "name": "Prymex.eth",
+            "xeets": 107
+          }
+        ]
+      }
+    },
+    {
+      "slug": "vdex",
+      "title": "VDEX",
+      "totalEntries": 1493,
+      "realParticipants": 952,
+      "rewards": "0.5% $VDEX + Xeets",
+      "multipliers": {
+        "type": "Referral trading volume (linear scaling)",
+        "formula": "Every $10K referral volume on VDEX.trade = +10% boost. Scales linearly up to 3x.",
+        "tiers": [
+          {
+            "requirement": "$10K referral volume",
+            "boost": 1.1
+          },
+          {
+            "requirement": "$25K referral volume",
+            "boost": 1.25
+          },
+          {
+            "requirement": "$50K referral volume",
+            "boost": 1.5
+          },
+          {
+            "requirement": "$100K referral volume",
+            "boost": 2.0
+          },
+          {
+            "requirement": "$200K referral volume",
+            "boost": 2.1
+          },
+          {
+            "requirement": "$300K referral volume",
+            "boost": 2.2
+          },
+          {
+            "requirement": "$1M referral volume",
+            "boost": 3.0
+          }
+        ],
+        "notes": "Boost scales with cumulative trading volume brought by your referrals. +10% per $10K up to 2x at $100K, then +10% per $100K from $100K to $1M (3x cap)."
+      },
+      "rewardDetails": "Top 150, 33% per month vesting",
+      "eligibleWinners": "Top 150",
+      "niche": "DeFi",
+      "dates": "Feb 1 - Jan 15, 2026",
+      "notes": "DEX. Drop 2 exists but had 0 participants with >=1 xeet (18 total entries, all zeros).",
+      "distribution": {
+        "totalXeetsDistributed": 12775,
+        "avgXeetsPerParticipant": 13.4,
+        "medianXeets": 2,
+        "top10ConcentrationPct": 22.8,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "The Crypto Professor",
+            "xeets": 793
+          },
+          {
+            "rank": 2,
+            "name": "Josh Ong",
+            "xeets": 621
+          },
+          {
+            "rank": 3,
+            "name": "Jimbei",
+            "xeets": 249
+          },
+          {
+            "rank": 4,
+            "name": "Spicy Rich",
+            "xeets": 236
+          },
+          {
+            "rank": 5,
+            "name": "Dakruz",
+            "xeets": 214
+          },
+          {
+            "rank": 6,
+            "name": "0xPercy",
+            "xeets": 174
+          },
+          {
+            "rank": 7,
+            "name": "Paps",
+            "xeets": 170
+          },
+          {
+            "rank": 8,
+            "name": "ELIMONI Noya",
+            "xeets": 160
+          },
+          {
+            "rank": 9,
+            "name": "LADY WHISTLEDOWN",
+            "xeets": 156
+          },
+          {
+            "rank": 10,
+            "name": "BMA",
+            "xeets": 139
+          }
+        ]
+      }
+    },
+    {
+      "slug": "lute",
+      "title": "Lute",
+      "totalEntries": 2541,
+      "realParticipants": 1812,
+      "rewards": "1M Lute XP + Xeets",
+      "rewardDetails": "Top 500 creators",
+      "eligibleWinners": "Top 500",
+      "niche": "Social",
+      "dates": "Oct 27 - Nov 28, 2025",
+      "notes": "Social/music platform",
+      "distribution": {
+        "totalXeetsDistributed": 14065,
+        "avgXeetsPerParticipant": 7.8,
+        "medianXeets": 4,
+        "top10ConcentrationPct": 10.2,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "Ely",
+            "xeets": 271
+          },
+          {
+            "rank": 2,
+            "name": "S A",
+            "xeets": 220
+          },
+          {
+            "rank": 3,
+            "name": "RAVE",
+            "xeets": 152
+          },
+          {
+            "rank": 4,
+            "name": "HOOD MEMORIES",
+            "xeets": 123
+          },
+          {
+            "rank": 5,
+            "name": "Cris",
+            "xeets": 118
+          },
+          {
+            "rank": 6,
+            "name": "JayPee",
+            "xeets": 115
+          },
+          {
+            "rank": 7,
+            "name": "CHESUS",
+            "xeets": 112
+          },
+          {
+            "rank": 8,
+            "name": "AJJEEE",
+            "xeets": 110
+          },
+          {
+            "rank": 9,
+            "name": "jam",
+            "xeets": 108
+          },
+          {
+            "rank": 10,
+            "name": "Henryphord",
+            "xeets": 105
+          }
+        ]
+      }
+    },
+    {
+      "slug": "valannia",
+      "title": "Valannia",
+      "totalEntries": 1791,
+      "realParticipants": 1374,
+      "rewards": "2.5% $VALAN + Xeets",
+      "multipliers": {
+        "type": "Gaming NFT holding",
+        "tiers": [
+          {
+            "requirement": "1 Risen Hero NFT",
+            "boost": 1.2
+          },
+          {
+            "requirement": "2 Risen Heroes NFTs",
+            "boost": 1.5
+          },
+          {
+            "requirement": "3 Risen Heroes NFTs",
+            "boost": 2.0
+          },
+          {
+            "requirement": "4 Risen Heroes NFTs",
+            "boost": 2.5
+          },
+          {
+            "requirement": "5+ Risen Heroes NFTs",
+            "boost": 3.0
+          }
+        ]
+      },
+      "rewardDetails": "3 monthly tournaments — 2.5%, 1.5%, and 1.5% rewards. Unlocks: 40% now, 30% after 1 month, 30% after 2 months.",
+      "eligibleWinners": "Top 100",
+      "niche": "Gaming",
+      "dates": "Oct 26 - Nov 27, 2025",
+      "notes": "Gaming project. Token rewards for top 100.",
+      "distribution": {
+        "totalXeetsDistributed": 25175,
+        "avgXeetsPerParticipant": 18.3,
+        "medianXeets": 6,
+        "top10ConcentrationPct": 15.7,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "Lizzie",
+            "xeets": 662
+          },
+          {
+            "rank": 2,
+            "name": "Josh Ong",
+            "xeets": 567
+          },
+          {
+            "rank": 3,
+            "name": "Ansuman kgen",
+            "xeets": 528
+          },
+          {
+            "rank": 4,
+            "name": "DAN.ETH",
+            "xeets": 399
+          },
+          {
+            "rank": 5,
+            "name": "Ryzne",
+            "xeets": 327
+          },
+          {
+            "rank": 6,
+            "name": "Dashke",
+            "xeets": 327
+          },
+          {
+            "rank": 7,
+            "name": "PrieXt",
+            "xeets": 295
+          },
+          {
+            "rank": 8,
+            "name": "EMMYBOYQ",
+            "xeets": 294
+          },
+          {
+            "rank": 9,
+            "name": "0x.Kai",
+            "xeets": 286
+          },
+          {
+            "rank": 10,
+            "name": "da great",
+            "xeets": 271
+          }
+        ]
+      }
+    },
+    {
+      "slug": "mezo",
+      "title": "Mezo",
+      "totalEntries": 6527,
+      "realParticipants": 1190,
+      "rewards": "200K MEZO + Xeets",
+      "rewardDetails": "Top 100 Creators",
+      "eligibleWinners": "Top 100",
+      "niche": "DeFi",
+      "dates": "Dec 12, 2025 - Jan 15, 2026",
+      "notes": "Bitcoin DeFi layer. Huge total entries but low real participation rate.",
+      "distribution": {
+        "totalXeetsDistributed": 29469,
+        "avgXeetsPerParticipant": 24.8,
+        "medianXeets": 6,
+        "top10ConcentrationPct": 10.8,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "Tim Haldorsson",
+            "xeets": 560
+          },
+          {
+            "rank": 2,
+            "name": "Jaymz.eth",
+            "xeets": 336
+          },
+          {
+            "rank": 3,
+            "name": "Steezey",
+            "xeets": 329
+          },
+          {
+            "rank": 4,
+            "name": "Mimi",
+            "xeets": 303
+          },
+          {
+            "rank": 5,
+            "name": "Lizzie",
+            "xeets": 298
+          },
+          {
+            "rank": 6,
+            "name": "Lablin",
+            "xeets": 290
+          },
+          {
+            "rank": 7,
+            "name": "SAKUNA",
+            "xeets": 281
+          },
+          {
+            "rank": 8,
+            "name": "Urchman",
+            "xeets": 264
+          },
+          {
+            "rank": 9,
+            "name": "bewise",
+            "xeets": 256
+          },
+          {
+            "rank": 10,
+            "name": "daiive",
+            "xeets": 255
+          }
+        ]
+      }
+    },
+    {
+      "slug": "xyber",
+      "title": "Xyber",
+      "totalEntries": 2752,
+      "realParticipants": 2134,
+      "rewards": "$250K USDT + Xeets",
+      "multipliers": {
+        "type": "NFT holding",
+        "tiers": [
+          {
+            "requirement": "Xyber NFT holding (tiered by collection/rarity)",
+            "boost": "1.1x - 1.7x"
+          }
+        ],
+        "notes": "Exact NFT tier breakdown unknown. Similar structure to GVC — NFT holdings determine boost level. Observed values: 1.1x, 1.2x, 1.3x, 1.6x, 1.7x."
+      },
+      "rewardDetails": "Top 100 win ~$80K USDC. 100% unlock, no vesting. One-time payout directly to wallets. Originally $250K over 3 months but ended after 1 month.",
+      "eligibleWinners": "Top 100",
+      "niche": "Infrastructure",
+      "dates": "Dec 4, 2025 - Jan 15, 2026",
+      "notes": "Largest USD prize pool. Originally a 3-month tournament but ended after 1 month. Top 100 won ~$80K USDC. High participation rate.",
+      "distribution": {
+        "totalXeetsDistributed": 51599,
+        "avgXeetsPerParticipant": 24.2,
+        "medianXeets": 15,
+        "top10ConcentrationPct": 9.9,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "Travis",
+            "xeets": 1100
+          },
+          {
+            "rank": 2,
+            "name": "Josh Ong",
+            "xeets": 686
+          },
+          {
+            "rank": 3,
+            "name": "VonDoom",
+            "xeets": 665
+          },
+          {
+            "rank": 4,
+            "name": "itskkoma",
+            "xeets": 464
+          },
+          {
+            "rank": 5,
+            "name": "UxG",
+            "xeets": 444
+          },
+          {
+            "rank": 6,
+            "name": "Crypto Hustler",
+            "xeets": 443
+          },
+          {
+            "rank": 7,
+            "name": "R2D2",
+            "xeets": 334
+          },
+          {
+            "rank": 8,
+            "name": "Haleemah",
+            "xeets": 333
+          },
+          {
+            "rank": 9,
+            "name": "Jaymz.eth",
+            "xeets": 312
+          },
+          {
+            "rank": 10,
+            "name": "The Crypto Professor",
+            "xeets": 312
+          }
+        ]
+      }
+    },
+    {
+      "slug": "claynosaurz",
+      "title": "Claynosaurz",
+      "totalEntries": 1849,
+      "realParticipants": 1500,
+      "rewards": "TBA + Xeets",
+      "multipliers": {
+        "type": "NFT staking + Token holding",
+        "tiers": [
+          {
+            "requirement": "Stake a Popkin",
+            "boost": 1.4
+          },
+          {
+            "requirement": "Hold 10,000 $NOBODY",
+            "boost": 1.4
+          },
+          {
+            "requirement": "Stake a Claynosaurz",
+            "boost": 1.6
+          },
+          {
+            "requirement": "Stake both a Popkin & Claynosaurz",
+            "boost": 1.8
+          },
+          {
+            "requirement": "Stake & hold all HEEBOO assets (Claynosaurz, Popkins, $NOBODY)",
+            "boost": 1.9
+          }
+        ]
+      },
+      "rewardDetails": "Top 50 win token rewards",
+      "eligibleWinners": "Top 50",
+      "niche": "NFT/Art",
+      "dates": "Oct 23 - Dec 24, 2025",
+      "notes": "Solana NFT brand. Rewards never announced.",
+      "distribution": {
+        "totalXeetsDistributed": 58565,
+        "avgXeetsPerParticipant": 39.0,
+        "medianXeets": 9,
+        "top10ConcentrationPct": 22.0,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "SALAMANDER",
+            "xeets": 1873
+          },
+          {
+            "rank": 2,
+            "name": "Cryo Palmar",
+            "xeets": 1854
+          },
+          {
+            "rank": 3,
+            "name": "Tat Thang",
+            "xeets": 1465
+          },
+          {
+            "rank": 4,
+            "name": "BAWSA",
+            "xeets": 1406
+          },
+          {
+            "rank": 5,
+            "name": "Josh Ong",
+            "xeets": 1393
+          },
+          {
+            "rank": 6,
+            "name": "DIEGO",
+            "xeets": 1130
+          },
+          {
+            "rank": 7,
+            "name": "banditxbt",
+            "xeets": 1115
+          },
+          {
+            "rank": 8,
+            "name": "The Ant Academy",
+            "xeets": 919
+          },
+          {
+            "rank": 9,
+            "name": "zombegonetv.sui",
+            "xeets": 898
+          },
+          {
+            "rank": 10,
+            "name": "Hydraze",
+            "xeets": 819
+          }
+        ]
+      }
+    },
+    {
+      "slug": "fight",
+      "title": "Fight.ID",
+      "totalEntries": 2065,
+      "realParticipants": 802,
+      "rewards": "0.1% $FIGHT + Xeets",
+      "rewardDetails": "0.1% per month to the top 100 creators",
+      "eligibleWinners": "Top 100",
+      "niche": "Social",
+      "dates": "Nov 2 - Nov 30, 2025",
+      "notes": "Social identity/reputation platform",
+      "distribution": {
+        "totalXeetsDistributed": 11379,
+        "avgXeetsPerParticipant": 14.2,
+        "medianXeets": 7,
+        "top10ConcentrationPct": 23.4,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "VonDoom",
+            "xeets": 611
+          },
+          {
+            "rank": 2,
+            "name": "Crypto with Khan ( SFZ )",
+            "xeets": 419
+          },
+          {
+            "rank": 3,
+            "name": "wale.moca",
+            "xeets": 309
+          },
+          {
+            "rank": 4,
+            "name": "Josh Ong",
+            "xeets": 288
+          },
+          {
+            "rank": 5,
+            "name": "JayPee",
+            "xeets": 203
+          },
+          {
+            "rank": 6,
+            "name": "Easy",
+            "xeets": 200
+          },
+          {
+            "rank": 7,
+            "name": "Ely",
+            "xeets": 198
+          },
+          {
+            "rank": 8,
+            "name": "Stunner.nft",
+            "xeets": 170
+          },
+          {
+            "rank": 9,
+            "name": "Jampzey",
+            "xeets": 145
+          },
+          {
+            "rank": 10,
+            "name": "HOOD MEMORIES",
+            "xeets": 121
+          }
+        ]
+      }
+    },
+    {
+      "slug": "iopn",
+      "title": "IOPn",
+      "rewards": "$300K $OPN + Xeets",
+      "multipliers": {
+        "type": "In-app interaction",
+        "tiers": [
+          {
+            "requirement": "In-app activity (low barrier)",
+            "boost": 1.5
+          }
+        ],
+        "notes": "Exact criteria unknown. In-app interaction, financially easy to achieve. Only 1.5x tier observed."
+      },
+      "rewardDetails": "Top 100 receive $100K OPN per monthly tournament",
+      "eligibleWinners": "Top 100",
+      "niche": "Infrastructure",
+      "notes": "Multi-drop tournament (3 drops). Largest infrastructure tournament by combined participants.",
+      "combined": {
+        "totalEntries": 10722,
+        "realParticipants": 6798,
+        "totalXeetsDistributed": 161603,
+        "dates": "Oct 22, 2025 - Jan 15, 2026"
+      },
+      "phase1": {
+        "tournamentId": "e09099a4-13fb-4dc1-8f60-84c173d554ee",
+        "title": "IOPn — Drop 1",
+        "totalEntries": 7290,
+        "realParticipants": 4889,
+        "dates": "Oct 22, 2025 - Nov 27, 2025",
+        "distribution": {
+          "totalXeetsDistributed": 137539,
+          "avgXeetsPerParticipant": 28.1,
+          "medianXeets": 14,
+          "top10ConcentrationPct": 2.6,
+          "top10": [
+            {
+              "rank": 1,
+              "name": "JayPee",
+              "xeets": 473
+            },
+            {
+              "rank": 2,
+              "name": "Hydraze",
+              "xeets": 464
+            },
+            {
+              "rank": 3,
+              "name": "Greeny",
+              "xeets": 440
+            },
+            {
+              "rank": 4,
+              "name": "evokein",
+              "xeets": 406
+            },
+            {
+              "rank": 5,
+              "name": "Leafswan",
+              "xeets": 405
+            },
+            {
+              "rank": 6,
+              "name": "Crypto Zoro",
+              "xeets": 380
+            },
+            {
+              "rank": 7,
+              "name": "hottiebabegem",
+              "xeets": 333
+            },
+            {
+              "rank": 8,
+              "name": "Intern",
+              "xeets": 297
+            },
+            {
+              "rank": 9,
+              "name": "Hunter",
+              "xeets": 292
+            },
+            {
+              "rank": 10,
+              "name": "Dashke",
+              "xeets": 288
+            }
+          ]
+        }
+      },
+      "phase2": {
+        "tournamentId": "8d880ec3-da7d-4d21-ac8f-08039d52ecc7",
+        "title": "IOPn — Drop 2",
+        "totalEntries": 2020,
+        "realParticipants": 1229,
+        "dates": "Nov 27, 2025 - Dec 27, 2025",
+        "distribution": {
+          "totalXeetsDistributed": 12515,
+          "avgXeetsPerParticipant": 10.2,
+          "medianXeets": 3,
+          "top10ConcentrationPct": 17.4,
+          "top10": [
+            {
+              "rank": 1,
+              "name": "hottiebabegem",
+              "xeets": 480
+            },
+            {
+              "rank": 2,
+              "name": "Hydraze",
+              "xeets": 316
+            },
+            {
+              "rank": 3,
+              "name": "Bullish",
+              "xeets": 268
+            },
+            {
+              "rank": 4,
+              "name": "evokein",
+              "xeets": 260
+            },
+            {
+              "rank": 5,
+              "name": "Kokonut",
+              "xeets": 161
+            },
+            {
+              "rank": 6,
+              "name": "Intern",
+              "xeets": 159
+            },
+            {
+              "rank": 7,
+              "name": "Xeno",
+              "xeets": 153
+            },
+            {
+              "rank": 8,
+              "name": "Alexa Web3",
+              "xeets": 151
+            },
+            {
+              "rank": 9,
+              "name": "Bitrance",
+              "xeets": 117
+            },
+            {
+              "rank": 10,
+              "name": "Bakaka",
+              "xeets": 113
+            }
+          ]
+        }
+      },
+      "phase3": {
+        "tournamentId": "f7052a91-fbbb-4be2-b758-78d153adb66f",
+        "title": "IOPn — Drop 3",
+        "totalEntries": 1412,
+        "realParticipants": 680,
+        "dates": "Dec 29, 2025 - Jan 15, 2026",
+        "distribution": {
+          "totalXeetsDistributed": 11549,
+          "avgXeetsPerParticipant": 17.0,
+          "medianXeets": 5,
+          "top10ConcentrationPct": 17.4,
+          "top10": [
+            {
+              "rank": 1,
+              "name": "hottiebabegem",
+              "xeets": 232
+            },
+            {
+              "rank": 2,
+              "name": "Bullish",
+              "xeets": 216
+            },
+            {
+              "rank": 3,
+              "name": "Kunal",
+              "xeets": 215
+            },
+            {
+              "rank": 4,
+              "name": "Meme Patch",
+              "xeets": 207
+            },
+            {
+              "rank": 5,
+              "name": "Lablin",
+              "xeets": 169
+            },
+            {
+              "rank": 6,
+              "name": "Eliska",
+              "xeets": 168
+            },
+            {
+              "rank": 7,
+              "name": "Waliyat",
+              "xeets": 160
+            },
+            {
+              "rank": 8,
+              "name": "Crypto Mania",
+              "xeets": 158
+            },
+            {
+              "rank": 9,
+              "name": "BL£",
+              "xeets": 144
+            },
+            {
+              "rank": 10,
+              "name": "OlaLTE",
+              "xeets": 130
+            }
+          ]
+        }
+      }
+    },
+    {
+      "slug": "myriad",
+      "title": "Myriad Markets",
+      "totalEntries": 4105,
+      "realParticipants": 2800,
+      "rewards": "1B $MYR Points + Xeets",
+      "multipliers": {
+        "type": "Platform trading volume",
+        "tiers": [
+          {
+            "requirement": "$1K volume on Myriad prediction markets",
+            "boost": 1.5
+          },
+          {
+            "requirement": "$20K volume",
+            "boost": 2.0
+          },
+          {
+            "requirement": "$50K volume",
+            "boost": 3.0
+          }
+        ]
+      },
+      "rewardDetails": "Top 500",
+      "eligibleWinners": "Top 500",
+      "niche": "DeFi",
+      "dates": "Sep 24, 2025 - Jan 1, 2026",
+      "notes": "Prediction markets. Longest running tournament (3+ months).",
+      "distribution": {
+        "totalXeetsDistributed": 171736,
+        "avgXeetsPerParticipant": 61.3,
+        "medianXeets": 19,
+        "top10ConcentrationPct": 27.1,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "CHESUS",
+            "xeets": 12138
+          },
+          {
+            "rank": 2,
+            "name": "TylerD",
+            "xeets": 8290
+          },
+          {
+            "rank": 3,
+            "name": "Pukerainbow",
+            "xeets": 5254
+          },
+          {
+            "rank": 4,
+            "name": "Farokh",
+            "xeets": 5030
+          },
+          {
+            "rank": 5,
+            "name": "Greeny",
+            "xeets": 4416
+          },
+          {
+            "rank": 6,
+            "name": "Tim Haldorsson",
+            "xeets": 3324
+          },
+          {
+            "rank": 7,
+            "name": "Mike Owi",
+            "xeets": 2412
+          },
+          {
+            "rank": 8,
+            "name": "Fogo",
+            "xeets": 2041
+          },
+          {
+            "rank": 9,
+            "name": "MaeveKnows",
+            "xeets": 1971
+          },
+          {
+            "rank": 10,
+            "name": "Crypto Hustler",
+            "xeets": 1634
+          }
+        ]
+      }
+    },
+    {
+      "slug": "solstice",
+      "title": "Solstice",
+      "totalEntries": 8666,
+      "realParticipants": 4607,
+      "rewards": "1% $SLX + Xeets",
+      "rewardDetails": "Top 100",
+      "eligibleWinners": "Top 100",
+      "niche": "DeFi",
+      "dates": "Sep 29, 2025 - Jan 15, 2026",
+      "notes": "Largest tournament by total entries and real participants. Longest running (3.5 months).",
+      "distribution": {
+        "totalXeetsDistributed": 134496,
+        "avgXeetsPerParticipant": 29.2,
+        "medianXeets": 12,
+        "top10ConcentrationPct": 11.6,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "Wals",
+            "xeets": 2257
+          },
+          {
+            "rank": 2,
+            "name": "Josh Ong",
+            "xeets": 1903
+          },
+          {
+            "rank": 3,
+            "name": "Travis",
+            "xeets": 1729
+          },
+          {
+            "rank": 4,
+            "name": "TEE",
+            "xeets": 1543
+          },
+          {
+            "rank": 5,
+            "name": "ben",
+            "xeets": 1496
+          },
+          {
+            "rank": 6,
+            "name": "Jampzey",
+            "xeets": 1385
+          },
+          {
+            "rank": 7,
+            "name": "bewise",
+            "xeets": 1385
+          },
+          {
+            "rank": 8,
+            "name": "Zh0u",
+            "xeets": 1376
+          },
+          {
+            "rank": 9,
+            "name": "Hydraze",
+            "xeets": 1307
+          },
+          {
+            "rank": 10,
+            "name": "Greeny",
+            "xeets": 1236
+          }
+        ]
+      }
+    },
+    {
+      "slug": "desci-news",
+      "title": "DeSci News",
+      "totalEntries": 1244,
+      "realParticipants": 980,
+      "rewards": "$10K USDC + 1.5x Xeets",
+      "rewardDetails": "Top 25 win USDC, 1.5x Xeets for all. Top 500 get Xeets bonus",
+      "eligibleWinners": "Top 25 (USDC) + Top 500 (Xeets bonus)",
+      "niche": "Other (DeSci/Science)",
+      "dates": "Oct 29 - Nov 13, 2025",
+      "notes": "Decentralized science news. Short tournament (2 weeks).",
+      "distribution": {
+        "totalXeetsDistributed": 9513,
+        "avgXeetsPerParticipant": 9.7,
+        "medianXeets": 3,
+        "top10ConcentrationPct": 22.6,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "Crypto with Khan ( SFZ )",
+            "xeets": 479
+          },
+          {
+            "rank": 2,
+            "name": "Greeny",
+            "xeets": 387
+          },
+          {
+            "rank": 3,
+            "name": "B£$T",
+            "xeets": 237
+          },
+          {
+            "rank": 4,
+            "name": "Cris",
+            "xeets": 196
+          },
+          {
+            "rank": 5,
+            "name": "Samzy",
+            "xeets": 192
+          },
+          {
+            "rank": 6,
+            "name": "AG",
+            "xeets": 139
+          },
+          {
+            "rank": 7,
+            "name": "Hermes",
+            "xeets": 138
+          },
+          {
+            "rank": 8,
+            "name": "Tiger_Aspect",
+            "xeets": 137
+          },
+          {
+            "rank": 9,
+            "name": "Lizzie",
+            "xeets": 124
+          },
+          {
+            "rank": 10,
+            "name": "Pawnie",
+            "xeets": 123
+          }
+        ]
+      }
+    },
+    {
+      "slug": "xeet",
+      "title": "Xeet InfoFI",
+      "rewards": "Xeets",
+      "rewardDetails": "Everyone",
+      "eligibleWinners": "All participants",
+      "niche": "Platform",
+      "notes": "Main Xeet platform tournament. 2 phases (drops). No brand rewards — pure xeet earnings.",
+      "combined": {
+        "totalEntries": 51185,
+        "realParticipants": 33669,
+        "totalXeetsDistributed": 1826863,
+        "dates": "Jun 10, 2025 - Jan 15, 2026"
+      },
+      "phase1": {
+        "tournamentId": "8223e5ff-f9e2-47e9-ac49-f7f9edc099df",
+        "title": "Xeet InfoFI — Drop 1",
+        "totalEntries": 46587,
+        "realParticipants": 31847,
+        "dates": "Jun 10, 2025 - Jan 1, 2026",
+        "distribution": {
+          "totalXeetsDistributed": 1815584,
+          "avgXeetsPerParticipant": 57.0,
+          "medianXeets": 10,
+          "top10ConcentrationPct": 2.5,
+          "top10": [
+            {
+              "rank": 1,
+              "name": "Pons Asinorum",
+              "xeets": 9164
+            },
+            {
+              "rank": 2,
+              "name": "Ely",
+              "xeets": 6003
+            },
+            {
+              "rank": 3,
+              "name": "Wals",
+              "xeets": 4333
+            },
+            {
+              "rank": 4,
+              "name": "wale.moca",
+              "xeets": 4079
+            },
+            {
+              "rank": 5,
+              "name": "Josh Ong",
+              "xeets": 3990
+            },
+            {
+              "rank": 6,
+              "name": "tut",
+              "xeets": 3990
+            },
+            {
+              "rank": 7,
+              "name": "Greeny",
+              "xeets": 3620
+            },
+            {
+              "rank": 8,
+              "name": "Crypto with Khan ( SFZ )",
+              "xeets": 3517
+            },
+            {
+              "rank": 9,
+              "name": "Swanky",
+              "xeets": 3054
+            },
+            {
+              "rank": 10,
+              "name": "Travis",
+              "xeets": 2818
+            }
+          ]
+        }
+      },
+      "phase2": {
+        "tournamentId": "46731690-5a9c-4f67-8dd2-76611d08e038",
+        "title": "Xeet InfoFI — Drop 2",
+        "totalEntries": 4598,
+        "realParticipants": 1822,
+        "dates": "Jan 8, 2026 - Jan 15, 2026",
+        "distribution": {
+          "totalXeetsDistributed": 11279,
+          "avgXeetsPerParticipant": 6.2,
+          "medianXeets": 3,
+          "top10ConcentrationPct": 14.8,
+          "top10": [
+            {
+              "rank": 1,
+              "name": "Pons Asinorum",
+              "xeets": 602
+            },
+            {
+              "rank": 2,
+              "name": "tochi",
+              "xeets": 199
+            },
+            {
+              "rank": 3,
+              "name": "Wals",
+              "xeets": 175
+            },
+            {
+              "rank": 4,
+              "name": "Usopp",
+              "xeets": 132
+            },
+            {
+              "rank": 5,
+              "name": "tut",
+              "xeets": 115
+            },
+            {
+              "rank": 6,
+              "name": "Baki",
+              "xeets": 103
+            },
+            {
+              "rank": 7,
+              "name": "Zaddy",
+              "xeets": 91
+            },
+            {
+              "rank": 8,
+              "name": "Aurelius",
+              "xeets": 90
+            },
+            {
+              "rank": 9,
+              "name": "Travis",
+              "xeets": 83
+            },
+            {
+              "rank": 10,
+              "name": "Fogo",
+              "xeets": 83
+            }
+          ]
+        }
+      }
+    },
+    {
+      "slug": "ct",
+      "title": "Crypto Twitter",
+      "totalEntries": 161524,
+      "realParticipants": 89655,
+      "rewards": "Xeets",
+      "rewardDetails": "Everyone",
+      "eligibleWinners": "All participants",
+      "niche": "Platform",
+      "dates": "Jun 10, 2025 - Jan 15, 2026",
+      "notes": "Largest tournament on the platform by every metric. General crypto Twitter leaderboard — no brand sponsorship. Top 10 includes major KOLs (CZ, Saylor, KALEO).",
+      "distribution": {
+        "totalXeetsDistributed": 16967202,
+        "avgXeetsPerParticipant": 189.2,
+        "medianXeets": 32,
+        "top10ConcentrationPct": 0.6,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "The Wolf Of All Streets",
+            "xeets": 11936
+          },
+          {
+            "rank": 2,
+            "name": "CZ BNB",
+            "xeets": 11454
+          },
+          {
+            "rank": 3,
+            "name": "K A L E O",
+            "xeets": 11138
+          },
+          {
+            "rank": 4,
+            "name": "mert | helius",
+            "xeets": 10948
+          },
+          {
+            "rank": 5,
+            "name": "Michael Saylor",
+            "xeets": 10764
+          },
+          {
+            "rank": 6,
+            "name": "Alex Becker",
+            "xeets": 9822
+          },
+          {
+            "rank": 7,
+            "name": "Michael van de Poppe",
+            "xeets": 9778
+          },
+          {
+            "rank": 8,
+            "name": "Ash Crypto",
+            "xeets": 9451
+          },
+          {
+            "rank": 9,
+            "name": "Farokh",
+            "xeets": 9361
+          },
+          {
+            "rank": 10,
+            "name": "Gordon",
+            "xeets": 9335
+          }
+        ]
+      }
+    },
+    {
+      "slug": "xeetsgiving",
+      "title": "Xeetsgiving",
+      "totalEntries": 13445,
+      "realParticipants": 13445,
+      "rewards": "Xeets",
+      "rewardDetails": "Give thanks and get xeets.",
+      "eligibleWinners": "All participants",
+      "niche": "Platform",
+      "dates": "Nov 26 - Nov 29, 2025",
+      "notes": "3-day holiday event. 100% participation rate — all 13,445 participants earned >=10 xeets. Very flat distribution (top 10 only 0.4%).",
+      "distribution": {
+        "totalXeetsDistributed": 157090,
+        "avgXeetsPerParticipant": 11.7,
+        "medianXeets": 10,
+        "top10ConcentrationPct": 0.4,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "Xeer",
+            "xeets": 104
+          },
+          {
+            "rank": 2,
+            "name": "Papii",
+            "xeets": 67
+          },
+          {
+            "rank": 3,
+            "name": "batzdu",
+            "xeets": 66
+          },
+          {
+            "rank": 4,
+            "name": "Bulkz",
+            "xeets": 62
+          },
+          {
+            "rank": 5,
+            "name": "jesse.base.eth",
+            "xeets": 60
+          },
+          {
+            "rank": 6,
+            "name": "BAWSA",
+            "xeets": 56
+          },
+          {
+            "rank": 7,
+            "name": "y",
+            "xeets": 54
+          },
+          {
+            "rank": 8,
+            "name": "Shibetoshi Nakamoto",
+            "xeets": 52
+          },
+          {
+            "rank": 9,
+            "name": "Based Elnen",
+            "xeets": 52
+          },
+          {
+            "rank": 10,
+            "name": "O G",
+            "xeets": 51
+          }
+        ]
+      }
+    },
+    {
+      "slug": "abstract",
+      "title": "Abstract",
+      "totalEntries": 11586,
+      "realParticipants": 4620,
+      "rewards": "Xeets",
+      "rewardDetails": "Everyone",
+      "eligibleWinners": "All participants",
+      "niche": "Platform",
+      "dates": "Sep 25, 2025 - Jan 1, 2026",
+      "notes": "Abstract ecosystem tournament. No brand sponsorship — platform xeets only.",
+      "distribution": {
+        "totalXeetsDistributed": 381723,
+        "avgXeetsPerParticipant": 82.6,
+        "medianXeets": 33,
+        "top10ConcentrationPct": 11.5,
+        "top10": [
+          {
+            "rank": 1,
+            "name": "Ely",
+            "xeets": 9456
+          },
+          {
+            "rank": 2,
+            "name": "cygaar",
+            "xeets": 8244
+          },
+          {
+            "rank": 3,
+            "name": "Sam Withers",
+            "xeets": 6506
+          },
+          {
+            "rank": 4,
+            "name": "Marianne",
+            "xeets": 4064
+          },
+          {
+            "rank": 5,
+            "name": "Shiv",
+            "xeets": 3933
+          },
+          {
+            "rank": 6,
+            "name": "Raj",
+            "xeets": 3723
+          },
+          {
+            "rank": 7,
+            "name": "Greeny",
+            "xeets": 2446
+          },
+          {
+            "rank": 8,
+            "name": "Cris",
+            "xeets": 1986
+          },
+          {
+            "rank": 9,
+            "name": "CHESUS",
+            "xeets": 1922
+          },
+          {
+            "rank": 10,
+            "name": "Theo",
+            "xeets": 1604
+          }
+        ]
+      }
+    }
+  ],
+  "skipped": [
+    {
+      "slug": "grimmy",
+      "reason": "V1 archived, leaderboard unavailable."
+    },
+    {
+      "slug": "vault777",
+      "reason": "V1 archived, leaderboard unavailable."
+    }
+  ],
+  "summary": {
+    "totalProcessed": 32,
+    "unavailable": 0,
+    "cancelled": 3,
+    "cancelledSlugs": [
+      "cryptoys",
+      "adi",
+      "datahaven"
+    ],
+    "totalXeetsAcrossAllTournaments": 20405976,
+    "avgRealVsTotalPercent": 59.0,
+    "largestByRealParticipants": "ct (89,655)",
+    "smallestByRealParticipants": "cryptoys (107)",
+    "highestParticipationRate": "xeetsgiving (100%)",
+    "lowestParticipationRate": "mezo (18.2%)",
+    "mostXeetsDistributed": "ct (16,967,202)",
+    "leastXeetsDistributed": "cryptoys (957)",
+    "highestTop10Concentration": "cockio (77.9%)",
+    "lowestTop10Concentration": "xeetsgiving (0.4%)"
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "version": "4.0",
+  "name": "The Xeet Co-Efficient",
+  "generatedAt": "2026-04-13T15:11:41.160765Z",
+  "methodology": "Rank-based normalization (0-100) per signal, weighted composite across 4 dimensions",
+  "creatorsScored": 391,
+  "dimensions": [
+    {
+      "name": "performance",
+      "label": "Performance",
+      "weight": 0.42,
+      "description": "Competitive tournament quality and consistency",
+      "signals": [
+        {
+          "name": "avgDifficultyAdjustedPercentile",
+          "label": "Avg Percentile",
+          "weight": 0.35,
+          "inverted": false
+        },
+        {
+          "name": "totalXeetsExclXeetsgiving",
+          "label": "Total XEETS",
+          "weight": 0.25,
+          "inverted": false
+        },
+        {
+          "name": "competitiveTournamentCount",
+          "label": "Competitive Tournaments",
+          "weight": 0.25,
+          "inverted": false
+        },
+        {
+          "name": "signalRatioAvg",
+          "label": "Signal Ratio",
+          "weight": 0.15,
+          "inverted": false
+        }
+      ]
+    },
+    {
+      "name": "ecosystem",
+      "label": "Ecosystem Alignment",
+      "weight": 0.23,
+      "description": "Ecosystem investment, cross-project alignment, skin-in-the-game",
+      "signals": [
+        {
+          "name": "deckReachScore",
+          "label": "Deck Reach",
+          "weight": 0.35,
+          "inverted": false
+        },
+        {
+          "name": "ownCardsHeld",
+          "label": "Own Cards Held",
+          "weight": 0.3,
+          "inverted": false
+        },
+        {
+          "name": "multiplierBreadth",
+          "label": "Multiplier Breadth",
+          "weight": 0.2,
+          "inverted": false
+        },
+        {
+          "name": "cryptoCreatorXeets",
+          "label": "Crypto Creator XEETS",
+          "weight": 0.15,
+          "inverted": false
+        }
+      ]
+    },
+    {
+      "name": "reach",
+      "label": "Reach / Efficiency",
+      "weight": 0.2,
+      "description": "Audience size, conversion efficiency, and niche breadth",
+      "signals": [
+        {
+          "name": "followers",
+          "label": "Followers",
+          "weight": 0.35,
+          "inverted": false
+        },
+        {
+          "name": "xpf",
+          "label": "XPF (XEETS/Followers)",
+          "weight": 0.35,
+          "inverted": false
+        },
+        {
+          "name": "nicheDiversity",
+          "label": "Niche Diversity",
+          "weight": 0.3,
+          "inverted": false
+        }
+      ]
+    },
+    {
+      "name": "market",
+      "label": "Market",
+      "weight": 0.15,
+      "description": "Market agreement indicator \u2014 does the market see it too?",
+      "signals": [
+        {
+          "name": "osFloorCommon",
+          "label": "OS Floor (Common)",
+          "weight": 0.25,
+          "inverted": false
+        },
+        {
+          "name": "ethSaleVolume",
+          "label": "ETH Sale Volume",
+          "weight": 0.25,
+          "inverted": false
+        },
+        {
+          "name": "highestSaleCommon",
+          "label": "Highest Sale (Common)",
+          "weight": 0.2,
+          "inverted": false
+        },
+        {
+          "name": "priceTrajectory",
+          "label": "Price Trajectory",
+          "weight": 0.15,
+          "inverted": false
+        },
+        {
+          "name": "saleVelocity30d",
+          "label": "30d Sale Velocity",
+          "weight": 0.15,
+          "inverted": false
+        }
+      ]
+    }
+  ],
+  "tiers": [
+    {
+      "name": "Mythic",
+      "minPercentile": 93.6,
+      "color": "#FF6B35"
+    },
+    {
+      "name": "Legendary",
+      "minPercentile": 80.8,
+      "color": "#9B59B6"
+    },
+    {
+      "name": "Epic",
+      "minPercentile": 61.6,
+      "color": "#3498DB"
+    },
+    {
+      "name": "Rare",
+      "minPercentile": 33.5,
+      "color": "#2ECC71"
+    },
+    {
+      "name": "Common",
+      "minPercentile": 0,
+      "color": "#95A5A6"
+    }
+  ],
+  "casualParticipationFilter": {
+    "method": "ceil(medianXeets / 10) * 10",
+    "description": "Tournament entries below this threshold are flagged as casual and excluded from performance metrics"
+  },
+  "excludedTournaments": {
+    "xeetsgiving": "Excluded entirely \u2014 3-day event, everyone wins, zero competitive signal",
+    "cancelled": [
+      "cryptoys",
+      "adi",
+      "datahaven"
+    ]
+  }
+}
