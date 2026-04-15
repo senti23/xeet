@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import type {
   DeckScoresData,
   CreatorProfiles,
@@ -8,24 +9,61 @@ import type {
   WalletScoreDetail,
   ValuationResponse,
 } from '@/types/deck';
+import type { CreatorScore } from '@/types/xccScores';
 import { DeckScoreCard } from './DeckScoreCard';
 import { DeckLeaderboard } from './DeckLeaderboard';
+import { DeckStrengthLeaderboard } from './DeckStrengthLeaderboard';
+import { DeckRings } from './DeckRings';
 import { DeckGraph } from './DeckGraph';
+import { DeckCreatorDetail } from './DeckCreatorDetail';
+import { DeckDetailsCard } from './DeckDetailsCard';
+import { DeckBucketSummary } from './DeckBucketSummary';
+import { DeckShareCard } from './DeckShareCard';
 import { FlexDeckModal } from './FlexDeckModal';
 import { CollapsiblePanel } from './CollapsiblePanel';
 import { DeckMissingPanel } from './DeckMissingPanel';
-import { DeckHoldingsPanel } from './DeckHoldingsPanel';
-import { DeckUpgradesPanel } from './DeckUpgradesPanel';
+import { DeckMissingByScore } from './DeckMissingByScore';
 import { DeckCredits } from './DeckCredits';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
 
-export function DeckPageClient() {
+interface FloorPricesData {
+  generated: string;
+  ethUsdRate: number;
+  prices: Record<
+    string,
+    {
+      common?: { xeetFloor: number | null; osFloor: number | null } | null;
+      rare?: { xeetFloor: number | null; osFloor: number | null } | null;
+      legendary?: { xeetFloor: number | null; osFloor: number | null } | null;
+    }
+  >;
+}
+
+function sizeBucket(n: number): { label: string; min: number; max: number } {
+  if (n <= 30) return { label: 'small', min: 0, max: 30 };
+  if (n <= 80) return { label: 'medium', min: 31, max: 80 };
+  if (n <= 150) return { label: 'large', min: 81, max: 150 };
+  return { label: 'whale', min: 151, max: Infinity };
+}
+
+interface DeckPageClientProps {
+  mode?: 'tracker' | 'reach';
+}
+
+export function DeckPageClient({ mode = 'tracker' }: DeckPageClientProps) {
+  // ─── Router / URL sync ────────────────────────────────────────────────────
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const urlWallet = searchParams.get('wallet');
+
   // ─── Data state ───────────────────────────────────────────────────────────
   const [scores, setScores] = useState<DeckScoresData | null>(null);
   const [profiles, setProfiles] = useState<CreatorProfiles | null>(null);
+  const [xccScores, setXccScores] = useState<CreatorScore[]>([]);
+  const [floorPrices, setFloorPrices] = useState<FloorPricesData | null>(null);
   const [detailCache, setDetailCache] = useState<Record<string, WalletScoreDetail> | null>(null);
-  const [creatorCardCounts, setCreatorCardCounts] = useState<Record<string, number>>({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -38,11 +76,13 @@ export function DeckPageClient() {
   const [valuation, setValuation] = useState<ValuationResponse | null>(null);
 
   // ─── UI state ─────────────────────────────────────────────────────────────
-  const [showFlex, setShowFlex] = useState(false);
-  const [showAnalytics, setShowAnalytics] = useState(false);
+  const [showShare, setShowShare] = useState(false);
   const [showMobileLeaderboard, setShowMobileLeaderboard] = useState(false);
-  const [openPanel, setOpenPanel] = useState<string | null>(null);
   const [lastUpdated, setLastUpdated] = useState<string | null>(null);
+  const [clickedCreator, setClickedCreator] = useState<
+    { handle: string; x: number; y: number } | null
+  >(null);
+  const [openPanel, setOpenPanel] = useState<string | null>(null);
 
   const handleToWallet = useRef<Map<string, string>>(new Map());
 
@@ -60,20 +100,14 @@ export function DeckPageClient() {
     Promise.all([
       fetchWithFallback('/api/deck/scores', '/data/deck-scores.json'),
       fetchWithFallback('/api/deck/profiles', '/data/creators-profiles.json'),
-      fetchWithFallback('/api/deck/holdings', '/data/creator-holdings.json').catch(() => null),
+      fetch('/data/xcc-scores.json').then((r) => r.json()),
+      fetchWithFallback('/api/deck/floor-prices', '/data/floor-prices.json').catch(() => null),
     ])
-      .then(([scoresData, profilesData, holdingsData]) => {
+      .then(([scoresData, profilesData, xccData, floorsData]) => {
         setScores(scoresData);
         setProfiles(profilesData);
-
-        if (holdingsData) {
-          const counts: Record<string, number> = {};
-          for (const [handle, data] of Object.entries(holdingsData)) {
-            const d = data as { holds?: Array<unknown> };
-            counts[handle.toLowerCase()] = d.holds?.length ?? 0;
-          }
-          setCreatorCardCounts(counts);
-        }
+        setXccScores(xccData);
+        if (floorsData) setFloorPrices(floorsData);
 
         const map = new Map<string, string>();
         for (const [wallet, summary] of Object.entries(scoresData.wallets)) {
@@ -96,19 +130,29 @@ export function DeckPageClient() {
         if (d.lastRefresh) setLastUpdated(d.lastRefresh);
       })
       .catch(() => {});
-  }, []);
+
+    // Tracker mode needs all wallets' holdings for the strength leaderboard
+    if (mode === 'tracker') {
+      fetchWithFallback('/api/deck/scores/detail', '/data/deck-scores-detail.json')
+        .then((d) => setDetailCache(d))
+        .catch(() => {});
+    }
+  }, [mode]);
 
   // ─── Lazy-load detail ─────────────────────────────────────────────────────
   const loadDetail = useCallback(async () => {
     if (detailCache) return detailCache;
-    const data = await fetchWithFallback('/api/deck/scores/detail', '/data/deck-scores-detail.json');
+    const data = await fetchWithFallback(
+      '/api/deck/scores/detail',
+      '/data/deck-scores-detail.json',
+    );
     setDetailCache(data);
     return data as Record<string, WalletScoreDetail>;
   }, [detailCache]);
 
   // ─── Search ───────────────────────────────────────────────────────────────
   const handleSearch = useCallback(
-    async (input: string) => {
+    async (input: string, opts: { skipUrlUpdate?: boolean } = {}) => {
       if (!scores) return;
 
       const query = input.trim().toLowerCase();
@@ -118,6 +162,8 @@ export function DeckPageClient() {
         setWalletDetail(null);
         setSearchError(null);
         setValuation(null);
+        setClickedCreator(null);
+        if (!opts.skipUrlUpdate) router.replace(pathname);
         return;
       }
 
@@ -138,6 +184,10 @@ export function DeckPageClient() {
       setSearchError(null);
       setActiveWallet(wallet);
       setWalletData(scores.wallets[wallet]);
+      setClickedCreator(null);
+      if (!opts.skipUrlUpdate) {
+        router.replace(`${pathname}?wallet=${wallet}`);
+      }
 
       try {
         const detail = await loadDetail();
@@ -146,34 +196,81 @@ export function DeckPageClient() {
         // Detail is optional
       }
 
-      // Fetch valuation (non-blocking)
       setValuation(null);
       fetch(`${API_BASE}/api/deck/valuation?wallet=${wallet}`)
         .then((r) => (r.ok ? r.json() : null))
         .then(setValuation)
         .catch(() => setValuation(null));
     },
-    [scores, loadDetail],
+    [scores, loadDetail, router, pathname],
   );
 
-  // ─── Leaderboard click → load wallet + reset to graph ─────────────────────
+  // ─── Auto-restore wallet from URL once data is ready ──────────────────────
+  const autoRestoredRef = useRef(false);
+  useEffect(() => {
+    if (!scores || autoRestoredRef.current) return;
+    if (urlWallet && urlWallet !== activeWallet) {
+      autoRestoredRef.current = true;
+      const summary = scores.wallets[urlWallet.toLowerCase()];
+      const display = summary?.xHandle ? `@${summary.xHandle}` : urlWallet;
+      setSearchInput(display);
+      handleSearch(urlWallet, { skipUrlUpdate: true });
+    } else if (!urlWallet) {
+      autoRestoredRef.current = true;
+    }
+  }, [scores, urlWallet, activeWallet, handleSearch]);
+
+  // ─── Leaderboard click ────────────────────────────────────────────────────
   const selectWallet = useCallback(
     (wallet: string) => {
       const summary = scores?.wallets[wallet];
       const display = summary?.xHandle ? `@${summary.xHandle}` : wallet;
       setSearchInput(display);
-      setShowAnalytics(false); // Reset to graph view on wallet change
       handleSearch(wallet);
     },
     [scores, handleSearch],
   );
 
-  // ─── Panel toggle ─────────────────────────────────────────────────────────
-  const togglePanel = useCallback((name: string) => {
-    setOpenPanel((prev) => (prev === name ? null : name));
+  // ─── Creator click (from rings) ───────────────────────────────────────────
+  const handleCreatorClick = useCallback((handle: string, x: number, y: number) => {
+    setClickedCreator((prev) =>
+      prev && prev.handle === handle ? null : { handle, x, y },
+    );
   }, []);
 
-  // ─── Relative time helper ─────────────────────────────────────────────────
+  // ─── Bucket rank for share card ───────────────────────────────────────────
+  const bucketRank = useMemo(() => {
+    if (!walletData || !scores) return null;
+    const bucket = sizeBucket(walletData.directCount);
+    const bucketWallets: Array<{ wallet: string; score: number; direct: number }> = [];
+    for (const [w, s] of Object.entries(scores.wallets)) {
+      const ws = s as WalletScoreSummary;
+      if (ws.directCount >= bucket.min && ws.directCount <= bucket.max) {
+        bucketWallets.push({ wallet: w, score: ws.score, direct: ws.directCount });
+      }
+    }
+    bucketWallets.sort((a, b) => b.score - a.score);
+    const myIdx = bucketWallets.findIndex((b) => b.wallet === activeWallet);
+    if (myIdx < 0) return null;
+    return {
+      rank: myIdx + 1,
+      bucketSize: bucketWallets.length,
+      bucketLabel: bucket.label,
+    };
+  }, [walletData, scores, activeWallet]);
+
+  // ─── Lookup creator by handle (for detail popup) ──────────────────────────
+  const creatorByHandle = useMemo(() => {
+    const m = new Map<string, CreatorScore>();
+    for (const c of xccScores) m.set(c.xHandle.toLowerCase(), c);
+    return m;
+  }, [xccScores]);
+
+  const clickedCreatorScore = clickedCreator
+    ? creatorByHandle.get(clickedCreator.handle) ?? null
+    : null;
+
+  // ─── Relative time ────────────────────────────────────────────────────────
   const updatedAgo = lastUpdated
     ? (() => {
         const mins = Math.floor((Date.now() - new Date(lastUpdated).getTime()) / 60000);
@@ -201,19 +298,17 @@ export function DeckPageClient() {
     );
   }
 
-  // ─── Badge values ─────────────────────────────────────────────────────────
   const missingCount = walletData ? scores.totalCreators - walletData.totalReach : null;
-  const holdingsCount = walletData?.directCount ?? null;
 
   return (
     <div className="space-y-4">
-      {/* ─── Credits (top right, desktop only) ─────────────────────────────── */}
+      {/* Credits (top right, desktop only) */}
       <div className="flex items-start justify-between">
-        <div /> {/* spacer */}
+        <div />
         <DeckCredits />
       </div>
 
-      {/* ─── Top bar: search + status ──────────────────────────────────────── */}
+      {/* Top bar: search + updated + share */}
       <div className="flex items-center gap-3">
         <div className="relative flex-1">
           <input
@@ -233,8 +328,16 @@ export function DeckPageClient() {
             Search
           </button>
         </div>
+        {walletData && (mode === 'reach' || walletDetail) && (
+          <button
+            onClick={() => setShowShare(true)}
+            className="shrink-0 rounded-xl bg-[#E53935] px-4 py-3 text-sm font-semibold text-white hover:opacity-90 transition-opacity"
+          >
+            📸 Share
+          </button>
+        )}
         {updatedAgo && (
-          <div className="shrink-0 rounded-lg bg-white/[0.04] px-3 py-1.5 text-[10px] text-gray-500 font-mono">
+          <div className="hidden md:block shrink-0 rounded-lg bg-white/[0.04] px-3 py-1.5 text-[10px] text-gray-500 font-mono">
             Updated {updatedAgo}
           </div>
         )}
@@ -246,149 +349,132 @@ export function DeckPageClient() {
         </div>
       )}
 
-      {/* ─── Main layout: content + right sidebar leaderboard ────────────── */}
-      <div className="flex gap-6 items-start">
-        {/* MAIN CONTENT */}
-        <div className="flex-1 min-w-0">
-          {/* Score card + action buttons */}
-          {walletData && activeWallet ? (
-            <div className="mb-4">
-              <DeckScoreCard
-                wallet={walletData}
-                address={activeWallet}
-                totalCreators={scores.totalCreators}
-                valuation={valuation}
-              />
-              <button
-                onClick={() => setShowFlex(true)}
-                className="mt-3 w-full rounded-lg py-2.5 text-sm font-semibold text-white transition-colors hover:opacity-90"
-                style={{ background: '#E53935' }}
-              >
-                Flex Your Deck
-              </button>
-              <button
-                onClick={() => {
-                  setShowAnalytics(!showAnalytics);
-                  if (!showAnalytics) setOpenPanel(null);
-                }}
-                className={`mt-2 w-full rounded-lg py-2.5 text-sm font-semibold transition-all duration-200 ${
-                  showAnalytics
-                    ? 'border border-[#378ADD]/40 bg-[#378ADD]/15 text-white'
-                    : 'border border-[#378ADD]/30 bg-[#378ADD]/10 text-[#378ADD] hover:bg-[#378ADD]/20'
-                }`}
-              >
-                {showAnalytics ? '← Back to Graph' : 'Analytics & Suggestions'}
-              </button>
-            </div>
+      {/* Main content — single column, centered, rings are the hero */}
+      <div className="max-w-[1200px] mx-auto space-y-4">
+        {/* Reach-only: Score card (99.7% / Direct / Secondary / Total / Overall + XCC rank) */}
+        {mode === 'reach' && walletData && activeWallet && (
+          <DeckScoreCard
+            wallet={walletData}
+            address={activeWallet}
+            totalCreators={scores.totalCreators}
+            valuation={valuation}
+          />
+        )}
+
+        {/* Tracker-only: Deck details card above the rings */}
+        {mode === 'tracker' && walletData && walletDetail && activeWallet && (
+          <DeckDetailsCard
+            walletData={walletData}
+            walletDetail={walletDetail}
+            xccScores={xccScores}
+            scores={scores}
+            activeWallet={activeWallet}
+          />
+        )}
+
+        {/* Visualization (the hero) — rings for tracker, force-directed graph for reach */}
+        <div className="relative rounded-2xl border border-white/[0.06] bg-[rgba(10,10,10,0.9)] p-2">
+          {mode === 'tracker' ? (
+            <DeckRings
+              xccScores={xccScores}
+              walletDetail={walletDetail}
+              walletPfpHandle={walletData?.xHandle || null}
+              onCreatorClick={handleCreatorClick}
+            />
           ) : (
-            <div className="mb-4 rounded-2xl border border-white/[0.06] bg-[rgba(20,20,20,0.9)] p-6 text-center text-sm text-gray-600">
-              Search a wallet to see its stats
-            </div>
-          )}
-
-          {/* Analytics panels — shown when toggle active */}
-          {showAnalytics && walletData && (
-            <div className="space-y-3">
-              <CollapsiblePanel
-                title="Missing"
-                badge={missingCount ?? undefined}
-                badgeColor="#D85A30"
-                isOpen={openPanel === 'missing'}
-                onToggle={() => togglePanel('missing')}
-              >
-                {activeWallet ? (
-                  <DeckMissingPanel wallet={activeWallet} />
-                ) : (
-                  <div className="py-4 text-center text-xs text-gray-600">Search a wallet first</div>
-                )}
-              </CollapsiblePanel>
-
-              <CollapsiblePanel
-                title="Holdings"
-                badge={holdingsCount ?? undefined}
-                badgeColor="#888780"
-                isOpen={openPanel === 'holdings'}
-                onToggle={() => togglePanel('holdings')}
-              >
-                {walletDetail ? (
-                  <DeckHoldingsPanel
-                    holdings={walletDetail.direct}
-                    profiles={profiles}
-                    bridgeIndex={walletDetail.secondary}
-                    creatorCardCounts={creatorCardCounts}
-                    valuationCards={valuation?.cards}
-                    ethUsdRate={valuation?.ethUsdRate}
-                  />
-                ) : (
-                  <div className="py-4 text-center text-xs text-gray-600">Loading holdings...</div>
-                )}
-              </CollapsiblePanel>
-
-              <CollapsiblePanel
-                title="Upgrade Opportunities"
-                badgeColor="#378ADD"
-                isOpen={openPanel === 'upgrades'}
-                onToggle={() => togglePanel('upgrades')}
-              >
-                {activeWallet ? (
-                  <DeckUpgradesPanel wallet={activeWallet} />
-                ) : (
-                  <div className="py-4 text-center text-xs text-gray-600">Search a wallet first</div>
-                )}
-              </CollapsiblePanel>
-
-              <CollapsiblePanel
-                title="Squad Access"
-                isOpen={openPanel === 'squad'}
-                onToggle={() => togglePanel('squad')}
-              >
-                <div className="py-8 text-center text-xs text-gray-600">
-                  Coming soon — cards ranked by reach per cost
-                </div>
-              </CollapsiblePanel>
-            </div>
-          )}
-
-          {/* Graph — hidden via display:none when analytics active, NOT unmounted */}
-          <div style={{ display: showAnalytics ? 'none' : 'block' }}>
             <DeckGraph
               walletData={walletData}
               detail={walletDetail}
               profiles={profiles}
             />
-          </div>
+          )}
+
+          {/* Creator detail flip-card popup — tracker only (reach uses in-graph fan-out) */}
+          {mode === 'tracker' && clickedCreatorScore && clickedCreator && (
+            <DeckCreatorDetail
+              creator={clickedCreatorScore}
+              x={clickedCreator.x}
+              y={clickedCreator.y}
+              walletDetail={walletDetail}
+              floorPrices={floorPrices}
+              onClose={() => setClickedCreator(null)}
+            />
+          )}
         </div>
 
-        {/* RIGHT SIDEBAR — Leaderboard (hidden on mobile) */}
-        <aside
-          className="hidden lg:block w-[380px] shrink-0 overflow-y-auto rounded-2xl border border-white/[0.06] bg-[rgba(20,20,20,0.9)]"
-          style={{
-            position: 'sticky',
-            top: 80,
-            maxHeight: 'calc(100vh - 100px)',
-          }}
-        >
-          <div className="p-3">
-            <DeckLeaderboard
-              leaderboard={scores.leaderboard}
-              highlightWallet={activeWallet}
-              profiles={profiles}
-              onSelectWallet={selectWallet}
+        {/* Leaderboard button — centered under rings */}
+        <div className="flex justify-center">
+          <button
+            onClick={() => setShowMobileLeaderboard(true)}
+            className="rounded-xl border border-white/[0.08] bg-[rgba(20,20,20,0.9)] px-5 py-2.5 text-sm font-semibold text-gray-200 hover:bg-white/[0.06] transition-colors"
+          >
+            🏆 {mode === 'tracker' ? 'Deck Strength Leaderboard' : 'Reach Leaderboard'}
+          </button>
+        </div>
+
+        {/* Wallet-category breakdown — both pages, bottom */}
+        <DeckBucketSummary
+          scores={scores}
+          activeDirectCount={walletData?.directCount ?? null}
+        />
+
+        {/* Missing panel — content depends on mode */}
+        {walletData && mode === 'tracker' && (
+          <CollapsiblePanel
+            title="Missing Creators"
+            badge={walletDetail ? (xccScores.length - walletDetail.direct.length) : undefined}
+            badgeColor="#D85A30"
+            isOpen={openPanel === 'missing'}
+            onToggle={() =>
+              setOpenPanel((prev) => (prev === 'missing' ? null : 'missing'))
+            }
+          >
+            <DeckMissingByScore
+              xccScores={xccScores}
+              walletDetail={walletDetail}
+              onCreatorClick={(handle) => {
+                setClickedCreator({ handle, x: 400, y: 400 });
+                setOpenPanel(null);
+              }}
             />
-          </div>
-        </aside>
+          </CollapsiblePanel>
+        )}
+
+        {walletData && mode === 'reach' && (
+          <CollapsiblePanel
+            title="Missing Creators (Bridges & Cheapest Picks)"
+            badge={missingCount ?? undefined}
+            badgeColor="#D85A30"
+            isOpen={openPanel === 'missing'}
+            onToggle={() =>
+              setOpenPanel((prev) => (prev === 'missing' ? null : 'missing'))
+            }
+          >
+            {activeWallet ? (
+              <DeckMissingPanel wallet={activeWallet} />
+            ) : (
+              <div className="py-4 text-center text-xs text-gray-600">
+                Search a wallet first
+              </div>
+            )}
+          </CollapsiblePanel>
+        )}
       </div>
 
-      {/* Mobile leaderboard overlay */}
+      {/* Leaderboard modal — unified for all screens */}
       {showMobileLeaderboard && (
-        <div className="fixed inset-0 z-50 lg:hidden">
+        <div className="fixed inset-0 z-50">
           <div
-            className="absolute inset-0 bg-black/60"
+            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
             onClick={() => setShowMobileLeaderboard(false)}
           />
-          <div className="absolute bottom-0 left-0 right-0 max-h-[70vh] overflow-y-auto rounded-t-2xl border-t border-white/[0.08] bg-[#0a0a0a]">
-            <div className="sticky top-0 flex items-center justify-between border-b border-white/[0.06] bg-[#0a0a0a] px-4 py-3">
-              <span className="text-sm font-semibold text-white">Leaderboard</span>
+          <div
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[92vw] max-w-[480px] max-h-[85vh] overflow-y-auto rounded-2xl border border-white/[0.08] bg-[#0a0a0a] shadow-2xl"
+          >
+            <div className="sticky top-0 flex items-center justify-between border-b border-white/[0.06] bg-[#0a0a0a] px-4 py-3 z-10">
+              <span className="text-sm font-semibold text-white">
+                🏆 {mode === 'tracker' ? 'Deck Strength' : 'Reach'} Leaderboard
+              </span>
               <button
                 onClick={() => setShowMobileLeaderboard(false)}
                 className="text-gray-500 hover:text-white text-lg"
@@ -397,38 +483,56 @@ export function DeckPageClient() {
               </button>
             </div>
             <div className="p-3">
-              <DeckLeaderboard
-                leaderboard={scores.leaderboard}
-                highlightWallet={activeWallet}
-                profiles={profiles}
-                onSelectWallet={(wallet) => {
-                  selectWallet(wallet);
-                  setShowMobileLeaderboard(false);
-                }}
-              />
+              {mode === 'tracker' ? (
+                <DeckStrengthLeaderboard
+                  wallets={scores.wallets}
+                  detail={detailCache}
+                  xccScores={xccScores}
+                  profiles={profiles}
+                  highlightWallet={activeWallet}
+                  onSelectWallet={(wallet) => {
+                    selectWallet(wallet);
+                    setShowMobileLeaderboard(false);
+                  }}
+                />
+              ) : (
+                <DeckLeaderboard
+                  leaderboard={scores.leaderboard}
+                  highlightWallet={activeWallet}
+                  profiles={profiles}
+                  onSelectWallet={(wallet) => {
+                    selectWallet(wallet);
+                    setShowMobileLeaderboard(false);
+                  }}
+                />
+              )}
             </div>
           </div>
         </div>
       )}
 
-      {/* Mobile leaderboard toggle button */}
-      <button
-        onClick={() => setShowMobileLeaderboard(true)}
-        className="fixed bottom-4 right-4 z-40 flex items-center gap-2 rounded-full bg-[rgba(20,20,20,0.95)] px-4 py-2.5 text-xs font-semibold text-white shadow-lg border border-white/[0.1] lg:hidden"
-      >
-        🏆 Leaderboard
-      </button>
-
-      {/* Footer stats */}
+      {/* Footer */}
       <div className="text-center text-xs text-gray-600">
         {scores.totalWallets.toLocaleString()} wallets scored across {scores.totalCreators} creators
         <span className="mx-2">·</span>
         Data generated {new Date(scores.generated).toLocaleDateString()}
       </div>
 
-      {/* Flex Your Deck modal */}
-      {showFlex && walletData && (
-        <FlexDeckModal wallet={walletData} onClose={() => setShowFlex(false)} />
+      {/* Share modal — reach-focused on /reach, strength-focused on /deck */}
+      {showShare && walletData && walletDetail && mode === 'tracker' && (
+        <DeckShareCard
+          wallet={walletData}
+          walletDetail={walletDetail}
+          xccScores={xccScores}
+          bucketRank={bucketRank}
+          onClose={() => setShowShare(false)}
+        />
+      )}
+      {showShare && walletData && mode === 'reach' && (
+        <FlexDeckModal
+          wallet={walletData}
+          onClose={() => setShowShare(false)}
+        />
       )}
     </div>
   );
