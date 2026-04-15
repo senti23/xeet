@@ -155,26 +155,26 @@ export function computeAllDeckScores(
   }
 
   // Score all wallets
-  const RARITY_RANK: Record<string, number> = { legendary: 3, rare: 2, common: 1 };
   const scored: ScoredWallet[] = [];
 
   for (const [wallet, holdings] of Object.entries(snapshot)) {
     const addr = wallet.toLowerCase();
 
-    // Direct holdings
+    // Direct holdings — key by (creator, rarity) so mixed-rarity holdings of
+    // the same creator are preserved as separate entries. Previously we kept
+    // only the max rarity, which silently converted commons into rares.
     const directCreators = new Set<string>();
-    const directMap = new Map<string, { rarity: string; quantity: number }>();
+    const directMap = new Map<string, { creator: string; rarity: string; quantity: number }>();
     for (const h of holdings) {
       const handle = h.creator.toLowerCase();
+      const rarity = h.rarity || 'common';
       directCreators.add(handle);
-      const existing = directMap.get(handle);
+      const key = `${handle}|${rarity}`;
+      const existing = directMap.get(key);
       if (!existing) {
-        directMap.set(handle, { rarity: h.rarity || 'common', quantity: h.quantity || 1 });
+        directMap.set(key, { creator: handle, rarity, quantity: h.quantity || 1 });
       } else {
         existing.quantity += h.quantity || 1;
-        const newRank = RARITY_RANK[h.rarity] || 0;
-        const oldRank = RARITY_RANK[existing.rarity] || 0;
-        if (newRank > oldRank) existing.rarity = h.rarity;
       }
     }
 
@@ -210,8 +210,8 @@ export function computeAllDeckScores(
         rankAll: 0,
       },
       detail: {
-        direct: Array.from(directMap.entries()).map(([creator, info]) => ({
-          creator,
+        direct: Array.from(directMap.values()).map((info) => ({
+          creator: info.creator,
           rarity: info.rarity,
           quantity: info.quantity,
         })),

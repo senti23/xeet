@@ -11,8 +11,17 @@ interface StrengthEntry {
   isXCC: boolean;
   strength: number;
   cards: number;
-  tierCounts: Record<Tier, number>; // total cards at each tier (counting quantity)
+  /** Unique creators held per creator-tier. */
+  tierCounts: Record<Tier, number>;
+  /** Total cards held per card-rarity (legendary / rare / common). */
+  rarityCounts: Record<'legendary' | 'rare' | 'common', number>;
 }
+
+const RARITY_COLORS: Record<'legendary' | 'rare' | 'common', string> = {
+  legendary: '#D85A30',
+  rare: '#378ADD',
+  common: '#888780',
+};
 
 interface DeckStrengthLeaderboardProps {
   wallets: Record<string, WalletScoreSummary>;
@@ -72,12 +81,25 @@ export function DeckStrengthLeaderboard({
       const tierCounts: Record<Tier, number> = {
         Mythic: 0, Legendary: 0, Epic: 0, Rare: 0, Common: 0,
       };
+      const rarityCounts: Record<'legendary' | 'rare' | 'common', number> = {
+        legendary: 0, rare: 0, common: 0,
+      };
+      const seenCreators = new Set<string>();
       for (const h of d.direct) {
-        const tier = tierByHandle.get(h.creator.toLowerCase());
+        const handle = h.creator.toLowerCase();
+        const tier = tierByHandle.get(handle);
+        const r = (h.rarity || '').toLowerCase() as 'legendary' | 'rare' | 'common';
+        if (r in rarityCounts) rarityCounts[r] += h.quantity;
         if (!tier) continue;
         strength += TIER_WEIGHT[tier] * h.quantity;
         cards += h.quantity;
-        tierCounts[tier] += h.quantity;
+        // Creator-tier row counts UNIQUE creators, not summed quantities —
+        // otherwise a wallet holding 10 commons of one Common creator would
+        // show "10 Commons" in a creator-tier column, which is misleading.
+        if (!seenCreators.has(handle)) {
+          tierCounts[tier]++;
+          seenCreators.add(handle);
+        }
       }
       if (strength === 0) continue;
       const summary = wallets[wallet];
@@ -89,6 +111,7 @@ export function DeckStrengthLeaderboard({
         strength,
         cards,
         tierCounts,
+        rarityCounts,
       });
     }
     rows.sort((a, b) => b.strength - a.strength);
@@ -144,7 +167,8 @@ export function DeckStrengthLeaderboard({
             <th className="px-1.5 py-1.5 text-left">Holder</th>
             <th className="px-1.5 py-1.5 text-right w-16">Strength</th>
             <th className="px-1.5 py-1.5 text-right w-14">Cards</th>
-            <th className="px-1.5 py-1.5 text-right w-24 hidden sm:table-cell">Tiers</th>
+            <th className="px-1.5 py-1.5 text-right w-24 hidden sm:table-cell">Rarity</th>
+            <th className="px-1.5 py-1.5 text-right w-24 hidden md:table-cell">Tiers</th>
           </tr>
         </thead>
         <tbody>
@@ -183,11 +207,28 @@ export function DeckStrengthLeaderboard({
                 </td>
                 <td className="px-1.5 py-1.5 text-right hidden sm:table-cell">
                   <span className="inline-flex items-center gap-0.5">
+                    {(['legendary', 'rare', 'common'] as const).map((r) => (
+                      entry.rarityCounts[r] > 0 ? (
+                        <span
+                          key={r}
+                          title={`${r}: ${entry.rarityCounts[r]} card${entry.rarityCounts[r] === 1 ? '' : 's'}`}
+                          className="inline-block w-1.5 h-1.5 rounded-full"
+                          style={{
+                            background: RARITY_COLORS[r],
+                            opacity: Math.min(1, 0.35 + entry.rarityCounts[r] * 0.02),
+                          }}
+                        />
+                      ) : null
+                    ))}
+                  </span>
+                </td>
+                <td className="px-1.5 py-1.5 text-right hidden md:table-cell">
+                  <span className="inline-flex items-center gap-0.5">
                     {(['Mythic', 'Legendary', 'Epic', 'Rare', 'Common'] as Tier[]).map((t) => (
                       entry.tierCounts[t] > 0 ? (
                         <span
                           key={t}
-                          title={`${t}: ${entry.tierCounts[t]}`}
+                          title={`${t}: ${entry.tierCounts[t]} creator${entry.tierCounts[t] === 1 ? '' : 's'}`}
                           className="inline-block w-1.5 h-1.5 rounded-full"
                           style={{
                             background: TIER_COLORS[t],

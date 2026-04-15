@@ -367,7 +367,7 @@ export function DeckPageClient({ mode = 'tracker' }: DeckPageClientProps) {
             walletData={walletData}
             walletDetail={walletDetail}
             xccScores={xccScores}
-            scores={scores}
+            detailCache={detailCache}
             activeWallet={activeWallet}
           />
         )}
@@ -412,9 +412,16 @@ export function DeckPageClient({ mode = 'tracker' }: DeckPageClientProps) {
           </button>
         </div>
 
-        {/* Wallet-category breakdown — both pages, bottom */}
+        {/* Wallet-category breakdown — both pages, bottom.
+            Bucketing is by TOTAL CARDS held (sum of quantities). */}
         <DeckBucketSummary
           scores={scores}
+          detailCache={detailCache}
+          activeTotalCards={
+            walletDetail
+              ? walletDetail.direct.reduce((s, h) => s + h.quantity, 0)
+              : null
+          }
           activeDirectCount={walletData?.directCount ?? null}
         />
 
