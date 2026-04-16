@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import type { WalletScoreDetail, WalletScoreSummary, CreatorProfiles } from '@/types/deck';
-import { type CreatorScore, type Tier, TIER_COLORS, TIER_WEIGHT } from '@/types/xccScores';
+import { type CreatorScore, type Tier, type CardRarity, TIER_COLORS, TIER_WEIGHT, RARITY_WEIGHT } from '@/types/xccScores';
 
 interface StrengthEntry {
   wallet: string;
@@ -88,10 +88,11 @@ export function DeckStrengthLeaderboard({
       for (const h of d.direct) {
         const handle = h.creator.toLowerCase();
         const tier = tierByHandle.get(handle);
-        const r = (h.rarity || '').toLowerCase() as 'legendary' | 'rare' | 'common';
+        const r = (h.rarity || '').toLowerCase() as CardRarity;
         if (r in rarityCounts) rarityCounts[r] += h.quantity;
         if (!tier) continue;
-        strength += TIER_WEIGHT[tier] * h.quantity;
+        const rarityMult = RARITY_WEIGHT[r] ?? 1;
+        strength += TIER_WEIGHT[tier] * rarityMult * h.quantity;
         cards += h.quantity;
         // Creator-tier row counts UNIQUE creators, not summed quantities —
         // otherwise a wallet holding 10 commons of one Common creator would
@@ -158,7 +159,9 @@ export function DeckStrengthLeaderboard({
       </div>
 
       <div className="text-[10px] text-gray-600 mb-2 px-1 leading-relaxed">
-        Tier-weighted per card: Mythic ×5 · Legendary ×3 · Epic ×2 · Rare ×1 · Common ×0.5
+        Creator tier: Mythic ×5 · Legendary ×3 · Epic ×2 · Rare ×1 · Common ×0.5
+        <br />
+        Card rarity: Legendary ×5 · Rare ×2 · Common ×1
       </div>
       <table className="w-full text-xs">
         <thead>

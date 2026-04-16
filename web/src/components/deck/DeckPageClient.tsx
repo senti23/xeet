@@ -9,7 +9,7 @@ import type {
   WalletScoreDetail,
   ValuationResponse,
 } from '@/types/deck';
-import type { CreatorScore, Tier } from '@/types/xccScores';
+import { type CreatorScore, type Tier, type CardRarity, TIER_WEIGHT, RARITY_WEIGHT } from '@/types/xccScores';
 import { DeckScoreCard } from './DeckScoreCard';
 import { DeckLeaderboard } from './DeckLeaderboard';
 import { DeckStrengthLeaderboard } from './DeckStrengthLeaderboard';
@@ -257,9 +257,6 @@ export function DeckPageClient({ mode = 'tracker' }: DeckPageClientProps) {
       if (!detailCache || !xccScores.length) return null;
       const tierByHandle = new Map<string, Tier>();
       for (const c of xccScores) tierByHandle.set(c.xHandle.toLowerCase(), c.tier);
-      const TIER_WEIGHT: Record<Tier, number> = {
-        Mythic: 5, Legendary: 3, Epic: 2, Rare: 1, Common: 0.5,
-      };
       // Compute our total cards
       const myDetail = detailCache[activeWallet];
       if (!myDetail) return null;
@@ -274,7 +271,9 @@ export function DeckPageClient({ mode = 'tracker' }: DeckPageClientProps) {
         for (const h of d.direct) {
           const tier = tierByHandle.get(h.creator.toLowerCase());
           if (!tier) continue;
-          strength += TIER_WEIGHT[tier] * h.quantity;
+          const r = (h.rarity || '').toLowerCase() as CardRarity;
+          const rarityMult = RARITY_WEIGHT[r] ?? 1;
+          strength += TIER_WEIGHT[tier] * rarityMult * h.quantity;
           cards += h.quantity;
         }
         if (strength === 0) continue;

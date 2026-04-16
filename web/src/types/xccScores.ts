@@ -35,11 +35,31 @@ export const TIER_BORDER_WIDTH: Record<Tier, number> = {
 export const TIER_ORDER: Tier[] = ['Mythic', 'Legendary', 'Epic', 'Rare', 'Common'];
 
 // Per-card weighting used by the Deck Strength score on /deck.
-// Shared between DeckStrengthLeaderboard and DeckDetailsCard.
+// Shared between DeckStrengthLeaderboard, DeckDetailsCard, DeckShareCard,
+// and the backend compute-deck-scores.ts.
+//
+// Deck Strength = Σ  TIER_WEIGHT[creator.tier] × RARITY_WEIGHT[card.rarity] × quantity
+//
+// Creator tier reflects quality (composite xeet score); card rarity
+// reflects scarcity (on-chain supply). The product captures both.
 export const TIER_WEIGHT: Record<Tier, number> = {
   Mythic: 5,
   Legendary: 3,
   Epic: 2,
   Rare: 1,
   Common: 0.5,
+};
+
+// Rarity multiplier — conservatively dampened from actual supply ratios:
+//   Actual median supply: legendary ~1, rare ~13, common ~70 per creator.
+//   Raw inverse-supply: legendary ~70×, rare ~5.4×, common 1×.
+//   We use ≈ sqrt(inverse) rounded: 5 / 2 / 1.
+// This keeps both dimensions (tier quality + rarity scarcity) in play
+// without letting legendaries dominate the score entirely.
+export type CardRarity = 'legendary' | 'rare' | 'common';
+
+export const RARITY_WEIGHT: Record<CardRarity, number> = {
+  legendary: 5,
+  rare: 2,
+  common: 1,
 };

@@ -8,9 +8,11 @@ import type {
 import {
   type CreatorScore,
   type Tier,
+  type CardRarity,
   TIER_COLORS,
   TIER_ORDER,
   TIER_WEIGHT,
+  RARITY_WEIGHT,
 } from '@/types/xccScores';
 
 // Card-rarity colors (distinct from creator-tier colors).
@@ -83,12 +85,13 @@ export function DeckDetailsCard({
       const qty = h.quantity;
 
       // Rarity counts — by CARD rarity (h.rarity), summing quantity.
-      const r = (h.rarity || '').toLowerCase() as 'legendary' | 'rare' | 'common';
+      const r = (h.rarity || '').toLowerCase() as CardRarity;
       if (r in rarityCounts) rarityCounts[r] += qty;
 
       // Strength + totals — require known creator tier.
       if (!tier) continue;
-      strength += TIER_WEIGHT[tier] * qty;
+      const rarityMult = RARITY_WEIGHT[r] ?? 1;
+      strength += TIER_WEIGHT[tier] * rarityMult * qty;
       totalCards += qty;
       if (!seenCreators.has(handle)) {
         uniqueByTier[tier]++;
@@ -116,7 +119,9 @@ export function DeckDetailsCard({
       for (const h of d.direct) {
         const tier = tierByHandle.get(h.creator.toLowerCase());
         if (!tier) continue;
-        pStrength += TIER_WEIGHT[tier] * h.quantity;
+        const r = (h.rarity || '').toLowerCase() as CardRarity;
+        const rarityMult = RARITY_WEIGHT[r] ?? 1;
+        pStrength += TIER_WEIGHT[tier] * rarityMult * h.quantity;
         pCards += h.quantity;
       }
       if (pStrength === 0) continue;

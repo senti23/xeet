@@ -5,10 +5,12 @@ import type { WalletScoreSummary, WalletScoreDetail } from '@/types/deck';
 import {
   type CreatorScore,
   type Tier,
+  type CardRarity,
   TIER_COLORS,
   TIER_BORDER_WIDTH,
   TIER_ORDER,
   TIER_WEIGHT,
+  RARITY_WEIGHT,
 } from '@/types/xccScores';
 
 // Card-rarity colors (distinct from creator-tier colors).
@@ -107,11 +109,12 @@ export function DeckShareCard({
       legendary: 0, rare: 0, common: 0,
     };
     for (const h of walletDetail.direct) {
-      const r = (h.rarity || '').toLowerCase() as 'legendary' | 'rare' | 'common';
+      const r = (h.rarity || '').toLowerCase() as CardRarity;
       if (r in rarityCountsCard) rarityCountsCard[r] += h.quantity;
       const tier = tierByHandle.get(h.creator.toLowerCase());
       if (!tier) continue;
-      deckStrength += TIER_WEIGHT[tier] * h.quantity;
+      const rarityMult = RARITY_WEIGHT[r] ?? 1;
+      deckStrength += TIER_WEIGHT[tier] * rarityMult * h.quantity;
       totalCardsHeld += h.quantity;
     }
     const uniqueCreators = new Set(
