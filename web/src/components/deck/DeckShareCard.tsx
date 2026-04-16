@@ -8,7 +8,15 @@ import {
   TIER_COLORS,
   TIER_BORDER_WIDTH,
   TIER_ORDER,
+  TIER_WEIGHT,
 } from '@/types/xccScores';
+
+// Card-rarity colors (distinct from creator-tier colors).
+const RARITY_COLORS: Record<'legendary' | 'rare' | 'common', string> = {
+  legendary: '#D85A30',
+  rare: '#378ADD',
+  common: '#888780',
+};
 
 // Ring config — 1200x1200 canvas
 // Rings enlarged (scale 1.15x vs DeckRings) for maximum screenshot impact.
@@ -87,6 +95,29 @@ export function DeckShareCard({
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, SHARE_CANVAS, SHARE_CANVAS);
 
+    // Pre-compute deck strength + totals + rarity counts from the current
+    // (per-rarity) detail data. This is the same formula as
+    // DeckStrengthLeaderboard / DeckDetailsCard so all three stay in sync.
+    const tierByHandle = new Map<string, Tier>();
+    for (const c of xccScores) tierByHandle.set(c.xHandle.toLowerCase(), c.tier);
+
+    let deckStrength = 0;
+    let totalCardsHeld = 0;
+    const rarityCountsCard: Record<'legendary' | 'rare' | 'common', number> = {
+      legendary: 0, rare: 0, common: 0,
+    };
+    for (const h of walletDetail.direct) {
+      const r = (h.rarity || '').toLowerCase() as 'legendary' | 'rare' | 'common';
+      if (r in rarityCountsCard) rarityCountsCard[r] += h.quantity;
+      const tier = tierByHandle.get(h.creator.toLowerCase());
+      if (!tier) continue;
+      deckStrength += TIER_WEIGHT[tier] * h.quantity;
+      totalCardsHeld += h.quantity;
+    }
+    const uniqueCreators = new Set(
+      walletDetail.direct.map((d) => d.creator.toLowerCase()),
+    ).size;
+
     // 2. Header strip (y=0-120)
     const displayName = wallet.displayName || wallet.xHandle || 'Wallet';
     ctx.font = 'bold 42px sans-serif';
@@ -97,42 +128,31 @@ export function DeckShareCard({
 
     ctx.font = '20px sans-serif';
     ctx.fillStyle = '#888780';
-    ctx.fillText('Xeet Creator Cards · Deck Reach Score', 60, 100);
+    ctx.fillText('Xeet Creator Cards · Deck Strength', 60, 100);
 
-    // Top right: DECK RANK
+    // Top right: DECK STRENGTH (hero number) + optional bucket rank.
+    ctx.textAlign = 'right';
+    ctx.font = 'bold 72px "Courier New", monospace';
+    ctx.fillStyle = '#E53935';
+    ctx.fillText(deckStrength.toFixed(1), SHARE_CANVAS - 60, 60);
+
+    ctx.font = '16px sans-serif';
+    ctx.fillStyle = '#ccc';
+    ctx.fillText('Deck Strength', SHARE_CANVAS - 60, 95);
+
+    ctx.font = '13px sans-serif';
+    ctx.fillStyle = '#666';
     if (bucketRank) {
-      ctx.textAlign = 'right';
-      ctx.font = 'bold 72px "Courier New", monospace';
-      ctx.fillStyle = '#E53935';
-      ctx.fillText(`#${bucketRank.rank}`, SHARE_CANVAS - 60, 60);
-
-      ctx.font = '16px sans-serif';
-      ctx.fillStyle = '#ccc';
       ctx.fillText(
-        `of ${bucketRank.bucketSize} ${bucketRank.bucketLabel} decks`,
-        SHARE_CANVAS - 60,
-        95,
-      );
-
-      ctx.font = '13px sans-serif';
-      ctx.fillStyle = '#666';
-      ctx.fillText(
-        `${walletDetail.direct.length} cards held`,
+        `#${bucketRank.rank} of ${bucketRank.bucketSize} ${bucketRank.bucketLabel} decks · ${totalCardsHeld} cards`,
         SHARE_CANVAS - 60,
         115,
       );
     } else {
-      // Fallback: reach score if no bucket rank available
-      ctx.textAlign = 'right';
-      ctx.font = 'bold 72px "Courier New", monospace';
-      ctx.fillStyle = '#E53935';
-      ctx.fillText(`${wallet.score}%`, SHARE_CANVAS - 60, 70);
-      ctx.font = '16px sans-serif';
-      ctx.fillStyle = '#888780';
       ctx.fillText(
-        `${wallet.totalReach} / 391 reachable`,
+        `${totalCardsHeld} cards · ${uniqueCreators} creators`,
         SHARE_CANVAS - 60,
-        108,
+        115,
       );
     }
 
@@ -315,9 +335,62 @@ export function DeckShareCard({
       ctx.fillText('XEET', cx, cy);
     }
 
-    // 4. Stats chrome (y=1010-1170) — pushed lower so rings dominate.
-    // Tier coverage as bar rows, centered horizontally (deck rank is top-right in header).
-    const STATS_Y = 1010;
+    // 4. Stats chrome (y=970-1170) — pushed lower so rings dominate.
+    // Two sections: Card Rarity (top) + Creator Tier Coverage (below).
+    const RARITY_Y = 940;
+
+    // Card Rarity row — by CARD, summed by quantity.
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.font = 'bold 14px sans-serif';
+    ctx.fillStyle = '#888780';
+    ctx.fillText('CARD RARITY', SHARE_CANVAS / 2, RARITY_Y);
+
+    // 3 pills side-by-side, centered.
+    const rarityOrder: Array<'legendary' | 'rare' | 'common'> = [
+      'legendary', 'rare', 'common',
+    ];
+    const pillW = 180;
+    const pillGap = 12;
+    const pillTotalW = pillW * rarityOrder.length + pillGap * (rarityOrder.length - 1);
+    const pillStartX = (SHARE_CANVAS - pillTotalW) / 2;
+    const pillY = RARITY_Y + 24;
+    const pillH = 36;
+
+    rarityOrder.forEach((r, i) => {
+      const x = pillStartX + i * (pillW + pillGap);
+      // Background (rounded — fall back to plain rect if roundRect missing)
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.04)';
+      const rrCtx = ctx as CanvasRenderingContext2D & {
+        roundRect?: (x: number, y: number, w: number, h: number, r: number) => void;
+      };
+      if (typeof rrCtx.roundRect === 'function') {
+        ctx.beginPath();
+        rrCtx.roundRect(x, pillY, pillW, pillH, 18);
+        ctx.fill();
+      } else {
+        ctx.fillRect(x, pillY, pillW, pillH);
+      }
+      // Color dot
+      ctx.fillStyle = RARITY_COLORS[r];
+      ctx.beginPath();
+      ctx.arc(x + 18, pillY + pillH / 2, 5, 0, Math.PI * 2);
+      ctx.fill();
+      // Label
+      ctx.textAlign = 'left';
+      ctx.font = '13px sans-serif';
+      ctx.fillStyle = '#ddd';
+      const label = r.charAt(0).toUpperCase() + r.slice(1);
+      ctx.fillText(label, x + 32, pillY + pillH / 2);
+      // Count
+      ctx.textAlign = 'right';
+      ctx.font = 'bold 15px "Courier New", monospace';
+      ctx.fillStyle = '#fff';
+      ctx.fillText(String(rarityCountsCard[r]), x + pillW - 16, pillY + pillH / 2);
+    });
+
+    // Creator Tier Coverage — bar rows (moved down to make room for rarity).
+    const STATS_Y = pillY + pillH + 28;
 
     // Compute tier held counts
     const tierCounts: Record<Tier, { held: number; total: number }> = {
@@ -337,7 +410,7 @@ export function DeckShareCard({
     ctx.textBaseline = 'middle';
     ctx.font = 'bold 14px sans-serif';
     ctx.fillStyle = '#888780';
-    ctx.fillText('TIER COVERAGE', SHARE_CANVAS / 2, STATS_Y);
+    ctx.fillText('CREATOR TIER COVERAGE', SHARE_CANVAS / 2, STATS_Y);
 
     // Bar rows (same layout as before, just moved lower + centered horizontally)
     const tierLabelW = 100;
@@ -345,7 +418,7 @@ export function DeckShareCard({
     const countColW = 60;
     const blockW = tierLabelW + tierBarW + countColW;
     const tierBlockX = (SHARE_CANVAS - blockW) / 2;
-    let rowY = STATS_Y + 26;
+    let rowY = STATS_Y + 22;
 
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
@@ -381,7 +454,7 @@ export function DeckShareCard({
         rowY,
       );
       ctx.textAlign = 'left';
-      rowY += 22;
+      rowY += 18;
     }
 
     // 5. Footer (y=1140-1200)

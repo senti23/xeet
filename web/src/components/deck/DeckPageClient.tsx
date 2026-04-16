@@ -9,7 +9,7 @@ import type {
   WalletScoreDetail,
   ValuationResponse,
 } from '@/types/deck';
-import type { CreatorScore } from '@/types/xccScores';
+import type { CreatorScore, Tier } from '@/types/xccScores';
 import { DeckScoreCard } from './DeckScoreCard';
 import { DeckLeaderboard } from './DeckLeaderboard';
 import { DeckStrengthLeaderboard } from './DeckStrengthLeaderboard';
@@ -45,6 +45,12 @@ function sizeBucket(n: number): { label: string; min: number; max: number } {
   if (n <= 80) return { label: 'medium', min: 31, max: 80 };
   if (n <= 150) return { label: 'large', min: 81, max: 150 };
   return { label: 'whale', min: 151, max: Infinity };
+}
+
+// /deck-specific bucketing by TOTAL CARDS HELD (not unique creators).
+// Mirrors the one in DeckDetailsCard / DeckBucketSummary.
+function cardBucket(n: number): { label: string; min: number; max: number } {
+  return sizeBucket(n);
 }
 
 interface DeckPageClientProps {
@@ -239,8 +245,50 @@ export function DeckPageClient({ mode = 'tracker' }: DeckPageClientProps) {
   }, []);
 
   // ─── Bucket rank for share card ───────────────────────────────────────────
+  // On /deck (tracker) the bucket is TOTAL CARDS HELD and the rank within the
+  // bucket is by DECK STRENGTH — so the share card, DeckDetailsCard, and the
+  // strength leaderboard all tell the same story. On /reach we fall back to
+  // the reach-score-based bucketing (directCount + ws.score) which is the
+  // original reach semantics.
   const bucketRank = useMemo(() => {
-    if (!walletData || !scores) return null;
+    if (!walletData || !scores || !activeWallet) return null;
+
+    if (mode === 'tracker') {
+      if (!detailCache || !xccScores.length) return null;
+      const tierByHandle = new Map<string, Tier>();
+      for (const c of xccScores) tierByHandle.set(c.xHandle.toLowerCase(), c.tier);
+      const TIER_WEIGHT: Record<Tier, number> = {
+        Mythic: 5, Legendary: 3, Epic: 2, Rare: 1, Common: 0.5,
+      };
+      // Compute our total cards
+      const myDetail = detailCache[activeWallet];
+      if (!myDetail) return null;
+      const myCards = myDetail.direct.reduce((s, h) => s + h.quantity, 0);
+      const bucket = cardBucket(myCards);
+
+      type Peer = { wallet: string; strength: number };
+      const peers: Peer[] = [];
+      for (const [w, d] of Object.entries(detailCache)) {
+        let strength = 0;
+        let cards = 0;
+        for (const h of d.direct) {
+          const tier = tierByHandle.get(h.creator.toLowerCase());
+          if (!tier) continue;
+          strength += TIER_WEIGHT[tier] * h.quantity;
+          cards += h.quantity;
+        }
+        if (strength === 0) continue;
+        if (cards >= bucket.min && cards <= bucket.max) {
+          peers.push({ wallet: w, strength });
+        }
+      }
+      peers.sort((a, b) => b.strength - a.strength);
+      const idx = peers.findIndex((p) => p.wallet === activeWallet);
+      if (idx < 0) return null;
+      return { rank: idx + 1, bucketSize: peers.length, bucketLabel: bucket.label };
+    }
+
+    // /reach: original reach-centric bucketing (by unique creators, ranked by reach).
     const bucket = sizeBucket(walletData.directCount);
     const bucketWallets: Array<{ wallet: string; score: number; direct: number }> = [];
     for (const [w, s] of Object.entries(scores.wallets)) {
@@ -257,7 +305,7 @@ export function DeckPageClient({ mode = 'tracker' }: DeckPageClientProps) {
       bucketSize: bucketWallets.length,
       bucketLabel: bucket.label,
     };
-  }, [walletData, scores, activeWallet]);
+  }, [walletData, scores, activeWallet, mode, detailCache, xccScores]);
 
   // ─── Lookup creator by handle (for detail popup) ──────────────────────────
   const creatorByHandle = useMemo(() => {
@@ -429,7 +477,12 @@ export function DeckPageClient({ mode = 'tracker' }: DeckPageClientProps) {
         {walletData && mode === 'tracker' && (
           <CollapsiblePanel
             title="Missing Creators"
-            badge={walletDetail ? (xccScores.length - walletDetail.direct.length) : undefined}
+            badge={
+              walletDetail
+                ? xccScores.length -
+                  new Set(walletDetail.direct.map((d) => d.creator.toLowerCase())).size
+                : undefined
+            }
             badgeColor="#D85A30"
             isOpen={openPanel === 'missing'}
             onToggle={() =>

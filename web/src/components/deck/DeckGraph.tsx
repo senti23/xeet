@@ -233,8 +233,29 @@ export function DeckGraph({ walletData, detail, profiles }: DeckGraphProps) {
     }
     bridgeIndexRef.current = bridgeIndex;
 
+    // Dedupe direct holdings by creator — the backend now emits one entry
+    // per (creator, rarity), so a wallet holding both rare + common of the
+    // same creator appears as two entries. In the graph one node per creator
+    // is what we want; pick the HIGHEST rarity for the node's border/color
+    // and sum quantities.
+    type Dedup = { creator: string; rarity: string; quantity: number };
+    const dedupMap = new Map<string, Dedup>();
+    for (const h of detail.direct) {
+      const lc = h.creator.toLowerCase();
+      const existing = dedupMap.get(lc);
+      if (!existing) {
+        dedupMap.set(lc, { creator: h.creator, rarity: h.rarity, quantity: h.quantity });
+      } else {
+        existing.quantity += h.quantity;
+        // lower `order` = higher rarity (legendary=0, rare=1, common=2)
+        if (getRarity(h.rarity).order < getRarity(existing.rarity).order) {
+          existing.rarity = h.rarity;
+        }
+      }
+    }
+
     // Sort direct nodes: legendaries first
-    const sorted = [...detail.direct].sort((a, b) =>
+    const sorted = Array.from(dedupMap.values()).sort((a, b) =>
       (getRarity(a.rarity).order) - (getRarity(b.rarity).order)
     );
 
@@ -701,9 +722,14 @@ export function DeckGraph({ walletData, detail, profiles }: DeckGraphProps) {
         </div>
       )}
 
-      {/* Stats overlay */}
+      {/* Stats overlay — "direct" counts UNIQUE creators held (not entries;
+          the backend emits one entry per (creator, rarity) so a wallet
+          holding mixed rarities of one creator produces multiple entries). */}
       <div className="absolute top-3 left-3 text-[10px] text-gray-600 font-mono">
-        {detail?.direct.length ?? 0} direct · {Object.keys(detail?.secondary ?? {}).length} secondary
+        {detail
+          ? new Set(detail.direct.map((d) => d.creator.toLowerCase())).size
+          : 0}{' '}
+        direct · {Object.keys(detail?.secondary ?? {}).length} secondary
       </div>
     </div>
   );
