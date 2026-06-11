@@ -7,23 +7,7 @@
         "source": "megaeth-migration",
         "cards": 3,
         "uniqueCreators": 3,
-        "holdings": [
-          {
-            "creator": "ffvv1211",
-            "rarity": "common",
-            "quantity": 1
-          },
-          {
-            "creator": "wezaverse",
-            "rarity": "common",
-            "quantity": 1
-          },
-          {
-            "creator": "diegoarmandoad",
-            "rarity": "common",
-            "quantity": 1
-          }
-        ]
+        "holdings": []
       }
     ]
   },
@@ -35,33 +19,7 @@
         "source": "megaeth-migration",
         "cards": 5,
         "uniqueCreators": 5,
-        "holdings": [
-          {
-            "creator": "jgonzalezferrer",
-            "rarity": "common",
-            "quantity": 1
-          },
-          {
-            "creator": "shl_eth",
-            "rarity": "common",
-            "quantity": 1
-          },
-          {
-            "creator": "hannahhughes",
-            "rarity": "common",
-            "quantity": 1
-          },
-          {
-            "creator": "raidenkrn",
-            "rarity": "common",
-            "quantity": 1
-          },
-          {
-            "creator": "allenbaez126",
-            "rarity": "common",
-            "quantity": 1
-          }
-        ]
+        "holdings": []
       }
     ]
   },
@@ -73,38 +31,7 @@
         "source": "megaeth-migration",
         "cards": 6,
         "uniqueCreators": 6,
-        "holdings": [
-          {
-            "creator": "josephweb3",
-            "rarity": "common",
-            "quantity": 1
-          },
-          {
-            "creator": "tictacmagic_",
-            "rarity": "common",
-            "quantity": 1
-          },
-          {
-            "creator": "kudabajingan",
-            "rarity": "common",
-            "quantity": 1
-          },
-          {
-            "creator": "lechriss17",
-            "rarity": "common",
-            "quantity": 1
-          },
-          {
-            "creator": "moneyfet1sh",
-            "rarity": "rare",
-            "quantity": 1
-          },
-          {
-            "creator": "shgfees",
-            "rarity": "rare",
-            "quantity": 1
-          }
-        ]
+        "holdings": []
       }
     ]
   }
