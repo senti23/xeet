@@ -9,6 +9,17 @@ from datetime import datetime
 from config import *
 
 
+def _nan_to_null(obj):
+    """Recursively convert NaN floats to None so json.dump emits valid JSON."""
+    if isinstance(obj, float) and obj != obj:
+        return None
+    if isinstance(obj, dict):
+        return {k: _nan_to_null(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_nan_to_null(v) for v in obj]
+    return obj
+
+
 # Tier colors (matching Xeet rarity aesthetic)
 TIER_COLORS = {
     "Mythic": "#FF6B35",      # Orange-gold
@@ -161,7 +172,10 @@ def main():
 
     scores_path = OUTPUT_DIR / "xcc-scores.json"
     with open(scores_path, "w") as f:
-        json.dump(scores, f, indent=2)
+        # json.dump emits bare NaN literals (invalid JSON — breaks the frontend's
+        # JSON.parse). Scrub the whole tree to null, whatever fields slipped past
+        # clean_value.
+        json.dump(_nan_to_null(scores), f, indent=2)
     print(f"  Saved {len(scores)} creators to {scores_path}")
 
     # --- 2. formula-config.json ---
