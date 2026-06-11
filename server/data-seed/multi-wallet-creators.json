@@ -1,0 +1,111 @@
+{
+  "lechriss17": {
+    "primaryWallet": "0x5ed2cbe4f9a6754801cc9421b5dcdc644b6395ba",
+    "additionalWallets": [
+      {
+        "address": "0x8ed9ce5e1e8669d64f963580ea65b606c012465a",
+        "source": "megaeth-migration",
+        "cards": 3,
+        "uniqueCreators": 3,
+        "holdings": [
+          {
+            "creator": "ffvv1211",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "wezaverse",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "diegoarmandoad",
+            "rarity": "common",
+            "quantity": 1
+          }
+        ]
+      }
+    ]
+  },
+  "jgonzalezferrer": {
+    "primaryWallet": "0x9b4c43f10bee24e64af26cd257e8f5a0140c9827",
+    "additionalWallets": [
+      {
+        "address": "0x729be2eb86ae64bd7158a9b428f5fe3253f36b0b",
+        "source": "megaeth-migration",
+        "cards": 5,
+        "uniqueCreators": 5,
+        "holdings": [
+          {
+            "creator": "jgonzalezferrer",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "shl_eth",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "hannahhughes",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "raidenkrn",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "allenbaez126",
+            "rarity": "common",
+            "quantity": 1
+          }
+        ]
+      }
+    ]
+  },
+  "scottybmitch": {
+    "primaryWallet": "0xf68b5455fc5d17f4f5b509b769f819cc3b457bdf",
+    "additionalWallets": [
+      {
+        "address": "0xedc0f30d965476921359c055821411fc3c3f3e75",
+        "source": "megaeth-migration",
+        "cards": 6,
+        "uniqueCreators": 6,
+        "holdings": [
+          {
+            "creator": "josephweb3",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "tictacmagic_",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "kudabajingan",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "lechriss17",
+            "rarity": "common",
+            "quantity": 1
+          },
+          {
+            "creator": "moneyfet1sh",
+            "rarity": "rare",
+            "quantity": 1
+          },
+          {
+            "creator": "shgfees",
+            "rarity": "rare",
+            "quantity": 1
+          }
+        ]
+      }
+    ]
+  }
+}
