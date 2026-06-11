@@ -1,0 +1,25 @@
+{
+  "step": "refresh-token-map",
+  "ts": "2026-06-10T19:43:42.149Z",
+  "elapsed_seconds": 96.2,
+  "megaeth_token_ids_total": 941,
+  "already_mapped": 805,
+  "missing_total": 136,
+  "additions_written": 136,
+  "errors_count": 0,
+  "epic_mythic_count": 0,
+  "rarity_breakdown": {
+    "legendary": 127,
+    "rare": 8,
+    "common": 1
+  },
+  "ground_truth_24": {
+    "token_id": "24",
+    "creator_handle": "bearish_af",
+    "rarity": "legendary",
+    "name": "BEARISH Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/bcbb8bbc04f7612787bfebcc31b691/9dbcbb8bbc04f7612787bfebcc31b691.png"
+  },
+  "ground_truth_passes": true,
+  "errors_sample": []
+}

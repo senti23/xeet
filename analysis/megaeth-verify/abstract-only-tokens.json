@@ -1,0 +1,385 @@
+{
+  "generated": "2026-06-10T19:54:41.672Z",
+  "candidate_count": 41,
+  "rarity_distribution": {
+    "legendary": 31,
+    "rare": 10
+  },
+  "prior_session_reference": {
+    "count": 47,
+    "legendary": 36,
+    "rare": 11
+  },
+  "errors": [],
+  "tokens": [
+    {
+      "token_id": "14",
+      "creator_handle": "j0xhen",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "64",
+      "creator_handle": "mtrox207",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "179",
+      "creator_handle": "itstymo",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "219",
+      "creator_handle": "0xumutcan",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "354",
+      "creator_handle": "zkernaut",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "449",
+      "creator_handle": "hyperstrike",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "479",
+      "creator_handle": "wilson_",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "499",
+      "creator_handle": "deviled_meggs_",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "564",
+      "creator_handle": "xammiecrypt",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "674",
+      "creator_handle": "oxydo11",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "724",
+      "creator_handle": "donpudgy",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "809",
+      "creator_handle": "defi_explora",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "969",
+      "creator_handle": "matchayuma",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1034",
+      "creator_handle": "jackhaldorsson",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1054",
+      "creator_handle": "kaffchad",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1074",
+      "creator_handle": "diegoarmandoad",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1159",
+      "creator_handle": "chrisjourdan",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1194",
+      "creator_handle": "shadow_nft15",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1199",
+      "creator_handle": "kaitodan",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1369",
+      "creator_handle": "jakeronthia_",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1389",
+      "creator_handle": "maskjiro",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1399",
+      "creator_handle": "fimmonaci",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1419",
+      "creator_handle": "adrewxvii",
+      "rarity": "legendary",
+      "holder_count_on_abs": 0,
+      "abs_total_qty": 0,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 0
+    },
+    {
+      "token_id": "1489",
+      "creator_handle": "twenty3ry",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1574",
+      "creator_handle": "pgreyy",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1609",
+      "creator_handle": "smolpeach33",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1624",
+      "creator_handle": "ibrathedabra",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1659",
+      "creator_handle": "jowennft",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1809",
+      "creator_handle": "cryptoarter",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1834",
+      "creator_handle": "gujjuiixi",
+      "rarity": "legendary",
+      "holder_count_on_abs": 0,
+      "abs_total_qty": 0,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 0
+    },
+    {
+      "token_id": "1839",
+      "creator_handle": "tulipxbt",
+      "rarity": "legendary",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1897",
+      "creator_handle": "justmeg",
+      "rarity": "rare",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1902",
+      "creator_handle": "mide_ox",
+      "rarity": "rare",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1907",
+      "creator_handle": "voxelqueen",
+      "rarity": "rare",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1912",
+      "creator_handle": "n1ssue",
+      "rarity": "rare",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1917",
+      "creator_handle": "houseofyogi",
+      "rarity": "rare",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1922",
+      "creator_handle": "fud_berry",
+      "rarity": "rare",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1932",
+      "creator_handle": "nashahmed3",
+      "rarity": "rare",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1937",
+      "creator_handle": "dachshundwizard",
+      "rarity": "rare",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1942",
+      "creator_handle": "manyaaww",
+      "rarity": "rare",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    },
+    {
+      "token_id": "1947",
+      "creator_handle": "airdrops_one",
+      "rarity": "rare",
+      "holder_count_on_abs": 1,
+      "abs_total_qty": 1,
+      "holder_count_on_mega": 0,
+      "os_owner_count_unverified": 1
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+Test 1 — Holder discovery on MegaETH (chainid=4326)
+Contract: 0xce8cb6676f6cfb3161a72a723b436987c6cf4e68
+Start block: 0
+
+  Page 1 (startblock=0)... got 10000 rows
+  Page 2 (startblock=14773575)... got 10000 rows
+  Page 3 (startblock=17196066)... got 248 rows
+
+Total raw events: 20248
+Mints: 18821, Burns: 0, Transfers (peer-to-peer): 1427
+
+Unique holders (qty > 0): 1100
+Total cards held: 21662
+Token map entries available: 846
+Unmapped token rows: 208
+Rarity totals: { common: 17816, rare: 3556, legendary: 57, unknown: 233 }
+
+Senti's MegaETH holdings: 233 entries, 301 cards (expected: ~160)
+
+Wrote /Users/senti/code/personal/xeet/analysis/megaeth-verify/holders-snapshot.json (2045.3 KB)
+Wrote /Users/senti/code/personal/xeet/analysis/megaeth-verify/megaeth-raw-events.json (14.2 MB)
+
+Done.

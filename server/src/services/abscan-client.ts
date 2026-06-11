@@ -133,7 +133,7 @@ export interface OrderExecutedSale {
 
 // --- OrderExecuted log decoding ---
 
-const XEET_MARKETPLACE = '0x4424844a9A96C143345C2470905403a4009AF237';
+const XEET_MARKETPLACE = config.xeetMarketplace.address;
 const ORDER_EXECUTED_TOPIC = '0xd6f2612b092c97c0117ab78cd89422b98369be62b6ad90145a298ab80346ba62';
 const NFT_CONTRACT = CONTRACT.toLowerCase();
 
@@ -184,6 +184,7 @@ export async function getXeetOrderExecutedLogs(startBlock = 0): Promise<OrderExe
       {
         module: 'logs',
         action: 'getLogs',
+        chainid: config.xeetMarketplace.chainId, // marketplace logs live on Abstract, not the XCC chain
         address: XEET_MARKETPLACE,
         fromBlock: String(currentFromBlock),
         toBlock: 'latest',

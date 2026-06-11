@@ -1,0 +1,15 @@
+{
+  "generated": "2026-06-10T19:44:37.453Z",
+  "highest_block": 18321078,
+  "unique_holders": 1100,
+  "total_cards": 21662,
+  "distinct_token_ids": 941,
+  "rows_enriched": 208,
+  "rows_still_unmapped": 0,
+  "rarity_totals": {
+    "common": 17840,
+    "rare": 3601,
+    "legendary": 221,
+    "unknown": 0
+  }
+}

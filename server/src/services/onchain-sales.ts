@@ -1,4 +1,5 @@
 import { getDb, getStmts } from '../db/index.js';
+import { config } from '../config.js';
 import { childLogger } from '../lib/logger.js';
 import { getXeetOrderExecutedLogs, type OrderExecutedSale } from './abscan-client.js';
 import {
@@ -115,7 +116,10 @@ export async function backfillFromChain(): Promise<BackfillResult | null> {
   const xeetMeta = stmts.getPipelineMeta.get('xeet_onchain_backfill_complete') as { value: string } | undefined;
   const osMeta = stmts.getPipelineMeta.get('os_backfill_complete') as { value: string } | undefined;
   const legacyMeta = stmts.getPipelineMeta.get('onchain_backfill_complete') as { value: string } | undefined;
-  const xeetDone = xeetMeta?.value === 'true' || legacyMeta?.value === 'true';
+  // Xeet marketplace trades no longer settle through the on-chain OrderExecuted contract;
+  // when disabled, the Xeet portion is skipped entirely (historical rows already in sale_history).
+  const xeetDone = !config.xeetMarketplace.enabled
+    || xeetMeta?.value === 'true' || legacyMeta?.value === 'true';
   const osDone = osMeta?.value === 'true';
 
   if (xeetDone && osDone) {
@@ -262,6 +266,10 @@ export async function backfillFromChain(): Promise<BackfillResult | null> {
  * Called every cycle. OS sales are handled separately in data-pipeline.ts.
  */
 export async function syncXeetSales(): Promise<SyncResult> {
+  if (!config.xeetMarketplace.enabled) {
+    return { xeetNew: 0, osNew: 0, inserted: 0 };
+  }
+
   const stmts = getStmts();
 
   const metaRow = stmts.getPipelineMeta.get('last_xeet_synced_block') as { value: string } | undefined;

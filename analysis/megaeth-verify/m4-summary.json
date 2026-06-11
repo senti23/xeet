@@ -1,0 +1,54 @@
+{
+  "generated": "2026-06-10T19:53:49.014Z",
+  "creators": 391,
+  "status_counts": {
+    "fully_migrated": 206,
+    "no_cards_either_chain": 19,
+    "not_migrated": 163,
+    "partially_migrated": 3
+  },
+  "still_on_abstract_count": 166,
+  "total_abs_residual_cards_xcc_wallets": 2667,
+  "known_residuals_check": [
+    {
+      "handle": "carlitoswa_y",
+      "found": true,
+      "abs_cards": 0,
+      "mega_cards": 100,
+      "status": "fully_migrated"
+    },
+    {
+      "handle": "fogonpc",
+      "found": true,
+      "abs_cards": 5,
+      "mega_cards": 62,
+      "status": "partially_migrated"
+    },
+    {
+      "handle": "ndidi_gram",
+      "found": true,
+      "abs_cards": 0,
+      "mega_cards": 36,
+      "status": "fully_migrated"
+    },
+    {
+      "handle": "0xkekov",
+      "found": true,
+      "abs_cards": 3,
+      "mega_cards": 65,
+      "status": "partially_migrated"
+    },
+    {
+      "handle": "gyokeres_eth",
+      "found": true,
+      "abs_cards": 0,
+      "mega_cards": 564,
+      "status": "fully_migrated"
+    }
+  ],
+  "senti_check": {
+    "status": "fully_migrated",
+    "abs": 0,
+    "mega": 301
+  }
+}

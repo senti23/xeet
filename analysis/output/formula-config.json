@@ -1,7 +1,7 @@
 {
   "version": "4.0",
   "name": "The Xeet Co-Efficient",
-  "generatedAt": "2026-04-13T15:11:41.160765Z",
+  "generatedAt": "2026-06-10T20:51:15.930023Z",
   "methodology": "Rank-based normalization (0-100) per signal, weighted composite across 4 dimensions",
   "creatorsScored": 391,
   "dimensions": [

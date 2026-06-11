@@ -1,4 +1,5 @@
 import { getStmts } from '../db/index.js';
+import { config } from '../config.js';
 import { childLogger } from '../lib/logger.js';
 import type { StreamListing } from '../services/opensea-stream.js';
 import type { XeetListing } from '../services/xeet-client.js';
@@ -65,7 +66,7 @@ function formatOpenSeaAlert(listing: StreamListing, sub: Subscription): string {
   }
   lines.push(
     ``,
-    `<a href="https://opensea.io/assets/abstract/${listing.tokenId}">View on OpenSea</a>`,
+    `<a href="https://opensea.io/assets/${config.opensea.chain}/${config.opensea.contract}/${listing.tokenId}">View on OpenSea</a>`,
   );
   return lines.join('\n');
 }

@@ -1,0 +1,954 @@
+[
+  {
+    "token_id": "4",
+    "creator_handle": "scottybmitch",
+    "rarity": "legendary",
+    "name": "Scotty Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/414045f8f096456766978deec950aa/84414045f8f096456766978deec950aa.png"
+  },
+  {
+    "token_id": "17",
+    "creator_handle": "tolibear_",
+    "rarity": "rare",
+    "name": "toli Rare Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/21f157b6534f67c42ea8b84f40f28b/9921f157b6534f67c42ea8b84f40f28b.png"
+  },
+  {
+    "token_id": "24",
+    "creator_handle": "bearish_af",
+    "rarity": "legendary",
+    "name": "BEARISH Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/bcbb8bbc04f7612787bfebcc31b691/9dbcbb8bbc04f7612787bfebcc31b691.png"
+  },
+  {
+    "token_id": "32",
+    "creator_handle": "emilios_eth",
+    "rarity": "rare",
+    "name": "emilios.eth Rare Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/f9d9acc0bc41ecbfb35f5ffe4db25b/5ff9d9acc0bc41ecbfb35f5ffe4db25b.png"
+  },
+  {
+    "token_id": "34",
+    "creator_handle": "emilios_eth",
+    "rarity": "legendary",
+    "name": "emilios.eth Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/a94b3bbd2b8928b6a4adb6e1c3e80f/29a94b3bbd2b8928b6a4adb6e1c3e80f.png"
+  },
+  {
+    "token_id": "44",
+    "creator_handle": "jgonzalezferrer",
+    "rarity": "legendary",
+    "name": "Javi🥥.eth Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/62b635bc3589c1c26a8b2aa3c732d7/9c62b635bc3589c1c26a8b2aa3c732d7.png"
+  },
+  {
+    "token_id": "49",
+    "creator_handle": "joxiecoxie",
+    "rarity": "legendary",
+    "name": "JoxieCoxie🧦💜 (authentic chaos arc) Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/f1ae012bd341f49e8e8ed79d42ff09/abf1ae012bd341f49e8e8ed79d42ff09.png"
+  },
+  {
+    "token_id": "54",
+    "creator_handle": "beijingdou",
+    "rarity": "legendary",
+    "name": "Josh Ong Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/722d9525d22fde30b9ee4ae5fd1ac1/31722d9525d22fde30b9ee4ae5fd1ac1.png"
+  },
+  {
+    "token_id": "59",
+    "creator_handle": "huseyin1tekin",
+    "rarity": "legendary",
+    "name": "Sennin Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/9b4cdc0e8793b3eb5a7fc6a35ceeed/289b4cdc0e8793b3eb5a7fc6a35ceeed.png"
+  },
+  {
+    "token_id": "69",
+    "creator_handle": "r3birth",
+    "rarity": "legendary",
+    "name": "R3birth Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/afb0ee4ff440ae033ec7b19c0b1652/06afb0ee4ff440ae033ec7b19c0b1652.png"
+  },
+  {
+    "token_id": "94",
+    "creator_handle": "jampzey",
+    "rarity": "legendary",
+    "name": "Jampzey Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/ae79cb7abef74cf4f7cc6176f39d77/59ae79cb7abef74cf4f7cc6176f39d77.png"
+  },
+  {
+    "token_id": "132",
+    "creator_handle": "amit0xic",
+    "rarity": "rare",
+    "name": "t0xic 🧪 Rare Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/e9cb1aafb70efb5e0be92da6ab9833/82e9cb1aafb70efb5e0be92da6ab9833.png"
+  },
+  {
+    "token_id": "144",
+    "creator_handle": "riddlernft",
+    "rarity": "legendary",
+    "name": "RIDDLΞR Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/4c449ab2075094bc2dbd47aaace228/594c449ab2075094bc2dbd47aaace228.png"
+  },
+  {
+    "token_id": "154",
+    "creator_handle": "zaddyfi",
+    "rarity": "legendary",
+    "name": "Zaddy Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/6835852bae96c3198821b62987ed31/906835852bae96c3198821b62987ed31.png"
+  },
+  {
+    "token_id": "174",
+    "creator_handle": "guigsluke",
+    "rarity": "legendary",
+    "name": "Guigs Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/748ffe10c0d5d125bd4c454c71c040/42748ffe10c0d5d125bd4c454c71c040.png"
+  },
+  {
+    "token_id": "189",
+    "creator_handle": "laratherudeduck",
+    "rarity": "legendary",
+    "name": "Lara (Crashout arc) Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/0c6aca2c3afa1880e5b8f1d5581474/d80c6aca2c3afa1880e5b8f1d5581474.png"
+  },
+  {
+    "token_id": "204",
+    "creator_handle": "nf_janner",
+    "rarity": "legendary",
+    "name": "Janner Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/0c3a3162b308fb0dc9202620c22573/a90c3a3162b308fb0dc9202620c22573.png"
+  },
+  {
+    "token_id": "214",
+    "creator_handle": "flyest",
+    "rarity": "legendary",
+    "name": "IB 💸 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/216cf6092e9643ad15337a3ad278a9/83216cf6092e9643ad15337a3ad278a9.png"
+  },
+  {
+    "token_id": "224",
+    "creator_handle": "betmanjoe",
+    "rarity": "legendary",
+    "name": "Joe Betman 🇨🇷 🇫🇷 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/6db380b18012613a9be2d93cb7d174/f06db380b18012613a9be2d93cb7d174.png"
+  },
+  {
+    "token_id": "279",
+    "creator_handle": "camolnft",
+    "rarity": "legendary",
+    "name": "camol Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/6a10b47a0392ce42e629f00500e828/c96a10b47a0392ce42e629f00500e828.png"
+  },
+  {
+    "token_id": "284",
+    "creator_handle": "salamander12_",
+    "rarity": "legendary",
+    "name": "SALAMANDER Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/6b0fef6f0e4501addbcb34eb12c675/956b0fef6f0e4501addbcb34eb12c675.png"
+  },
+  {
+    "token_id": "319",
+    "creator_handle": "pixassohq",
+    "rarity": "legendary",
+    "name": "Pix 🎨 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/0db5e0c8829d8d1ee8bf5e28074b9a/ab0db5e0c8829d8d1ee8bf5e28074b9a.png"
+  },
+  {
+    "token_id": "324",
+    "creator_handle": "gmb_aob",
+    "rarity": "legendary",
+    "name": "GMB Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/93e2b4adeb3dd447255f0775037e05/d593e2b4adeb3dd447255f0775037e05.png"
+  },
+  {
+    "token_id": "329",
+    "creator_handle": "copertoxbt",
+    "rarity": "legendary",
+    "name": "Coperto Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/56abd68cad62a8a164d9ab167b5a95/b456abd68cad62a8a164d9ab167b5a95.png"
+  },
+  {
+    "token_id": "334",
+    "creator_handle": "kierianv",
+    "rarity": "legendary",
+    "name": "Kierian Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/b5688a4382682aaabd069ff8479048/5cb5688a4382682aaabd069ff8479048.png"
+  },
+  {
+    "token_id": "339",
+    "creator_handle": "jackkk",
+    "rarity": "legendary",
+    "name": "Jack Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/8e4fafcb6fbb12f761573347122567/308e4fafcb6fbb12f761573347122567.png"
+  },
+  {
+    "token_id": "344",
+    "creator_handle": "proofofely",
+    "rarity": "legendary",
+    "name": "Ely Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/a49913f7710469935af25af8ffae84/4ca49913f7710469935af25af8ffae84.png"
+  },
+  {
+    "token_id": "364",
+    "creator_handle": "what3verman",
+    "rarity": "legendary",
+    "name": "✨whateverman✨🎙️ Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/f916f79c532fca5328ed934dc3d39c/28f916f79c532fca5328ed934dc3d39c.png"
+  },
+  {
+    "token_id": "369",
+    "creator_handle": "senti__23",
+    "rarity": "legendary",
+    "name": "Senti 🪄 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/ca6c8e789b760fa9977a08b103377f/f8ca6c8e789b760fa9977a08b103377f.png"
+  },
+  {
+    "token_id": "384",
+    "creator_handle": "nftboi_",
+    "rarity": "legendary",
+    "name": "NFTboi 🥷 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/6070f0cd40b728790ca169410caac2/5c6070f0cd40b728790ca169410caac2.png"
+  },
+  {
+    "token_id": "389",
+    "creator_handle": "chesus",
+    "rarity": "legendary",
+    "name": "CHESUS🧀 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/cbc4a05edc51492dec4b2317d6ff1e/73cbc4a05edc51492dec4b2317d6ff1e.png"
+  },
+  {
+    "token_id": "419",
+    "creator_handle": "daco1008",
+    "rarity": "legendary",
+    "name": "Daco Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/99096da25365aaa0cc634a7421035d/3299096da25365aaa0cc634a7421035d.png"
+  },
+  {
+    "token_id": "444",
+    "creator_handle": "tdkimber",
+    "rarity": "legendary",
+    "name": "💎tdk💎 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/10df8240a9279a2c83fce3870d02da/b410df8240a9279a2c83fce3870d02da.png"
+  },
+  {
+    "token_id": "454",
+    "creator_handle": "ilodiwow",
+    "rarity": "legendary",
+    "name": "ilodi wow Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/b00829451da221c518de5593929818/aab00829451da221c518de5593929818.png"
+  },
+  {
+    "token_id": "459",
+    "creator_handle": "cryptovondoom",
+    "rarity": "legendary",
+    "name": "VonDoom ☕️ Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/4b001da7c10df0a43b10772750a9e3/834b001da7c10df0a43b10772750a9e3.png"
+  },
+  {
+    "token_id": "469",
+    "creator_handle": "aurelius_1988",
+    "rarity": "legendary",
+    "name": "Aurelius 🐐 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/9fc24bff84911d3bdd7097107fcf37/ca9fc24bff84911d3bdd7097107fcf37.png"
+  },
+  {
+    "token_id": "484",
+    "creator_handle": "dwdrummer_eth",
+    "rarity": "legendary",
+    "name": "DWdrummer Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/a62d417850ecb085c5696f528b9183/eda62d417850ecb085c5696f528b9183.png"
+  },
+  {
+    "token_id": "489",
+    "creator_handle": "icobeast",
+    "rarity": "legendary",
+    "name": "IcoBeast.eth🦇🔊 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/29ad7ba717be524121d2a1a530f292/4f29ad7ba717be524121d2a1a530f292.png"
+  },
+  {
+    "token_id": "494",
+    "creator_handle": "daspookyman",
+    "rarity": "legendary",
+    "name": "Spooky Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/217d6974f4afb52e7350f33180b14b/3d217d6974f4afb52e7350f33180b14b.png"
+  },
+  {
+    "token_id": "554",
+    "creator_handle": "0xtama_",
+    "rarity": "legendary",
+    "name": "Tama Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/756d961aba0e679d669c628822e484/21756d961aba0e679d669c628822e484.png"
+  },
+  {
+    "token_id": "569",
+    "creator_handle": "meta_zet",
+    "rarity": "legendary",
+    "name": "ZET 💪❤️ Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/cff38616a48610d81cf1371c328ec8/fccff38616a48610d81cf1371c328ec8.png"
+  },
+  {
+    "token_id": "579",
+    "creator_handle": "sirceen",
+    "rarity": "legendary",
+    "name": "ceen Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/304d285fa12f1bc6a5c801ef0cad38/3b304d285fa12f1bc6a5c801ef0cad38.png"
+  },
+  {
+    "token_id": "594",
+    "creator_handle": "0xmani",
+    "rarity": "legendary",
+    "name": "MANI Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/1c75e78938c7ebfaee1d5a08527277/301c75e78938c7ebfaee1d5a08527277.png"
+  },
+  {
+    "token_id": "604",
+    "creator_handle": "0xxnathan",
+    "rarity": "legendary",
+    "name": "Nathan Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/84d7a25b0e7495dd737fc97b72721e/1a84d7a25b0e7495dd737fc97b72721e.png"
+  },
+  {
+    "token_id": "609",
+    "creator_handle": "aibra",
+    "rarity": "legendary",
+    "name": "Aibra Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/9211017174cfbdfe15fcf22943b8b5/689211017174cfbdfe15fcf22943b8b5.png"
+  },
+  {
+    "token_id": "634",
+    "creator_handle": "triples_eth",
+    "rarity": "legendary",
+    "name": "TripleS Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/cb08f7caf4256d8217528cdc28aa51/4bcb08f7caf4256d8217528cdc28aa51.png"
+  },
+  {
+    "token_id": "644",
+    "creator_handle": "xeer",
+    "rarity": "legendary",
+    "name": "Xeer Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/ff74150f0bff01acf0aaf5b4a30a05/d1ff74150f0bff01acf0aaf5b4a30a05.png"
+  },
+  {
+    "token_id": "664",
+    "creator_handle": "wydagoat",
+    "rarity": "legendary",
+    "name": "KennyW Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/e1adfe809cafd7fdf86cf6fbab89e5/32e1adfe809cafd7fdf86cf6fbab89e5.png"
+  },
+  {
+    "token_id": "669",
+    "creator_handle": "dashke",
+    "rarity": "legendary",
+    "name": "Dashke Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/ee0bcf9c3a8459bd133116be33b0aa/81ee0bcf9c3a8459bd133116be33b0aa.png"
+  },
+  {
+    "token_id": "684",
+    "creator_handle": "sonika_kk",
+    "rarity": "legendary",
+    "name": "Sofia Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/24f8a3432d008b12ce2f087aadf322/2f24f8a3432d008b12ce2f087aadf322.png"
+  },
+  {
+    "token_id": "689",
+    "creator_handle": "medusaonchain",
+    "rarity": "legendary",
+    "name": "Medusa Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/faf9e508b725387b62b14c5e170f9c/dafaf9e508b725387b62b14c5e170f9c.png"
+  },
+  {
+    "token_id": "694",
+    "creator_handle": "holly_web3",
+    "rarity": "legendary",
+    "name": "Holly Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/ce5b982a6b63b8b073c05fafc634bd/73ce5b982a6b63b8b073c05fafc634bd.png"
+  },
+  {
+    "token_id": "704",
+    "creator_handle": "tatthang",
+    "rarity": "legendary",
+    "name": "Tat Thang Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/229cdf1716d56cfc3b3ff614f8d858/43229cdf1716d56cfc3b3ff614f8d858.png"
+  },
+  {
+    "token_id": "707",
+    "creator_handle": "love2ideate",
+    "rarity": "rare",
+    "name": "Ｒｏｃｋ 🪨💡 Rare Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/36b972486b053723f48e743f4e07e6/0536b972486b053723f48e743f4e07e6.png"
+  },
+  {
+    "token_id": "764",
+    "creator_handle": "mhknft",
+    "rarity": "legendary",
+    "name": "mhk 發 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/0dead9f0bb4fe35a5f373976520267/ab0dead9f0bb4fe35a5f373976520267.png"
+  },
+  {
+    "token_id": "789",
+    "creator_handle": "r2d2zen",
+    "rarity": "legendary",
+    "name": "R2D2 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/f5239e8db91fa10396c1be063dd1a1/5ff5239e8db91fa10396c1be063dd1a1.png"
+  },
+  {
+    "token_id": "814",
+    "creator_handle": "jessyfries",
+    "rarity": "legendary",
+    "name": "jessyfries Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/668ea8847affa9df6e576ba69dfcde/23668ea8847affa9df6e576ba69dfcde.png"
+  },
+  {
+    "token_id": "819",
+    "creator_handle": "ryandcrypto",
+    "rarity": "legendary",
+    "name": "ryandcrypto Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/d5f78f41de2857513a4cedb8791bb5/84d5f78f41de2857513a4cedb8791bb5.png"
+  },
+  {
+    "token_id": "829",
+    "creator_handle": "0xbeiu",
+    "rarity": "legendary",
+    "name": "Beiu Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/3ad087cd1376a364112d8a6ed36527/bc3ad087cd1376a364112d8a6ed36527.png"
+  },
+  {
+    "token_id": "859",
+    "creator_handle": "morsyxbt",
+    "rarity": "legendary",
+    "name": "Morsy Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/16d7629505586b41113ebf0ae939e5/1416d7629505586b41113ebf0ae939e5.png"
+  },
+  {
+    "token_id": "864",
+    "creator_handle": "walsxbt",
+    "rarity": "legendary",
+    "name": "Wals Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/66357592dd681b031da4a3fe4971fa/cd66357592dd681b031da4a3fe4971fa.png"
+  },
+  {
+    "token_id": "874",
+    "creator_handle": "crypto_zh0u",
+    "rarity": "legendary",
+    "name": "Zh0u Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/4497e27497a2dd2ebaa74df227aa85/bb4497e27497a2dd2ebaa74df227aa85.png"
+  },
+  {
+    "token_id": "889",
+    "creator_handle": "pukerrainbrow",
+    "rarity": "legendary",
+    "name": "Pukerainbow 🤮🌈 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/fdd4d3dddda98086772ac6480904d1/0bfdd4d3dddda98086772ac6480904d1.png"
+  },
+  {
+    "token_id": "899",
+    "creator_handle": "swandogs",
+    "rarity": "legendary",
+    "name": "SWANNY 🔺 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/b0949d6063b765c83c3279a598bfae/fbb0949d6063b765c83c3279a598bfae.png"
+  },
+  {
+    "token_id": "909",
+    "creator_handle": "elenionchain",
+    "rarity": "legendary",
+    "name": "Eleni Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/bb03b471ec2d718fe6858b1142b7ec/babb03b471ec2d718fe6858b1142b7ec.png"
+  },
+  {
+    "token_id": "934",
+    "creator_handle": "thecryptoprofes",
+    "rarity": "legendary",
+    "name": "The Crypto Professor Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/727a62951623adb70a52cabac03641/e5727a62951623adb70a52cabac03641.png"
+  },
+  {
+    "token_id": "939",
+    "creator_handle": "deebs_defi",
+    "rarity": "legendary",
+    "name": "Deebs DeFi 🛰 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/3e280da0bc9b1f98bbbc763ea3fd7b/683e280da0bc9b1f98bbbc763ea3fd7b.png"
+  },
+  {
+    "token_id": "974",
+    "creator_handle": "yulikay",
+    "rarity": "legendary",
+    "name": "Yuli Kay Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/f33f4f83fd02b49e1361d612cda479/c1f33f4f83fd02b49e1361d612cda479.png"
+  },
+  {
+    "token_id": "994",
+    "creator_handle": "cartist00",
+    "rarity": "legendary",
+    "name": "CARTIST Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/3749e19520cf895fd0f1a1bd7a865e/623749e19520cf895fd0f1a1bd7a865e.png"
+  },
+  {
+    "token_id": "1004",
+    "creator_handle": "defidarling",
+    "rarity": "legendary",
+    "name": "sara Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/1b6ad53e0c8ec8c3125ce27ccd4ded/541b6ad53e0c8ec8c3125ce27ccd4ded.png"
+  },
+  {
+    "token_id": "1044",
+    "creator_handle": "gomtu_xyz",
+    "rarity": "legendary",
+    "name": "Gomtu Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/6616f788281bddca8c37e022b06eb2/5c6616f788281bddca8c37e022b06eb2.png"
+  },
+  {
+    "token_id": "1049",
+    "creator_handle": "yonann",
+    "rarity": "legendary",
+    "name": "Yonan Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/234e4208e296e47c539ed8a84ad583/34234e4208e296e47c539ed8a84ad583.png"
+  },
+  {
+    "token_id": "1069",
+    "creator_handle": "the_jujukey",
+    "rarity": "legendary",
+    "name": "JUJU ☀️· Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/11ea60d8e98347d57fe21c3260a670/d911ea60d8e98347d57fe21c3260a670.png"
+  },
+  {
+    "token_id": "1099",
+    "creator_handle": "mrgreenity",
+    "rarity": "legendary",
+    "name": "MrGreenity Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/bc5d3e47a61343ff436f0c16b6d1f3/4dbc5d3e47a61343ff436f0c16b6d1f3.png"
+  },
+  {
+    "token_id": "1104",
+    "creator_handle": "darkanft",
+    "rarity": "legendary",
+    "name": "D A R K A Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/2939238d90d11bda67fb94479e1471/5f2939238d90d11bda67fb94479e1471.png"
+  },
+  {
+    "token_id": "1119",
+    "creator_handle": "parcifap",
+    "rarity": "legendary",
+    "name": "Parci Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/808f9c3a46be152a6d5e1f3ff9bce9/25808f9c3a46be152a6d5e1f3ff9bce9.png"
+  },
+  {
+    "token_id": "1129",
+    "creator_handle": "sirjoey",
+    "rarity": "legendary",
+    "name": "Sir Joey Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/42b21a97005d6528761cc2767f89cb/a442b21a97005d6528761cc2767f89cb.png"
+  },
+  {
+    "token_id": "1134",
+    "creator_handle": "buzzmalx",
+    "rarity": "legendary",
+    "name": "Buzz Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/bd2ab4928ff2cd5f8bfeddf290d09c/36bd2ab4928ff2cd5f8bfeddf290d09c.png"
+  },
+  {
+    "token_id": "1169",
+    "creator_handle": "viiibe",
+    "rarity": "legendary",
+    "name": "viiibe Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/fa0d7deba4ec4423242a753d738342/dbfa0d7deba4ec4423242a753d738342.png"
+  },
+  {
+    "token_id": "1179",
+    "creator_handle": "hydraze420",
+    "rarity": "legendary",
+    "name": "Hydraze 🏴‍☠️ Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/feb972154bf2837df98609af2557db/0efeb972154bf2837df98609af2557db.png"
+  },
+  {
+    "token_id": "1219",
+    "creator_handle": "m00des",
+    "rarity": "legendary",
+    "name": "andrazmode Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/50373cd41bed940a89fcaa87b1a25f/0250373cd41bed940a89fcaa87b1a25f.png"
+  },
+  {
+    "token_id": "1224",
+    "creator_handle": "idmintthat",
+    "rarity": "legendary",
+    "name": "Mick.VDEX Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/5ee44b0e888916557847591c278b04/285ee44b0e888916557847591c278b04.png"
+  },
+  {
+    "token_id": "1234",
+    "creator_handle": "sinsonx",
+    "rarity": "legendary",
+    "name": "Sins Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/e05e1b993f0b2e177e6091364b6453/70e05e1b993f0b2e177e6091364b6453.png"
+  },
+  {
+    "token_id": "1299",
+    "creator_handle": "rajpatel",
+    "rarity": "legendary",
+    "name": "Raj Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/868a472c5e9c9b29932e41829c173a/03868a472c5e9c9b29932e41829c173a.png"
+  },
+  {
+    "token_id": "1309",
+    "creator_handle": "adamagb",
+    "rarity": "legendary",
+    "name": "Untamed Adam 🐺 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/91092bb9c7f3b36a59edc6f3a9f21b/d791092bb9c7f3b36a59edc6f3a9f21b.png"
+  },
+  {
+    "token_id": "1344",
+    "creator_handle": "_matisei",
+    "rarity": "legendary",
+    "name": "Mati Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/d37e4b4f08e4bcf9f72f5f6a5f6dce/88d37e4b4f08e4bcf9f72f5f6a5f6dce.png"
+  },
+  {
+    "token_id": "1364",
+    "creator_handle": "sanza",
+    "rarity": "legendary",
+    "name": "Sanza Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/d38d0b9e5bf8a2b82ba767d6086ecb/1ed38d0b9e5bf8a2b82ba767d6086ecb.png"
+  },
+  {
+    "token_id": "1379",
+    "creator_handle": "vohvohh",
+    "rarity": "legendary",
+    "name": "voh Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/e5dcd3d22eb3d2e4a0b563753c58ac/a5e5dcd3d22eb3d2e4a0b563753c58ac.png"
+  },
+  {
+    "token_id": "1384",
+    "creator_handle": "evans1vn",
+    "rarity": "legendary",
+    "name": "evans Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/5407356645bcee0bf1393d102d1b56/f55407356645bcee0bf1393d102d1b56.png"
+  },
+  {
+    "token_id": "1394",
+    "creator_handle": "phintotten",
+    "rarity": "legendary",
+    "name": "Phin Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/5f1d57b6d8107ff68f1e61252055fd/645f1d57b6d8107ff68f1e61252055fd.png"
+  },
+  {
+    "token_id": "1409",
+    "creator_handle": "sk0rpeth",
+    "rarity": "legendary",
+    "name": "Sk0rp.eth Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/033272446fe7e67d9fd79f0b69ebdd/0d033272446fe7e67d9fd79f0b69ebdd.png"
+  },
+  {
+    "token_id": "1414",
+    "creator_handle": "minhxdynasty",
+    "rarity": "legendary",
+    "name": "۟ Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/3d95dfe47a8936e5a55f67d4486c96/b33d95dfe47a8936e5a55f67d4486c96.png"
+  },
+  {
+    "token_id": "1429",
+    "creator_handle": "flb_xyz",
+    "rarity": "legendary",
+    "name": "FLB Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/7b254b029dadc037ec166f81c1e25d/c57b254b029dadc037ec166f81c1e25d.png"
+  },
+  {
+    "token_id": "1439",
+    "creator_handle": "infinityglock99",
+    "rarity": "legendary",
+    "name": "InfinityGlock Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/1a9b0282483d580aeba5f91e67ba10/a81a9b0282483d580aeba5f91e67ba10.png"
+  },
+  {
+    "token_id": "1449",
+    "creator_handle": "geoonchain",
+    "rarity": "legendary",
+    "name": "AG Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/3abb40f975679e7fe73ccbc6d04f43/a23abb40f975679e7fe73ccbc6d04f43.png"
+  },
+  {
+    "token_id": "1469",
+    "creator_handle": "dbiljonaire",
+    "rarity": "legendary",
+    "name": "ME Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/3602c933f1cac38b00d741eed2d2fc/c43602c933f1cac38b00d741eed2d2fc.png"
+  },
+  {
+    "token_id": "1474",
+    "creator_handle": "queenmoon1337",
+    "rarity": "legendary",
+    "name": "MOON 𓋹 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/93e3d71d508faded69df8971b948fb/1e93e3d71d508faded69df8971b948fb.png"
+  },
+  {
+    "token_id": "1479",
+    "creator_handle": "platymama_",
+    "rarity": "legendary",
+    "name": "🥚PlatyMama Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/252d7d9378b8709aaca4d831104b20/10252d7d9378b8709aaca4d831104b20.png"
+  },
+  {
+    "token_id": "1499",
+    "creator_handle": "katexbt",
+    "rarity": "legendary",
+    "name": "katexbt.hl Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/1705dbab74eb0b703bd1647e44eb20/901705dbab74eb0b703bd1647e44eb20.png"
+  },
+  {
+    "token_id": "1509",
+    "creator_handle": "brave_raf",
+    "rarity": "legendary",
+    "name": "Dr Rafa Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/42bf7fb1512627619899026287aff2/1042bf7fb1512627619899026287aff2.png"
+  },
+  {
+    "token_id": "1519",
+    "creator_handle": "thegaboeth",
+    "rarity": "legendary",
+    "name": "THΞGABO🍌 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/fa6f568f654b1bbafee69680188348/b2fa6f568f654b1bbafee69680188348.png"
+  },
+  {
+    "token_id": "1534",
+    "creator_handle": "tictacmagic_",
+    "rarity": "legendary",
+    "name": "Tictacmagic Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/7a836a6c1bf9a9f647e4c50813139f/ab7a836a6c1bf9a9f647e4c50813139f.png"
+  },
+  {
+    "token_id": "1544",
+    "creator_handle": "thelearningpill",
+    "rarity": "legendary",
+    "name": "The Learning Pill 💊 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/488a452f17862d99d72570613c30c4/67488a452f17862d99d72570613c30c4.png"
+  },
+  {
+    "token_id": "1584",
+    "creator_handle": "thekuchh",
+    "rarity": "legendary",
+    "name": "kuch (vibecoding arc) Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/d7e304d474e363b6df1f2a8ff7a100/d1d7e304d474e363b6df1f2a8ff7a100.png"
+  },
+  {
+    "token_id": "1589",
+    "creator_handle": "n3xttt",
+    "rarity": "legendary",
+    "name": "N3XT Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/64a375d7cb21026ac3bcb38ce12749/2d64a375d7cb21026ac3bcb38ce12749.png"
+  },
+  {
+    "token_id": "1594",
+    "creator_handle": "shtihmas11",
+    "rarity": "legendary",
+    "name": "Shtihmas (❖,❖) Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/328355e193f3df6728af8c20a89999/d9328355e193f3df6728af8c20a89999.png"
+  },
+  {
+    "token_id": "1599",
+    "creator_handle": "themansion_eth",
+    "rarity": "legendary",
+    "name": "Yasmina Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/11f677a49541ef7544a051e6705780/9311f677a49541ef7544a051e6705780.png"
+  },
+  {
+    "token_id": "1614",
+    "creator_handle": "shannholmberg",
+    "rarity": "legendary",
+    "name": "Shann³ Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/d4659bf542721d41974ac326b9b657/b7d4659bf542721d41974ac326b9b657.png"
+  },
+  {
+    "token_id": "1629",
+    "creator_handle": "degenbro__",
+    "rarity": "legendary",
+    "name": "degenBRO Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/468d1970f3f65c048258d7c24951e9/f0468d1970f3f65c048258d7c24951e9.png"
+  },
+  {
+    "token_id": "1639",
+    "creator_handle": "thegreatola",
+    "rarity": "legendary",
+    "name": "Ola Ξlixir Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/14743989e7eaacd4025e8e27f70fd5/3114743989e7eaacd4025e8e27f70fd5.png"
+  },
+  {
+    "token_id": "1679",
+    "creator_handle": "meetaminx",
+    "rarity": "legendary",
+    "name": "Amin𝕏 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/dd60a0901585b469e14aec7f367684/a3dd60a0901585b469e14aec7f367684.png"
+  },
+  {
+    "token_id": "1684",
+    "creator_handle": "yatmuseum",
+    "rarity": "legendary",
+    "name": "✨ 🐐 ✨ Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/1dc4a059723fd4ad3ce58cd6b72538/8e1dc4a059723fd4ad3ce58cd6b72538.png"
+  },
+  {
+    "token_id": "1689",
+    "creator_handle": "raidenkrn",
+    "rarity": "legendary",
+    "name": "Raiden Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/feda67cccbd39361ad8b0382489b27/8efeda67cccbd39361ad8b0382489b27.png"
+  },
+  {
+    "token_id": "1694",
+    "creator_handle": "666sixpaths",
+    "rarity": "legendary",
+    "name": "Sixpaths🐸 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/e43f4d1e6acf8f0de63544fb25bd43/10e43f4d1e6acf8f0de63544fb25bd43.png"
+  },
+  {
+    "token_id": "1709",
+    "creator_handle": "azflin",
+    "rarity": "legendary",
+    "name": "AzFlin 🌎 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/ae0ec09d3d260a31d7a44c717e5d21/15ae0ec09d3d260a31d7a44c717e5d21.png"
+  },
+  {
+    "token_id": "1719",
+    "creator_handle": "allenbaez126",
+    "rarity": "legendary",
+    "name": "ALLEN 🐺 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/9a028e7a1e583d364f8b9f8a52ceca/759a028e7a1e583d364f8b9f8a52ceca.png"
+  },
+  {
+    "token_id": "1739",
+    "creator_handle": "wezaverse",
+    "rarity": "legendary",
+    "name": "Adam Westerén Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/2010faa8af5d3148a832ab65d26293/942010faa8af5d3148a832ab65d26293.png"
+  },
+  {
+    "token_id": "1749",
+    "creator_handle": "cryptowithkhan",
+    "rarity": "legendary",
+    "name": "Crypto with Khan ( SFZ ) Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/fa59cef4d9893367aad9157de016fc/9ffa59cef4d9893367aad9157de016fc.png"
+  },
+  {
+    "token_id": "1759",
+    "creator_handle": "greenknight_sol",
+    "rarity": "legendary",
+    "name": "GreenKnight (DKS) Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/e555f746776baa91961e03db9961b4/e6e555f746776baa91961e03db9961b4.png"
+  },
+  {
+    "token_id": "1764",
+    "creator_handle": "cuzmanovs",
+    "rarity": "legendary",
+    "name": "Sasha Cuzmanov Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/90a907224227e567f1948063697d69/4890a907224227e567f1948063697d69.png"
+  },
+  {
+    "token_id": "1769",
+    "creator_handle": "shgfees",
+    "rarity": "legendary",
+    "name": "Superhighgasfees ❤️ Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/1d4c16a4720b69e1d3e306abbe7f09/a41d4c16a4720b69e1d3e306abbe7f09.png"
+  },
+  {
+    "token_id": "1774",
+    "creator_handle": "moneyfet1sh",
+    "rarity": "legendary",
+    "name": "moneyfet1sh Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/9b4cf9ee26ee659d2d82ccb2ba214d/889b4cf9ee26ee659d2d82ccb2ba214d.png"
+  },
+  {
+    "token_id": "1779",
+    "creator_handle": "truunik",
+    "rarity": "legendary",
+    "name": "Truu🐻‍❄️ Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/678face5a5c3dd05bc1ee5e5f3074d/42678face5a5c3dd05bc1ee5e5f3074d.png"
+  },
+  {
+    "token_id": "1784",
+    "creator_handle": "lokithebird",
+    "rarity": "legendary",
+    "name": "LoKi 😈 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/50c6a6d9de6ea6875bb75d8d968960/0350c6a6d9de6ea6875bb75d8d968960.png"
+  },
+  {
+    "token_id": "1794",
+    "creator_handle": "ruledout_",
+    "rarity": "legendary",
+    "name": "RuledOut xD Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/105543187c8451ff1eacb99a4a7c50/8a105543187c8451ff1eacb99a4a7c50.png"
+  },
+  {
+    "token_id": "1799",
+    "creator_handle": "sanjaybuilds_",
+    "rarity": "legendary",
+    "name": "Sanjay Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/2bfd25eeb647dc1d5ca9d25e77e4db/bc2bfd25eeb647dc1d5ca9d25e77e4db.png"
+  },
+  {
+    "token_id": "1804",
+    "creator_handle": "yellowpantherx",
+    "rarity": "legendary",
+    "name": "yellowpanther (prediction arc) 💎 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/01b00045bd03c70c9cd077841ae732/5f01b00045bd03c70c9cd077841ae732.png"
+  },
+  {
+    "token_id": "1814",
+    "creator_handle": "dustinvibes",
+    "rarity": "legendary",
+    "name": "dustinvibes Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/5cf2352ecf87d124ef61f969c036ab/f65cf2352ecf87d124ef61f969c036ab.png"
+  },
+  {
+    "token_id": "1844",
+    "creator_handle": "frenchiee",
+    "rarity": "legendary",
+    "name": "Frenchie 🇫🇷 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/c51a6268c11c5e65c735fef8abf731/e8c51a6268c11c5e65c735fef8abf731.png"
+  },
+  {
+    "token_id": "1849",
+    "creator_handle": "bluewolfnfts",
+    "rarity": "legendary",
+    "name": "Blue 💙🐺🐐 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/13fc7a6cc38b476b36a8fe6d399a6a/5613fc7a6cc38b476b36a8fe6d399a6a.png"
+  },
+  {
+    "token_id": "1884",
+    "creator_handle": "solhustler",
+    "rarity": "legendary",
+    "name": "HST 🌋 Legendary Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/9dd44e9abf0487f7350b2d5405e651/2b9dd44e9abf0487f7350b2d5405e651.png"
+  },
+  {
+    "token_id": "1892",
+    "creator_handle": "nick_researcher",
+    "rarity": "rare",
+    "name": "Nick Research Rare Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/77dec899eb87d013701c40b08b2555/af77dec899eb87d013701c40b08b2555.png"
+  },
+  {
+    "token_id": "1957",
+    "creator_handle": "iiamthatguyy",
+    "rarity": "rare",
+    "name": "Anthony Rare Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/938c5ad9b13346f5b334295bef5322/ca938c5ad9b13346f5b334295bef5322.png"
+  },
+  {
+    "token_id": "1962",
+    "creator_handle": "rcivnft",
+    "rarity": "rare",
+    "name": "rciv Rare Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/f7f0a703a94d0b6347f4f98bb8a917/1bf7f0a703a94d0b6347f4f98bb8a917.png"
+  },
+  {
+    "token_id": "1966",
+    "creator_handle": "joestarcrypto",
+    "rarity": "common",
+    "name": "Joestar⭐ Common Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/569c47ae9b356525b8a073c2e2054d/ae569c47ae9b356525b8a073c2e2054d.png"
+  },
+  {
+    "token_id": "1967",
+    "creator_handle": "joestarcrypto",
+    "rarity": "rare",
+    "name": "Joestar⭐ Rare Card",
+    "image_url": "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/70bcb5a9757c293e10dcb0ccd464e2/c370bcb5a9757c293e10dcb0ccd464e2.png"
+  }
+]

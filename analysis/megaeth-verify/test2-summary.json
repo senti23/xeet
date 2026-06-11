@@ -1,0 +1,68 @@
+{
+  "test": "Test 2 — ABS↔MegaETH wallet pairing",
+  "abs_events_pulled": 20101,
+  "abs_burn_txs": 1442,
+  "megaeth_mint_txs": 1434,
+  "pairs_matched": 1431,
+  "unmatched_burns": 11,
+  "unmatched_mints": 3,
+  "distinct_wallet_pairs": 1152,
+  "same_address_pairs": 608,
+  "agw_unwrap_pairs": 544,
+  "senti_pair_found": true,
+  "sample_results": [
+    {
+      "handle": "r2d2zen",
+      "abs_wallets": [],
+      "mappings": []
+    },
+    {
+      "handle": "defi_explora",
+      "abs_wallets": [],
+      "mappings": []
+    },
+    {
+      "handle": "ProofOfEly",
+      "abs_wallets": [],
+      "mappings": []
+    },
+    {
+      "handle": "Carlitoswa_y",
+      "abs_wallets": [
+        "0x6a3867484b29744c6d01b9040a0515711828deb0",
+        "0xbafeb3df9bd9528b75f209e38ba1e621f34d92a7"
+      ],
+      "mappings": [
+        {
+          "abs": "0x6a3867484b29744c6d01b9040a0515711828deb0",
+          "megaeth": "0x6a3867484b29744c6d01b9040a0515711828deb0",
+          "cards": 87
+        },
+        {
+          "abs": "0xbafeb3df9bd9528b75f209e38ba1e621f34d92a7",
+          "megaeth": "0x6a3867484b29744c6d01b9040a0515711828deb0",
+          "cards": 27
+        }
+      ]
+    },
+    {
+      "handle": "KierianV",
+      "abs_wallets": [
+        "0xc6bf3e888abd1dd9dfccfde73524b8fb7e5e3d66",
+        "0x5ccc2be7c8976b0ba340b504bd4908776e727094"
+      ],
+      "mappings": [
+        {
+          "abs": "0xc6bf3e888abd1dd9dfccfde73524b8fb7e5e3d66",
+          "megaeth": "0x493d3fa24edf4f9de5f0e4c6278b011ff30a8020",
+          "cards": 9
+        },
+        {
+          "abs": "0x5ccc2be7c8976b0ba340b504bd4908776e727094",
+          "megaeth": "0x493d3fa24edf4f9de5f0e4c6278b011ff30a8020",
+          "cards": 84
+        }
+      ]
+    }
+  ]
+}

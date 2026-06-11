@@ -5,7 +5,7 @@ import type { WalletScoreDetail } from '@/types/deck';
 import { type CreatorScore, TIER_COLORS } from '@/types/xccScores';
 
 // ── OpenSea URL builder: collection filtered by creator trait + rarity ──────────
-const OS_COLLECTION = 'https://opensea.io/collection/xeet-creator-cards';
+const OS_COLLECTION = 'https://opensea.io/collection/xeet-creator-cards-mega';
 function osListingUrl(displayName: string, rarity: 'Common' | 'Rare' | 'Legendary'): string {
   // traits filter: Creator (displayName) AND Rarity — URL-encoded JSON shape used by OS
   const traits = encodeURIComponent(

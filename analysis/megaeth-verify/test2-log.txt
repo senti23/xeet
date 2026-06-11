@@ -1,0 +1,51 @@
+Test 2 — ABS↔MegaETH wallet pair mapping
+  ABS XCC contract:      0xeC27D2237432D06981e1F18581494661517E1bD3
+  ABS bridge contract:   0x2318184138bc0fddd99da594b0c2eacc63d09754
+  MegaETH relayer:       undefined
+
+Step 1: Find ABS bridge contract's first-tx block...
+  ABS bridge first tx: block 58320395 (ts=1777505506)
+
+Step 2: Pull all ABS XCC TransferSingle/Batch events from migration window...
+  Page 1 (startblock=58320395)... got 10000 rows
+  Page 2 (startblock=58555769)... got 10000 rows
+  Page 3 (startblock=67319499)... got 101 rows
+  Total ABS events fetched: 20101
+
+Step 3: Load MegaETH events from Test 1 output...
+  Loaded 20248 MegaETH events
+
+Step 4: Group ABS burns by tx hash...
+  1442 ABS burn txs (= migration initiations)
+
+Step 5: Group MegaETH mints by tx hash...
+  1434 MegaETH mint txs (= migration completions)
+
+Step 6: Pair burns ↔ mints by token-set + temporal proximity (≤ 5 min)...
+  Pairs matched: 1431
+  Unmatched burns: 11
+  Unmatched mints: 3
+
+Step 7: Aggregate to (abs_wallet, megaeth_wallet) tuples...
+  Distinct wallet pairs: 1152
+  Same address (non-AGW EOA): 608
+  Different address (AGW unwrap): 544
+
+Senti's known pair (0xc065666a1c3a05b81e8e36009332253c73dc769b → 0x853e1e59c056da9c3bbf4e780ac0acbfe88d999a):
+  ✅ FOUND
+  migrations: 5, cards: 173
+
+Step 9: Sample 5 creators (3 single, 2 multi-wallet)...
+  r2d2zen: 0 ABS wallet(s)
+  defi_explora: 0 ABS wallet(s)
+  ProofOfEly: 0 ABS wallet(s)
+  Carlitoswa_y: 2 ABS wallet(s)
+    ✅ 0x6a3867484b... → 0x6a3867484b... (87 cards)
+    ✅ 0xbafeb3df9b... → 0x6a3867484b... (27 cards)
+  KierianV: 2 ABS wallet(s)
+    ✅ 0xc6bf3e888a... → 0x493d3fa24e... (9 cards)
+    ✅ 0x5ccc2be7c8... → 0x493d3fa24e... (84 cards)
+
+Wrote /Users/senti/code/personal/xeet/analysis/megaeth-verify/wallet-migrations.json (525.2 KB)
+
+Done.

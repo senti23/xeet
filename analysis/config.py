@@ -2,7 +2,8 @@
 from pathlib import Path
 import math
 
-BASE_DIR = Path("/Users/giwrgosmauromichalis/Desktop/xeet")
+# Repo root — resolved from this file's location so the pipeline runs on any machine.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Data files
 CREATORS_FULL = BASE_DIR / "xeet-creators-full.json"

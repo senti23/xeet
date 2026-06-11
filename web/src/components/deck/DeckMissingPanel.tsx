@@ -63,7 +63,7 @@ interface MissingData {
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
-const OS_CONTRACT = '0xeC27D2237432D06981e1F18581494661517E1bD3';
+const OS_CONTRACT = '0xce8cb6676f6cfb3161a72a723b436987c6cf4e68';
 
 function PriceLinks({
   xeetFloor,
@@ -95,7 +95,7 @@ function PriceLinks({
       {hasXeet && hasOs && <span className="text-gray-600">·</span>}
       {hasOs && tokenId && (
         <a
-          href={`https://opensea.io/assets/abstract/${OS_CONTRACT}/${tokenId}`}
+          href={`https://opensea.io/assets/megaeth/${OS_CONTRACT}/${tokenId}`}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-0.5 hover:underline"

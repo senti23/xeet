@@ -1,0 +1,47 @@
+{
+  "generated": "2026-06-10T19:45:36.850Z",
+  "slug": "xeet-creator-cards-mega",
+  "opensea": {
+    "total_supply": 21673,
+    "num_owners": 1100
+  },
+  "snapshot": {
+    "total_cards": 21662,
+    "unique_holders": 1100,
+    "distinct_token_ids": 941,
+    "highest_block": 18321078
+  },
+  "cards_delta": -11,
+  "cards_gate_pass": true,
+  "owners_delta_pct": 0,
+  "spot_checks": [
+    {
+      "wallet": "0x853e1e59c056da9c3bbf4e780ac0acbfe88d999a",
+      "snapshot_total": 301,
+      "onchain_total": 301,
+      "os_distinct_ids": 233,
+      "snapshot_distinct_ids": 233,
+      "qty_mismatches": [],
+      "pass": true
+    },
+    {
+      "wallet": "0x7cbf59c0b9fc4c7f7f60f2ad14861b1b737aa56c",
+      "snapshot_total": 696,
+      "onchain_total": 696,
+      "os_distinct_ids": 299,
+      "snapshot_distinct_ids": 299,
+      "qty_mismatches": [],
+      "pass": true
+    },
+    {
+      "wallet": "0xe56d1a03bc9224a0d030b4a682292356f59e7b23",
+      "snapshot_total": 6,
+      "onchain_total": 6,
+      "os_distinct_ids": 4,
+      "snapshot_distinct_ids": 4,
+      "qty_mismatches": [],
+      "pass": true
+    }
+  ],
+  "overall_pass": true
+}

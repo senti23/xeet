@@ -1,0 +1,8 @@
+ABS collection enumeration: 821 token IDs (5 pages)
+ABS universe: 982 | mega-observed: 941 | abstract-only candidates: 41
+  20/41
+  40/41
+
+Wrote abstract-only-tokens.json: 41 rows, 0 errors
+Rarity distribution: {"legendary":31,"rare":10}
+Tokens with zero verified ABS holders: 2

@@ -1,0 +1,18 @@
+{
+  "test": "Test 1 — MegaETH holder discovery",
+  "total_events_pulled": 20248,
+  "mints": 18821,
+  "burns": 0,
+  "peer_transfers": 1427,
+  "unique_holders": 1100,
+  "total_cards_held": 21662,
+  "rarity_totals": {
+    "common": 17816,
+    "rare": 3556,
+    "legendary": 57,
+    "unknown": 233
+  },
+  "unmapped_token_rows": 208,
+  "expected_total_cards": 20041,
+  "delta_vs_expected": 1621
+}

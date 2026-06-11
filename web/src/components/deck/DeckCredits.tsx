@@ -58,7 +58,7 @@ export function DeckCredits() {
         </span>
         <SmallPfp src="/avatars/senti__23.jpg" alt="Senti" size={22} />
         <div className="flex items-center gap-1.5 text-white">
-          <IconLink href="https://abscan.org/address/0xc065666a1c3a05b81e8e36009332253c73dc769b" label="Abscan">
+          <IconLink href="https://mega.etherscan.io/address/0x853e1e59c056da9c3bbf4e780ac0acbfe88d999a" label="Etherscan">
             <span className="text-sm">👛</span>
           </IconLink>
           <IconLink href="https://x.com/Senti__23" label="Twitter">

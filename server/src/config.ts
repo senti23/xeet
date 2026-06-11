@@ -43,8 +43,9 @@ export const config = {
 
   opensea: {
     apiKey: required('OPENSEA_API_KEY'),
-    collectionSlug: 'xeet-creator-cards',
-    contract: '0xeC27D2237432D06981e1F18581494661517E1bD3',
+    collectionSlug: optional('XCC_OS_SLUG', 'xeet-creator-cards-mega'),
+    contract: optional('XCC_CONTRACT', '0xce8cb6676f6cfb3161a72a723b436987c6cf4e68'),
+    chain: optional('XCC_OS_CHAIN', 'megaeth'),
     baseUrl: 'https://api.opensea.io',
   },
 
@@ -59,9 +60,19 @@ export const config = {
   },
 
   abscan: {
-    apiKey: optional('ABSCAN_API_KEY', ''),
+    // Etherscan v2 unified API — one key works across chains via the chainid param.
+    apiKey: optional('ABSCAN_API_KEY', '') || optional('ETHERSCAN_API_KEY', ''),
     baseUrl: 'https://api.etherscan.io/v2/api',
-    chainId: '2741', // Abstract mainnet
+    chainId: optional('XCC_CHAIN_ID', '4326'), // MegaETH mainnet
+  },
+
+  // Xeet on-chain marketplace (OrderExecuted logs). Contract has no code on MegaETH and
+  // went silent on Abstract ~2026-04; trades now flow through the Xeet API only.
+  // Disabled by default — flip XEET_MP_ONCHAIN=true if an on-chain marketplace returns.
+  xeetMarketplace: {
+    enabled: optional('XEET_MP_ONCHAIN', 'false') === 'true',
+    chainId: '2741', // Abstract — where the historical OrderExecuted logs live
+    address: '0x4424844a9A96C143345C2470905403a4009AF237',
   },
 
   alchemy: {

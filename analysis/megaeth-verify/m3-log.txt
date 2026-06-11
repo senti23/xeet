@@ -1,0 +1,23 @@
+Wallet universe: 397 distinct ABS wallets across 391 creators
+  25/397 (0.9 wallets/s)
+  50/397 (1.0 wallets/s)
+  75/397 (1.1 wallets/s)
+  100/397 (1.1 wallets/s)
+  125/397 (1.1 wallets/s)
+  150/397 (1.1 wallets/s)
+  175/397 (1.1 wallets/s)
+  200/397 (1.1 wallets/s)
+  225/397 (1.1 wallets/s)
+  250/397 (1.1 wallets/s)
+  275/397 (1.2 wallets/s)
+  300/397 (1.2 wallets/s)
+  325/397 (1.2 wallets/s)
+  350/397 (1.2 wallets/s)
+  375/397 (1.2 wallets/s)
+
+Summary: {
+  "wallets_checked": 397,
+  "wallets_with_residual_cards": 166,
+  "total_residual_cards": 2667,
+  "error_count": 0
+}

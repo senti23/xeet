@@ -1,0 +1,55 @@
+{
+  "asset_events" : [ {
+    "event_type" : "sale",
+    "event_timestamp" : 1777994285,
+    "transaction" : "0x3710b0655791ff1bc9d056cf697b940d2a0b0425feac1620e2a61b9fba45574c",
+    "order_hash" : "0x636908a29375ddb86ef305816fce0e5e96313c8acf046db1b1aa1556df3edfa0",
+    "protocol_address" : "0x00000000006687982678b03100b9bdc8be440814",
+    "chain" : "megaeth",
+    "payment" : {
+      "quantity" : "16000000000000000",
+      "token_address" : "0x4200000000000000000000000000000000000006",
+      "decimals" : 18,
+      "symbol" : "WETH"
+    },
+    "closing_date" : 1777994285,
+    "seller" : "0x3235aecbc86cc6116ed046651ff280c5dc26999c",
+    "buyer" : "0xe14ca0632c5430abddd40ba077da5fba8821a950",
+    "quantity" : 1,
+    "nft" : {
+      "identifier" : "786",
+      "collection" : "xeet-creator-cards-mega",
+      "contract" : "0xce8cb6676f6cfb3161a72a723b436987c6cf4e68",
+      "token_standard" : "erc1155",
+      "name" : "R2D2 Common Card",
+      "description" : "A common referral card featuring R2D2. This referral card was shared by R2D2 to grow their community on Xeet.",
+      "image_url" : "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/07dfb2f5abb628b92c7669151ee3a2/d007dfb2f5abb628b92c7669151ee3a2.png",
+      "display_image_url" : "https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/07dfb2f5abb628b92c7669151ee3a2/d007dfb2f5abb628b92c7669151ee3a2.png",
+      "display_animation_url" : null,
+      "metadata_url" : "https://xeet.ai/api/metadata/cards/786",
+      "opensea_url" : "https://opensea.io/assets/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/786",
+      "updated_at" : "2026-05-11T01:54:05.935708",
+      "is_disabled" : false,
+      "is_nsfw" : false,
+      "original_image_url" : "https://mz4jlwakbx2sduwl.public.blob.vercel-storage.com/cards/images/r2d2zen/common-786.png",
+      "original_animation_url" : null,
+      "traits" : [ {
+        "trait_type" : "Handle",
+        "display_type" : null,
+        "max_value" : null,
+        "value" : "R2D2zen"
+      }, {
+        "trait_type" : "Rarity",
+        "display_type" : null,
+        "max_value" : null,
+        "value" : "Common"
+      }, {
+        "trait_type" : "Creator",
+        "display_type" : null,
+        "max_value" : null,
+        "value" : "R2D2"
+      } ]
+    }
+  } ],
+  "next" : null
+}

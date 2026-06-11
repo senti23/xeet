@@ -1,0 +1,31 @@
+refresh-token-map.mjs — filling missing creator/rarity entries for MegaETH token_ids
+
+MegaETH distinct token_ids: 941
+Already in xeet.db token_map: 805
+Missing (to fetch from OpenSea): 136
+
+Fetching metadata for 136 tokens (~68s estimated)...
+  25/136  (#334 = kierianv legendary)
+  50/136  (#684 = sonika_kk legendary)
+  75/136  (#1104 = darkanft legendary)
+  100/136  (#1509 = brave_raf legendary)
+  125/136  (#1794 = ruledout_ legendary)
+  136/136  (#1967 = joestarcrypto rare)
+
+Done in 96.2s
+  additions: 136
+  errors:    0
+  epic/mythic: 0
+
+Per-rarity breakdown of additions:
+  legendary  127
+  rare       8
+  common     1
+
+Ground truth check (#24 → bearish_af legendary): ✅ PASS
+  got: bearish_af / legendary (BEARISH Legendary Card)
+
+Outputs:
+  analysis/megaeth-verify/token-map-additions.json
+  analysis/megaeth-verify/epic_mythic_observed.json
+  analysis/megaeth-verify/refresh-token-map-summary.json

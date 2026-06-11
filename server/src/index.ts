@@ -71,8 +71,12 @@ async function main(): Promise<void> {
   // Start OpenSea WebSocket stream
   await startStream();
 
-  // Start Telegram bot
-  await startBot();
+  // Start Telegram bot — non-fatal: the API + pipeline should run even without a valid token
+  try {
+    await startBot();
+  } catch (err) {
+    log.warn({ err }, 'Telegram bot failed to start — continuing without it');
+  }
 
   // Graceful shutdown
   const shutdown = async () => {

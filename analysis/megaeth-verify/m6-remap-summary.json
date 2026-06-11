@@ -1,0 +1,1491 @@
+{
+  "generated": "2026-06-10T20:13:37.713Z",
+  "remapped": 96,
+  "kept_abs": 179,
+  "multi_wallet_new": 3,
+  "multi_wallet_purged": [
+    "Carlitoswa_y",
+    "KierianV",
+    "Meta_ZET",
+    "beijingdou",
+    "DjaniWhaleSkul",
+    "FogoNPC",
+    "BetmanJoe",
+    "monitalan"
+  ],
+  "changes": [
+    {
+      "handle": "bearish_af",
+      "old": "0x0c0898e12b6a317660474de8fff1e0069e2b3ad6",
+      "new": "0x0f34d9c4e01f9f350536780fd1fbc05aa3e3403d",
+      "mega_cards": 11
+    },
+    {
+      "handle": "tolibear_",
+      "old": "0x0c0898e12b6a317660474de8fff1e0069e2b3ad6",
+      "new": "0x0f34d9c4e01f9f350536780fd1fbc05aa3e3403d",
+      "mega_cards": 11
+    },
+    {
+      "handle": "0xkovv",
+      "old": "0xdb70d8d9107ff9bb5b57479cfafd78a074260e3c",
+      "new": "0x0d56eb924c31a42219c3ca915d019ad8174e1441",
+      "mega_cards": 2
+    },
+    {
+      "handle": "dustinvibes",
+      "old": "0xc2a71b6d16b502375c8b40a82e08477655d75f2d",
+      "new": "0x7cbf59c0b9fc4c7f7f60f2ad14861b1b737aa56c",
+      "mega_cards": 696
+    },
+    {
+      "handle": "cryptoarter",
+      "old": "0x57138527975eee3620a0189e25888f9361200135",
+      "new": "0x1c597fe70efad510daa9a5a8edae44973413856e",
+      "mega_cards": 101
+    },
+    {
+      "handle": "0xasrequired",
+      "old": "0xa305cddb82169c5281ed9230b987aee291b10e59",
+      "new": "0x1279697ff2648bb1437d07bd3fc21e0d989f5334",
+      "mega_cards": 7
+    },
+    {
+      "handle": "truunik",
+      "old": "0x39f1f5bc103d06e7352a69221cbc21d6a6acaac6",
+      "new": "0x1f60b01a3498ca9ee14e13e9dbfb546d5e124def",
+      "mega_cards": 17
+    },
+    {
+      "handle": "raidenkrn",
+      "old": "0xa10fd785d6843a3804c24e1de42be0ce36f450b2",
+      "new": "0xadcea82e367d3447e4a00abe2804376fd460da01",
+      "mega_cards": 142
+    },
+    {
+      "handle": "harrietpjones",
+      "old": "0xecbdd91e19cf3ea0f0aa12134d29c76efaff7ba8",
+      "new": "0xb1cb58c9960b85476b8b4fa012872e4c589b6b6a",
+      "mega_cards": 53
+    },
+    {
+      "handle": "auntiepaca",
+      "old": "0x58475bcbf59ee3f9b1a90a0592d3cec864937978",
+      "new": "0x2bab4f6adc8190646ebc6ac129eaae497e68750b",
+      "mega_cards": 27
+    },
+    {
+      "handle": "onchainmo",
+      "old": "0x0b2291da8091128352c2464f1072cf4211144744",
+      "new": "0x9727e451546e8d2103d432967796904164477d9a",
+      "mega_cards": 11
+    },
+    {
+      "handle": "hollanderadam",
+      "old": "0x094a37354b282da07bffe4b5827e9aed6236ea6e",
+      "new": "0x8acfe17a5fe62966a27e579e28c10e936de614f2",
+      "mega_cards": 25
+    },
+    {
+      "handle": "donpudgy",
+      "old": "0x10fe9b1059ff78ad11187601c71ce766843eb010",
+      "new": "0x5d744767bdb137fff7ccde612af2bca1fa3dc454",
+      "mega_cards": 61
+    },
+    {
+      "handle": "karuptkp",
+      "old": "0x04a1a3d10215c9d482dcd64664f003ea70246b48",
+      "new": "0x06e1ab8baa241b8a527dbc320573305c7ee80528",
+      "mega_cards": 49
+    },
+    {
+      "handle": "ericclfung",
+      "old": "0xb4b080d353b97fae6a436fc75ec6a4fd99577c81",
+      "new": "0x50b4722535eb9a10be7923cde9b866b8af95b1db",
+      "mega_cards": 17
+    },
+    {
+      "handle": "platymama_",
+      "old": "0xd3a9dd0eae9b995ea851c90a22c14f904b459df9",
+      "new": "0x8872913f8fbf05d6b8d3b6f7d941419c834cf653",
+      "mega_cards": 22
+    },
+    {
+      "handle": "maskjiro",
+      "old": "0xab6de32c1ebecc93f9a05fd56565a8d0aa709b1d",
+      "new": "0x840b924613f78b4d5f243552ca0c9557288d7614",
+      "mega_cards": 32
+    },
+    {
+      "handle": "jakeronthia_",
+      "old": "0x6b7e7da885a83803a1bd0baab3dde99f1e347fe3",
+      "new": "0xfb47d1769a90f89cfb8ee11f37eb04d22282bc70",
+      "mega_cards": 4
+    },
+    {
+      "handle": "adamagb",
+      "old": "0x3d08649bc4473c6614b5d861438dfa584f92b4e4",
+      "new": "0xeac0fbba47ea4d3fff69019527092568492f2450",
+      "mega_cards": 34
+    },
+    {
+      "handle": "the_inksomnia",
+      "old": "0x3283b00eeca43ba963a9eecd1905e668053a23ce",
+      "new": "0xc4f6f4e7906564af3c03179fdb913ccc5ea9d54c",
+      "mega_cards": 8
+    },
+    {
+      "handle": "kaitodan",
+      "old": "0x8326a959bc1653e799f87859edf729a9b16e487f",
+      "new": "0x55b697715dcb9eac856cef399fde6f8964a777e0",
+      "mega_cards": 13
+    },
+    {
+      "handle": "chrisjourdan",
+      "old": "0xa636e89caf28d0514c4b612953979d08c49da739",
+      "new": "0xade44991d931ca62e4b56f59a7a8e9160067f48a",
+      "mega_cards": 21
+    },
+    {
+      "handle": "mayamaster",
+      "old": "0x16380b4892e790f9547e92d2dab841189e469b68",
+      "new": "0x83ca1b1bc3ed53ee117d898ec6cca47b503fd510",
+      "mega_cards": 24
+    },
+    {
+      "handle": "lostsnow_rin",
+      "old": "0xaec5d0bb9c7649e0bc14396673e2f53a74e4b7cf",
+      "new": "0xff0fb6c4a0d6a88b426879c3a2af86170d2acc0b",
+      "mega_cards": 21
+    },
+    {
+      "handle": "mrgreenity",
+      "old": "0x948ab9a32dd113e28d53a30b247eb332c803c9b9",
+      "new": "0xaadab6454aac210e6a25a5878aa8e8544945a525",
+      "mega_cards": 35
+    },
+    {
+      "handle": "toriribolla",
+      "old": "0x3eb7453e932d3c2d3e6e1550829f9c0c7a839f95",
+      "new": "0x6d3255e8ce047ae9e0ef618b7e824a6b2464c7a0",
+      "mega_cards": 20
+    },
+    {
+      "handle": "0xbellinili",
+      "old": "0xb07f480f0d8486d3fd05c2435ddaa687ca39e895",
+      "new": "0xf2f1da07ecf9aa0cfdc503098295d5d7b29df320",
+      "mega_cards": 5
+    },
+    {
+      "handle": "diegoarmandoad",
+      "old": "0x66d6b2621a6a02c6e677bf5796da453626ede271",
+      "new": "0xc7d98e9479fd6e3e00490b0b2e1ac7a877421631",
+      "mega_cards": 58
+    },
+    {
+      "handle": "0xsanixxx",
+      "old": "0xe6ee9d679c351f03134dd98dd05a62402e5f73a5",
+      "new": "0xc141ea3b4ac71d6110d034229c7c885fc73b1918",
+      "mega_cards": 8
+    },
+    {
+      "handle": "createwithtony",
+      "old": "0x2f1fa1c164e43a6a2ddf6be862782fb80b3f6775",
+      "new": "0x475681f36bb00c812028bc236f886016beb77d3c",
+      "mega_cards": 17
+    },
+    {
+      "handle": "bellerophontis2",
+      "old": "0x047b805607f95833ad965d571a73ff4a4f19b00b",
+      "new": "0x8fda0ae3f9d91e95f60a631eae417615c6eae130",
+      "mega_cards": 28
+    },
+    {
+      "handle": "casperonchain",
+      "old": "0x6a493b40984d1107f134128d080bffc9539e499a",
+      "new": "0x255f56ce08126471b384c89063062662b7c1657f",
+      "mega_cards": 15
+    },
+    {
+      "handle": "imithrandir_",
+      "old": "0x65b521f3e258b21d4b75bfdc72e4407f25fc5ac4",
+      "new": "0xb2c4e87b89a837c72482d1571f7a7e5435a3be8c",
+      "mega_cards": 18
+    },
+    {
+      "handle": "dwdrummer_eth",
+      "old": "0xaada4bcd372f7b78a93bbf0619ae64d7a7ed6182",
+      "new": "0x83441cfa3bd31f33bbf16c536b52b9818c5018d0",
+      "mega_cards": 9
+    },
+    {
+      "handle": "zera_chielo",
+      "old": "0x41528d8f4c210e767097b2d8480a2f46b6ce93f1",
+      "new": "0xba5bea299050d786118ad6326e1a9c2a7cfba71e",
+      "mega_cards": 15
+    },
+    {
+      "handle": "mariannehere",
+      "old": "0xaa15672587661c73a7b75096a064ea76c09383a5",
+      "new": "0xee15bf34284464a7d41c6162db0d364b3b6768cf",
+      "mega_cards": 122
+    },
+    {
+      "handle": "madmaxx_eth",
+      "old": "0x823e1d6456214387d9c752e5507fd6a360255b39",
+      "new": "0x219895b55a5b88d6a32d48ba28793cd8010d6ee6",
+      "mega_cards": 106
+    },
+    {
+      "handle": "jade_defi",
+      "old": "0x7d0ae9cc94bc138576ee12637686c27a0ec857d4",
+      "new": "0xd23cf34e12ba29a65f716289273b808d8f53fb55",
+      "mega_cards": 143
+    },
+    {
+      "handle": "crypto3rain",
+      "old": "0xf2ec456eb73ed53679e70e80c14784dbc4cc3599",
+      "new": "0xe6ba05ffeb162b0b1136b9d7a9ec29468fc5bd48",
+      "mega_cards": 18
+    },
+    {
+      "handle": "pawnie_",
+      "old": "0x4ad38c781ce8c8314161a9dbe4e66c8d91643ee1",
+      "new": "0xc26eddb0cb7f3fa587dbc064c2cde49f1c942750",
+      "mega_cards": 68
+    },
+    {
+      "handle": "0xchainbob",
+      "old": "0x2b05ee17ed97305105f4f0232d745e29374a28ac",
+      "new": "0xeba2d3bdbed2d062ad6774cedd4a2b53348189ff",
+      "mega_cards": 16
+    },
+    {
+      "handle": "danny7xeth",
+      "old": "0x28adfda6e2327a615ae966af6c1d9b2465cf22f2",
+      "new": "0x9ea961921d095aa786a2d62ee94631671e911b27",
+      "mega_cards": 18
+    },
+    {
+      "handle": "nftriles",
+      "old": "0x7b1a3d83c2ce8095639f5018ae6baebdfaf11be2",
+      "new": "0x5f42932c20e26052df4799bb93fdfcff08346337",
+      "mega_cards": 20
+    },
+    {
+      "handle": "kierianv",
+      "old": "0xc6bf3e888abd1dd9dfccfde73524b8fb7e5e3d66",
+      "new": "0x493d3fa24edf4f9de5f0e4c6278b011ff30a8020",
+      "mega_cards": 93
+    },
+    {
+      "handle": "anda765",
+      "old": "0x86c73d0b8b5a7e5e847b3add753e91c450cbc3c8",
+      "new": "0x84922162a6ae4f7030749ac933616aa2a58af823",
+      "mega_cards": 55
+    },
+    {
+      "handle": "r2d2zen",
+      "old": "0x02960ca70f5b81c94248e9967a80cbe84574953e",
+      "new": "0x894d15d48d67dc0233b81994f5434684bbcb0f09",
+      "mega_cards": 150
+    },
+    {
+      "handle": "lechriss17",
+      "old": "0x8ed9ce5e1e8669d64f963580ea65b606c012465a",
+      "new": "0x5ed2cbe4f9a6754801cc9421b5dcdc644b6395ba",
+      "mega_cards": 28
+    },
+    {
+      "handle": "man_versus_coin",
+      "old": "0x24d22ddc3ac21d725e6ddd2ec3db5a8138df68fa",
+      "new": "0xcad9c656ef6e1b5e1bd0590ca3f1b857920a4640",
+      "mega_cards": 97
+    },
+    {
+      "handle": "mountalba",
+      "old": "0xd92e8501127b085643b2a3135c86060a626148f0",
+      "new": "0x1ed8f1a79ea699fe874686fc10504356fb221d71",
+      "mega_cards": 9
+    },
+    {
+      "handle": "elminselimov5",
+      "old": "0x8ab2089dda83eaf4a73539d62995727d41b61902",
+      "new": "0x9347ea27d20da04fa3af9444ebd086c73ff6553b",
+      "mega_cards": 14
+    },
+    {
+      "handle": "love2ideate",
+      "old": "0x90322db32175ef24c4631c90f5376b2f45d025f6",
+      "new": "0x28cc15ff96a35886c2aaa008f8b524115d2cf9ae",
+      "mega_cards": 110
+    },
+    {
+      "handle": "febers4",
+      "old": "0x4b4bf38d66ae87617e255bd1b3317dc4971b6869",
+      "new": "0x7affb749963497675ab596ffd4fc7383baee90d0",
+      "mega_cards": 26
+    },
+    {
+      "handle": "medusaonchain",
+      "old": "0x29ae11e1bc894a5f433d767ee7e03f79364f2d65",
+      "new": "0x1a223f1b510100fa8cee4538469e394e60a0b7b1",
+      "mega_cards": 78
+    },
+    {
+      "handle": "sonika_kk",
+      "old": "0x94675ac9634a2288085ff44773e31620bcf65f45",
+      "new": "0x915d2b0e048b154c50111f2fef2f94eb0b56ef54",
+      "mega_cards": 11
+    },
+    {
+      "handle": "atnsxbt",
+      "old": "0xcee6eee04dfd4c8e7562437b32395d777632e1d6",
+      "new": "0x56e0072b934ff08ed36cb42b8148905504efb9fb",
+      "mega_cards": 8
+    },
+    {
+      "handle": "oxydo11",
+      "old": "0x503720bd8ffe1e164dc9b58b10f91072d93bd71f",
+      "new": "0x4482609e05ad22497cecd7eb5074c2ca3e546cee",
+      "mega_cards": 11
+    },
+    {
+      "handle": "enftsar",
+      "old": "0x4ed266c11f8fd74712862ea3545dbf32a6928c60",
+      "new": "0xa00027c902a0ed2722563217789b4b9ca7a73e80",
+      "mega_cards": 1
+    },
+    {
+      "handle": "anidiot",
+      "old": "0xec9aad54e86594486cd0188efabe2da0aa235e6e",
+      "new": "0x18a67086ef38708a203fa1fa9f458e32d03690a4",
+      "mega_cards": 65
+    },
+    {
+      "handle": "0xtjustin",
+      "old": "0x25cd7b937013c447a88f0245e9a68993b3177df0",
+      "new": "0x844ce97427cfef0bcb17911ca221ed4b4f0af166",
+      "mega_cards": 0
+    },
+    {
+      "handle": "whemohere",
+      "old": "0x191e00329852759313e29180928e37d196c5ee0e",
+      "new": "0x381644fd304d93056613215f4699d12ba3926ba6",
+      "mega_cards": 3
+    },
+    {
+      "handle": "withesibe",
+      "old": "0xd6a0d6a4aa50cd4349ee058934f77433ed465d82",
+      "new": "0x697edefe82eee238e686961fd30c44148adf3259",
+      "mega_cards": 15
+    },
+    {
+      "handle": "tuteth_",
+      "old": "0x4453a98485c591d9f01cc52669195b0e41febe3e",
+      "new": "0x75775181080b3684cc3be770ba070d1ecc1ec50d",
+      "mega_cards": 60
+    },
+    {
+      "handle": "_craig_",
+      "old": "0x2697f24a0128f4bc44c37576152518ec6cd70924",
+      "new": "0x676097d4a5830079ae978a323ce7303a155979a4",
+      "mega_cards": 44
+    },
+    {
+      "handle": "hyperstrike",
+      "old": "0xd68e8e1e40b52d0214da642920742e2c724b02c1",
+      "new": "0x14ce803e4963e2619491053045fa6bb996828819",
+      "mega_cards": 0
+    },
+    {
+      "handle": "tdkimber",
+      "old": "0x086b287dd577d23e5bf5384974b23b717f2d646c",
+      "new": "0x057291bd078f28687009ec4f17672adf6fe88423",
+      "mega_cards": 119
+    },
+    {
+      "handle": "djaniwhaleskul",
+      "old": "0x1c95a44c2088d0398732c0b359d38d365200a437",
+      "new": "0x3a9c9b9165964d2114ea086ef54693f12487fb50",
+      "mega_cards": 436
+    },
+    {
+      "handle": "byshagrath_",
+      "old": "0xe3ca8f3efca154d2bcc3ca5e0a122de48fdee1d4",
+      "new": "0x760105f66d34877c2bc43c6681a0e40ba2bd5a02",
+      "mega_cards": 30
+    },
+    {
+      "handle": "chesus",
+      "old": "0x4f21e3d654985976f0008bcd61385220695d88cb",
+      "new": "0xa0ca7867d1a314bcad3a06bda01de57ff1b9f763",
+      "mega_cards": 252
+    },
+    {
+      "handle": "senti__23",
+      "old": "0xc065666a1c3a05b81e8e36009332253c73dc769b",
+      "new": "0x853e1e59c056da9c3bbf4e780ac0acbfe88d999a",
+      "mega_cards": 301
+    },
+    {
+      "handle": "zkernaut",
+      "old": "0xaf7b17e7bbf5a21deb480711959da0830a93199b",
+      "new": "0xfa57025a2bc81a612216441dd299381b3718efce",
+      "mega_cards": 20
+    },
+    {
+      "handle": "chefgoose",
+      "old": "0xaa59ca8d3da895fb154dd8a877a3d7f59a7bcc35",
+      "new": "0xaccbe4a95776c87b7ec8249bac85e4b524be0c0b",
+      "mega_cards": 6
+    },
+    {
+      "handle": "proofofely",
+      "old": "0x161f91374506a85ed9063e90c4c217d8697d6471",
+      "new": "0x253a41571830dca332724dff29afb8960ffccdf6",
+      "mega_cards": 126
+    },
+    {
+      "handle": "jackkk",
+      "old": "0x389892655e98c21fa53ec5cb0eb469af45e1458f",
+      "new": "0xc4e55cbe0bdc28fca6d0fed614dacfa8302af6a8",
+      "mega_cards": 293
+    },
+    {
+      "handle": "rakermoon",
+      "old": "0xce3b83178f993cc3c5ed66ddd48d6a943b82d4b4",
+      "new": "0xe0d58749cf9f91b5d5e29a7c97191e60becdfd5d",
+      "mega_cards": 120
+    },
+    {
+      "handle": "gmb_aob",
+      "old": "0x1c75c081d66a4f0557bf3bf9ed0525925c85535e",
+      "new": "0xcd9aa0f51ae128575af8b62e14c5b2e2baf8a153",
+      "mega_cards": 61
+    },
+    {
+      "handle": "tmoneyy",
+      "old": "0x40b49087a45bb293cff0d966aee93dfe0b1be5a6",
+      "new": "0x35131f05fad17207361c59bd36392eb56f4bd114",
+      "mega_cards": 31
+    },
+    {
+      "handle": "quan_eth",
+      "old": "0xbc16fcd83a2a8fa96a27ddf9d8348a8d4861c29f",
+      "new": "0xea60ae5328f5c9250b0ecb9150eb1dbae746f409",
+      "mega_cards": 23
+    },
+    {
+      "handle": "teacher96_katie",
+      "old": "0x026edcb402aaaf9ca3fd95a2562ea5ffceaa83a0",
+      "new": "0xc8ad170f587ca7187b0b08d13df09eb22bd4df3b",
+      "mega_cards": 97
+    },
+    {
+      "handle": "guigsluke",
+      "old": "0x1e6e8975db4b6edce81b380e0030ffd234f8f476",
+      "new": "0xc526fb73c639aaf21aa9aafe7ac5249c249e2730",
+      "mega_cards": 80
+    },
+    {
+      "handle": "betmanjoe",
+      "old": "0x352f8a0bd1f17e13980706ea4f11d1e6c9282c42",
+      "new": "0x44921390883dffacb5318154608318903a548907",
+      "mega_cards": 33
+    },
+    {
+      "handle": "0xumutcan",
+      "old": "0x964a0aff5ac8beea1ff2bf4ce0a5ef99f6207188",
+      "new": "0x2cb296048f52424eb3f5bedff035f7c4d6dd9396",
+      "mega_cards": 14
+    },
+    {
+      "handle": "itskkoma",
+      "old": "0x5d59e145f6f0bf51151083f44ef60f691391f1cd",
+      "new": "0xaab9872b9099ba08b2939b3e82efc9116380cbab",
+      "mega_cards": 61
+    },
+    {
+      "handle": "laratherudeduck",
+      "old": "0x3a87c2ada47f17b86de3c440bd8e7f3249edce30",
+      "new": "0x39f00d7bb491a9691d3bedc2a94db42410919f91",
+      "mega_cards": 19
+    },
+    {
+      "handle": "idedj",
+      "old": "0xed225909be84c5fe11493219d9e2e1a02dcd5cab",
+      "new": "0xc26fd781ce87dcad9952bc65b7bc1e4e103cb46b",
+      "mega_cards": 68
+    },
+    {
+      "handle": "zaddyfi",
+      "old": "0x0351b76923992c2afe0f040d22b43ef0b8773d24",
+      "new": "0x23e2f3c97536363f49a24735f032db65a13d087c",
+      "mega_cards": 33
+    },
+    {
+      "handle": "swankyjohnx",
+      "old": "0x9954462ca902180fee22397506d547d661b4deaf",
+      "new": "0x3345447cc01c6f152cda2c165185414408a224ed",
+      "mega_cards": 108
+    },
+    {
+      "handle": "amit0xic",
+      "old": "0x5afcb76430fdab793ea361f19c3492067cf7b2ef",
+      "new": "0x78d61e923cb81698cda966beb77859e747d324eb",
+      "mega_cards": 27
+    },
+    {
+      "handle": "bunya_eth",
+      "old": "0xf3b02e32bd4afbd9eeadab9dd496a9482ec196b9",
+      "new": "0x26dd4199269bec9457f84adb029db917a910c711",
+      "mega_cards": 50
+    },
+    {
+      "handle": "oodegen",
+      "old": "0x5fcdc03624547d4a765e95ffd8fd6f20fa3bfbd0",
+      "new": "0xbf568431cdd5c54195d6bf084bb3e2c94b195204",
+      "mega_cards": 3
+    },
+    {
+      "handle": "johnjassper",
+      "old": "0xbe9a92d4db562f37dcc81f62164ee6bab4b86c49",
+      "new": "0x39df3034bd0439e9bfb042d3d6309d82b46213ee",
+      "mega_cards": 10
+    },
+    {
+      "handle": "magicmikeeditss",
+      "old": "0x90dc125234f1c13c4e026f9af44dd42d2e21c877",
+      "new": "0x454e930defef173e7923267d722fa0cca0907172",
+      "mega_cards": 528
+    },
+    {
+      "handle": "joxiecoxie",
+      "old": "0x6cc3080d2a33c0a2c683bf9b6006ef36cb91bde9",
+      "new": "0x0f2b80d5aa0233f36b8a87511ed71be7175f440c",
+      "mega_cards": 39
+    },
+    {
+      "handle": "jgonzalezferrer",
+      "old": "0x729be2eb86ae64bd7158a9b428f5fe3253f36b0b",
+      "new": "0x9b4c43f10bee24e64af26cd257e8f5a0140c9827",
+      "mega_cards": 124
+    },
+    {
+      "handle": "xeetdotai",
+      "old": "0x0c0898e12b6a317660474de8fff1e0069e2b3ad6",
+      "new": "0x0f34d9c4e01f9f350536780fd1fbc05aa3e3403d",
+      "mega_cards": 11
+    },
+    {
+      "handle": "j0xhen",
+      "old": "0x95d7e4e78359dca66b05ce38993bf8a40a8348eb",
+      "new": "0x58b75b983a2fe5620b6bc19a1070cdf438b8d635",
+      "mega_cards": 11
+    },
+    {
+      "handle": "scottybmitch",
+      "old": "0x4a3d233114ed63b41e54c90e5f8a285c6d0dc907",
+      "new": "0xf68b5455fc5d17f4f5b509b769f819cc3b457bdf",
+      "mega_cards": 77
+    }
+  ],
+  "kept": [
+    {
+      "handle": "celticmatheus",
+      "reason": "no_cards_either_chain",
+      "wallet": "0x921452dbf7b05b10d897cb613ec9451120ef5493"
+    },
+    {
+      "handle": "airdrops_one",
+      "reason": "not_migrated",
+      "wallet": "0x6288490c52bdef8fbf0d0b32b085dfe8d2285f71"
+    },
+    {
+      "handle": "manyaaww",
+      "reason": "not_migrated",
+      "wallet": "0xd4418418f6673b48e1828f539bed0340f78114e1"
+    },
+    {
+      "handle": "dachshundwizard",
+      "reason": "not_migrated",
+      "wallet": "0xf098f32faa2ed72562b877147212f24c6131d5a7"
+    },
+    {
+      "handle": "nashahmed3",
+      "reason": "not_migrated",
+      "wallet": "0x0668c42228da1d3600a33e6109f109571fc121cc"
+    },
+    {
+      "handle": "bigwil",
+      "reason": "not_migrated",
+      "wallet": "0x3e21902e4b15b266299674c5d6c36053a71d7344"
+    },
+    {
+      "handle": "fud_berry",
+      "reason": "not_migrated",
+      "wallet": "0x907444f6bc41f9859e9378447a2abfcc4abffb34"
+    },
+    {
+      "handle": "houseofyogi",
+      "reason": "not_migrated",
+      "wallet": "0xb429d44ab9d6939a8c58945a86e6a02d8d0fb8e2"
+    },
+    {
+      "handle": "voxelqueen",
+      "reason": "not_migrated",
+      "wallet": "0xaacafd8fad0e782c2adee5c1a64cdd522d59b9db"
+    },
+    {
+      "handle": "mide_ox",
+      "reason": "not_migrated",
+      "wallet": "0x4056960463af5cc5b21d5623cf0d561998b8e4bd"
+    },
+    {
+      "handle": "justmeg",
+      "reason": "not_migrated",
+      "wallet": "0x1d67574df6276e11aa073d00e72175d1ad4e6fa2"
+    },
+    {
+      "handle": "solhustler",
+      "reason": "not_migrated",
+      "wallet": "0x6e7cef86bc8b8624b4fe1f329344d89de037308e"
+    },
+    {
+      "handle": "frostyz",
+      "reason": "not_migrated",
+      "wallet": "0x61a2bcb8569971055eeb4eec78c01c8653c7b778"
+    },
+    {
+      "handle": "pons_eth",
+      "reason": "not_migrated",
+      "wallet": "0x04ad9bcea2debe5c23ae05fdb074117eaa279908"
+    },
+    {
+      "handle": "dailax",
+      "reason": "not_migrated",
+      "wallet": "0x2b4afc2f1ccdf106058084e9a185e0e709c04bb5"
+    },
+    {
+      "handle": "meetaminx",
+      "reason": "not_migrated",
+      "wallet": "0x615ce059b46b0aec42883dadaec54f39830f485f"
+    },
+    {
+      "handle": "frenchiee",
+      "reason": "not_migrated",
+      "wallet": "0x4b9edfade2849698be6bea22fb84d0fe0da3a249"
+    },
+    {
+      "handle": "realpiffspeak",
+      "reason": "not_migrated",
+      "wallet": "0xfc725224d2227ee5d2ab239ed54dff851c8f4bf2"
+    },
+    {
+      "handle": "yellowpantherx",
+      "reason": "not_migrated",
+      "wallet": "0xd9ebc885674a93a7c119f37a6abf9dbed84e1ff8"
+    },
+    {
+      "handle": "sanjaybuilds_",
+      "reason": "no_cards_either_chain",
+      "wallet": "0x68e33a587f1d697c5e0f8b8794cfa304b41a61e2"
+    },
+    {
+      "handle": "ruledout_",
+      "reason": "not_migrated",
+      "wallet": "0x53564578c5f052ddcb9e3d627e030f439d2519b7"
+    },
+    {
+      "handle": "lokithebird",
+      "reason": "not_migrated",
+      "wallet": "0x475f4673fa8d00d5973c420c0a56b3bb1f172287"
+    },
+    {
+      "handle": "salamander12_",
+      "reason": "no_cards_either_chain",
+      "wallet": "0x5880cffd56d00256faab1f2ec7cb2ed0e339d224"
+    },
+    {
+      "handle": "moneyfet1sh",
+      "reason": "not_migrated",
+      "wallet": "0x3cf705f017af83054bba7d67d19335054d35a86e"
+    },
+    {
+      "handle": "shgfees",
+      "reason": "not_migrated",
+      "wallet": "0xc12e1a6acb61ca56e6f37f8f3ae05779c8bda140"
+    },
+    {
+      "handle": "cuzmanovs",
+      "reason": "not_migrated",
+      "wallet": "0x27da9966f1058db9222db9745619111fb0ae4aa1"
+    },
+    {
+      "handle": "greenknight_sol",
+      "reason": "not_migrated",
+      "wallet": "0x36040de2ad736c921d97fefd72b563b67daf3c37"
+    },
+    {
+      "handle": "josephweb3",
+      "reason": "not_migrated",
+      "wallet": "0x0853695906f2e81509072b7031cf222eed02ee1d"
+    },
+    {
+      "handle": "carl_m101",
+      "reason": "not_migrated",
+      "wallet": "0xe4e6169e6d76d70c4b2d4429862c875888edf9bb"
+    },
+    {
+      "handle": "wezaverse",
+      "reason": "not_migrated",
+      "wallet": "0x236ce53a50f01016eb81dd2b47d5c7b579dcaaba"
+    },
+    {
+      "handle": "lucberkefeld",
+      "reason": "not_migrated",
+      "wallet": "0x3e99821c6a481c8d749171aa3608464ea3994388"
+    },
+    {
+      "handle": "allenbaez126",
+      "reason": "not_migrated",
+      "wallet": "0x5aae16d3b805812b14a9d2d210e116b82b23893f"
+    },
+    {
+      "handle": "squiddynft",
+      "reason": "not_migrated",
+      "wallet": "0x2e0e8892e6cc51f0d42b16e603c374f11b56e59a"
+    },
+    {
+      "handle": "azflin",
+      "reason": "not_migrated",
+      "wallet": "0x459e213d8b5e79d706ab22b945e3af983d51bc4c"
+    },
+    {
+      "handle": "juaneth77",
+      "reason": "not_migrated",
+      "wallet": "0x2e175981970e94b7e1c001fd33ba69cf223ba057"
+    },
+    {
+      "handle": "gemsscope",
+      "reason": "not_migrated",
+      "wallet": "0x6f6f430c88c0735a30988310d93b0e53c98cc1e3"
+    },
+    {
+      "handle": "alphabatcher",
+      "reason": "not_migrated",
+      "wallet": "0xeeaef14386472e679ba889ddf88456ae2fc9ee1f"
+    },
+    {
+      "handle": "666sixpaths",
+      "reason": "not_migrated",
+      "wallet": "0x1d95479601583ca1b1450e2ea65d7e734e41ed18"
+    },
+    {
+      "handle": "yatmuseum",
+      "reason": "no_cards_either_chain",
+      "wallet": "0xb2c798cc597a4d4db1ea9b3079e39e54dc1c8146"
+    },
+    {
+      "handle": "youfadedwealth",
+      "reason": "not_migrated",
+      "wallet": "0x803de226d9cc88e2f60907cbb92e77dda2953033"
+    },
+    {
+      "handle": "jowennft",
+      "reason": "not_migrated",
+      "wallet": "0xee376eaa374254c402b8eb0e5185268aa1435dea"
+    },
+    {
+      "handle": "cryptogorilla",
+      "reason": "no_cards_either_chain",
+      "wallet": "0xb4d64772218d36f97974e8bb6ef0d01b026c9a14"
+    },
+    {
+      "handle": "gaspodewd",
+      "reason": "not_migrated",
+      "wallet": "0x2f04a32597cc5fbca0e1a64ac9b71fda358c1a43"
+    },
+    {
+      "handle": "thegreatola",
+      "reason": "not_migrated",
+      "wallet": "0xdfe437c87b802470a8fe168687cbfdeb87af5a33"
+    },
+    {
+      "handle": "shredder_tegg",
+      "reason": "not_migrated",
+      "wallet": "0x4fbf92df7981b2d1a8cdb4a454905a59504b7d9d"
+    },
+    {
+      "handle": "imho_nft",
+      "reason": "not_migrated",
+      "wallet": "0x5f34d501809489d5657dc372e509e09d000bdef1"
+    },
+    {
+      "handle": "ibrathedabra",
+      "reason": "not_migrated",
+      "wallet": "0x3e0da6efc5ef9e25d4e346b7ed9c939bc12c6ff9"
+    },
+    {
+      "handle": "cryptoejammin",
+      "reason": "not_migrated",
+      "wallet": "0x8b59d1e3542304f975e9647844ed574064123ef3"
+    },
+    {
+      "handle": "shannholmberg",
+      "reason": "not_migrated",
+      "wallet": "0x070ce3376d34fe075ac22a265928963135aa6007"
+    },
+    {
+      "handle": "just_jibon",
+      "reason": "not_migrated",
+      "wallet": "0x578091cea14f696f3b01fddf13cf1a36ebebd6fa"
+    },
+    {
+      "handle": "themansion_eth",
+      "reason": "not_migrated",
+      "wallet": "0xfee9b3fa4d033879cbd1c96cdc102fbdc006e781"
+    },
+    {
+      "handle": "shtihmas11",
+      "reason": "no_cards_either_chain",
+      "wallet": "0x45a9ee5f64ced003f1f7219aca440ed8e35b0096"
+    },
+    {
+      "handle": "n3xttt",
+      "reason": "not_migrated",
+      "wallet": "0x75c104a92498a2cb971610729a4ad57005d2045d"
+    },
+    {
+      "handle": "masterchiefnfts",
+      "reason": "not_migrated",
+      "wallet": "0xe42d8869f72b79ae3dd66fcc098f46c45290225e"
+    },
+    {
+      "handle": "thekuchh",
+      "reason": "no_cards_either_chain",
+      "wallet": "0x4e8dc309a2ce8271afda4d51a96f564eb4f86fde"
+    },
+    {
+      "handle": "threadoor",
+      "reason": "not_migrated",
+      "wallet": "0x392837c60e496e976ac819097ce09b54b51097a3"
+    },
+    {
+      "handle": "_yourbros",
+      "reason": "not_migrated",
+      "wallet": "0x4921d89414fcaa5c5ae8eaa16bf79d8cf6322685"
+    },
+    {
+      "handle": "jeg6322",
+      "reason": "not_migrated",
+      "wallet": "0x70898023ad677067340fd4d1fc57ccb4b0347107"
+    },
+    {
+      "handle": "thelearningpill",
+      "reason": "not_migrated",
+      "wallet": "0x66ea30e92ca5ca88cf799025684010bf7e9134cd"
+    },
+    {
+      "handle": "tictacmagic_",
+      "reason": "not_migrated",
+      "wallet": "0xea76a03de807834c600d1b96f1892b0b748047ed"
+    },
+    {
+      "handle": "henwyeth",
+      "reason": "not_migrated",
+      "wallet": "0x235c4012a57df65feaa087da5f99171b29c474f7"
+    },
+    {
+      "handle": "thegaboeth",
+      "reason": "not_migrated",
+      "wallet": "0x6a1228a17992baa3977d66551cfd296a3676cd78"
+    },
+    {
+      "handle": "hannahhughes",
+      "reason": "not_migrated",
+      "wallet": "0x9f4703c94ddfc7c4e0b86d99c4e0951594f7220b"
+    },
+    {
+      "handle": "katexbt",
+      "reason": "not_migrated",
+      "wallet": "0x69f66bd6628ff27222da37245ed686c3ef4766c9"
+    },
+    {
+      "handle": "bigzuko_",
+      "reason": "not_migrated",
+      "wallet": "0x6dabf5fb3ab861a3db80027ad377bff75cc5aed9"
+    },
+    {
+      "handle": "queenmoon1337",
+      "reason": "not_migrated",
+      "wallet": "0x070ca102a4f85355b59c3550e283a46db5bbdc5e"
+    },
+    {
+      "handle": "dbiljonaire",
+      "reason": "not_migrated",
+      "wallet": "0x9736a413b57ef971ef9da0ad83f90dbaeaaaf096"
+    },
+    {
+      "handle": "potterplays1",
+      "reason": "not_migrated",
+      "wallet": "0x1ea1efd2d8260eda82b75ce708ed2625d2e57602"
+    },
+    {
+      "handle": "geoonchain",
+      "reason": "not_migrated",
+      "wallet": "0x53cbc4d1a7e2a90c96e44d0fc2f34ab536e77541"
+    },
+    {
+      "handle": "infinityglock99",
+      "reason": "not_migrated",
+      "wallet": "0x5181372c210699dfa82d865ff6854964bfbc11b8"
+    },
+    {
+      "handle": "abstract_hzn",
+      "reason": "not_migrated",
+      "wallet": "0xb1e885b43859871b88ea0e5eb1ae8727b3adf6ea"
+    },
+    {
+      "handle": "cryptodaaddy",
+      "reason": "not_migrated",
+      "wallet": "0xed28d92ec1dfd688df09bb3a207942a5d9fd3938"
+    },
+    {
+      "handle": "adrewxvii",
+      "reason": "not_migrated",
+      "wallet": "0x6a141932a29eb6fe739184aa01a19929b49cf81e"
+    },
+    {
+      "handle": "minhxdynasty",
+      "reason": "not_migrated",
+      "wallet": "0x15c6e23110513ab0843fdf06288736cedc9ae222"
+    },
+    {
+      "handle": "shadow_nft15",
+      "reason": "not_migrated",
+      "wallet": "0xa03425f46ff1f03ee875e3c7a958b86e05108a37"
+    },
+    {
+      "handle": "ghostdotxyz",
+      "reason": "not_migrated",
+      "wallet": "0x488ca43b7032453597481d260b7b3887bb61e50c"
+    },
+    {
+      "handle": "evans1vn",
+      "reason": "not_migrated",
+      "wallet": "0x3ff82d553c453f8ffc1e6544d0308b18ad8f6dca"
+    },
+    {
+      "handle": "phintotten",
+      "reason": "not_migrated",
+      "wallet": "0x1c67724acc76821c8ad1f1f87ba2751631babd0c"
+    },
+    {
+      "handle": "vohvohh",
+      "reason": "no_cards_either_chain",
+      "wallet": "0xaf5a2cb0a6eb68f66cda5ad684d76940fc1886b0"
+    },
+    {
+      "handle": "nadir_nfts",
+      "reason": "not_migrated",
+      "wallet": "0x1cbf3b005a908891ff209386381a1e3d97e2978d"
+    },
+    {
+      "handle": "shl_eth",
+      "reason": "not_migrated",
+      "wallet": "0x0878f14aac0885e454dbc123ce853d21ef3d3fc1"
+    },
+    {
+      "handle": "mookienft",
+      "reason": "not_migrated",
+      "wallet": "0x2be68486fd2ea6a7a4c63eed04069c0002bd845a"
+    },
+    {
+      "handle": "icobeast",
+      "reason": "not_migrated",
+      "wallet": "0x87d4b0f65152798ab053eb28f3c8c8d88fe85ce5"
+    },
+    {
+      "handle": "sanza",
+      "reason": "not_migrated",
+      "wallet": "0x2894f4fe2c4dfc83b20445cf1511d9892fc7ba73"
+    },
+    {
+      "handle": "shotguncaio",
+      "reason": "not_migrated",
+      "wallet": "0xf24841f53b8fa3135961fea10ec2ab0a89364608"
+    },
+    {
+      "handle": "0xmelkoreth",
+      "reason": "not_migrated",
+      "wallet": "0xeb8d41f177e19968273baf9100daf516084d30da"
+    },
+    {
+      "handle": "matdefies",
+      "reason": "not_migrated",
+      "wallet": "0xa088ca284c7ad6fdf620b4b92f9caa7cd304aa90"
+    },
+    {
+      "handle": "poyoeb",
+      "reason": "not_migrated",
+      "wallet": "0x0f3bb570671046491a84dcb36e534a1fa31edf4b"
+    },
+    {
+      "handle": "thebbz",
+      "reason": "not_migrated",
+      "wallet": "0xcc0ff1d8cb212363abd32bfc6eee7602f7a84a0d"
+    },
+    {
+      "handle": "shivst3r",
+      "reason": "not_migrated",
+      "wallet": "0x568d1d950c6b71c32a43e711fedd9a9eaf441de5"
+    },
+    {
+      "handle": "ashleydcan",
+      "reason": "not_migrated",
+      "wallet": "0x628082e4caddb16f37c65c80245a40ae35116305"
+    },
+    {
+      "handle": "scooter_420",
+      "reason": "not_migrated",
+      "wallet": "0x82faabb620d146774fb14be48267795d3d56e856"
+    },
+    {
+      "handle": "rajpatel",
+      "reason": "not_migrated",
+      "wallet": "0x2515c2f111c9f5850050cb7e5738a76afcd19fbb"
+    },
+    {
+      "handle": "davidonchainx",
+      "reason": "not_migrated",
+      "wallet": "0x3b9fe52f152f1ce3ece663c3ae8277fd9453cc25"
+    },
+    {
+      "handle": "loshmi",
+      "reason": "not_migrated",
+      "wallet": "0xc6b71cf73263c8024f55c401173aad76d83f6391"
+    },
+    {
+      "handle": "merheb",
+      "reason": "not_migrated",
+      "wallet": "0x18ddeae952457a83008a11b82968784beff38aa4"
+    },
+    {
+      "handle": "andrewaskshow",
+      "reason": "not_migrated",
+      "wallet": "0x2dd5758f8d646ceee5e1bbb448ff28f6f2d37ce1"
+    },
+    {
+      "handle": "bluetigerx_",
+      "reason": "not_migrated",
+      "wallet": "0x093442a013c0b80b887e69b2ef04252deced437a"
+    },
+    {
+      "handle": "sinsonx",
+      "reason": "not_migrated",
+      "wallet": "0xe3490f0a867e5f562bd0d68621986ae551f3379d"
+    },
+    {
+      "handle": "idmintthat",
+      "reason": "not_migrated",
+      "wallet": "0x7f9efc77234dd34328b764d68606de972e24a510"
+    },
+    {
+      "handle": "m00des",
+      "reason": "not_migrated",
+      "wallet": "0x562b11c76e233f059b7a3957a961c58e64afe2b5"
+    },
+    {
+      "handle": "hellobenwhite",
+      "reason": "not_migrated",
+      "wallet": "0x9571f51b11f86d878d9d512228fe7b266e807432"
+    },
+    {
+      "handle": "ryannnsmit",
+      "reason": "not_migrated",
+      "wallet": "0x6e82ce36948f356adcc9d110f7a7a0138272e5ce"
+    },
+    {
+      "handle": "fourvork",
+      "reason": "not_migrated",
+      "wallet": "0x03dff61ef1aab8039e54bddebfb17c415e97ac84"
+    },
+    {
+      "handle": "hydraze420",
+      "reason": "not_migrated",
+      "wallet": "0x2a93e999816c9826ade0b51aaa2d83240d8f4596"
+    },
+    {
+      "handle": "yulikay",
+      "reason": "not_migrated",
+      "wallet": "0x6b2b639ecb1a04cf75a0c76b19ccc4202b522864"
+    },
+    {
+      "handle": "shwepps_",
+      "reason": "no_cards_either_chain",
+      "wallet": "0x77E0D545D1bAcaE5329C9DEdE7bB290313A27f05"
+    },
+    {
+      "handle": "zhugelyang",
+      "reason": "not_migrated",
+      "wallet": "0xfd892f1bf7b54fe61bfca6bdd9b57b3b628c7532"
+    },
+    {
+      "handle": "sirjoey",
+      "reason": "not_migrated",
+      "wallet": "0x9889bfda635f771927f6d622c6da1f2caf29b55c"
+    },
+    {
+      "handle": "jefferycrypt",
+      "reason": "not_migrated",
+      "wallet": "0xf2c9c6210cf82028ebde4aeebd27924a2e273912"
+    },
+    {
+      "handle": "parcifap",
+      "reason": "not_migrated",
+      "wallet": "0x4e628959682c47a4c143d911b8f2d582375e2dcf"
+    },
+    {
+      "handle": "tma_420",
+      "reason": "not_migrated",
+      "wallet": "0xdbd47f66aa2f00b3db03397f260ce9728298c495"
+    },
+    {
+      "handle": "darkanft",
+      "reason": "not_migrated",
+      "wallet": "0x2940c729c50dc01c935f46a18d12631cc3fa4993"
+    },
+    {
+      "handle": "solfrater_sol",
+      "reason": "not_migrated",
+      "wallet": "0x4f4123ad96d6dad8625e341db4a96a0e4448d089"
+    },
+    {
+      "handle": "zaimiri",
+      "reason": "not_migrated",
+      "wallet": "0xad94810c4ecccf4035c4e90354d01b3d752195eb"
+    },
+    {
+      "handle": "jackhaldorsson",
+      "reason": "not_migrated",
+      "wallet": "0x8337261a0647336a71b19b1d67afc4791b460d62"
+    },
+    {
+      "handle": "matchayuma",
+      "reason": "not_migrated",
+      "wallet": "0x03afd048d11dac01f7e9e3d61d8d28d1dab237c0"
+    },
+    {
+      "handle": "defidarling",
+      "reason": "not_migrated",
+      "wallet": "0x269ed16b66fe6a32b0d63c56eaf51e7377c9cab9"
+    },
+    {
+      "handle": "nxtlvl",
+      "reason": "not_migrated",
+      "wallet": "0x4e4498effa701520e7003b74af221116552f1b7c"
+    },
+    {
+      "handle": "thecryptoprofes",
+      "reason": "not_migrated",
+      "wallet": "0x40b5da28a853cddfcf97e2e9495da8ca3431ed35"
+    },
+    {
+      "handle": "riowgmi",
+      "reason": "not_migrated",
+      "wallet": "0x61f8176cf10b6916a815443d03b98388f80e0f68"
+    },
+    {
+      "handle": "elenionchain",
+      "reason": "not_migrated",
+      "wallet": "0x28bdc39e9bddbb6c4a922be9c2811c97fa3cf81b"
+    },
+    {
+      "handle": "swandogs",
+      "reason": "not_migrated",
+      "wallet": "0x82f8dd4c56822a4e55a804b01f70a8da5ae0b960"
+    },
+    {
+      "handle": "pukerrainbrow",
+      "reason": "not_migrated",
+      "wallet": "0x1897f81fed64a192db9355954179a0958e9df7dc"
+    },
+    {
+      "handle": "cabenx",
+      "reason": "not_migrated",
+      "wallet": "0x216ea25ca9c9855aab2c5b182538c67513259c50"
+    },
+    {
+      "handle": "morsyxbt",
+      "reason": "not_migrated",
+      "wallet": "0x1e90f4c27dfa87481e9b7015ca8a4e6c46bfca95"
+    },
+    {
+      "handle": "jessyfries",
+      "reason": "not_migrated",
+      "wallet": "0x3d5e9077ef8f9c6b0e10d6c62c1a022a49675cc3"
+    },
+    {
+      "handle": "xerocooleth",
+      "reason": "not_migrated",
+      "wallet": "0x07a12b8be0cfbf8397ad347d5ad558032dff7d49"
+    },
+    {
+      "handle": "ryandcrypto",
+      "reason": "not_migrated",
+      "wallet": "0x97c18d92e54bd9b4a755acb604cd51a6f11245fc"
+    },
+    {
+      "handle": "jai0xcrypto",
+      "reason": "not_migrated",
+      "wallet": "0xc0f351cd4e690328b02b84cfdd1c16732b5d88fd"
+    },
+    {
+      "handle": "defi_explora",
+      "reason": "no_cards_either_chain",
+      "wallet": "0x54eaf04ceb923811ac2656b3d2cc42fd472f8a30"
+    },
+    {
+      "handle": "mhknft",
+      "reason": "not_migrated",
+      "wallet": "0xf9716d1e4c6b94dc8af51f72dd71665dc8a7a60f"
+    },
+    {
+      "handle": "treeonchain",
+      "reason": "not_migrated",
+      "wallet": "0x0c366cdeb15384a95f03866eebb9f2882f1e4288"
+    },
+    {
+      "handle": "malayahmad",
+      "reason": "no_cards_either_chain",
+      "wallet": "0xc577c9a5ae25c4e6f8368ce1bbffc27d6d1ea797"
+    },
+    {
+      "handle": "jyp_nft",
+      "reason": "not_migrated",
+      "wallet": "0x3e4c5a89d1c4782d8eb12f8f541ba76b34a48182"
+    },
+    {
+      "handle": "kaiz_294",
+      "reason": "not_migrated",
+      "wallet": "0xf7307f4f844684c9a510391518de111789d9fd76"
+    },
+    {
+      "handle": "yvohvn",
+      "reason": "not_migrated",
+      "wallet": "0xa74048c1b70a3a6de807e543b2994c3d9c5910db"
+    },
+    {
+      "handle": "holly_web3",
+      "reason": "not_migrated",
+      "wallet": "0xbd04be7d00d3899eee07a7f93ef2c380d010cfde"
+    },
+    {
+      "handle": "xammiecrypt",
+      "reason": "not_migrated",
+      "wallet": "0x545ee54d2eede6d4230e02978d3fde1f310d77c2"
+    },
+    {
+      "handle": "coinempress",
+      "reason": "not_migrated",
+      "wallet": "0xc37b45a79707cfe3c62c149c2bde33c0151aeeba"
+    },
+    {
+      "handle": "0xamne",
+      "reason": "not_migrated",
+      "wallet": "0x12bdfca7d90c76452661f3fa0ecaa2ee3db25fb1"
+    },
+    {
+      "handle": "jonasoeth",
+      "reason": "not_migrated",
+      "wallet": "0xead16badb82625a9c3f526072009326c0db8ffa7"
+    },
+    {
+      "handle": "xfactorpol",
+      "reason": "not_migrated",
+      "wallet": "0xbf9fbac56b88df1f81c11aadeb9154c44f27af20"
+    },
+    {
+      "handle": "0xrif0",
+      "reason": "no_cards_either_chain",
+      "wallet": "0x01deba3a0a7cdcb7d735032c0c60ac3bfe858f15"
+    },
+    {
+      "handle": "drewfromweb3",
+      "reason": "not_migrated",
+      "wallet": "0xa3ba014ce323233222f436bda7d5e449cd9fc499"
+    },
+    {
+      "handle": "alphawolfprmr",
+      "reason": "not_migrated",
+      "wallet": "0xf8ba17717f165a487726a0a214e34797499834d2"
+    },
+    {
+      "handle": "0xtama_",
+      "reason": "not_migrated",
+      "wallet": "0xef6d7235d14fbf93f454050f2951caa0f7bcf4b7"
+    },
+    {
+      "handle": "doc_noonoo",
+      "reason": "not_migrated",
+      "wallet": "0x9b9cc63626692b73b65b315cb586a7b543d3391f"
+    },
+    {
+      "handle": "kaitoxbt",
+      "reason": "not_migrated",
+      "wallet": "0x031a9d3b2c47a3e3a06b335ba32a785a3e1fef29"
+    },
+    {
+      "handle": "greenytrades",
+      "reason": "no_cards_either_chain",
+      "wallet": "0x2e019cdbabf43b699d68b7c080b1cb9de69820ba"
+    },
+    {
+      "handle": "apurvajain24",
+      "reason": "not_migrated",
+      "wallet": "0xd96ceb1036828e29d00fde0b239cf6c72c1afffc"
+    },
+    {
+      "handle": "ffvv1211",
+      "reason": "not_migrated",
+      "wallet": "0x57f1d3ae3f15e79dd826024ec52b4d858e907e22"
+    },
+    {
+      "handle": "aurelius_1988",
+      "reason": "not_migrated",
+      "wallet": "0xa66bd570795cfb791916ee6cb7a8e4d7ad391873"
+    },
+    {
+      "handle": "deviled_meggs_",
+      "reason": "not_migrated",
+      "wallet": "0xedaf40cc267f211dcd584f858c8667e7f194f413"
+    },
+    {
+      "handle": "daspookyman",
+      "reason": "not_migrated",
+      "wallet": "0x2e2ca82bec9aae7cd637f411d7623df5526f475c"
+    },
+    {
+      "handle": "molusol",
+      "reason": "not_migrated",
+      "wallet": "0x8283b39dceeb248da46e0b392b56cfd5c9ab8303"
+    },
+    {
+      "handle": "cryptovondoom",
+      "reason": "not_migrated",
+      "wallet": "0x591f8a2decc1c86cce0c7bea22fa921c2c72fb95"
+    },
+    {
+      "handle": "ilodiwow",
+      "reason": "not_migrated",
+      "wallet": "0xb7554aa650f096019168db2643f2fe815c7b1d10"
+    },
+    {
+      "handle": "jennn_sol",
+      "reason": "not_migrated",
+      "wallet": "0x4c5bde3ea737f9f9b490e7d16cdc954d29a9a23a"
+    },
+    {
+      "handle": "theagnft",
+      "reason": "not_migrated",
+      "wallet": "0x3ff3d0619a72017a6903d2916d2c7139f32087b9"
+    },
+    {
+      "handle": "depressivehacks",
+      "reason": "not_migrated",
+      "wallet": "0x62f2a511ec695c0e118023288bfada69e6511dd8"
+    },
+    {
+      "handle": "nf_janner",
+      "reason": "not_migrated",
+      "wallet": "0x727223f4b7d2a5830d65c68a24d84590d84a852f"
+    },
+    {
+      "handle": "thejasich",
+      "reason": "not_migrated",
+      "wallet": "0x2f3fa026f610d9cf32ee2342f2131f7d5cf5af04"
+    },
+    {
+      "handle": "craigscoinpurse",
+      "reason": "not_migrated",
+      "wallet": "0xc11212ed8201fa3e8589ee56d106406c0aa0838e"
+    },
+    {
+      "handle": "nftboi_",
+      "reason": "not_migrated",
+      "wallet": "0x4ef648ad96db020111a3a0e7bce4ff6e1af3da68"
+    },
+    {
+      "handle": "beausecurity",
+      "reason": "not_migrated",
+      "wallet": "0x61c0a442daad8fd45e716b9a35e132d777dd900f"
+    },
+    {
+      "handle": "what3verman",
+      "reason": "not_migrated",
+      "wallet": "0x7c2ba9011a43c3982d9f0835243cef142e0210a6"
+    },
+    {
+      "handle": "camolnft",
+      "reason": "not_migrated",
+      "wallet": "0xcb2940837b919e86899d62c19242fa49d3821f47"
+    },
+    {
+      "handle": "xxcj78xx",
+      "reason": "not_migrated",
+      "wallet": "0xe6cea553a27a570d1fa0e7612e6a8dcd9321077f"
+    },
+    {
+      "handle": "aizcalibur",
+      "reason": "no_cards_either_chain",
+      "wallet": "0x562ffbc839b608e35646e9de40591b5145bcc6f5"
+    },
+    {
+      "handle": "rempo1",
+      "reason": "not_migrated",
+      "wallet": "0x708f9144a8754a88e07493a1718fcc9eca3115e2"
+    },
+    {
+      "handle": "poppunkonchain",
+      "reason": "not_migrated",
+      "wallet": "0x395d4f15409b3f29d353db7e583c92d84cbaf2e2"
+    },
+    {
+      "handle": "itstymo",
+      "reason": "not_migrated",
+      "wallet": "0xc9be973f23cbbfff1a207a64a3ef0d2197c45008"
+    },
+    {
+      "handle": "flyest",
+      "reason": "not_migrated",
+      "wallet": "0xea1dd63b305e6ee487e416eb4be1b4353551a702"
+    },
+    {
+      "handle": "crazino87",
+      "reason": "no_cards_either_chain",
+      "wallet": "0xd9df8a5e14ec420d010429ce6efddaf1f06e4251"
+    },
+    {
+      "handle": "austiinxbt",
+      "reason": "not_migrated",
+      "wallet": "0xe86a383f599eb082f0dd6187dc144e22893220f6"
+    },
+    {
+      "handle": "jampzey",
+      "reason": "no_cards_either_chain",
+      "wallet": "0xb776c1a280f4b638b5230d125bf952e79c8bb7a4"
+    },
+    {
+      "handle": "r3birth",
+      "reason": "not_migrated",
+      "wallet": "0xd16a966582f28a1ee7a88043e6dd318ccf8bb8be"
+    },
+    {
+      "handle": "littlebladed",
+      "reason": "not_migrated",
+      "wallet": "0xb5cd0b813bc14bbf1d3cdd891130338e31e754af"
+    }
+  ]
+}

@@ -5,7 +5,7 @@ import type { WalletScoreSummary } from '@/types/deck';
 
 // Xeet rare card (token #27) for non-XCC holders
 const XEET_RARE_URL =
-  'https://i2c.seadn.io/abstract/0xec27d2237432d06981e1f18581494661517e1bd3/cb868470bc6eb2120e284c7ef6f40b/13cb868470bc6eb2120e284c7ef6f40b.png';
+  'https://i2c.seadn.io/megaeth/0xce8cb6676f6cfb3161a72a723b436987c6cf4e68/cb868470bc6eb2120e284c7ef6f40b/13cb868470bc6eb2120e284c7ef6f40b.png';
 
 // Card dimensions: 400x500 native, render at 2x for sharpness
 const CARD_W = 800;

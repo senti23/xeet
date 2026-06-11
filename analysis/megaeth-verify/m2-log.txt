@@ -1,0 +1,7 @@
+OpenSea total_supply: 21673  | snapshot: 21662  | delta: -11
+OpenSea num_owners:  1100  | snapshot: 1100  | delta%: 0.00
+spot 0x853e1e59c056da9c3bbf4e780ac0acbfe88d999a: snap=301 chain=301 mismatches=0 PASS
+spot 0x7cbf59c0b9fc4c7f7f60f2ad14861b1b737aa56c: snap=696 chain=696 mismatches=0 PASS
+spot 0xe56d1a03bc9224a0d030b4a682292356f59e7b23: snap=6 chain=6 mismatches=0 PASS
+
+OVERALL: PASS

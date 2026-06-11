@@ -15,3 +15,8 @@ server/scripts/*.js
 server/scripts/*.d.ts
 server/scripts/*.js.map
 server/scripts/*.d.ts.map
+analysis/.venv/
+analysis/megaeth-verify/megaeth-raw-events*.json
+analysis/megaeth-verify/abs-residuals-progress.jsonl
+analysis/megaeth-verify/archive-*/
+web/tsconfig.tsbuildinfo

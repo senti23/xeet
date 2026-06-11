@@ -1,0 +1,21 @@
+{
+  "total_mint_txs": 1240,
+  "queried": 1239,
+  "initiators": {
+    "0x1ce7b8657e0eea904bdc9fdb98bf0fe866b06510": 132,
+    "0x3506d6c47a555dff76be20bc4aa4cde0fb7d42e9": 128,
+    "0x2b237ac3d1035253019b2728ff56276cf9995546": 99,
+    "0xc79e449bb2540b8275f75e3c448da5517168e06d": 112,
+    "0xbcb35bbb68a3aa2144bbbacd61c9f155a6b9495e": 104,
+    "0xe56b087a5e639a65ed28dfc06ff565158f36a0c3": 148,
+    "0x399c6089874a8b9bb7c3d8923ce73fe5ed5537b4": 127,
+    "0xcff451268ec35903796ab97207cbde54c98dbc5f": 130,
+    "0xe4b1d5a665c1e02f28004e0c39d513ecd74a99e2": 126,
+    "0xa81186040b1a8a6fd6f23cd9a0a5373342cab43a": 124,
+    "": 9
+  },
+  "targets": {
+    "0x97173f92fdd850a78ab8f64500b7e32d81df740f": 1230,
+    "": 9
+  }
+}

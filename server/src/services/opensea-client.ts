@@ -8,7 +8,7 @@ const limiter = new AdaptiveRateLimiter('opensea', 1, 4, 2);
 
 const SLUG = config.opensea.collectionSlug;
 const CONTRACT = config.opensea.contract;
-const CHAIN = 'abstract'; // Contract is deployed on Abstract chain
+const CHAIN = config.opensea.chain;
 const BASE = config.opensea.baseUrl;
 const HEADERS = { 'X-API-KEY': config.opensea.apiKey, Accept: 'application/json' };
 
